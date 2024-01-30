@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2024 Marlonlom
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<resources>
+  <color name="brand_akaroa">#FFFFB785</color>
+  <color name="brand_armadillo">#FF4E4639</color>
+  <color name="brand_aths_special">#FFEEE1CF</color>
+  <color name="brand_axolotl">#FF974900</color>
+  <color name="brand_black">#FF000000</color>
+  <color name="brand_celtic">#FF512400</color>
+  <color name="brand_cinnamon">#FF7B5800</color>
+  <color name="brand_cola">#FF271900</color>
+  <color name="brand_cola_2">#FF412D00</color>
+  <color name="brand_cornflower_lilac">#FFFFB4AB</color>
+  <color name="brand_dune">#FF34302A</color>
+  <color name="brand_english_holly">#FF311300</color>
+  <color name="brand_fringy_flower">#FFFFDBC7</color>
+  <color name="brand_jacko_bean">#FF301400</color>
+  <color name="brand_lisbon_brown">#FF713700</color>
+  <color name="brand_merino">#FFF8EFE7</color>
+  <color name="brand_mikado">#FF502500</color>
+  <color name="brand_pablo">#FF7F7667</color>
+  <color name="brand_pale_oyster">#FF9A8F80</color>
+  <color name="brand_peach_schnapps">#FFFFDAD6</color>
+  <color name="brand_pearl_bush">#FFE9E1D9</color>
+  <color name="brand_ronchi">#FFF6BD48</color>
+  <color name="brand_rosewood">#FF690005</color>
+  <color name="brand_saddle_brown">#FF5D4200</color>
+  <color name="brand_salomie">#FFFFDEA5</color>
+  <color name="brand_sangria">#FF93000A</color>
+  <color name="brand_sidecar">#FFFFDCC6</color>
+  <color name="brand_soft_amber">#FFD1C5B4</color>
+  <color name="brand_spring_rain">#FFFFB687</color>
+  <color name="brand_temptress">#FF410002</color>
+  <color name="brand_thunderbird">#FFBA1A1A</color>
+  <color name="brand_tobacco_brown">#FF944A01</color>
+  <color name="brand_tom_thumb">#FF733600</color>
+  <color name="brand_tutu">#FFFFFBFF</color>
+  <color name="brand_white">#FFFFFFFF</color>
+  <color name="brand_zeus">#FF1E1B16</color>
+</resources>

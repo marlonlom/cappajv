@@ -1,0 +1,601 @@
+[
+  {
+    "id": "15398",
+    "title": "Affogato",
+    "category": "Bebidas frías",
+    "detail": "Es un café-postre italiano perfecto para las sobremesas de verano.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Afogatto-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Affogato",
+        "pointsQty": 1750
+      }
+    ]
+  },
+  {
+    "id": "15389",
+    "title": "Almojábana",
+    "category": "Pastelería",
+    "detail": "Es un amasijo colombiano a base de harina de maíz y queso.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Copia-de-Almojabana-Juan-Valdez-e1642542513402.png",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 1400
+      }
+    ]
+  },
+  {
+    "id": "10411",
+    "title": "Aromática bosque infusión",
+    "category": "Bebidas calientes",
+    "detail": "Es una bebida caliente y muy tradicional en los andes colombianos, sabor bosque infusión.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/AROMATICA.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1475
+      },
+      {
+        "label": "Mediano",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "10410",
+    "title": "Aromática fusión tropical",
+    "category": "Bebidas calientes",
+    "detail": "Es una bebida caliente y muy tradicional en los andes colombianos, sabor fusión tropical.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/TE.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1475
+      },
+      {
+        "label": "Mediano",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "970",
+    "title": "Aromática primavera",
+    "category": "Bebidas calientes",
+    "detail": "Es una bebida caliente y muy tradicional en los andes colombianos, sabor primavera.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/TE.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1475
+      },
+      {
+        "label": "Mediano",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "971",
+    "title": "Aromática silvestre",
+    "category": "Bebidas calientes",
+    "detail": "Es una bebida caliente y muy tradicional en los andes colombianos, sabor silvestre.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/AROMATICA.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1475
+      },
+      {
+        "label": "Mediano",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "10419",
+    "title": "Café americano",
+    "category": "Bebidas calientes",
+    "detail": "Café elaborado a base de espresso y agua caliente.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Cafe-Americano-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "10418",
+    "title": "Cappuccino",
+    "category": "Bebidas calientes",
+    "detail": "Café Espresso con leche vaporizada de textura cremosa.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Cappuccino-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1625
+      },
+      {
+        "label": "Mediano",
+        "pointsQty": 1875
+      },
+      {
+        "label": "Mediano Descafeinado",
+        "pointsQty": 1875
+      },
+      {
+        "label": "Grande",
+        "pointsQty": 2375
+      }
+    ]
+  },
+  {
+    "id": "10412",
+    "title": "Chai",
+    "category": "Bebidas calientes",
+    "detail": "Bebida caliente a base de té especiado.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Chai-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Tradicional Mediano",
+        "pointsQty": 2725
+      },
+      {
+        "label": "Manzana Canela Mediano",
+        "pointsQty": 2875
+      },
+      {
+        "label": "Manzana Canela Grande",
+        "pointsQty": 3125
+      },
+      {
+        "label": "Tradicional Grande 1.65",
+        "pointsQty": 2975
+      }
+    ]
+  },
+  {
+    "id": "10416",
+    "title": "Chocolate",
+    "category": "Bebidas calientes",
+    "detail": "Chocolate con leche vaporizada.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Chocolate-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 2125
+      }
+    ]
+  },
+  {
+    "id": "15390",
+    "title": "Cold brew nitro",
+    "category": "Bebidas frías",
+    "detail": "Café espumoso nitrogenado luego de su reposo en agua fría durante 24 horas, de sabor suave, aroma delicioso, con el color del café natural y aparienca tipo cerveza.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Cold-Brew-nitro-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1475
+      }
+    ]
+  },
+  {
+    "id": "15391",
+    "title": "Cold brew original",
+    "category": "Bebidas frías",
+    "detail": "Café reposado en agua fría durante 24 horas, de sabor suave, aroma delicioso y con el color del café natural.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Cold-Brew-nitro-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1225
+      }
+    ]
+  },
+  {
+    "id": "10415",
+    "title": "Espresso",
+    "category": "Bebidas calientes",
+    "detail": "Café preparado en máquina espresso.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Espresso-tradicional-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Normal",
+        "pointsQty": 1375
+      },
+      {
+        "label": "Doble",
+        "pointsQty": 1725
+      },
+      {
+        "label": "Cortado",
+        "pointsQty": 1975
+      }
+    ]
+  },
+  {
+    "id": "979",
+    "title": "Flat white",
+    "category": "Bebidas calientes",
+    "detail": "Café preparado en máquina espresso con fina capa de espuma de leche.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Flat-white-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 2075
+      }
+    ]
+  },
+  {
+    "id": "15379",
+    "title": "Galleta choco chip",
+    "category": "Pastelería",
+    "detail": "Una crocante galleta con chips de chocolate.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Galleta-chips-de-chocolate-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 1375
+      }
+    ]
+  },
+  {
+    "id": "15396",
+    "title": "Granizado",
+    "category": "Bebidas frías",
+    "detail": "Es una bebida fría y refrescante de café con hielo granizado.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Granizado-juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 2225
+      }
+    ]
+  },
+  {
+    "id": "10417",
+    "title": "Latte",
+    "category": "Bebidas calientes",
+    "detail": "Es un café preparado en máquina espresso y leche vaporizada.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Latte-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1625
+      },
+      {
+        "label": "Mediano",
+        "pointsQty": 1875
+      },
+      {
+        "label": "Mediano Descafeinado",
+        "pointsQty": 1875
+      },
+      {
+        "label": "Grande",
+        "pointsQty": 2375
+      }
+    ]
+  },
+  {
+    "id": "15397",
+    "title": "Latte frío",
+    "category": "Bebidas frías",
+    "detail": "Es un café preparado en máquina espresso y leche vaporizada, servido frío.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Latte-frio-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 2375
+      }
+    ]
+  },
+  {
+    "id": "10414",
+    "title": "Macchiatto",
+    "category": "Bebidas calientes",
+    "detail": "Café espresso con una capa de espuma de leche.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Machiatto-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Macchiatto",
+        "pointsQty": 1975
+      }
+    ]
+  },
+  {
+    "id": "983",
+    "title": "Mocca",
+    "category": "Bebidas calientes",
+    "detail": "Bebida caliente que combina el café espresso, leche y chocolate.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Mocca-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 2225
+      }
+    ]
+  },
+  {
+    "id": "969",
+    "title": "Nevado arequipe",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría de café con arequipe decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-Arequipe-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "15392",
+    "title": "Nevado baileys",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría a base de café con Baileys decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-Baileys-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 3625
+      }
+    ]
+  },
+  {
+    "id": "15381",
+    "title": "Nevado brownie",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría a base de café con brownie decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-Brownie-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "12971",
+    "title": "Nevado cafe",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría a base de café decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_de_cafe___300ml_700x700px.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 2975
+      }
+    ]
+  },
+  {
+    "id": "12981",
+    "title": "Nevado café reducido en azucar",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría a base de café, reducida en azúcar decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_reducido_en_azucar_300ml_700x700px.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "15393",
+    "title": "Nevado chai",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría a base de té chai decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-chai-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 3475
+      }
+    ]
+  },
+  {
+    "id": "12982",
+    "title": "Nevado chocolate",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría de café con chocolate decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_de_chocolate_300ml_700x700px.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "968",
+    "title": "Nevado galleta",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría de café con trozos de galleta y leche condensada decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-galleta-oreo-y-leche-condensada-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "12983",
+    "title": "Nevado mokachip",
+    "category": "Bebidas frías",
+    "detail": "Es una cremosa bebida fría de café con chocolate y chips decorada con Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_mocachip_300ml_700x700px.jpg",
+    "punctuations": [
+      {
+        "label": "Mediano",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "15388",
+    "title": "Palito de queso",
+    "category": "Pastelería",
+    "detail": "Es un hojaldre a base de mantequilla y relleno de una mezcla de queso campesino, mozarella y queso costeño.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Palito-de-queso-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "15387",
+    "title": "Pandebono",
+    "category": "Pastelería",
+    "detail": "Es un amasijo a base de almidón de yuca y queso.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Pandebono-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 1400
+      }
+    ]
+  },
+  {
+    "id": "15386",
+    "title": "Pandebono de bocadillo",
+    "category": "Pastelería",
+    "detail": "Es un amasijo a base de almidón de yuca y queso relleno de bocadillo.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/PANDEBONO_DE_BOCADILLO.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 1475
+      }
+    ]
+  },
+  {
+    "id": "15385",
+    "title": "Pastel gloria arequipe y guayaba",
+    "category": "Pastelería",
+    "detail": "Es un hojaldre relleno de arequipe y guayaba.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Pastel-gloria-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 1375
+      }
+    ]
+  },
+  {
+    "id": "10413",
+    "title": "Pods",
+    "category": "Bebidas calientes",
+    "detail": "Es un preparado en máquina especial para Pods.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/pods.png",
+    "punctuations": [
+      {
+        "label": "Colina",
+        "pointsQty": 1500
+      },
+      {
+        "label": "Cumbre",
+        "pointsQty": 1500
+      },
+      {
+        "label": "Cumbre Descafeinado",
+        "pointsQty": 1500
+      },
+      {
+        "label": "Macizo",
+        "pointsQty": 1500
+      },
+      {
+        "label": "Origen (Huila, Nariño, Sierra, Tolima)",
+        "pointsQty": 1625
+      }
+    ]
+  },
+  {
+    "id": "12984",
+    "title": "Rollito de canela",
+    "category": "Pastelería",
+    "detail": "Es un pan dulce con relleno suave de canela, mantequilla y azúcar recién horneado.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/rollito_de_canela.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "987",
+    "title": "Tintos",
+    "category": "Bebidas calientes",
+    "detail": "Taza de café filtrado con sabor a panela, clavos, canela y limón.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Tinto-Juan-Valdez-campesino.jpg",
+    "punctuations": [
+      {
+        "label": "Pequeño",
+        "pointsQty": 1125
+      },
+      {
+        "label": "Mediano",
+        "pointsQty": 1325
+      },
+      {
+        "label": "Grande",
+        "pointsQty": 1575
+      },
+      {
+        "label": "Campesino Pequeño",
+        "pointsQty": 1375
+      },
+      {
+        "label": "Campesino Mediano",
+        "pointsQty": 1575
+      }
+    ]
+  },
+  {
+    "id": "15384",
+    "title": "Torta de banano",
+    "category": "Pastelería",
+    "detail": "Deliciosa porción torta de banano",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Torta-de-banano-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 1875
+      }
+    ]
+  },
+  {
+    "id": "15383",
+    "title": "Torta de chocolate",
+    "category": "Pastelería",
+    "detail": "Deliciosa porción torta de chocolate",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Torta-de-chocolate-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 2225
+      }
+    ]
+  },
+  {
+    "id": "15382",
+    "title": "Torta de zanahoria",
+    "category": "Pastelería",
+    "detail": "Deliciosa porción torta de zanahoria",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Torta-de-zanahoria-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unidad",
+        "pointsQty": 2225
+      }
+    ]
+  }
+]

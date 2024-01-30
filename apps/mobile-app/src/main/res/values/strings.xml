@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2024 Marlonlom
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<resources>
+  <string name="app_name" translatable="false">cappa</string>
+  <string name="destination_home">Home</string>
+  <string name="destination_search">Search</string>
+  <string name="destination_settings">Settings</string>
+  <string name="destination_detail">Detail</string>
+  <string name="home_title_enjoy">enjoy</string>
+  <string name="home_title_exclusive_items">Exclusive products</string>
+  <string name="home_text_list_loading">Catalog is loading…</string>
+  <string name="search_title_idem">search</string>
+  <string name="search_title_catalog_products">Catalog products</string>
+  <string name="search_text_list_loading">Looking in the catalog…</string>
+  <string name="detail_text_points">Points</string>
+  <string name="settings_title_application">application</string>
+  <string name="settings_title_txt">Settings</string>
+  <string name="settings_label_dark_theme">Dark theme</string>
+  <string name="settings_label_dynamic_colors">Dynamic colors</string>
+  <string name="settings_label_personal_data_treatment_policy">Personal data treatment policy</string>
+  <string name="settings_label_privacy_policy">Privacy policy</string>
+  <string name="settings_label_terms_conditions">Terms and conditions</string>
+  <string name="settings_label_third_party_software">Third party software</string>
+  <string name="settings_link_personal_data_treatment_policy" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
+  <string name="settings_link_privacy_policy" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
+  <string name="settings_link_terms_conditions" translatable="false">https://juanvaldez.com/amigosjuanvaldez/terminos-y-condiciones</string>
+  <string name="settings_label_app_version">Application version</string>
+  <string name="destination_favorites">Favorites</string>
+  <!-- feature: onboarding / welcome -->
+  <string name="text_welcome_title">Welcome</string>
+  <string name="text_welcome_detail">Below you will be able to see the product catalog of the Amigos Juan Valdez® program, in which you will be able to live the unique experience of visiting the Juan Valdez® Café stores using your points to exchange them for food, drinks, prizes and benefits.</string>
+  <string name="text_welcome_button">Get started</string>
+
+</resources>
