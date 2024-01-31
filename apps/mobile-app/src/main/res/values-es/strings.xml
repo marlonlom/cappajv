@@ -19,16 +19,17 @@
   <string name="detail_text_points">Puntos</string>
   <string name="settings_title_application">configuraciones de la</string>
   <string name="settings_title_txt">Aplicación</string>
-  <string name="settings_label_dark_theme">Tema oscuro</string>
-  <string name="settings_label_dynamic_colors">Colores dinámicos</string>
-  <string name="settings_label_personal_data_treatment_policy">Política tratamiento datos personales</string>
-  <string name="settings_label_privacy_policy">Política de privacidad</string>
-  <string name="settings_label_terms_conditions">Términos y condiciones</string>
-  <string name="settings_label_third_party_software">Software de terceros</string>
   <string name="settings_label_app_version">Versión de la aplicación</string>
   <string name="destination_favorites">Favorites</string>
   <!-- feature: onboarding / welcome -->
   <string name="text_welcome_title">Bienvenidos</string>
   <string name="text_welcome_detail">A continuación podrás ver el catálogo de productos del programa Amigos Juan Valdez®, en el cual podrás vivir la experiencia única de visitar las tiendas Juan Valdez® Café utilizando tus puntos para canjearlos por alimentos, bebidas, premios y beneficios.</string>
   <string name="text_welcome_button">Empezar</string>
+  <!-- feature: home / settings -->
+  <string name="text_settings_dark_theme">Tema oscuro</string>
+  <string name="text_settings_dynamic_colors">Colores dinámicos</string>
+  <string name="text_settings_pdtp">Política tratamiento datos personales</string>
+  <string name="text_settings_privacy_policy">Política de privacidad</string>
+  <string name="text_settings_terms_conditions">Términos y condiciones</string>
+  <string name="text_settings_oss_licences">Software de terceros</string>
 </resources>
