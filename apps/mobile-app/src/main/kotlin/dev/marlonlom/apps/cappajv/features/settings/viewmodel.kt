@@ -9,12 +9,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
-import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
+import kotlinx.coroutines.flow.SharingStarted.Companion.Eagerly
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlin.time.Duration.Companion.seconds
 
 /**
  * Catalog settings view model class.
@@ -39,7 +38,7 @@ class SettingsViewModel(
       )
     }.stateIn(
       scope = viewModelScope,
-      started = WhileSubscribed(5.seconds.inWholeMilliseconds),
+      started = Eagerly,
       initialValue = SettingsUiState.Loading,
     )
 
