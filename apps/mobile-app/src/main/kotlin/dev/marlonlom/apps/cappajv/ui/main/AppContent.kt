@@ -77,7 +77,7 @@ fun AppContent(
   onOnboardingComplete: () -> Unit,
 ) = CappajvTheme(
   darkTheme = shouldUseDarkTheme(mainActivityUiState),
-  dynamicColor = false//shouldUseDynamicColor(mainActivityUiState)
+  dynamicColor = shouldUseDynamicColor(mainActivityUiState)
 ) {
 
   val catalogListState by catalogListViewModel.uiState.collectAsStateWithLifecycle()
