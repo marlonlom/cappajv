@@ -26,6 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListState
+import dev.marlonlom.apps.cappajv.features.settings.SettingsDialog
+import dev.marlonlom.apps.cappajv.features.settings.SettingsViewModel
 import dev.marlonlom.apps.cappajv.features.welcome.WelcomeRoute
 import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
@@ -75,6 +77,16 @@ fun MainScaffold(
   val isTopDestination = currentAppRoute in CatalogDestination.topCatalogDestinations.map { it.route }
 
   var showSettingsDialog by rememberSaveable { mutableStateOf(false) }
+
+  if (showSettingsDialog) {
+    SettingsDialog(
+      appState = appState,
+      viewModel = SettingsViewModel(repository = userPreferencesRepository),
+      onDialogDismissed = { showSettingsDialog = false },
+      openOssLicencesInfo = appContentCallbacks.openOssLicencesInfo,
+      openExternalUrl = appContentCallbacks.openExternalUrl
+    )
+  }
 
   Scaffold(
     contentWindowInsets = WindowInsets(0, 0, 0, 0),
