@@ -6,15 +6,15 @@
 package dev.marlonlom.apps.cappajv.ui.main.scaffold
 
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination
 
 /**
- * Main bottom navigation bar composable ui.
+ * Main navigation rail composable ui.
  *
  * @author marlonlom
  *
@@ -22,13 +22,13 @@ import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination
  * @param onSelectedPositionChanged Action for selected navigation bar item index changed.
  */
 @Composable
-fun BottomNavigationBar(
+fun MainNavigationRail(
   selectedPosition: Int,
-  onSelectedPositionChanged: (Int, String) -> Unit
+  onSelectedPositionChanged: (Int, String) -> Unit,
 ) {
-  NavigationBar {
+  NavigationRail {
     CatalogDestination.topCatalogDestinations.forEachIndexed { index, destination ->
-      NavigationBarItem(
+      NavigationRailItem(
         selected = selectedPosition == index,
         onClick = {
           onSelectedPositionChanged(index, destination.route)

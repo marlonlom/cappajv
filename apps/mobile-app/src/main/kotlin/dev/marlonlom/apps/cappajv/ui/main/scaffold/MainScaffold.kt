@@ -8,6 +8,7 @@ package dev.marlonlom.apps.cappajv.ui.main.scaffold
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
@@ -59,7 +60,7 @@ fun MainScaffold(
   catalogListState: CatalogListState,
   appState: CappajvAppState = rememberCappajvAppState(
     windowSizeClass = windowSizeClass,
-    devicePosture =devicePosture,
+    devicePosture = devicePosture,
     catalogListState = catalogListState
   ),
 ) {
@@ -110,7 +111,16 @@ fun MainScaffold(
       mainActivityUiState = mainActivityUiState,
       appState = appState,
       appContentCallbacks = appContentCallbacks,
-      onOnboardingComplete = onOnboardingComplete
+      onOnboardingComplete = onOnboardingComplete,
+      selectedPosition = bottomNavSelectedIndex,
+      onSelectedPositionChanged = { position, route ->
+        if (route == CatalogDestination.Settings.route) {
+          showSettingsDialog = true
+        } else {
+          bottomNavSelectedIndex = position
+          appState.changeTopDestination(route)
+        }
+      },
     )
   }
 }
@@ -134,7 +144,9 @@ private fun MainScaffoldContent(
   mainActivityUiState: MainActivityUiState,
   appState: CappajvAppState,
   appContentCallbacks: AppContentCallbacks,
-  onOnboardingComplete: () -> Unit
+  onOnboardingComplete: () -> Unit,
+  selectedPosition: Int,
+  onSelectedPositionChanged: (Int, String) -> Unit
 ) {
   Box(
     modifier = Modifier
@@ -150,10 +162,19 @@ private fun MainScaffoldContent(
             onContinueHomeButtonClicked = onOnboardingComplete
           )
         } else {
-          MainNavHost(
-            appState = appState,
-            appContentCallbacks
-          )
+          Row {
+            if (appState.canShowNavigationRail) {
+              MainNavigationRail(
+                selectedPosition = selectedPosition,
+                onSelectedPositionChanged = onSelectedPositionChanged,
+              )
+            }
+
+            MainNavHost(
+              appState = appState,
+              appContentCallbacks
+            )
+          }
         }
       }
 
