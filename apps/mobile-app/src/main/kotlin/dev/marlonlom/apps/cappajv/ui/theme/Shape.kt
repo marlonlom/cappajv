@@ -18,5 +18,5 @@ import androidx.compose.ui.unit.dp
 val CappaShapes = Shapes(
   small = RoundedCornerShape(8.dp),
   medium = RoundedCornerShape(8.dp),
-  large = RoundedCornerShape(16.dp)
+  large = RoundedCornerShape(10.dp)
 )

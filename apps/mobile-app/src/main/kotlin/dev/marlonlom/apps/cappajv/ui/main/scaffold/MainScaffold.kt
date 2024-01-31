@@ -162,18 +162,30 @@ private fun MainScaffoldContent(
             onContinueHomeButtonClicked = onOnboardingComplete
           )
         } else {
-          Row {
-            if (appState.canShowNavigationRail) {
-              MainNavigationRail(
-                selectedPosition = selectedPosition,
-                onSelectedPositionChanged = onSelectedPositionChanged,
+          if (appState.canShowExpandedNavigationDrawer) {
+            ExpandedNavigationDrawer(
+              selectedPosition = selectedPosition,
+              onSelectedPositionChanged = onSelectedPositionChanged,
+            ) {
+              MainNavHost(
+                appState = appState,
+                appContentCallbacks
               )
             }
+          } else {
+            Row {
+              if (appState.canShowNavigationRail) {
+                MainNavigationRail(
+                  selectedPosition = selectedPosition,
+                  onSelectedPositionChanged = onSelectedPositionChanged,
+                )
+              }
 
-            MainNavHost(
-              appState = appState,
-              appContentCallbacks
-            )
+              MainNavHost(
+                appState = appState,
+                appContentCallbacks
+              )
+            }
           }
         }
       }

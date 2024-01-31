@@ -88,6 +88,8 @@ data class CappajvAppState(
 
   val canShowNavigationRail get() = isCompactWidth.not().and(is10InTabletWidth.not())
 
+  val canShowExpandedNavigationDrawer get() = isCompactWidth.not().and(is10InTabletWidth)
+
   val isDeviceBookPosture get() = devicePosture is DevicePosture.BookPosture
 
   val isDeviceBookPostureVertical
