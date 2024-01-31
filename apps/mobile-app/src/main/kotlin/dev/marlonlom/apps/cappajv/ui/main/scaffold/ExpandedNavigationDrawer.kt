@@ -52,6 +52,14 @@ fun ExpandedNavigationDrawer(
   }
 }
 
+/**
+ * Expanded navigation drawer content composable ui.
+ *
+ * @author marlonlom
+ *
+ * @param selectedPosition Selected index.
+ * @param onSelectedPositionChanged Action for selected navigation bar item index changed.
+ */
 @Composable
 internal fun NavigationDrawerContent(
   selectedPosition: Int,
