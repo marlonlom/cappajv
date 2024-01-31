@@ -86,6 +86,7 @@ dependencies {
   implementation(libs.androidx.lifecycle.runtime.compose)
   implementation(libs.androidx.navigation.compose)
   implementation(libs.androidx.navigation.runtime.ktx)
+  implementation(libs.androidx.window)
   implementation(libs.coil.compose)
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.kotlinx.coroutines.core)

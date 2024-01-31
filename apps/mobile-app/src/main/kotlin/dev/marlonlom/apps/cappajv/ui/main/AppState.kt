@@ -17,7 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import androidx.window.layout.FoldingFeature
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListState
+import dev.marlonlom.apps.cappajv.ui.util.DevicePosture
 
 /**
  * Remembers the application ui state value.
@@ -33,11 +35,13 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListState
 @Composable
 fun rememberCappajvAppState(
   windowSizeClass: WindowSizeClass,
+  devicePosture: DevicePosture,
   navController: NavHostController = rememberNavController(),
   localConfiguration: Configuration = LocalConfiguration.current,
   catalogListState: CatalogListState,
 ): CappajvAppState = remember(
   windowSizeClass,
+  devicePosture,
   navController,
   localConfiguration,
   catalogListState
@@ -46,6 +50,7 @@ fun rememberCappajvAppState(
     navController = navController,
     windowSizeClass = windowSizeClass,
     localConfiguration = localConfiguration,
+    devicePosture = devicePosture,
     catalogListState = catalogListState
   )
 }
@@ -55,15 +60,18 @@ fun rememberCappajvAppState(
  *
  * @author marlonlom
  *
- * @param windowSizeClass Window size class.
  * @param navController Navigation controller.
+ * @param windowSizeClass Window size class.
  * @param localConfiguration Local configuration.
+ * @property devicePosture Device posture, used for detecting foldable features.
+ * @property catalogListState Catalog list ui state value.
  */
 @Stable
 data class CappajvAppState(
   internal val navController: NavHostController,
-  private val windowSizeClass: WindowSizeClass,
+  val windowSizeClass: WindowSizeClass,
   private val localConfiguration: Configuration,
+  val devicePosture: DevicePosture,
   val catalogListState: CatalogListState,
 ) {
   val isCompactWidth get() = windowSizeClass.widthSizeClass == WindowWidthSizeClass.Compact
@@ -79,6 +87,46 @@ data class CappajvAppState(
   val canShowBottomNavigation get() = isCompactHeight.not().and(isLandscapeOrientation.not())
 
   val canShowNavigationRail get() = isCompactHeight.or(is7InTabletWidth.and(isLandscapeOrientation))
+
+  val isDeviceBookPosture get() = devicePosture is DevicePosture.BookPosture
+
+  val isDeviceBookPostureVertical
+    get() = when (devicePosture) {
+      is DevicePosture.BookPosture -> {
+        devicePosture.orientation == FoldingFeature.Orientation.VERTICAL
+      }
+
+      else -> false
+    }
+
+  val isDeviceBookPostureHorizontal
+    get() = when (devicePosture) {
+      is DevicePosture.BookPosture -> {
+        devicePosture.orientation == FoldingFeature.Orientation.HORIZONTAL
+      }
+
+      else -> false
+    }
+
+  val isDeviceSeparating get() = devicePosture is DevicePosture.Separating
+
+  val isDeviceSeparatingVertical
+    get() = when (devicePosture) {
+      is DevicePosture.Separating -> {
+        devicePosture.orientation == FoldingFeature.Orientation.VERTICAL
+      }
+
+      else -> false
+    }
+
+  val isDeviceSeparatingHorizontal
+    get() = when (devicePosture) {
+      is DevicePosture.Separating -> {
+        devicePosture.orientation == FoldingFeature.Orientation.HORIZONTAL
+      }
+
+      else -> false
+    }
 
   /**
    * Changes selected top destination.

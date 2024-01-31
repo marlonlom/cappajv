@@ -32,6 +32,7 @@ import dev.marlonlom.apps.cappajv.ui.main.MainActivityUiState
 import dev.marlonlom.apps.cappajv.ui.main.rememberCappajvAppState
 import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination
 import dev.marlonlom.apps.cappajv.ui.navigation.MainNavHost
+import dev.marlonlom.apps.cappajv.ui.util.DevicePosture
 
 /**
  * Main scaffold composable ui.
@@ -51,12 +52,14 @@ import dev.marlonlom.apps.cappajv.ui.navigation.MainNavHost
 fun MainScaffold(
   mainActivityUiState: MainActivityUiState,
   windowSizeClass: WindowSizeClass,
+  devicePosture: DevicePosture,
   appContentCallbacks: AppContentCallbacks,
   userPreferencesRepository: UserPreferencesRepository,
   onOnboardingComplete: () -> Unit,
   catalogListState: CatalogListState,
   appState: CappajvAppState = rememberCappajvAppState(
     windowSizeClass = windowSizeClass,
+    devicePosture =devicePosture,
     catalogListState = catalogListState
   ),
 ) {

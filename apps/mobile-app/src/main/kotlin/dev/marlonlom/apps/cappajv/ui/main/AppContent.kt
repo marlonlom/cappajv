@@ -18,6 +18,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailViewModel
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListViewModel
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.MainScaffold
 import dev.marlonlom.apps.cappajv.ui.theme.CappajvTheme
+import dev.marlonlom.apps.cappajv.ui.util.DevicePosture
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
@@ -69,6 +70,7 @@ private fun shouldUseDarkTheme(
 fun AppContent(
   mainActivityUiState: MainActivityUiState,
   windowSizeClass: WindowSizeClass,
+  devicePosture: DevicePosture,
   userPreferencesRepository: UserPreferencesRepository,
   catalogListViewModel: CatalogListViewModel,
   catalogDetailViewModel: CatalogDetailViewModel,
@@ -88,6 +90,7 @@ fun AppContent(
   MainScaffold(
     mainActivityUiState = mainActivityUiState,
     windowSizeClass = windowSizeClass,
+    devicePosture = devicePosture,
     appContentCallbacks = appContentCallbacks,
     userPreferencesRepository = userPreferencesRepository,
     onOnboardingComplete = onOnboardingComplete,
