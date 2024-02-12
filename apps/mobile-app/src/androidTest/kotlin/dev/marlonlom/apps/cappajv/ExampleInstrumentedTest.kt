@@ -22,6 +22,6 @@ class ExampleInstrumentedTest {
   fun useAppContext() {
     // Context of the app under test.
     val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-    assertEquals("dev.marlonlom.demos.ajv_cappa", appContext.packageName)
+    assertEquals("dev.marlonlom.apps.cappajv", appContext.packageName)
   }
 }
