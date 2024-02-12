@@ -5,6 +5,7 @@
 
 package dev.marlonlom.apps.cappajv.ui.main.scaffold
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
@@ -49,6 +50,7 @@ import dev.marlonlom.apps.cappajv.ui.util.DevicePosture
  * @param onOnboardingComplete Action for onboarding complete event.
  * @param appState Main application ui state
  */
+@ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
 @Composable
@@ -148,6 +150,7 @@ fun MainScaffold(
  * @param appContentCallbacks Application content callbacks.
  * @param onOnboardingComplete Action for onboarding complete event.
  */
+@ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
 @Composable

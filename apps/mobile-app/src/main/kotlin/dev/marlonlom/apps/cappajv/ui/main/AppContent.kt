@@ -5,6 +5,7 @@
 
 package dev.marlonlom.apps.cappajv.ui.main
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -63,6 +64,7 @@ private fun shouldUseDarkTheme(
  * @param catalogListViewModel Catalog list viewmodel.
  * @param catalogDetailViewModel Catalog detail viewmodel.
  */
+@ExperimentalFoundationApi
 @ExperimentalLayoutApi
 @ExperimentalMaterial3Api
 @ExperimentalCoroutinesApi

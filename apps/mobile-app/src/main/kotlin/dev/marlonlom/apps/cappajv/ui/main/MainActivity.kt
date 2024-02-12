@@ -10,6 +10,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
@@ -48,6 +49,7 @@ import kotlinx.coroutines.launch
  *
  * @author marlonlom
  */
+@ExperimentalFoundationApi
 @ExperimentalLayoutApi
 @ExperimentalCoroutinesApi
 @ExperimentalMaterial3Api
