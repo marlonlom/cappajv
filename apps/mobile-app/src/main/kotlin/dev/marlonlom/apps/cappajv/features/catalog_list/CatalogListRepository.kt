@@ -6,21 +6,20 @@
 package dev.marlonlom.apps.cappajv.features.catalog_list
 
 import dev.marlonlom.apps.cappajv.core.catalog_source.CatalogDataService
-import dev.marlonlom.apps.cappajv.core.catalog_source.CatalogItem
 import dev.marlonlom.apps.cappajv.core.catalog_source.Punctuation
 import dev.marlonlom.apps.cappajv.core.catalog_source.Response
-import dev.marlonlom.apps.cappajv.core.database.LocalDataSource
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItem
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItemPoint
-import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListState.Empty
-import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListState.Listing
+import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSource
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import dev.marlonlom.apps.cappajv.ui.util.slug
 import dev.marlonlom.apps.cappajv.ui.util.toSentenceCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.transform
+import kotlinx.coroutines.withContext
+import timber.log.Timber
+import dev.marlonlom.apps.cappajv.core.catalog_source.CatalogItem as RemoteCatalogItem
 
 /**
  * Catalog list repository class
@@ -37,47 +36,42 @@ class CatalogListRepository(
 ) {
 
   /** Catalog products list as flow. */
-  val allProducts: Flow<CatalogListState> = flow {
-
-    val allProducts: List<ProductItem> = localDataSource.getAllProducts().first()
-    if (allProducts.isEmpty()) {
-      when (val listResponse = catalogDataService.fetchData()) {
-
-        is Response.Success -> {
-
-          val catalogItems: List<CatalogItem> = listResponse.data
-
-          val productItems = catalogItems.map { it.toEntity }
-          val punctuations: List<ProductItemPoint> = catalogItems.map { item ->
-            item.punctuations.mapIndexed { index, punctuation ->
-              punctuation.toEntity(index, item.id)
-            }
-          }.flatten()
-
-          emit(Listing(productItems.groupBy { it.category }))
-
-          /* get a way to save the items before emitting the data.
-          saveCatalogToDatabase(productItems, punctuations)
-          */
-        }
-
-        is Response.Failure -> emit(Empty)
+  val allProducts: Flow<CatalogListState> = localDataSource.getAllProducts()
+    .transform { tuples ->
+      (when {
+        tuples.isNotEmpty() -> CatalogListState.Listing(tuples.groupBy { it.category })
+        else -> CatalogListState.Empty
+      }).also { state ->
+        emit(state)
       }
-    } else {
-      emit(Listing(allProducts.groupBy { it.category }))
     }
 
-  }
+  /**
+   * Fetch catalog items from source.
+   */
+  internal suspend fun fetchCatalogItems() = withContext(coroutineDispatcher) {
+    when (val listResponse = catalogDataService.fetchData()) {
+      is Response.Success -> {
+        Timber.d("[CatalogListRepository.fetchCatalogItems] Saving catalog items from source to database...")
+        val catalogItems: List<RemoteCatalogItem> = listResponse.data
 
-  private fun saveCatalogToDatabase(
-    productItems: List<ProductItem>,
-    punctuations: List<ProductItemPoint>
-  ) {
-    coroutineDispatcher.run {
-      localDataSource.insertAllProducts(*productItems.toTypedArray())
-      localDataSource.insertAllPunctuations(*punctuations.toTypedArray())
+        val productItems = catalogItems.map { it.toEntity }
+        val punctuations = catalogItems.map { item ->
+          item.punctuations.mapIndexed { index, punctuation ->
+            punctuation.toEntity(index, item.id)
+          }
+        }.flatten()
+
+        localDataSource.insertAllProducts(*productItems.toTypedArray())
+        localDataSource.insertAllPunctuations(*punctuations.toTypedArray())
+
+        Timber.d("[CatalogListRepository.fetchCatalogItems] Saved catalog items from source to database...")
+      }
+
+      else -> Unit
     }
   }
+
 }
 
 /**
@@ -86,9 +80,24 @@ class CatalogListRepository(
  * @param index Index for consecutive id.
  * @param productId Product id.
  */
-private fun Punctuation.toEntity(index: Int, productId: Long): ProductItemPoint =
-  ProductItemPoint(id = index.toLong() + 1, productId = productId, label = this.label, points = this.pointsQty.toLong())
+private fun Punctuation.toEntity(
+  index: Int,
+  productId: Long,
+): CatalogPunctuation = CatalogPunctuation(
+  id = index.toLong() + 1,
+  catalogItemId = productId,
+  label = this.label,
+  points = this.pointsQty.toLong()
+)
 
 /** Returns the catalog item converted as product entity. */
-private val CatalogItem.toEntity: ProductItem
-  get() = ProductItem(id, title, title.slug, title.toSentenceCase, picture, category, detail)
+private val RemoteCatalogItem.toEntity: CatalogItem
+  get() = CatalogItem(
+    id = id,
+    title = title,
+    slug = title.slug,
+    titleNormalized = title.toSentenceCase,
+    picture = picture,
+    category = category,
+    detail = detail
+  )

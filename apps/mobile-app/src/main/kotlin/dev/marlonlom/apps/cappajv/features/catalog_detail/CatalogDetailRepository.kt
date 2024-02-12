@@ -5,9 +5,9 @@
 
 package dev.marlonlom.apps.cappajv.features.catalog_detail
 
-import dev.marlonlom.apps.cappajv.core.database.LocalDataSource
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItem
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItemPoint
+import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSource
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -20,8 +20,8 @@ import kotlinx.coroutines.flow.combine
  * @property points product points list
  */
 data class CatalogDetail(
-  val product: ProductItem,
-  val points: List<ProductItemPoint>
+  val product: CatalogItem,
+  val points: List<CatalogPunctuation>
 )
 
 /**

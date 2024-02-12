@@ -11,6 +11,8 @@ import androidx.lifecycle.viewModelScope
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListState.Loading
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 
 /**
@@ -23,6 +25,13 @@ import kotlinx.coroutines.flow.stateIn
 class CatalogListViewModel(
   private val repository: CatalogListRepository
 ) : ViewModel() {
+
+  init {
+    viewModelScope.launch {
+      Timber.d("[CatalogListViewModel] launching fetchCatalogItems()")
+      repository.fetchCatalogItems()
+    }
+  }
 
   /** UI state object for view model */
   val uiState = repository.allProducts.stateIn(viewModelScope, SharingStarted.Eagerly, Loading)

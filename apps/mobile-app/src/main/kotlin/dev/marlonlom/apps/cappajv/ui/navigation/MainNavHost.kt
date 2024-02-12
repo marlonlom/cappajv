@@ -5,6 +5,7 @@
 
 package dev.marlonlom.apps.cappajv.ui.navigation
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
@@ -25,6 +26,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param appState Application ui state.
  * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
 @Composable
@@ -49,6 +51,7 @@ fun MainNavHost(
  *
  * @param appState Application ui state.
  */
+@ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
 internal fun NavGraphBuilder.catalogListDestination(
