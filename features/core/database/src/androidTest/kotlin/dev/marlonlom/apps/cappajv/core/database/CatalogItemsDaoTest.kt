@@ -12,7 +12,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogProductsDao
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -46,7 +46,7 @@ internal class CatalogProductsDaoTest {
 
   @Test
   fun shouldInsertProductItem() = runBlocking {
-    val entity = ProductItem(
+    val entity = CatalogItem(
       id = 1L,
       title = "Pod",
       slug = "pod",
@@ -63,7 +63,7 @@ internal class CatalogProductsDaoTest {
 
   @Test
   fun shouldInsertThenDeleteAllProductItems() = runBlocking {
-    val entity = ProductItem(
+    val entity = CatalogItem(
       id = 1L,
       title = "Pod",
       slug = "pod",
@@ -81,7 +81,7 @@ internal class CatalogProductsDaoTest {
 
   @Test
   fun shouldInsertThenQueryDetailedProductItem() = runBlocking {
-    val product = ProductItem(
+    val product = CatalogItem(
       id = 1L,
       title = "Pod",
       slug = "pod",

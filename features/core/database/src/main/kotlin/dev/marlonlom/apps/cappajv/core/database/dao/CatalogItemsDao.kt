@@ -8,7 +8,7 @@ package dev.marlonlom.apps.cappajv.core.database.dao
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -26,7 +26,7 @@ interface CatalogProductsDao {
    * @return Product items list, or empty list, as Flow.
    */
   @Query("SELECT * FROM cappa_product")
-  fun getProducts(): Flow<List<ProductItem>>
+  fun getProducts(): Flow<List<CatalogItem>>
 
   /**
    * Query for retrieving flow with single product item using its id.
@@ -35,7 +35,7 @@ interface CatalogProductsDao {
    * @return Found product item, or null.
    */
   @Query("SELECT * FROM cappa_product WHERE product_id = :productId ")
-  fun findProduct(productId: Long): Flow<ProductItem?>
+  fun findProduct(productId: Long): Flow<CatalogItem?>
 
   /**
    * Upsert product items.
@@ -43,7 +43,7 @@ interface CatalogProductsDao {
    * @param products product items as typed array.
    */
   @Upsert
-  fun insertAll(vararg products: ProductItem)
+  fun insertAll(vararg products: CatalogItem)
 
   /**
    * Deletes all product items in local storage.

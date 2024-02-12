@@ -3,12 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.apps.cappajv.core.database
+package dev.marlonlom.apps.cappajv.core.database.datasource
 
-import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogProductsDao
+import dev.marlonlom.apps.cappajv.core.database.LocalDataSource
+import dev.marlonlom.apps.cappajv.core.database.LocalDataSourceImpl
+import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
+import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogPunctuationsDao
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItem
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItemPoint
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -25,8 +28,9 @@ internal class LocalDataSourceTest {
   @Before
   fun setup() {
     dataSource = LocalDataSourceImpl(
-      catalogProductsDao = FakeCatalogProductsDao(),
-      catalogPunctuationsDao = FakeCatalogPunctuationsDao()
+      catalogItemsDao = FakeCatalogItemsDao(),
+      catalogPunctuationsDao = FakeCatalogPunctuationsDao(),
+      catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao()
     )
   }
 
@@ -40,7 +44,7 @@ internal class LocalDataSourceTest {
 
   @Test
   fun `Should add products`() = runBlocking {
-    val product = ProductItem(
+    val product = CatalogItem(
       id = 1L,
       title = "Pod",
       slug = "pod",
@@ -66,7 +70,7 @@ internal class LocalDataSourceTest {
 
   @Test
   fun `Should add product and then delete it`() = runBlocking {
-    val product = ProductItem(
+    val product = CatalogItem(
       id = 1L,
       title = "Pod",
       slug = "pod",
@@ -84,7 +88,7 @@ internal class LocalDataSourceTest {
 
   @Test
   fun `Should add product with punctuations`() = runBlocking {
-    val product = ProductItem(
+    val product = CatalogItem(
       id = 1L,
       title = "Pod",
       slug = "pod",
@@ -93,9 +97,9 @@ internal class LocalDataSourceTest {
       category = "CategoryOne",
       detail = "Lorem ipsum"
     )
-    val productPoint = ProductItemPoint(
+    val productPoint = CatalogPunctuation(
       id = 11L,
-      productId = product.id,
+      catalogItemId = product.id,
       label = "Unidad",
       points = 1234L
     )
@@ -108,14 +112,14 @@ internal class LocalDataSourceTest {
       dataSource.getPunctuations(product.id)
     ) { productItem, productItemPoints ->
       Pair(productItem, productItemPoints)
-    }.collect { pair: Pair<ProductItem?, List<ProductItemPoint>> ->
+    }.collect { pair: Pair<CatalogItem?, List<CatalogPunctuation>> ->
       assertNotNull(pair.first)
       assertNotNull(pair.second)
       assertTrue(pair.second.isNotEmpty())
       pair.second.firstOrNull().let { itemPoint ->
         itemPoint?.let {
           assertEquals(productPoint.id, it.id)
-          assertEquals(productPoint.productId, it.productId)
+          assertEquals(productPoint.catalogItemId, it.catalogItemId)
           assertEquals(productPoint.label, it.label)
           assertEquals(productPoint.points, it.points)
         }
@@ -125,7 +129,7 @@ internal class LocalDataSourceTest {
 
   @Test
   fun `Should add product with no punctuations`() = runBlocking {
-    val product = ProductItem(
+    val product = CatalogItem(
       id = 1L,
       title = "Pod",
       slug = "pod",
@@ -134,9 +138,9 @@ internal class LocalDataSourceTest {
       category = "CategoryOne",
       detail = "Lorem ipsum"
     )
-    val productPoint = ProductItemPoint(
+    val productPoint = CatalogPunctuation(
       id = 11L,
-      productId = product.id,
+      catalogItemId = product.id,
       label = "Unidad",
       points = 1234L
     )
@@ -150,7 +154,7 @@ internal class LocalDataSourceTest {
       dataSource.getPunctuations(product.id)
     ) { productItem, productItemPoints ->
       Pair(productItem, productItemPoints)
-    }.collect { pair: Pair<ProductItem?, List<ProductItemPoint>> ->
+    }.collect { pair: Pair<CatalogItem?, List<CatalogPunctuation>> ->
       assertNotNull(pair.first)
       assertNotNull(pair.second)
       assertTrue(pair.second.isEmpty())
