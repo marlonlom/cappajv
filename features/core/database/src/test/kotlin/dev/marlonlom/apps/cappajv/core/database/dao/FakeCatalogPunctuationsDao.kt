@@ -5,7 +5,7 @@
 
 package dev.marlonlom.apps.cappajv.core.database.dao
 
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItemPoint
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -17,14 +17,18 @@ import kotlinx.coroutines.flow.flowOf
  * @property list Mutable punctuations list.
  */
 class FakeCatalogPunctuationsDao(
-  private val list: MutableList<ProductItemPoint> = mutableListOf()
+  private val list: MutableList<CatalogPunctuation> = mutableListOf()
 ) : CatalogPunctuationsDao {
 
-  override fun findByProduct(productId: Long): Flow<List<ProductItemPoint>> =
-    flowOf(list.filter { item -> item.productId == productId })
+  override fun findByProduct(productId: Long): Flow<List<CatalogPunctuation>> =
+    flowOf(list.filter { item -> item.catalogItemId == productId })
 
-  override fun insertAll(vararg punctuations: ProductItemPoint) {
+  override fun insertAll(vararg punctuations: CatalogPunctuation) {
     list.addAll(punctuations)
+  }
+
+  override fun delete(productId: Long) {
+    list.removeIf { it.id == productId }
   }
 
   override fun deleteAll() {

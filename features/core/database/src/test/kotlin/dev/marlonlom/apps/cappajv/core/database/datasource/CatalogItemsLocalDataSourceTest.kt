@@ -5,23 +5,21 @@
 
 package dev.marlonlom.apps.cappajv.core.database.datasource
 
-import dev.marlonlom.apps.cappajv.core.database.LocalDataSource
-import dev.marlonlom.apps.cappajv.core.database.LocalDataSourceImpl
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogPunctuationsDao
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
-import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 
-internal class LocalDataSourceTest {
+internal class CatalogItemsLocalDataSourceTest {
 
   private lateinit var dataSource: LocalDataSource
 
@@ -43,7 +41,7 @@ internal class LocalDataSourceTest {
   }
 
   @Test
-  fun `Should add products`() = runBlocking {
+  fun `Should add products and get full detail`() = runBlocking {
     val product = CatalogItem(
       id = 1L,
       title = "Pod",
@@ -54,18 +52,54 @@ internal class LocalDataSourceTest {
       detail = "Lorem ipsum"
     )
     dataSource.insertAllProducts(product)
-    dataSource.findProduct(productId = product.id).collect { productItem ->
-      assertNotNull(productItem)
-      productItem?.let {
-        assertEquals(1L, it.id)
-        assertEquals("Pod", it.title)
-        assertEquals("pod", it.slug)
-        assertEquals("pod", it.titleNormalized)
-        assertEquals("Lorem ipsum", it.detail)
-        assertEquals("CategoryOne", it.category)
-        assertEquals("https://noimage.no.com/no.png", it.picture)
+    dataSource.findProduct(product.id).collect { item: CatalogItem? ->
+      assertNotNull(item)
+      when {
+        item != null -> {
+          assertEquals(1L, item.id)
+          assertEquals("Pod", item.title)
+          assertEquals("pod", item.slug)
+          assertEquals("pod", item.titleNormalized)
+          assertEquals("CategoryOne", item.category)
+          assertEquals("Lorem ipsum", item.detail)
+          assertEquals("https://noimage.no.com/no.png", item.picture)
+        }
+
+        else -> fail()
       }
     }
+  }
+
+  @Test
+  fun `Should add products and get tuple detail`() = runBlocking {
+    val product = CatalogItem(
+      id = 1L,
+      title = "Pod",
+      slug = "pod",
+      titleNormalized = "pod",
+      picture = "https://noimage.no.com/no.png",
+      category = "CategoryOne",
+      detail = "Lorem ipsum"
+    )
+    dataSource.insertAllProducts(product)
+    dataSource.getAllProducts()
+      .filter { list -> list.indexOfFirst { it.id == product.id } >= 0 }
+      .collect { list ->
+        assertNotNull(list)
+        assertTrue(list.isNotEmpty())
+        val tuple = list.find { it.id == product.id }
+        when {
+          tuple != null -> {
+            assertNotNull(tuple)
+            assertEquals(1L, tuple.id)
+            assertEquals("Pod", tuple.title)
+            assertEquals("CategoryOne", tuple.category)
+            assertEquals("https://noimage.no.com/no.png", tuple.picture)
+          }
+
+          else -> fail()
+        }
+      }
   }
 
   @Test
@@ -83,81 +117,6 @@ internal class LocalDataSourceTest {
     dataSource.deleteAllProducts()
     dataSource.findProduct(productId = product.id).collect { productItem ->
       assertNull(productItem)
-    }
-  }
-
-  @Test
-  fun `Should add product with punctuations`() = runBlocking {
-    val product = CatalogItem(
-      id = 1L,
-      title = "Pod",
-      slug = "pod",
-      titleNormalized = "pod",
-      picture = "https://noimage.no.com/no.png",
-      category = "CategoryOne",
-      detail = "Lorem ipsum"
-    )
-    val productPoint = CatalogPunctuation(
-      id = 11L,
-      catalogItemId = product.id,
-      label = "Unidad",
-      points = 1234L
-    )
-
-    dataSource.insertAllProducts(product)
-    dataSource.insertAllPunctuations(productPoint)
-
-    combine(
-      dataSource.findProduct(product.id),
-      dataSource.getPunctuations(product.id)
-    ) { productItem, productItemPoints ->
-      Pair(productItem, productItemPoints)
-    }.collect { pair: Pair<CatalogItem?, List<CatalogPunctuation>> ->
-      assertNotNull(pair.first)
-      assertNotNull(pair.second)
-      assertTrue(pair.second.isNotEmpty())
-      pair.second.firstOrNull().let { itemPoint ->
-        itemPoint?.let {
-          assertEquals(productPoint.id, it.id)
-          assertEquals(productPoint.catalogItemId, it.catalogItemId)
-          assertEquals(productPoint.label, it.label)
-          assertEquals(productPoint.points, it.points)
-        }
-      }
-    }
-  }
-
-  @Test
-  fun `Should add product with no punctuations`() = runBlocking {
-    val product = CatalogItem(
-      id = 1L,
-      title = "Pod",
-      slug = "pod",
-      titleNormalized = "pod",
-      picture = "https://noimage.no.com/no.png",
-      category = "CategoryOne",
-      detail = "Lorem ipsum"
-    )
-    val productPoint = CatalogPunctuation(
-      id = 11L,
-      catalogItemId = product.id,
-      label = "Unidad",
-      points = 1234L
-    )
-
-    dataSource.insertAllProducts(product)
-    dataSource.insertAllPunctuations(productPoint)
-    dataSource.deleteAllPunctuations()
-
-    combine(
-      dataSource.findProduct(product.id),
-      dataSource.getPunctuations(product.id)
-    ) { productItem, productItemPoints ->
-      Pair(productItem, productItemPoints)
-    }.collect { pair: Pair<CatalogItem?, List<CatalogPunctuation>> ->
-      assertNotNull(pair.first)
-      assertNotNull(pair.second)
-      assertTrue(pair.second.isEmpty())
     }
   }
 

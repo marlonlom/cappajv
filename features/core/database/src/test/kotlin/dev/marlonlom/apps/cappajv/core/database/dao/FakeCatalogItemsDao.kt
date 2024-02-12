@@ -6,6 +6,7 @@
 package dev.marlonlom.apps.cappajv.core.database.dao
 
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -16,11 +17,14 @@ import kotlinx.coroutines.flow.flowOf
  *
  * @property list Mutable punctuations list.
  */
-internal class FakeCatalogProductsDao(
+internal class FakeCatalogItemsDao(
   private val list: MutableList<CatalogItem> = mutableListOf()
-) : CatalogProductsDao {
+) : CatalogItemsDao {
 
-  override fun getProducts(): Flow<List<CatalogItem>> = flowOf(list)
+  override fun getProducts(): Flow<List<CatalogItemTuple>> =
+    flowOf(list.map {
+      CatalogItemTuple(it.id, it.title, it.picture, it.category)
+    })
 
   override fun findProduct(productId: Long): Flow<CatalogItem?> =
     flowOf(list.find { item -> item.id == productId })
