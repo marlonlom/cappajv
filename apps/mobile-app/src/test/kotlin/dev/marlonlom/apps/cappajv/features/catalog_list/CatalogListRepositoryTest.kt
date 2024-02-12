@@ -32,7 +32,7 @@ internal class CatalogListRepositoryTest {
   fun `Should return non empty list`() = runTest {
     when (val catalogListState = repository.allProducts.first()) {
       is CatalogListState.Listing -> {
-        assertTrue(catalogListState.list.isNotEmpty())
+        assertTrue(catalogListState.map.isNotEmpty())
       }
 
       else -> fail()

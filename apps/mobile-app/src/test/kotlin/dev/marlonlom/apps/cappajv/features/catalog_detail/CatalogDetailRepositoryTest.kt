@@ -7,7 +7,7 @@ package dev.marlonlom.apps.cappajv.features.catalog_detail
 
 import dev.marlonlom.apps.cappajv.core.catalog_source.CatalogDataService
 import dev.marlonlom.apps.cappajv.core.database.FakeLocalDataSource
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.apps.cappajv.ui.util.slug
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
@@ -33,7 +33,7 @@ internal class CatalogDetailRepositoryTest {
 
   @Test
   fun `Should return single product item`() = runTest {
-    val expectedItem = ProductItem(
+    val expectedItem = CatalogItem(
       id = 15396L,
       title = "Granizado",
       slug = "Granizado".slug,
@@ -50,7 +50,7 @@ internal class CatalogDetailRepositoryTest {
 
   @Test
   fun `Should return null product item`() = runTest {
-    val foundProduct = repository.find(1L).first()
+    val foundProduct = repository.find(-1L).first()
     assertNull(foundProduct)
   }
 

@@ -35,7 +35,7 @@ internal class CatalogListViewModelTest {
     when (uiState.value) {
       is CatalogListState.Listing -> {
         val home = uiState.value as CatalogListState.Listing
-        Assert.assertTrue(home.list.isNotEmpty())
+        Assert.assertTrue(home.map.isNotEmpty())
       }
 
       else -> Assert.fail()
