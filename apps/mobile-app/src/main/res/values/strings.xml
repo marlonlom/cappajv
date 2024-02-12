@@ -37,4 +37,6 @@
   <string name="url_settings_pdtp" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
   <string name="url_settings_privacy_policy" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
   <string name="url_settings_terms_conditions" translatable="false">https://juanvaldez.com/amigosjuanvaldez/terminos-y-condiciones</string>
+    <string name="text_catalog_list_all">All</string>
+  <string name="text_catalog_list_see_all">See all</string>
 </resources>

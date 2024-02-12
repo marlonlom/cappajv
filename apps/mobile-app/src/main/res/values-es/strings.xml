@@ -32,4 +32,7 @@
   <string name="text_settings_privacy_policy">Política de privacidad</string>
   <string name="text_settings_terms_conditions">Términos y condiciones</string>
   <string name="text_settings_oss_licences">Software de terceros</string>
+  <!-- feature: home / catalog list -->
+  <string name="text_catalog_list_all">Todos</string>
+  <string name="text_catalog_list_see_all">See all</string>
 </resources>

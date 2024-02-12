@@ -7,112 +7,115 @@ package dev.marlonlom.apps.cappajv.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-object BrandColors {
-  /** Brand color value: Akaroa. */
-  val akaroa = Color(0xFFFFB785)
-
-  /** Brand color value: Armadillo. */
-  val armadillo = Color(0xFF4E4639)
-
-  /** Brand color value: Aths Special. */
-  val athsSpecial = Color(0xFFEEE1CF)
-
-  /** Brand color value: Axolotl. */
-  val axolotl = Color(0xFF974900)
-
+/**
+ * Brand colors single object.
+ *
+ * @author marlonlom
+ */
+internal object BrandColors {
   /** Brand color value: Black. */
   val black = Color(0xFF000000)
 
-  /** Brand color value: Celtic. */
-  val celtic = Color(0xFF512400)
+  /** Brand color value: Kala Black. */
+  val kalaBlack = Color(0xFF1F1B16)
 
-  /** Brand color value: Cinnamon. */
-  val cinnamon = Color(0xFF7B5800)
+  /** Brand color value: Zinnwaldite Brown. */
+  val zinnwalditeBrown = Color(0xFF2B1700)
 
-  /** Brand color value: Cola 2. */
-  val cola2 = Color(0xFF412D00)
+  /** Brand color value: Chocolate Melange. */
+  val chocolateMelange = Color(0xFF2F1400)
 
-  /** Brand color value: Cola. */
-  val cola = Color(0xFF271900)
+  /** Brand color value: Acadia. */
+  val acadia = Color(0xFF352F2A)
 
-  /** Brand color value: Cornflower Lilac. */
-  val cornflowerLilac = Color(0xFFFFB4AB)
+  /** Brand color value: Biltong. */
+  val biltong = Color(0xFF410002)
 
-  /** Brand color value: Dune. */
-  val dune = Color(0xFF34302A)
+  /** Brand color value: Stirland Mud. */
+  val stirlandMud = Color(0xFF472A00)
 
-  /** Brand color value: English Holly. */
-  val englishHolly = Color(0xFF311300)
+  /** Brand color value: Stirland Mud 2. */
+  val stirlandMud2 = Color(0xFF482A00)
 
-  /** Brand color value: Fringy Flower. */
-  val fringyFlower = Color(0xFFFFDBC7)
+  /** Brand color value: Ibex Brown. */
+  val ibexBrown = Color(0xFF4E2600)
 
-  /** Brand color value: Jacko Bean. */
-  val jackoBean = Color(0xFF301400)
+  /** Brand color value: Peppercorn Rent. */
+  val peppercornRent = Color(0xFF504539)
 
-  /** Brand color value: Lisbon Brown. */
-  val lisbonBrown = Color(0xFF713700)
+  /** Brand color value: Brown. */
+  val brown = Color(0xFF663D00)
 
-  /** Brand color value: Merino. */
-  val merino = Color(0xFFF8EFE7)
+  /** Brand color value: Notorious Neanderthal. */
+  val notoriousNeanderthal = Color(0xFF663E00)
 
-  /** Brand color value: Mikado. */
-  val mikado = Color(0xFF502500)
+  /** Brand color value: Arcavia Red. */
+  val arcaviaRed = Color(0xFF690005)
 
-  /** Brand color value: Pablo. */
-  val pablo = Color(0xFF7F7667)
+  /** Brand color value: Bestial Brown. */
+  val bestialBrown = Color(0xFF6F3800)
 
-  /** Brand color value: Pale Oyster. */
-  val paleOyster = Color(0xFF9A8F80)
+  /** Brand color value: Camels Hump. */
+  val camelsHump = Color(0xFF827568)
 
-  /** Brand color value: Peach Schnapps. */
-  val peachSchnapps = Color(0xFFFFDAD6)
+  /** Brand color value: Spear Shaft. */
+  val spearShaft = Color(0xFF865300)
 
-  /** Brand color value: Pearl Bush. */
-  val pearlBush = Color(0xFFE9E1D9)
+  /** Brand color value: Spear Shaft 2. */
+  val spearShaft2 = Color(0xFF875200)
 
-  /** Brand color value: Ronchi. */
-  val ronchi = Color(0xFFF6BD48)
+  /** Brand color value: Brownie. */
+  val brownie = Color(0xFF924C00)
 
-  /** Brand color value: Rosewood. */
-  val rosewood = Color(0xFF690005)
+  /** Brand color value: Chokecherry. */
+  val chokecherry = Color(0xFF93000A)
 
-  /** Brand color value: Saddle Brown. */
-  val saddleBrown = Color(0xFF5D4200)
+  /** Brand color value: Putty Yellow. */
+  val puttyYellow = Color(0xFF9D8E81)
 
-  /** Brand color value: Salomie. */
-  val salomie = Color(0xFFFFDEA5)
+  /** Brand color value: Heartwarming. */
+  val heartwarming = Color(0xFFBA1A1A)
 
-  /** Brand color value: Sangria. */
-  val sangria = Color(0xFF93000A)
+  /** Brand color value: Hazy Taupe. */
+  val hazyTaupe = Color(0xFFD4C4B5)
 
-  /** Brand color value: Sidecar. */
-  val sidecar = Color(0xFFFFDCC6)
+  /** Brand color value: Spring Wood. */
+  val springWood = Color(0xFFEBE1D9)
 
-  /** Brand color value: Soft Amber. */
-  val softAmber = Color(0xFFD1C5B4)
+  /** Brand color value: Naturale. */
+  val naturale = Color(0xFFF1E0D0)
 
-  /** Brand color value: Spring Rain. */
-  val springRain = Color(0xFFFFB687)
+  /** Brand color value: Moonlit Beach. */
+  val moonlitBeach = Color(0xFFF9EFE7)
 
-  /** Brand color value: Temptress. */
-  val temptress = Color(0xFF410002)
+  /** Brand color value: Peach Bud. */
+  val peachBud = Color(0xFFFFB4AB)
 
-  /** Brand color value: Thunderbird. */
-  val thunderbird = Color(0xFFBA1A1A)
+  /** Brand color value: Goose Bill. */
+  val gooseBill = Color(0xFFFFB781)
 
-  /** Brand color value: Tobacco Brown. */
-  val tobaccoBrown = Color(0xFF944A01)
+  /** Brand color value: Warm Apricot. */
+  val warmApricot = Color(0xFFFFB865)
 
-  /** Brand color value: Tom Thumb. */
-  val tomThumb = Color(0xFF733600)
+  /** Brand color value: Warm Apricot 2. */
+  val warmApricot2 = Color(0xFFFFB963)
 
-  /** Brand color value: Tutu. */
-  val tutu = Color(0xFFFFFBFF)
+  /** Brand color value: Forgotten Pink. */
+  val forgottenPink = Color(0xFFFFDAD6)
+
+  /** Brand color value: Whispering Peach. */
+  val whisperingPeach = Color(0xFFFFDCC4)
+
+  /** Brand color value: Peach Puff. */
+  val peachPuff = Color(0xFFFFDDB9)
+
+  /** Brand color value: Peach Puff 2. */
+  val peachPuff2 = Color(0xFFFFDDBA)
+
+  /** Brand color value: Lavender Blush. */
+  val lavenderBlush = Color(0xFFFFFBFF)
 
   /** Brand color value: White. */
   val white = Color(0xFFFFFFFF)
 
-  /** Brand color value: Zeus. */
-  val zeus = Color(0xFF1E1B16)
 }
