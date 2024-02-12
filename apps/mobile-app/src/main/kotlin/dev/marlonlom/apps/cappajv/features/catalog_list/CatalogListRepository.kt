@@ -38,10 +38,10 @@ class CatalogListRepository(
   /** Catalog products list as flow. */
   val allProducts: Flow<CatalogListState> = localDataSource.getAllProducts()
     .transform { tuples ->
-      (when {
+      when {
         tuples.isNotEmpty() -> CatalogListState.Listing(tuples.groupBy { it.category })
         else -> CatalogListState.Empty
-      }).also { state ->
+      }.also { state ->
         emit(state)
       }
     }
