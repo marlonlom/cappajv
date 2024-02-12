@@ -10,10 +10,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.google.common.truth.Truth.assertThat
-import dev.marlonlom.apps.cappajv.core.database.dao.CatalogItemsDao
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
+import com.google.common.truth.Truth
+import dev.marlonlom.apps.cappajv.core.database.dao.CatalogFavoriteItemsDao
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -23,13 +22,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-internal class CatalogItemsDaoTest {
-
+internal class CatalogFavoriteItemsDaoTest {
   @get:Rule
   val instantExecutorRule = InstantTaskExecutorRule()
 
   private lateinit var database: CappaDatabase
-  private lateinit var dao: CatalogItemsDao
+  private lateinit var dao: CatalogFavoriteItemsDao
 
   @Before
   fun setup() {
@@ -37,7 +35,7 @@ internal class CatalogItemsDaoTest {
     database = Room.inMemoryDatabaseBuilder(context, CappaDatabase::class.java)
       .allowMainThreadQueries()
       .build()
-    dao = database.catalogProductsDao()
+    dao = database.catalogFavoriteItemsDao()
   }
 
   @After
@@ -46,61 +44,60 @@ internal class CatalogItemsDaoTest {
   }
 
   @Test
-  fun shouldInsertCatalogItem() = runBlocking {
-    val entity = CatalogItem(
-      id = 1L,
-      title = "Pod",
-      slug = "pod",
-      titleNormalized = "pod",
-      picture = "https://noimage.no.com/no.png",
-      category = "CategoryOne",
-      detail = "Lorem ipsum"
-    )
-    val expectedTuple = CatalogItemTuple(
+  fun shouldSeeEmptyFavoriteList() = runBlocking {
+    val list = dao.getFavoriteItems().first()
+    Truth.assertThat(list).isEmpty()
+  }
+
+  @Test
+  fun shouldInsertCatalogFavoriteItem() = runBlocking {
+    val entity = CatalogFavoriteItem(
       id = 1L,
       title = "Pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
     )
     dao.insertAll(entity)
-    val list = dao.getProducts().first()
-    assertThat(list).contains(expectedTuple)
+    val list = dao.getFavoriteItems().first()
+    Truth.assertThat(list).contains(entity)
   }
 
   @Test
-  fun shouldInsertThenDeleteAllCatalogItems() = runBlocking {
-    val entity = CatalogItem(
+  fun shouldInsertThenClearFavoriteItems() = runBlocking {
+    val entity = CatalogFavoriteItem(
       id = 1L,
       title = "Pod",
-      slug = "pod",
-      titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
     )
     dao.insertAll(entity)
     dao.deleteAll()
-    val list = dao.getProducts().first()
-    assertThat(list).isEmpty()
+    val list = dao.getFavoriteItems().first()
+    Truth.assertThat(list).isEmpty()
   }
 
   @Test
-  fun shouldInsertThenQueryDetailedCatalogItem() = runBlocking {
-    val product = CatalogItem(
+  fun shouldInsertMultipleThenDeleteFavoriteItems() = runBlocking {
+    val remainingItem = CatalogFavoriteItem(
       id = 1L,
       title = "Pod",
-      slug = "pod",
-      titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
     )
-    dao.insertAll(product)
-
-    val found = dao.findProduct(1L).first()
-
-    assertThat(found).isNotNull()
-    assertThat(found).isEqualTo(product)
+    val entities = arrayOf(
+      remainingItem,
+      CatalogFavoriteItem(
+        id = 2L,
+        title = "Tinto",
+        picture = "https://noimage.no.com/no.png",
+        category = "CategoryOne",
+      )
+    )
+    dao.insertAll(*entities)
+    dao.delete(2L)
+    val list = dao.getFavoriteItems().first()
+    Truth.assertThat(list).isNotEmpty()
+    Truth.assertThat(list).contains(remainingItem)
   }
 
 }

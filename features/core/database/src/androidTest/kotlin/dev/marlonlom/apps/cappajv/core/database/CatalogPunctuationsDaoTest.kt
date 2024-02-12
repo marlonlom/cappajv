@@ -12,7 +12,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogPunctuationsDao
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItemPoint
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -46,7 +46,7 @@ internal class CatalogPunctuationsDaoTest {
 
   @Test
   fun shouldInsertProductItemPoint() = runBlocking {
-    val entity = ProductItemPoint(11L, 1L, "Unidad", 1234L)
+    val entity = CatalogPunctuation(11L, 1L, "Unidad", 1234L)
     dao.insertAll(entity)
     val list = dao.findByProduct(1L).first()
     assertThat(list).contains(entity)
@@ -54,7 +54,7 @@ internal class CatalogPunctuationsDaoTest {
 
   @Test
   fun shouldInsertThenDeleteAllProductItemPoints() = runBlocking {
-    val entity = ProductItemPoint(11L, 1L, "Unidad", 1234L)
+    val entity = CatalogPunctuation(11L, 1L, "Unidad", 1234L)
     dao.insertAll(entity)
     dao.deleteAll()
     val list = dao.findByProduct(1L).first()
