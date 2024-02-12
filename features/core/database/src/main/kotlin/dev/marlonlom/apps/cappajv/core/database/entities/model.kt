@@ -7,7 +7,6 @@ package dev.marlonlom.apps.cappajv.core.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
 /**
  * Entity model data class for Catalog product item.
@@ -22,45 +21,94 @@ import androidx.room.PrimaryKey
  * @property category Product item category.
  * @property detail Product item detail.
  */
-@Entity(tableName = "cappa_product")
-data class ProductItem(
-  @PrimaryKey @ColumnInfo(name = "product_id")
+@Entity(
+  tableName = "catalog_item",
+  primaryKeys = ["id", "category"]
+)
+data class CatalogItem(
+  @ColumnInfo
   val id: Long,
-  @ColumnInfo(name = "product_title")
+  @ColumnInfo
   val title: String,
-  @ColumnInfo(name = "product_slug")
+  @ColumnInfo
   val slug: String,
-  @ColumnInfo(name = "product_title_normalized")
+  @ColumnInfo
   val titleNormalized: String,
-  @ColumnInfo(name = "product_picture")
+  @ColumnInfo
   val picture: String,
-  @ColumnInfo(name = "product_category")
+  @ColumnInfo
   val category: String,
-  @ColumnInfo(name = "product_detail")
+  @ColumnInfo
   val detail: String,
 )
 
 /**
- * Entity model data class for product item point aka punctuation.
+ * Entity model data class for Catalog product item.
+ *
+ * @author marlonlom
+ *
+ * @property id Product item id.
+ * @property title Product item title.
+ * @property picture Product item picture url.
+ * @property category Product item category.
+ */
+@Entity(
+  tableName = "catalog_item_favorite",
+  primaryKeys = ["id", "category"]
+)
+data class CatalogFavoriteItem(
+  @ColumnInfo
+  val id: Long,
+  @ColumnInfo
+  val title: String,
+  @ColumnInfo
+  val picture: String,
+  @ColumnInfo
+  val category: String,
+)
+
+/**
+ * Entity model data class for catalog item punctuation.
  *
  * @author marlonlom
  *
  * @property id Punctuation id.
- * @property productId Punctuation product item id.
+ * @property catalogItemId Punctuation product item id.
  * @property label Punctuation title.
  * @property points Punctuation points numeric value.
  */
 @Entity(
-  tableName = "cappa_punctuation",
-  primaryKeys = ["punctuation_id", "punctuation_product_id"]
+  tableName = "catalog_punctuation",
+  primaryKeys = ["id", "catalogItemId"]
 )
-data class ProductItemPoint(
-  @ColumnInfo(name = "punctuation_id")
+data class CatalogPunctuation(
+  @ColumnInfo
   val id: Long,
-  @ColumnInfo(name = "punctuation_product_id")
-  val productId: Long,
-  @ColumnInfo(name = "punctuation_label")
+  @ColumnInfo
+  val catalogItemId: Long,
+  @ColumnInfo
   val label: String,
-  @ColumnInfo(name = "punctuation_points")
+  @ColumnInfo
   val points: Long
+)
+
+/**
+ * Catalog item tuple for listings.
+ *
+ * @author marlonlom
+ *
+ * @property id Product item id.
+ * @property title Product item title.
+ * @property picture Product item picture url.
+ * @property category Product item category.
+ */
+data class CatalogItemTuple(
+  @ColumnInfo
+  val id: Long,
+  @ColumnInfo
+  val title: String,
+  @ColumnInfo
+  val picture: String,
+  @ColumnInfo
+  val category: String,
 )

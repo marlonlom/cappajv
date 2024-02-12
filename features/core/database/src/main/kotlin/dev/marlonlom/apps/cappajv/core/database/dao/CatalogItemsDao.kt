@@ -9,6 +9,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -18,15 +19,15 @@ import kotlinx.coroutines.flow.Flow
  *
  */
 @Dao
-interface CatalogProductsDao {
+interface CatalogItemsDao {
 
   /**
    * Query for retrieving product items list.
    *
    * @return Product items list, or empty list, as Flow.
    */
-  @Query("SELECT * FROM cappa_product")
-  fun getProducts(): Flow<List<CatalogItem>>
+  @Query("SELECT c.id, c.title, c.category, c.picture FROM catalog_item c")
+  fun getProducts(): Flow<List<CatalogItemTuple>>
 
   /**
    * Query for retrieving flow with single product item using its id.
@@ -34,7 +35,7 @@ interface CatalogProductsDao {
    * @param productId Product item id.
    * @return Found product item, or null.
    */
-  @Query("SELECT * FROM cappa_product WHERE product_id = :productId ")
+  @Query("SELECT * FROM catalog_item WHERE id = :productId ")
   fun findProduct(productId: Long): Flow<CatalogItem?>
 
   /**
@@ -48,7 +49,7 @@ interface CatalogProductsDao {
   /**
    * Deletes all product items in local storage.
    */
-  @Query("DELETE FROM cappa_product")
+  @Query("DELETE FROM catalog_item")
   fun deleteAll()
 
 }

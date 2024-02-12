@@ -8,7 +8,7 @@ package dev.marlonlom.apps.cappajv.core.database.dao
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItemPoint
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -24,10 +24,11 @@ interface CatalogPunctuationsDao {
    * Query for retrieving product item points list, aka punctuations list.
    *
    * @param productId Product item id.
+   *
    * @return Found product item points list, or empty list.
    */
-  @Query("SELECT * FROM cappa_punctuation WHERE punctuation_product_id = :productId ")
-  fun findByProduct(productId: Long): Flow<List<ProductItemPoint>>
+  @Query("SELECT * FROM catalog_punctuation WHERE catalogItemId = :productId ")
+  fun findByProduct(productId: Long): Flow<List<CatalogPunctuation>>
 
   /**
    * Upsert product item punctuations.
@@ -35,12 +36,20 @@ interface CatalogPunctuationsDao {
    * @param punctuations product item points as typed array.
    */
   @Upsert
-  fun insertAll(vararg punctuations: ProductItemPoint)
+  fun insertAll(vararg punctuations: CatalogPunctuation)
 
   /**
    * Deletes all product item points in local storage.
+   *
+   * @param productId Product item id.
    */
-  @Query("DELETE FROM cappa_punctuation")
+  @Query("DELETE FROM catalog_punctuation WHERE id = :productId")
+  fun delete(productId: Long)
+
+  /**
+   * Deletes all product items in local storage.
+   */
+  @Query("DELETE FROM catalog_punctuation")
   fun deleteAll()
 
 }

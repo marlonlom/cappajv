@@ -9,20 +9,23 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import dev.marlonlom.apps.cappajv.core.database.dao.CatalogProductsDao
+import dev.marlonlom.apps.cappajv.core.database.dao.CatalogFavoriteItemsDao
+import dev.marlonlom.apps.cappajv.core.database.dao.CatalogItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogPunctuationsDao
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItem
-import dev.marlonlom.apps.cappajv.core.database.entities.ProductItemPoint
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 
 /**
- * Cappa room database class.
+ * Cappajv room database class.
  *
  * @author marlonlom
  */
 @Database(
   entities = [
-    ProductItem::class,
-    ProductItemPoint::class
+    CatalogItem::class,
+    CatalogFavoriteItem::class,
+    CatalogPunctuation::class
   ],
   version = 4,
   exportSchema = false
@@ -34,7 +37,14 @@ abstract class CappaDatabase : RoomDatabase() {
    *
    * @return Catalog dao
    */
-  abstract fun catalogProductsDao(): CatalogProductsDao
+  abstract fun catalogProductsDao(): CatalogItemsDao
+
+  /**
+   * Catalog favorite products dao instance.
+   *
+   * @return Catalog dao
+   */
+  abstract fun catalogFavoriteItemsDao(): CatalogFavoriteItemsDao
 
   /**
    * Catalog punctuations dao instance.
@@ -48,7 +58,7 @@ abstract class CappaDatabase : RoomDatabase() {
     @Volatile
     private var instance: CappaDatabase? = null
 
-    private const val DATABASE_NAME = "cappa-db"
+    private const val DATABASE_NAME = "cappajv-db"
 
     /**
      * Returns an instance of Cappa database.
