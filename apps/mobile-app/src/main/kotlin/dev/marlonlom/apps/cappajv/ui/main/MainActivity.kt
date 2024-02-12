@@ -26,8 +26,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.window.layout.WindowInfoTracker
 import dev.marlonlom.apps.cappajv.core.catalog_source.CatalogDataService
 import dev.marlonlom.apps.cappajv.core.database.CappaDatabase
-import dev.marlonlom.apps.cappajv.core.database.LocalDataSource
-import dev.marlonlom.apps.cappajv.core.database.LocalDataSourceImpl
+import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSource
+import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSourceImpl
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
 import dev.marlonlom.apps.cappajv.dataStore
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailRepository
@@ -121,8 +121,9 @@ class MainActivity : ComponentActivity() {
   private fun newLocalDataSource(): LocalDataSource {
     val cappaDatabase = CappaDatabase.getInstance(applicationContext)
     return LocalDataSourceImpl(
-      catalogProductsDao = cappaDatabase.catalogProductsDao(),
-      catalogPunctuationsDao = cappaDatabase.catalogPunctuationsDao()
+      catalogItemsDao = cappaDatabase.catalogProductsDao(),
+      catalogFavoriteItemsDao = cappaDatabase.catalogFavoriteItemsDao(),
+      catalogPunctuationsDao = cappaDatabase.catalogPunctuationsDao(),
     )
   }
 
