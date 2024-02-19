@@ -10,21 +10,27 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
 import dev.marlonlom.apps.cappajv.util.MainDispatcherRule
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Assert
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.concurrent.Executors
 
 @ExperimentalCoroutinesApi
 internal class SettingsViewModelTest {
 
-  @get:Rule
-  val mainDispatcherRule = MainDispatcherRule()
+  private val testDispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
 
   private lateinit var viewModel: SettingsViewModel
 
@@ -37,6 +43,17 @@ internal class SettingsViewModelTest {
     override suspend fun updateData(transform: suspend (t: Preferences) -> Preferences): Preferences {
       return transform(dummyData.value)
     }
+  }
+
+  @Before
+  fun setup() {
+    Dispatchers.setMain(testDispatcher)
+  }
+
+  @After
+  fun tearUp() {
+    Dispatchers.resetMain()
+    testDispatcher.close()
   }
 
   @Test
