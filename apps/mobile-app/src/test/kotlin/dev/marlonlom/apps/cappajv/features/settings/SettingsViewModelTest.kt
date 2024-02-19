@@ -7,39 +7,24 @@ package dev.marlonlom.apps.cappajv.features.settings
 
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
 import dev.marlonlom.apps.cappajv.core.preferences.UserSettings
-import kotlinx.coroutines.Dispatchers
+import dev.marlonlom.apps.cappajv.util.MainDispatcherRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
-import org.junit.After
 import org.junit.Assert
-import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
-import java.util.concurrent.Executors
 
 @ExperimentalCoroutinesApi
 internal class SettingsViewModelTest {
 
-  private val testDispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
+  @get:Rule
+  val mainDispatcherRule = MainDispatcherRule()
 
   private lateinit var viewModel: SettingsViewModel
-
-  @Before
-  fun setup() {
-    Dispatchers.setMain(testDispatcher)
-  }
-
-  @After
-  fun tearUp() {
-    Dispatchers.resetMain()
-    testDispatcher.close()
-  }
 
   @Test
   fun `Should return valid settings from local storage`() = runTest {
