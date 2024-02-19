@@ -13,8 +13,8 @@ import dev.marlonlom.apps.cappajv.util.MainDispatcherRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Rule
@@ -28,14 +28,21 @@ internal class SettingsViewModelTest {
 
   private lateinit var viewModel: SettingsViewModel
 
+  private val dummyDataStore = object : DataStore<Preferences> {
+    val dummyData = MutableStateFlow(emptyPreferences())
+
+    override val data: Flow<Preferences>
+      get() = dummyData
+
+    override suspend fun updateData(transform: suspend (t: Preferences) -> Preferences): Preferences {
+      return transform(dummyData.value)
+    }
+  }
+
   @Test
   fun `Should return valid settings from local storage`() = runTest {
     async {
-      viewModel = SettingsViewModel(
-        UserPreferencesRepository(
-          FakeSettingsDatastore(flowOf(emptyPreferences()))
-        )
-      )
+      viewModel = SettingsViewModel(UserPreferencesRepository(dummyDataStore))
 
       try {
         val state = viewModel.uiState.first()
@@ -46,16 +53,4 @@ internal class SettingsViewModelTest {
       }
     }.await()
   }
-}
-
-
-internal class FakeSettingsDatastore(
-  override val data: Flow<Preferences>
-) : DataStore<Preferences> {
-  override suspend fun updateData(
-    transform: suspend (t: Preferences) -> Preferences
-  ): Preferences {
-    return data.first()
-  }
-
 }
