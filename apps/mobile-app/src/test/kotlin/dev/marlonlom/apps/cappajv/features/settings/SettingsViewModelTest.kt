@@ -10,7 +10,6 @@ import dev.marlonlom.apps.cappajv.core.preferences.UserSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.resetMain
@@ -44,27 +43,25 @@ internal class SettingsViewModelTest {
 
   @Test
   fun `Should return valid settings from local storage`() = runTest {
-    async {
-      val mockPreferencesRepository = mock(UserPreferencesRepository::class.java)
-      `when`(mockPreferencesRepository.userPreferencesFlow).thenReturn(
-        flowOf(
-          UserSettings(
-            useDarkTheme = false,
-            useDynamicColor = true,
-            isOnboarding = true
-          )
+    val mockPreferencesRepository = mock(UserPreferencesRepository::class.java)
+    `when`(mockPreferencesRepository.userPreferencesFlow).thenReturn(
+      flowOf(
+        UserSettings(
+          useDarkTheme = false,
+          useDynamicColor = true,
+          isOnboarding = true
         )
       )
+    )
 
-      viewModel = SettingsViewModel(mockPreferencesRepository)
+    viewModel = SettingsViewModel(mockPreferencesRepository)
 
-      try {
-        val state = viewModel.uiState.first()
-        Assert.assertNotNull(state)
-      } catch (e: Exception) {
-        println(e.message)
-        Assert.fail()
-      }
-    }.await()
+    try {
+      val state = viewModel.uiState.first()
+      Assert.assertNotNull(state)
+    } catch (e: Exception) {
+      println(e.message)
+      Assert.fail()
+    }
   }
 }
