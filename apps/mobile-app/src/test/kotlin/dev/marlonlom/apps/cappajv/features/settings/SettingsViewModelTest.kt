@@ -5,26 +5,23 @@
 
 package dev.marlonlom.apps.cappajv.features.settings
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.emptyPreferences
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
-import dev.marlonlom.apps.cappajv.util.MainDispatcherRule
+import dev.marlonlom.apps.cappajv.core.preferences.UserSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when`
 import java.util.concurrent.Executors
 
 @ExperimentalCoroutinesApi
@@ -33,17 +30,6 @@ internal class SettingsViewModelTest {
   private val testDispatcher = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
 
   private lateinit var viewModel: SettingsViewModel
-
-  private val dummyDataStore = object : DataStore<Preferences> {
-    val dummyData = MutableStateFlow(emptyPreferences())
-
-    override val data: Flow<Preferences>
-      get() = dummyData
-
-    override suspend fun updateData(transform: suspend (t: Preferences) -> Preferences): Preferences {
-      return transform(dummyData.value)
-    }
-  }
 
   @Before
   fun setup() {
@@ -59,7 +45,18 @@ internal class SettingsViewModelTest {
   @Test
   fun `Should return valid settings from local storage`() = runTest {
     async {
-      viewModel = SettingsViewModel(UserPreferencesRepository(dummyDataStore))
+      val mockPreferencesRepository = mock(UserPreferencesRepository::class.java)
+      `when`(mockPreferencesRepository.userPreferencesFlow).thenReturn(
+        flowOf(
+          UserSettings(
+            useDarkTheme = false,
+            useDynamicColor = true,
+            isOnboarding = true
+          )
+        )
+      )
+
+      viewModel = SettingsViewModel(mockPreferencesRepository)
 
       try {
         val state = viewModel.uiState.first()
