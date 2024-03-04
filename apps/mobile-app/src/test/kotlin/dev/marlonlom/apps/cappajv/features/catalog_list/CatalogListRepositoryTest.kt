@@ -13,6 +13,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
+import java.util.Locale
 
 internal class CatalogListRepositoryTest {
 
@@ -22,9 +23,9 @@ internal class CatalogListRepositoryTest {
   fun setUp() {
     repository = CatalogListRepository(
       localDataSource = FakeLocalDataSource(
-        CatalogDataService()
+        CatalogDataService(Locale.getDefault().language)
       ),
-      catalogDataService = CatalogDataService()
+      catalogDataService = CatalogDataService(Locale.getDefault().language)
     )
   }
 

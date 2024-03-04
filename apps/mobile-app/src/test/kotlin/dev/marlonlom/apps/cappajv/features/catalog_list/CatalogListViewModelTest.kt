@@ -12,6 +12,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
+import java.util.Locale
 
 internal class CatalogListViewModelTest {
 
@@ -25,9 +26,9 @@ internal class CatalogListViewModelTest {
     viewModel = CatalogListViewModel(
       CatalogListRepository(
         localDataSource = FakeLocalDataSource(
-          CatalogDataService()
+          CatalogDataService(Locale.getDefault().language)
         ),
-        catalogDataService = CatalogDataService()
+        catalogDataService = CatalogDataService(Locale.getDefault().language)
       )
     )
     val uiState = viewModel.uiState

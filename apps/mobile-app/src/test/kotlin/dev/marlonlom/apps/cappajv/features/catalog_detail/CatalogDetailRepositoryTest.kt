@@ -17,6 +17,7 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import java.util.Locale
 
 internal class CatalogDetailRepositoryTest {
 
@@ -26,7 +27,7 @@ internal class CatalogDetailRepositoryTest {
   fun setUp() {
     repository = CatalogDetailRepository(
       FakeLocalDataSource(
-        CatalogDataService()
+        CatalogDataService(Locale.getDefault().language)
       )
     )
   }
