@@ -20,7 +20,7 @@
   <string name="settings_title_application">configuraciones de la</string>
   <string name="settings_title_txt">Aplicación</string>
   <string name="settings_label_app_version">Versión de la aplicación</string>
-  <string name="destination_favorites">Favorites</string>
+  <string name="destination_favorites">Favoritos</string>
   <!-- feature: onboarding / welcome -->
   <string name="text_welcome_title">Bienvenidos</string>
   <string name="text_welcome_detail">A continuación podrás ver el catálogo de productos del programa Amigos Juan Valdez®, en el cual podrás vivir la experiencia única de visitar las tiendas Juan Valdez® Café utilizando tus puntos para canjearlos por alimentos, bebidas, premios y beneficios.</string>
