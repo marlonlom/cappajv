@@ -71,6 +71,9 @@ dependencies {
   implementation(composeBom)
   androidTestImplementation(composeBom)
 
+  val koinBom = platform(libs.koin.bom)
+  implementation(koinBom)
+
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.browser)
   implementation(libs.androidx.compose.ui)
@@ -88,10 +91,13 @@ dependencies {
   implementation(libs.androidx.navigation.runtime.ktx)
   implementation(libs.androidx.window)
   implementation(libs.coil.compose)
-  implementation(libs.kotlinx.coroutines.android)
-  implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.google.guava)
   implementation(libs.google.oss.licenses)
   implementation(libs.jakewharton.timber)
+  implementation(libs.koin.androidx.compose)
+  implementation(libs.koin.androidx.compose.navigation)
+  implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.kotlinx.coroutines.core)
   implementation(libs.bundles.database.room)
 
   testImplementation(libs.junit)

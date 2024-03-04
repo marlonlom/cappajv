@@ -11,7 +11,7 @@
   <uses-permission android:name="android.permission.INTERNET" />
 
   <application
-    android:name="dev.marlonlom.apps.cappajv.CappajvApp"
+    android:name=".CappajvApp"
     android:allowBackup="true"
     android:dataExtractionRules="@xml/data_extraction_rules"
     android:fullBackupContent="@xml/backup_rules"
@@ -22,8 +22,9 @@
     android:enableOnBackInvokedCallback="true"
     android:theme="@style/Theme.Cappajv.Starting"
     tools:targetApi="tiramisu">
+
     <activity
-      android:name="dev.marlonlom.apps.cappajv.ui.main.MainActivity"
+      android:name=".ui.main.MainActivity"
       android:exported="true"
       android:theme="@style/Theme.Cappajv.Starting">
       <intent-filter>

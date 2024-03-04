@@ -44,6 +44,7 @@ dependencies {
   implementation(libs.androidx.datastore.preferences)
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.google.guava)
 
   testImplementation(libs.junit)
 
