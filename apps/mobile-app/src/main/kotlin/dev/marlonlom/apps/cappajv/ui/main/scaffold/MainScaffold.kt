@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -25,18 +24,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
-import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
-import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListState
 import dev.marlonlom.apps.cappajv.features.settings.SettingsDialog
-import dev.marlonlom.apps.cappajv.features.settings.SettingsViewModel
-import dev.marlonlom.apps.cappajv.features.welcome.WelcomeRoute
 import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.main.MainActivityUiState
-import dev.marlonlom.apps.cappajv.ui.main.rememberCappajvAppState
 import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination
 import dev.marlonlom.apps.cappajv.ui.navigation.MainNavHost
-import dev.marlonlom.apps.cappajv.ui.util.DevicePosture
+import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
 
 /**
  * Main scaffold composable ui.
@@ -44,11 +38,8 @@ import dev.marlonlom.apps.cappajv.ui.util.DevicePosture
  * @author marlonlom
  *
  * @param mainActivityUiState Main activity ui state.
- * @param windowSizeClass Window size class.
- * @param appContentCallbacks Application content callbacks.
- * @param userPreferencesRepository User preferences repository.
- * @param onOnboardingComplete Action for onboarding complete event.
  * @param appState Main application ui state
+ * @param appContentCallbacks Application content callbacks.
  */
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
@@ -56,21 +47,12 @@ import dev.marlonlom.apps.cappajv.ui.util.DevicePosture
 @Composable
 fun MainScaffold(
   mainActivityUiState: MainActivityUiState,
-  windowSizeClass: WindowSizeClass,
-  devicePosture: DevicePosture,
+  appState: CappajvAppState,
   appContentCallbacks: AppContentCallbacks,
-  userPreferencesRepository: UserPreferencesRepository,
-  onOnboardingComplete: () -> Unit,
-  catalogListState: CatalogListState,
-  appState: CappajvAppState = rememberCappajvAppState(
-    windowSizeClass = windowSizeClass,
-    devicePosture = devicePosture,
-    catalogListState = catalogListState
-  ),
 ) {
 
-  val currentAppRoute = appState.navController
-    .currentBackStackEntryAsState().value?.destination?.route ?: CatalogDestination.CatalogList.route
+  val currentAppRoute = appState.navController.currentBackStackEntryAsState().value?.destination?.route
+    ?: CatalogDestination.CatalogList.route
   var bottomNavSelectedIndex by rememberSaveable {
     mutableIntStateOf(
       CatalogDestination.topCatalogDestinations.map { it.route }.indexOf(currentAppRoute)
@@ -83,7 +65,6 @@ fun MainScaffold(
   if (showSettingsDialog) {
     SettingsDialog(
       appState = appState,
-      viewModel = SettingsViewModel(repository = userPreferencesRepository),
       onDialogDismissed = { showSettingsDialog = false },
       openOssLicencesInfo = appContentCallbacks.openOssLicencesInfo,
       openExternalUrl = appContentCallbacks.openExternalUrl
@@ -95,14 +76,13 @@ fun MainScaffold(
     bottomBar = {
       val isCurrentlyOnboarding: (MainActivityUiState) -> Boolean = { uiState ->
         when (uiState) {
-          is MainActivityUiState.Success ->
-            uiState.userData.isOnboarding
+          is MainActivityUiState.Success -> uiState.userData.isOnboarding
 
           else -> true
         }
       }
 
-      val isBottomBarVisible = appState.canShowBottomNavigation.and(isTopDestination)
+      val isBottomBarVisible = (appState.navigationType == NavigationType.BOTTOM_NAV).and(isTopDestination)
         .and(isCurrentlyOnboarding(mainActivityUiState).not())
 
       if (isBottomBarVisible) {
@@ -122,20 +102,17 @@ fun MainScaffold(
   ) { paddingValues ->
     MainScaffoldContent(
       paddingValues = paddingValues,
-      mainActivityUiState = mainActivityUiState,
       appState = appState,
       appContentCallbacks = appContentCallbacks,
-      onOnboardingComplete = onOnboardingComplete,
       selectedPosition = bottomNavSelectedIndex,
-      onSelectedPositionChanged = { position, route ->
-        if (route == CatalogDestination.Settings.route) {
-          showSettingsDialog = true
-        } else {
-          bottomNavSelectedIndex = position
-          appState.changeTopDestination(route)
-        }
-      },
-    )
+    ) { position, route ->
+      if (route == CatalogDestination.Settings.route) {
+        showSettingsDialog = true
+      } else {
+        bottomNavSelectedIndex = position
+        appState.changeTopDestination(route)
+      }
+    }
   }
 }
 
@@ -145,10 +122,8 @@ fun MainScaffold(
  * @author marlonlom
  *
  * @param paddingValues Padding values.
- * @param mainActivityUiState Main activity ui state.
  * @param appState Application ui state.
  * @param appContentCallbacks Application content callbacks.
- * @param onOnboardingComplete Action for onboarding complete event.
  */
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
@@ -156,10 +131,8 @@ fun MainScaffold(
 @Composable
 private fun MainScaffoldContent(
   paddingValues: PaddingValues,
-  mainActivityUiState: MainActivityUiState,
   appState: CappajvAppState,
   appContentCallbacks: AppContentCallbacks,
-  onOnboardingComplete: () -> Unit,
   selectedPosition: Int,
   onSelectedPositionChanged: (Int, String) -> Unit
 ) {
@@ -167,46 +140,30 @@ private fun MainScaffoldContent(
     modifier = Modifier
       .safeDrawingPadding()
       .padding(paddingValues),
-    contentAlignment = Alignment.Center
+    contentAlignment = Alignment.Center,
   ) {
-    when (mainActivityUiState) {
-      is MainActivityUiState.Success -> {
-        if (mainActivityUiState.userData.isOnboarding) {
-          WelcomeRoute(
-            appState = appState,
-            onContinueHomeButtonClicked = onOnboardingComplete
-          )
-        } else {
-          if (appState.canShowExpandedNavigationDrawer) {
-            ExpandedNavigationDrawer(
-              selectedPosition = selectedPosition,
-              onSelectedPositionChanged = onSelectedPositionChanged,
-            ) {
-              MainNavHost(
-                appState = appState,
-                appContentCallbacks
-              )
-            }
-          } else {
-            Row {
-              if (appState.canShowNavigationRail) {
-                MainNavigationRail(
-                  selectedPosition = selectedPosition,
-                  onSelectedPositionChanged = onSelectedPositionChanged,
-                )
-              }
-
-              MainNavHost(
-                appState = appState,
-                appContentCallbacks
-              )
-            }
-          }
-        }
+    if (appState.navigationType == NavigationType.EXPANDED_NAV) {
+      ExpandedNavigationDrawer(
+        selectedPosition = selectedPosition,
+        onSelectedPositionChanged = onSelectedPositionChanged,
+      ) {
+        MainNavHost(
+          appState = appState, appContentCallbacks
+        )
       }
+    } else {
+      Row {
+        if (appState.navigationType == NavigationType.NAVIGATION_RAIL) {
+          MainNavigationRail(
+            selectedPosition = selectedPosition,
+            onSelectedPositionChanged = onSelectedPositionChanged,
+          )
+        }
 
-      else -> Unit
+        MainNavHost(
+          appState = appState, appContentCallbacks
+        )
+      }
     }
-
   }
 }
