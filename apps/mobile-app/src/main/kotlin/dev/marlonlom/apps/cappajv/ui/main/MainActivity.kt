@@ -53,19 +53,6 @@ class MainActivity : ComponentActivity() {
 
   private val mainActivityViewModel: MainActivityViewModel by viewModel()
 
-  private val devicePostureFlow = WindowInfoTracker
-    .getOrCreate(this@MainActivity)
-    .windowLayoutInfo(this@MainActivity)
-    .flowWithLifecycle(lifecycle)
-    .map { layoutInfo ->
-      val foldingFeature = layoutInfo.displayFeatures.find { it is FoldingFeature } as? FoldingFeature
-      DevicePostureDetector.fromLayoutInfo(foldingFeature)
-    }.stateIn(
-      scope = lifecycleScope,
-      started = SharingStarted.Eagerly,
-      initialValue = DevicePosture.NormalPosture
-    )
-
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
@@ -87,6 +74,21 @@ class MainActivity : ComponentActivity() {
     }
 
     enableEdgeToEdge()
+
+    val devicePostureFlow = WindowInfoTracker
+      .getOrCreate(this@MainActivity)
+      .windowLayoutInfo(this@MainActivity)
+      .flowWithLifecycle(lifecycle)
+      .map { layoutInfo ->
+        val foldingFeature = layoutInfo.displayFeatures
+          .filterIsInstance(FoldingFeature::class.java)
+          .firstOrNull()
+        DevicePostureDetector.fromLayoutInfo(foldingFeature)
+      }.stateIn(
+        scope = lifecycleScope,
+        started = SharingStarted.Eagerly,
+        initialValue = DevicePosture.Normal
+      )
 
     setContent {
       val devicePosture by devicePostureFlow.collectAsStateWithLifecycle()
