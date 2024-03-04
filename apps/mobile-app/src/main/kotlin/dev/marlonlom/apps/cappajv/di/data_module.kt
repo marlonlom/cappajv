@@ -14,6 +14,7 @@ import dev.marlonlom.apps.cappajv.dataStore
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import java.util.Locale
 
 val dataModule = module {
   single<LocalDataSource> {
@@ -26,12 +27,12 @@ val dataModule = module {
     }
   }
   single<CatalogDataService> {
-    CatalogDataService()
+    CatalogDataService(Locale.getDefault().language)
   }
   single<CatalogListRepository> {
     CatalogListRepository(
       localDataSource = get(),
-      catalogDataService = get()
+      catalogDataService = get(),
     )
   }
   single {
