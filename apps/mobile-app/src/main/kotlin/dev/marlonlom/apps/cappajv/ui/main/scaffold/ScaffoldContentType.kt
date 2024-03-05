@@ -58,19 +58,24 @@ object ScaffoldInnerContents {
     isCompactHeight: Boolean,
   ): ScaffoldInnerContentType = when {
 
+    (isMediumWidth.or(isExpandedWidth)).not() -> when (devicePosture) {
+      is DevicePosture.Separating.TableTop -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
+      else -> ScaffoldInnerContentType.SinglePane
+    }
+
     isExpandedWidth.and(isCompactHeight.not()) -> when (devicePosture) {
-      DevicePosture.NormalPosture -> ScaffoldInnerContentType.TwoPane()
-      is DevicePosture.SeparatingPosture.TableTopPosture -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
-      is DevicePosture.SeparatingPosture.BookPosture -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
+      DevicePosture.Normal -> ScaffoldInnerContentType.TwoPane()
+      is DevicePosture.Separating.TableTop -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
+      is DevicePosture.Separating.Book -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
     }
 
     isMediumWidth.and(isCompactHeight.not()) -> when (devicePosture) {
-      DevicePosture.NormalPosture -> ScaffoldInnerContentType.SinglePane
-      is DevicePosture.SeparatingPosture.TableTopPosture -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
-      is DevicePosture.SeparatingPosture.BookPosture -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
+      DevicePosture.Normal -> ScaffoldInnerContentType.SinglePane
+      is DevicePosture.Separating.TableTop -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
+      is DevicePosture.Separating.Book -> ScaffoldInnerContentType.TwoPane(devicePosture.hingeRatio)
     }
 
-    isCompactHeight.and(devicePosture is DevicePosture.NormalPosture) -> ScaffoldInnerContentType.SinglePane
+    isCompactHeight.and(devicePosture is DevicePosture.Normal) -> ScaffoldInnerContentType.SinglePane
 
     else -> ScaffoldInnerContentType.SinglePane
   }
