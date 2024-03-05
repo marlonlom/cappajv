@@ -15,7 +15,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
-import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldInnerContents
+import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentClassifier
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationTypeSelector
 
 /**
@@ -74,8 +74,8 @@ data class CappajvAppState(
 
   val isLandscape get() = isMediumWidth.and(isCompactHeight).or(isExpandedWidth.and(isCompactHeight.not()))
 
-  val scaffoldInnerContentType
-    get() = ScaffoldInnerContents.indicateInnerContent(
+  val scaffoldContentType
+    get() = ScaffoldContentClassifier.classify(
       devicePosture, isExpandedWidth, isMediumWidth, isCompactHeight
     )
 
