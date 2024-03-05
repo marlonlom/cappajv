@@ -16,7 +16,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -46,7 +46,7 @@ internal fun LinksPanelContent(
   FlowRow(
     horizontalArrangement = Arrangement.spacedBy(
       space = 16.dp,
-      alignment = Alignment.Start,
+      alignment = Alignment.CenterHorizontally,
     ),
     modifier = Modifier.fillMaxWidth(),
   ) {
@@ -82,7 +82,7 @@ internal fun LinksPanelContent(
  */
 @Composable
 fun SectionDivider() {
-  Divider(Modifier.padding(top = 8.dp))
+  HorizontalDivider(Modifier.padding(top = 8.dp))
 }
 
 /**
@@ -100,7 +100,7 @@ internal fun BooleanSettingsContent(
   editableSettings: UserEditableSettings,
   onBooleanSettingUpdated: (String, Boolean) -> Unit
 ) {
-  if (appState.is7InTabletWidth) {
+  if (appState.isMediumWidth) {
     Row(
       horizontalArrangement = Arrangement.SpaceBetween,
       verticalAlignment = Alignment.CenterVertically
