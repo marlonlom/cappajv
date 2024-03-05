@@ -8,7 +8,6 @@ package dev.marlonlom.apps.cappajv.features.catalog_detail
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
@@ -34,15 +33,4 @@ class CatalogDetailViewModel(
     }
   }
 
-  companion object {
-
-    fun factory(
-      repository: CatalogDetailRepository
-    ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-      @Suppress("UNCHECKED_CAST")
-      override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CatalogDetailViewModel(repository) as T
-      }
-    }
-  }
 }

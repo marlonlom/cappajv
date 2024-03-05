@@ -1,0 +1,601 @@
+[
+  {
+    "id": "15398",
+    "title": "Affogato",
+    "category": "Cold drinks",
+    "detail": "It is a perfect Italian coffee-dessert for summer after-dinner meals.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Afogatto-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Affogato",
+        "pointsQty": 1750
+      }
+    ]
+  },
+  {
+    "id": "15389",
+    "title": "Almojábana",
+    "category": "Pastry",
+    "detail": "It is a Colombian dough based on corn flour and cheese.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Copia-de-Almojabana-Juan-Valdez-e1642542513402.png",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 1400
+      }
+    ]
+  },
+  {
+    "id": "10411",
+    "title": "Aromática bosque infusión",
+    "category": "Hot drinks",
+    "detail": "It is a hot and very traditional drink in the Colombian Andes, forest infusion flavor.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/AROMATICA.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1475
+      },
+      {
+        "label": "Medium",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "10410",
+    "title": "Aromática fusión tropical",
+    "category": "Hot drinks",
+    "detail": "It is a hot and very traditional drink in the Colombian Andes, tropical fusion flavor.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/TE.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1475
+      },
+      {
+        "label": "Medium",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "970",
+    "title": "Aromática primavera",
+    "category": "Hot drinks",
+    "detail": "It is a hot and very traditional drink in the Colombian Andes, spring flavor.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/TE.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1475
+      },
+      {
+        "label": "Medium",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "971",
+    "title": "Aromática silvestre",
+    "category": "Hot drinks",
+    "detail": "It is a hot and very traditional drink in the Colombian Andes, wild flavor.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/AROMATICA.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1475
+      },
+      {
+        "label": "Medium",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "10419",
+    "title": "Café americano",
+    "category": "Hot drinks",
+    "detail": "Coffee made from espresso and hot water.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Cafe-Americano-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "10418",
+    "title": "Cappuccino",
+    "category": "Hot drinks",
+    "detail": "Espresso coffee with steamed milk with a creamy texture.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Cappuccino-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1625
+      },
+      {
+        "label": "Medium",
+        "pointsQty": 1875
+      },
+      {
+        "label": "Medium Decaf",
+        "pointsQty": 1875
+      },
+      {
+        "label": "Big",
+        "pointsQty": 2375
+      }
+    ]
+  },
+  {
+    "id": "10412",
+    "title": "Chai",
+    "category": "Hot drinks",
+    "detail": "Hot drink based on spiced tea.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Chai-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Traditional Medium",
+        "pointsQty": 2725
+      },
+      {
+        "label": "Apple Cinnamon Medium",
+        "pointsQty": 2875
+      },
+      {
+        "label": "Large Cinnamon Apple",
+        "pointsQty": 3125
+      },
+      {
+        "label": "Traditional Large 1.65",
+        "pointsQty": 2975
+      }
+    ]
+  },
+  {
+    "id": "10416",
+    "title": "Chocolate",
+    "category": "Hot drinks",
+    "detail": "Chocolate with steamed milk.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Chocolate-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 2125
+      }
+    ]
+  },
+  {
+    "id": "15390",
+    "title": "Cold brew nitro",
+    "category": "Cold drinks",
+    "detail": "Nitrogen foaming coffee after resting in cold water for 24 hours, with a mild flavor, delicious aroma, with the color of natural coffee and a beer-like appearance.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Cold-Brew-nitro-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1475
+      }
+    ]
+  },
+  {
+    "id": "15391",
+    "title": "Cold brew original",
+    "category": "Cold drinks",
+    "detail": "Coffee rested in cold water for 24 hours, with a mild flavor, delicious aroma and the color of natural coffee.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Cold-Brew-nitro-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1225
+      }
+    ]
+  },
+  {
+    "id": "10415",
+    "title": "Espresso",
+    "category": "Hot drinks",
+    "detail": "Coffee prepared in espresso machine.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Espresso-tradicional-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Normal",
+        "pointsQty": 1375
+      },
+      {
+        "label": "Double",
+        "pointsQty": 1725
+      },
+      {
+        "label": "chopped up",
+        "pointsQty": 1975
+      }
+    ]
+  },
+  {
+    "id": "979",
+    "title": "Flat white",
+    "category": "Hot drinks",
+    "detail": "Coffee prepared in an espresso machine with a thin layer of milk foam.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Flat-white-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 2075
+      }
+    ]
+  },
+  {
+    "id": "15379",
+    "title": "Galleta choco chip",
+    "category": "Pastry",
+    "detail": "A crunchy cookie with chocolate chips.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Galleta-chips-de-chocolate-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 1375
+      }
+    ]
+  },
+  {
+    "id": "15396",
+    "title": "Granizado",
+    "category": "Cold drinks",
+    "detail": "It is a cold and refreshing iced coffee drink.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Granizado-juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 2225
+      }
+    ]
+  },
+  {
+    "id": "10417",
+    "title": "Latte",
+    "category": "Hot drinks",
+    "detail": "It is a coffee prepared in an espresso machine and steamed milk.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Latte-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1625
+      },
+      {
+        "label": "Medium",
+        "pointsQty": 1875
+      },
+      {
+        "label": "Medium Decaf",
+        "pointsQty": 1875
+      },
+      {
+        "label": "Big",
+        "pointsQty": 2375
+      }
+    ]
+  },
+  {
+    "id": "15397",
+    "title": "Latte frío",
+    "category": "Cold drinks",
+    "detail": "It is a coffee prepared in an espresso machine and steamed milk, served cold.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Latte-frio-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 2375
+      }
+    ]
+  },
+  {
+    "id": "10414",
+    "title": "Macchiatto",
+    "category": "Hot drinks",
+    "detail": "Espresso coffee with a layer of milk foam.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Machiatto-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Macchiatto",
+        "pointsQty": 1975
+      }
+    ]
+  },
+  {
+    "id": "983",
+    "title": "Mocca",
+    "category": "Hot drinks",
+    "detail": "Hot drink that combines espresso coffee, milk and chocolate.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Mocca-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 2225
+      }
+    ]
+  },
+  {
+    "id": "969",
+    "title": "Nevado arequipe",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold coffee drink with arequipe decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-Arequipe-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "15392",
+    "title": "Nevado baileys",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold drink based on coffee with Baileys decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-Baileys-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 3625
+      }
+    ]
+  },
+  {
+    "id": "15381",
+    "title": "Nevado brownie",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold coffee drink with brownie decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-Brownie-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "12971",
+    "title": "Nevado cafe",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold coffee-based drink decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_de_cafe___300ml_700x700px.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 2975
+      }
+    ]
+  },
+  {
+    "id": "12981",
+    "title": "Nevado café reducido en azucar",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold coffee-based drink, reduced in sugar decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_rejado_en_azucar_300ml_700x700px.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "15393",
+    "title": "Nevado chai",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold drink based on chai tea decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-chai-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 3475
+      }
+    ]
+  },
+  {
+    "id": "12982",
+    "title": "Nevado chocolate",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold chocolate coffee drink decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_de_chocolate_300ml_700x700px.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "968",
+    "title": "Nevado galleta",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold coffee drink with cookie pieces and condensed milk decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Nevado-galleta-oreo-y-leche-condensada-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "12983",
+    "title": "Nevado mokachip",
+    "category": "Cold drinks",
+    "detail": "It is a creamy cold coffee drink with chocolate and chips decorated with Chantilly.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_mocachip_300ml_700x700px.jpg",
+    "punctuations": [
+      {
+        "label": "Medium",
+        "pointsQty": 3225
+      }
+    ]
+  },
+  {
+    "id": "15388",
+    "title": "Palito de queso",
+    "category": "Pastry",
+    "detail": "It is a butter-based puff pastry filled with a mixture of peasant cheese, mozarella and coastal cheese.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Palito-de-queso-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "15387",
+    "title": "Pandebono",
+    "category": "Pastry",
+    "detail": "It is a dough based on cassava starch and cheese.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Pandebono-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 1400
+      }
+    ]
+  },
+  {
+    "id": "15386",
+    "title": "Pandebono de bocadillo",
+    "category": "Pastry",
+    "detail": "It is a dough based on cassava starch and cheese filled with a sandwich.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/PANDEBONO_DE_BOCADILLO.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 1475
+      }
+    ]
+  },
+  {
+    "id": "15385",
+    "title": "Pastel gloria arequipe y guayaba",
+    "category": "Pastry",
+    "detail": "It is a puff pastry filled with arequipe and guava.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Pastel-gloria-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 1375
+      }
+    ]
+  },
+  {
+    "id": "10413",
+    "title": "Pods",
+    "category": "Hot drinks",
+    "detail": "It is prepared in a special machine for Pods.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/pods.png",
+    "punctuations": [
+      {
+        "label": "Hill",
+        "pointsQty": 1500
+      },
+      {
+        "label": "Summit",
+        "pointsQty": 1500
+      },
+      {
+        "label": "Summit Decaf",
+        "pointsQty": 1500
+      },
+      {
+        "label": "Solid",
+        "pointsQty": 1500
+      },
+      {
+        "label": "Origin (Huila, Nariño, Sierra, Tolima)",
+        "pointsQty": 1625
+      }
+    ]
+  },
+  {
+    "id": "12984",
+    "title": "Rollito de canela",
+    "category": "Pastry",
+    "detail": "It is a sweet bread with a soft filling of cinnamon, butter and freshly baked sugar.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/rollito_de_canela.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 1725
+      }
+    ]
+  },
+  {
+    "id": "987",
+    "title": "Tintos",
+    "category": "Hot drinks",
+    "detail": "Cup of filtered coffee flavored with panela, cloves, cinnamon and lemon.",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Tinto-Juan-Valdez-campesino.jpg",
+    "punctuations": [
+      {
+        "label": "Small",
+        "pointsQty": 1125
+      },
+      {
+        "label": "Medium",
+        "pointsQty": 1325
+      },
+      {
+        "label": "Big",
+        "pointsQty": 1575
+      },
+      {
+        "label": "Small Campesino",
+        "pointsQty": 1375
+      },
+      {
+        "label": "Medium Campesino",
+        "pointsQty": 1575
+      }
+    ]
+  },
+  {
+    "id": "15384",
+    "title": "Torta de banano",
+    "category": "Pastry",
+    "detail": "Delicious slice of banana cake",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Torta-de-banano-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 1875
+      }
+    ]
+  },
+  {
+    "id": "15383",
+    "title": "Torta de chocolate",
+    "category": "Pastry",
+    "detail": "Delicious slice of chocolate cake",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Torta-de-chocolate-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 2225
+      }
+    ]
+  },
+  {
+    "id": "15382",
+    "title": "Torta de zanahoria",
+    "category": "Pastry",
+    "detail": "Delicious slice of carrot cake",
+    "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Torta-de-zanahoria-Juan-Valdez.jpg",
+    "punctuations": [
+      {
+        "label": "Unit",
+        "pointsQty": 2225
+      }
+    ]
+  }
+]

@@ -7,16 +7,21 @@ package dev.marlonlom.apps.cappajv.core.catalog_source
 
 import kotlinx.serialization.json.Json
 import java.io.InputStream
+import java.util.Locale
 
 /**
  * Catalog data service class.
  *
  * @author marlonlom
  *
+ * @property language Selected language for fetching catalog data, default to english (en).
  */
-class CatalogDataService {
+class CatalogDataService(
+  private val language: String = Locale.ENGLISH.language
+) {
 
-  private var catalogJsonPath = CATALOG_JSON_FILENAME
+  private var catalogJsonPath = if (language == "es") CATALOG_JSON_FILENAME else ENG_CATALOG_JSON_FILENAME
+
   internal fun changePath(jsonPath: String) {
     catalogJsonPath = jsonPath
   }
@@ -41,7 +46,8 @@ class CatalogDataService {
   private fun getJsonResourceAsStream(): InputStream? = this.javaClass.classLoader.getResourceAsStream(catalogJsonPath)
 
   companion object {
-    private const val CATALOG_JSON_FILENAME = "catalog.json"
+    private const val CATALOG_JSON_FILENAME = "es/catalog.json"
+    private const val ENG_CATALOG_JSON_FILENAME = "en/catalog.json"
   }
 }
 

@@ -21,8 +21,8 @@ fun FavoriteProductsRoute(
   appState: CappajvAppState,
 ) {
   val contentHorizontalPadding = when {
-    appState.isLandscapeOrientation.not().and(appState.is7InTabletWidth) -> 40.dp
-    appState.isLandscapeOrientation.not().and(appState.is10InTabletWidth) -> 80.dp
+    appState.isLandscape.not().and(appState.isMediumWidth) -> 40.dp
+    appState.isLandscape.not().and(appState.isExpandedWidth) -> 80.dp
     else -> 20.dp
   }
   Column(

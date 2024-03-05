@@ -10,7 +10,6 @@ import android.content.Intent
 import androidx.compose.runtime.Composable
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetail
-import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailViewModel
 import dev.marlonlom.apps.cappajv.ui.util.CustomTabsOpener
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import timber.log.Timber
@@ -41,13 +40,11 @@ data class AppContentCallbacks(
  * @author marlonlom
  *
  * @param activityContext Activity context.
- * @param catalogDetailViewModel Catalog details viewmodel.
  */
 @ExperimentalCoroutinesApi
 @Composable
 internal fun newAppContentCallbacks(
   activityContext: Context,
-  catalogDetailViewModel: CatalogDetailViewModel
 ) = AppContentCallbacks(
   onOnboardingCompleter = {
 

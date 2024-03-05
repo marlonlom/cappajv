@@ -9,17 +9,10 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
-import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailViewModel
-import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListViewModel
+import dev.marlonlom.apps.cappajv.features.welcome.WelcomeRoute
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.MainScaffold
 import dev.marlonlom.apps.cappajv.ui.theme.CappajvTheme
-import dev.marlonlom.apps.cappajv.ui.util.DevicePosture
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
@@ -59,10 +52,9 @@ private fun shouldUseDarkTheme(
  * @author marlonlom
  *
  * @param mainActivityUiState Main activity ui state.
- * @param windowSizeClass Window size class.
- * @param userPreferencesRepository User preferences repository.
- * @param catalogListViewModel Catalog list viewmodel.
- * @param catalogDetailViewModel Catalog detail viewmodel.
+ * @param appUiState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
+ * @param onOnboardingComplete Action for onboarding complete.
  */
 @ExperimentalFoundationApi
 @ExperimentalLayoutApi
@@ -71,31 +63,29 @@ private fun shouldUseDarkTheme(
 @Composable
 fun AppContent(
   mainActivityUiState: MainActivityUiState,
-  windowSizeClass: WindowSizeClass,
-  devicePosture: DevicePosture,
-  userPreferencesRepository: UserPreferencesRepository,
-  catalogListViewModel: CatalogListViewModel,
-  catalogDetailViewModel: CatalogDetailViewModel,
+  appUiState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   onOnboardingComplete: () -> Unit,
 ) = CappajvTheme(
   darkTheme = shouldUseDarkTheme(mainActivityUiState),
   dynamicColor = shouldUseDynamicColor(mainActivityUiState)
 ) {
+  when (mainActivityUiState) {
+    MainActivityUiState.Loading -> Unit
 
-  val catalogListState by catalogListViewModel.uiState.collectAsStateWithLifecycle()
-
-  val appContentCallbacks = newAppContentCallbacks(
-    activityContext = LocalContext.current,
-    catalogDetailViewModel = catalogDetailViewModel
-  )
-
-  MainScaffold(
-    mainActivityUiState = mainActivityUiState,
-    windowSizeClass = windowSizeClass,
-    devicePosture = devicePosture,
-    appContentCallbacks = appContentCallbacks,
-    userPreferencesRepository = userPreferencesRepository,
-    onOnboardingComplete = onOnboardingComplete,
-    catalogListState = catalogListState
-  )
+    is MainActivityUiState.Success -> {
+      if (mainActivityUiState.userData.isOnboarding) {
+        WelcomeRoute(
+          appState = appUiState,
+          onContinueHomeButtonClicked = onOnboardingComplete
+        )
+      } else {
+        MainScaffold(
+          mainActivityUiState = mainActivityUiState,
+          appState = appUiState,
+          appContentCallbacks = appContentCallbacks,
+        )
+      }
+    }
+  }
 }

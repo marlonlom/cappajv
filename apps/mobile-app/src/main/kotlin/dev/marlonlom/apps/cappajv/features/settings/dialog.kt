@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +25,7 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import org.koin.androidx.compose.koinViewModel
 
 /**
  * Settings dialog route composable ui.
@@ -41,10 +42,10 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @Composable
 fun SettingsDialog(
   appState: CappajvAppState,
-  viewModel: SettingsViewModel,
   onDialogDismissed: () -> Unit,
   openOssLicencesInfo: () -> Unit,
-  openExternalUrl: (String) -> Unit
+  openExternalUrl: (String) -> Unit,
+  viewModel: SettingsViewModel = koinViewModel()
 ) {
   val settingsUiState by viewModel.uiState.collectAsStateWithLifecycle()
   when (settingsUiState) {
@@ -104,7 +105,7 @@ internal fun SettingsDialogContent(
     },
     text = {
       Column {
-        Divider()
+        HorizontalDivider()
         BooleanSettingsContent(
           appState,
           editableSettings,
@@ -112,7 +113,7 @@ internal fun SettingsDialogContent(
         )
         SectionDivider()
         LinksPanelContent(openExternalUrl, openOssLicencesInfo)
-        Divider()
+        HorizontalDivider()
       }
     },
     confirmButton = {

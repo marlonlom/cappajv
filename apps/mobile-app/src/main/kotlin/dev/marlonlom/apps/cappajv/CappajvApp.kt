@@ -14,6 +14,11 @@ import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.request.CachePolicy
 import coil.util.DebugLogger
+import dev.marlonlom.apps.cappajv.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 import timber.log.Timber
 
 /**
@@ -30,9 +35,11 @@ val Context.dataStore by preferencesDataStore("cappajv-preferences")
  * @author marlonlom
  */
 class CappajvApp : Application(), ImageLoaderFactory {
+
   override fun onCreate() {
     super.onCreate()
     setupTimber()
+    initializeKoinConfig()
   }
 
   override fun newImageLoader(): ImageLoader = ImageLoader(this)
@@ -57,6 +64,14 @@ class CappajvApp : Application(), ImageLoaderFactory {
   private fun setupTimber() {
     if (BuildConfig.DEBUG) {
       Timber.plant(Timber.DebugTree())
+    }
+  }
+
+  private fun initializeKoinConfig() {
+    startKoin {
+      androidContext(this@CappajvApp)
+      androidLogger(Level.DEBUG)
+      modules(appModule)
     }
   }
 

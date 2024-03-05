@@ -19,7 +19,7 @@ internal class CatalogDataServiceTest {
 
   @Before
   fun init() {
-    catalogResponse = CatalogDataService().fetchData()
+    catalogResponse = CatalogDataService("es").fetchData()
   }
 
   @Test
@@ -71,7 +71,7 @@ internal class CatalogDataServiceTest {
 
   @Test
   fun shouldValidateErrorFetchingWrongJsonData() {
-    val service = CatalogDataService()
+    val service = CatalogDataService("es")
     service.changePath("none.json")
     catalogResponse = service.fetchData()
     assertTrue(catalogResponse is Response.Failure)
@@ -81,7 +81,7 @@ internal class CatalogDataServiceTest {
 
   @Test
   fun shouldValidateErrorWhileSerializingJsonData() {
-    val service = CatalogDataService()
+    val service = CatalogDataService("es")
     service.changePath("catalog-single.json")
     catalogResponse = service.fetchData()
     assertTrue(catalogResponse is Response.Failure)

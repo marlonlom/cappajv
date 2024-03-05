@@ -13,6 +13,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.Locale
 
 internal class CatalogDetailViewModelTest {
 
@@ -25,7 +26,7 @@ internal class CatalogDetailViewModelTest {
   fun setUp() {
     viewModel = CatalogDetailViewModel(
       CatalogDetailRepository(
-        FakeLocalDataSource(CatalogDataService())
+        FakeLocalDataSource(CatalogDataService(Locale.getDefault().language))
       )
     )
   }
