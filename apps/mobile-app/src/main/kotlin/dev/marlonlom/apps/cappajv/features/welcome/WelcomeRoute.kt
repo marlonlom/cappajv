@@ -18,8 +18,7 @@ import dev.marlonlom.apps.cappajv.features.welcome.screens.PortraitWelcomeScreen
 import dev.marlonlom.apps.cappajv.features.welcome.screens.TableTopWelcomeScreen
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
-import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldInnerContentType
-import timber.log.Timber
+import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
 
 /**
  * Welcome route composable ui.
@@ -46,9 +45,8 @@ fun WelcomeRoute(
       .padding(horizontal = contentHorizontalPadding),
     contentAlignment = Alignment.Center
   ) {
-    Timber.d("scaffoldInnerContentType=${appState.scaffoldInnerContentType} devicePosture=${appState.devicePosture}")
-    when (appState.scaffoldInnerContentType) {
-      ScaffoldInnerContentType.SinglePane -> {
+    when (appState.scaffoldContentType) {
+      ScaffoldContentType.SinglePane -> {
         when {
           appState.isCompactHeight -> {
             LandscapeCompactWelcomeScreen(appState, onContinueHomeButtonClicked)
@@ -60,7 +58,7 @@ fun WelcomeRoute(
         }
       }
 
-      is ScaffoldInnerContentType.TwoPane -> {
+      is ScaffoldContentType.TwoPane -> {
         when (appState.devicePosture) {
           is DevicePosture.Separating.TableTop -> {
             TableTopWelcomeScreen(appState, onContinueHomeButtonClicked)
