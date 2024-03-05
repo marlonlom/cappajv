@@ -60,7 +60,7 @@ object ScaffoldContentClassifier {
     isCompactHeight: Boolean,
   ): ScaffoldContentType = when {
 
-    (isMediumWidth.or(isExpandedWidth)).not() -> when (devicePosture) {
+    isMediumWidth.not().and(!isExpandedWidth.not()) -> when (devicePosture) {
       is DevicePosture.Separating.TableTop -> TwoPane(devicePosture.hingeRatio)
       else -> SinglePane
     }
