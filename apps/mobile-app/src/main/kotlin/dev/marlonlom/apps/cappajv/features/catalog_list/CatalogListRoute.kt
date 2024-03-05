@@ -27,6 +27,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,11 +39,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
 @ExperimentalFoundationApi
@@ -51,10 +54,14 @@ import timber.log.Timber
 @Composable
 fun CatalogListRoute(
   appState: CappajvAppState,
+  viewModel: CatalogListViewModel = koinViewModel(),
 ) {
+
+  val catalogListState: CatalogListState by viewModel.uiState.collectAsStateWithLifecycle()
+
   val contentHorizontalPadding = when {
-    appState.isLandscapeOrientation.not().and(appState.is7InTabletWidth) -> 40.dp
-    appState.isLandscapeOrientation.not().and(appState.is10InTabletWidth) -> 80.dp
+    appState.isLandscape.not().and(appState.isMediumWidth) -> 40.dp
+    appState.isLandscape.not().and(appState.isExpandedWidth) -> 80.dp
     else -> 20.dp
   }
 
@@ -76,7 +83,7 @@ fun CatalogListRoute(
       )
     }
 
-    when (val catalogListState = appState.catalogListState) {
+    when (catalogListState) {
       CatalogListState.Empty -> {
         item {
           Text(" :( ")
@@ -88,8 +95,9 @@ fun CatalogListRoute(
       }
 
       is CatalogListState.Listing -> {
+        val listingsData = catalogListState as CatalogListState.Listing
 
-        catalogListState.map.keys.sorted().forEach { category ->
+        listingsData.map.keys.sorted().forEach { category ->
           item {
             Row(
               modifier = Modifier
@@ -110,7 +118,7 @@ fun CatalogListRoute(
           }
 
           item {
-            val tuples: List<CatalogItemTuple> = catalogListState.map[category]
+            val tuples: List<CatalogItemTuple> = listingsData.map[category]
               .orEmpty().shuffled().subList(0, 5)
             LazyRow(
               horizontalArrangement = Arrangement.spacedBy(20.dp),
