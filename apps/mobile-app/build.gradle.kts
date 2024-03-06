@@ -99,7 +99,6 @@ dependencies {
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.kotlinx.coroutines.core)
   implementation(libs.bundles.database.room)
-  implementation(libs.bundles.mobileapp.google.accompanist.pager)
 
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)
