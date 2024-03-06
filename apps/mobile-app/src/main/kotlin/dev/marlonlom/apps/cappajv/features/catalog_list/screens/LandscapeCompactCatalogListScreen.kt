@@ -68,7 +68,7 @@ fun LandscapeCompactCatalogListScreen(
   ) {
     Column(modifier = modifier.fillMaxWidth(splitRatio)) {
       CatalogListHeadline(appState)
-      CatalogListBanner()
+      CatalogListBanner(appState)
       CatalogCategoriesChipGroup(
         categories = categories,
         selectedCategory = selectedCategory,

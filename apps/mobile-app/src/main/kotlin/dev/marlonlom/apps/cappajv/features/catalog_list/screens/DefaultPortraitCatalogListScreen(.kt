@@ -57,7 +57,7 @@ fun DefaultPortraitCatalogListScreen(
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     CatalogListHeadline(appState)
-    CatalogListBanner()
+    CatalogListBanner(appState)
     CatalogCategoriesChipGroup(
       categories = categories,
       selectedCategory = selectedCategory,

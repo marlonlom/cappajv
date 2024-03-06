@@ -30,6 +30,7 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.calculateCurrentOffsetForPage
 import com.google.accompanist.pager.rememberPagerState
 import dev.marlonlom.apps.cappajv.R
+import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.yield
 import kotlin.math.absoluteValue
@@ -45,6 +46,7 @@ import kotlin.math.absoluteValue
 @ExperimentalPagerApi
 @Composable
 fun CatalogListBanner(
+  appState: CappajvAppState,
   modifier: Modifier = Modifier
 ) {
   val pagerState = rememberPagerState(initialPage = 0)
@@ -72,7 +74,7 @@ fun CatalogListBanner(
       state = pagerState,
       contentPadding = PaddingValues(0.dp),
       modifier = modifier
-        .height(160.dp)
+        .height(if (appState.isLandscape) 140.dp else 160.dp)
         .fillMaxWidth()
     ) { page ->
       Card(onClick = {}, shape = MaterialTheme.shapes.large, modifier = Modifier.graphicsLayer {
