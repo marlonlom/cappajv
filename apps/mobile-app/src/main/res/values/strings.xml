@@ -29,6 +29,7 @@
   <!-- feature: home / catalog list -->
   <string name="text_catalog_list_title">Get our rewards</string>
   <string name="text_catalog_subtitle_all_products">Our products</string>
+  <string name="text_catalog_hint_more_punctuations">%1$s more</string>
   <string-array name="array_catalog_list_categories">
     <item>All</item>
     <item>Cold drinks</item>

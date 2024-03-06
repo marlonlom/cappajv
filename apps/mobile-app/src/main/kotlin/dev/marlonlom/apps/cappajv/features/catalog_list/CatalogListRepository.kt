@@ -36,11 +36,11 @@ class CatalogListRepository(
 ) {
 
   /** Catalog products list as flow. */
-  val allProducts: Flow<CatalogListState> = localDataSource.getAllProducts()
+  val allProducts: Flow<CatalogListUiState> = localDataSource.getAllProducts()
     .transform { tuples ->
       when {
-        tuples.isNotEmpty() -> CatalogListState.Listing(tuples.groupBy { it.category })
-        else -> CatalogListState.Empty
+        tuples.isNotEmpty() -> CatalogListUiState.Listing(tuples.groupBy { it.category })
+        else -> CatalogListUiState.Empty
       }.also { state ->
         emit(state)
       }
@@ -99,5 +99,7 @@ private val RemoteCatalogItem.toEntity: CatalogItem
     titleNormalized = title.toSentenceCase,
     picture = picture,
     category = category,
-    detail = detail
+    detail = detail,
+    samplePunctuation = punctuations.first().let { "${it.label}:${it.pointsQty} pts" },
+    punctuationsCount = punctuations.count()
   )
