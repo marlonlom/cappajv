@@ -17,7 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.features.settings.SettingsDialog
 import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
@@ -34,7 +33,6 @@ import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
  * @param appState Main application ui state
  * @param appContentCallbacks Application content callbacks.
  */
-@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi

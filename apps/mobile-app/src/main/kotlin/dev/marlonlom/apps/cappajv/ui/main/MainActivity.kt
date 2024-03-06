@@ -27,7 +27,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
-import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePostureDetector
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -45,7 +44,6 @@ import kotlin.contracts.ExperimentalContracts
  *
  * @author marlonlom
  */
-@ExperimentalPagerApi
 @ExperimentalContracts
 @ExperimentalFoundationApi
 @ExperimentalLayoutApi
