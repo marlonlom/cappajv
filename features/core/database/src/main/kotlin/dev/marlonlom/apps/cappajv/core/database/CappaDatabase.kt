@@ -27,7 +27,7 @@ import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
     CatalogFavoriteItem::class,
     CatalogPunctuation::class
   ],
-  version = 4,
+  version = 5,
   exportSchema = false
 )
 abstract class CappaDatabase : RoomDatabase() {

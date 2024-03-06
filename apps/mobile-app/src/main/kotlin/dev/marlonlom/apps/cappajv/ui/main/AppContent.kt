@@ -10,6 +10,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.features.welcome.WelcomeRoute
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.MainScaffold
 import dev.marlonlom.apps.cappajv.ui.theme.CappajvTheme
@@ -56,6 +57,7 @@ private fun shouldUseDarkTheme(
  * @param appContentCallbacks Application content callbacks.
  * @param onOnboardingComplete Action for onboarding complete.
  */
+@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @ExperimentalLayoutApi
 @ExperimentalMaterial3Api

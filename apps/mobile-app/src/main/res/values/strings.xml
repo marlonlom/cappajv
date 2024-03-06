@@ -26,6 +26,16 @@
   <string name="text_welcome_title">Welcome</string>
   <string name="text_welcome_detail">Below you will be able to see the product catalog of the Amigos Juan Valdez® program, in which you will be able to live the unique experience of visiting the Juan Valdez® Café stores using your points to exchange them for food, drinks, prizes and benefits.</string>
   <string name="text_welcome_button">Get started</string>
+  <!-- feature: home / catalog list -->
+  <string name="text_catalog_list_title">Get our rewards</string>
+  <string name="text_catalog_subtitle_all_products">Our products</string>
+  <string name="text_catalog_hint_more_punctuations">%1$s more</string>
+  <string-array name="array_catalog_list_categories">
+    <item>All</item>
+    <item>Cold drinks</item>
+    <item>Hot drinks</item>
+    <item>Pastry</item>
+  </string-array>
   <!-- feature: home / settings -->
   <string name="text_settings_dark_theme">Dark theme</string>
   <string name="text_settings_dynamic_colors">Dynamic colors</string>
@@ -37,6 +47,4 @@
   <string name="url_settings_pdtp" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
   <string name="url_settings_privacy_policy" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
   <string name="url_settings_terms_conditions" translatable="false">https://juanvaldez.com/amigosjuanvaldez/terminos-y-condiciones</string>
-    <string name="text_catalog_list_all">All</string>
-  <string name="text_catalog_list_see_all">See all</string>
 </resources>

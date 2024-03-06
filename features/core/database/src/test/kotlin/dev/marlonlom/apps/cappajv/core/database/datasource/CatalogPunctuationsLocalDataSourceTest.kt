@@ -48,7 +48,9 @@ internal class CatalogPunctuationsLocalDataSourceTest {
       titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
+      detail = "Lorem ipsum",
+      samplePunctuation = "",
+      punctuationsCount = 0
     )
     val productPoint = CatalogPunctuation(
       id = 11L,
@@ -89,7 +91,9 @@ internal class CatalogPunctuationsLocalDataSourceTest {
       titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
+      detail = "Lorem ipsum",
+      samplePunctuation = "",
+      punctuationsCount = 0
     )
     val productPoint = CatalogPunctuation(
       id = 11L,

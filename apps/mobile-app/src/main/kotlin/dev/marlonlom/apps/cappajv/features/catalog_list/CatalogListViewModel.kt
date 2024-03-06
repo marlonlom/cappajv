@@ -8,7 +8,7 @@ package dev.marlonlom.apps.cappajv.features.catalog_list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListState.Loading
+import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListUiState.Loading
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch

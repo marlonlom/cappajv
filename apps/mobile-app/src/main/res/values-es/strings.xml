@@ -25,6 +25,16 @@
   <string name="text_welcome_title">Bienvenidos</string>
   <string name="text_welcome_detail">A continuación podrás ver el catálogo de productos del programa Amigos Juan Valdez®, en el cual podrás vivir la experiencia única de visitar las tiendas Juan Valdez® Café utilizando tus puntos para canjearlos por alimentos, bebidas, premios y beneficios.</string>
   <string name="text_welcome_button">Empezar</string>
+  <!-- feature: home / catalog list -->
+  <string name="text_catalog_list_title">Consigue nuestros premios</string>
+  <string name="text_catalog_subtitle_all_products">Nuestros productos</string>
+  <string name="text_catalog_hint_more_punctuations">%1$s más</string>
+  <string-array name="array_catalog_list_categories">
+    <item>Todos</item>
+    <item>Bebidas frías</item>
+    <item>Bebidas calientes</item>
+    <item>Pastelería</item>
+  </string-array>
   <!-- feature: home / settings -->
   <string name="text_settings_dark_theme">Tema oscuro</string>
   <string name="text_settings_dynamic_colors">Colores dinámicos</string>
@@ -32,7 +42,4 @@
   <string name="text_settings_privacy_policy">Política de privacidad</string>
   <string name="text_settings_terms_conditions">Términos y condiciones</string>
   <string name="text_settings_oss_licences">Software de terceros</string>
-  <!-- feature: home / catalog list -->
-  <string name="text_catalog_list_all">Todos</string>
-  <string name="text_catalog_list_see_all">See all</string>
 </resources>

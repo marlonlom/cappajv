@@ -33,11 +33,13 @@ fun rememberCappajvAppState(
   windowSizeClass: WindowSizeClass,
   devicePosture: DevicePosture,
   screenWidthDp: Int,
+  isLandscape: Boolean,
   navController: NavHostController = rememberNavController(),
 ): CappajvAppState = remember(
   windowSizeClass,
   devicePosture,
   screenWidthDp,
+  isLandscape,
   navController,
 ) {
   CappajvAppState(
@@ -45,6 +47,7 @@ fun rememberCappajvAppState(
     windowSizeClass = windowSizeClass,
     devicePosture = devicePosture,
     screenWidthDp = screenWidthDp,
+    isLandscape = isLandscape
   )
 }
 
@@ -63,6 +66,7 @@ data class CappajvAppState(
   val windowSizeClass: WindowSizeClass,
   val devicePosture: DevicePosture,
   val screenWidthDp: Int,
+  val isLandscape: Boolean,
 ) {
   val isCompactWidth get() = windowSizeClass.widthSizeClass == WindowWidthSizeClass.Compact
 
@@ -71,8 +75,6 @@ data class CappajvAppState(
   val isMediumWidth get() = windowSizeClass.widthSizeClass == WindowWidthSizeClass.Medium
 
   val isExpandedWidth get() = windowSizeClass.widthSizeClass == WindowWidthSizeClass.Expanded
-
-  val isLandscape get() = isMediumWidth.and(isCompactHeight).or(isExpandedWidth.and(isCompactHeight.not()))
 
   val scaffoldContentType
     get() = ScaffoldContentClassifier.classify(

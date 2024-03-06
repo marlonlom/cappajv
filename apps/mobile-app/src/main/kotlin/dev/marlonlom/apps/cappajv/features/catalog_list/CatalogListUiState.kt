@@ -8,25 +8,27 @@ package dev.marlonlom.apps.cappajv.features.catalog_list
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 
 /**
- * Catalog ui state sealed class.
+ * Catalog list ui state sealed class.
  *
  * @author marlonlom
  */
-sealed class CatalogListState {
+sealed class CatalogListUiState {
   /**
    * Catalog ui state as loading state object.
    */
-  data object Loading : CatalogListState()
+  data object Loading : CatalogListUiState()
 
   /**
    * Catalog ui state as empty results object.
    */
-  data object Empty : CatalogListState()
+  data object Empty : CatalogListUiState()
 
   /**
    * Catalog ui state as non empty list results data class.
    *
-   * @property map Grouped catalog items map.
+   * @property catalogMap Grouped catalog items.
    */
-  data class Listing(val map: Map<String, List<CatalogItemTuple>>) : CatalogListState()
+  data class Listing(
+    val catalogMap: Map<String, List<CatalogItemTuple>>
+  ) : CatalogListUiState()
 }
