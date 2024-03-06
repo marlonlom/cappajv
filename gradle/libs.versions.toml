@@ -19,6 +19,8 @@ androidx-room-ktx = "androidx.room:room-ktx:2.6.1"
 androidx-room-runtime = "androidx.room:room-runtime:2.6.1"
 androidx-window = "androidx.window:window:1.2.0"
 coil-compose = "io.coil-kt:coil-compose:2.6.0"
+google-accompanist-pager = "com.google.accompanist:accompanist-pager:0.28.0"
+google-accompanist-pager-indicators = "com.google.accompanist:accompanist-pager-indicators:0.28.0"
 google-guava = "com.google.guava:guava:27.0.1-android"
 google-oss-licenses = "com.google.android.gms:play-services-oss-licenses:17.0.1"
 google-oss-licenses-plugin = "com.google.android.gms:oss-licenses-plugin:0.10.6"
@@ -68,3 +70,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 
 [bundles]
 database-room = ["androidx-room-ktx", "androidx-room-runtime"]
+mobileapp-google-accompanist-pager = ["google-accompanist-pager", "google-accompanist-pager-indicators"]
