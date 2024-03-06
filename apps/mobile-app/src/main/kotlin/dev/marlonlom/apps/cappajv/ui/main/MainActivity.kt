@@ -5,6 +5,7 @@
 
 package dev.marlonlom.apps.cappajv.ui.main
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,6 +27,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePostureDetector
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -43,6 +45,7 @@ import kotlin.contracts.ExperimentalContracts
  *
  * @author marlonlom
  */
+@ExperimentalPagerApi
 @ExperimentalContracts
 @ExperimentalFoundationApi
 @ExperimentalLayoutApi
@@ -95,7 +98,8 @@ class MainActivity : ComponentActivity() {
       val appState = rememberCappajvAppState(
         windowSizeClass = calculateWindowSizeClass(this),
         devicePosture = devicePosture,
-        screenWidthDp = LocalConfiguration.current.smallestScreenWidthDp
+        screenWidthDp = LocalConfiguration.current.smallestScreenWidthDp,
+        isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
       )
 
       AppContent(
