@@ -22,6 +22,7 @@ object NavigationTypeSelector {
     screenWidthDp >= 600 -> NavigationType.NAVIGATION_RAIL
     isCompactHeight(devicePosture, wsc) -> NavigationType.NAVIGATION_RAIL
     isFullyMediumWidth(devicePosture, wsc) -> NavigationType.NAVIGATION_RAIL
+    isLandscapeBook(devicePosture, wsc) -> NavigationType.NAVIGATION_RAIL
     else -> NavigationType.BOTTOM_NAV
   }
 
@@ -30,6 +31,9 @@ object NavigationTypeSelector {
 
   private fun isFullyMediumWidth(devicePosture: DevicePosture, wsc: WindowSizeClass) =
     devicePosture == DevicePosture.Normal && wsc.widthSizeClass == WindowWidthSizeClass.Medium
+
+  private fun isLandscapeBook(devicePosture: DevicePosture, wsc: WindowSizeClass) =
+    devicePosture is DevicePosture.Separating.Book && wsc.widthSizeClass >= WindowWidthSizeClass.Medium
 }
 
 enum class NavigationType {

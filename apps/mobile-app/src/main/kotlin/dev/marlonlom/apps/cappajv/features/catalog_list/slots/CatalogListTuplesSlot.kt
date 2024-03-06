@@ -8,6 +8,7 @@ package dev.marlonlom.apps.cappajv.features.catalog_list.slots
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.lazy.LazyColumn
@@ -36,6 +37,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param onCatalogItemTupleClicked Action for catalog tuple selected.
  * @param modifier Modifier for this composable.
  */
+@ExperimentalLayoutApi
 @ExperimentalFoundationApi
 @Composable
 fun CatalogListTuplesSlot(

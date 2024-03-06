@@ -17,12 +17,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.features.catalog_list.parts.CatalogListHeadline
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesChipGroup
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListBanner
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListTuplesSlot
+import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
 
@@ -41,7 +41,6 @@ import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
  * @param modifier Modifier for this composable.
  */
 @ExperimentalLayoutApi
-@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @Composable
 fun LandscapeCompactCatalogListScreen(
@@ -58,6 +57,9 @@ fun LandscapeCompactCatalogListScreen(
     appState.scaffoldContentType is ScaffoldContentType.TwoPane ->
       (appState.scaffoldContentType as ScaffoldContentType.TwoPane).hingeRatio
 
+    appState.scaffoldContentType is ScaffoldContentType.SinglePane && appState.devicePosture is DevicePosture.Separating.Book ->
+      0.4f
+
     else -> 0.45f
   }
 
@@ -68,7 +70,7 @@ fun LandscapeCompactCatalogListScreen(
   ) {
     Column(modifier = modifier.fillMaxWidth(splitRatio)) {
       CatalogListHeadline(appState)
-      CatalogListBanner()
+      CatalogListBanner(appState)
       CatalogCategoriesChipGroup(
         categories = categories,
         selectedCategory = selectedCategory,
@@ -77,10 +79,10 @@ fun LandscapeCompactCatalogListScreen(
     }
     Column(modifier = modifier.safeContentPadding()) {
       CatalogListTuplesSlot(
-          appState = appState,
-          catalogItemsListState = catalogItemsListState,
-          catalogTuples = catalogItems,
-          onCatalogItemTupleClicked = onCatalogItemSelected,
+        appState = appState,
+        catalogItemsListState = catalogItemsListState,
+        catalogTuples = catalogItems,
+        onCatalogItemTupleClicked = onCatalogItemSelected,
       )
     }
   }

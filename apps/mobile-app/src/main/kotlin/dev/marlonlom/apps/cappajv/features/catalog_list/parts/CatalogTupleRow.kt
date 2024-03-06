@@ -9,6 +9,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -50,6 +52,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param onCatalogItemTupleClicked Action for catalog item selected.
  * @param modifier Modifier for this composable.
  */
+@ExperimentalLayoutApi
 @Composable
 internal fun CatalogTupleRow(
   appState: CappajvAppState,
@@ -83,14 +86,14 @@ internal fun CatalogTupleRow(
         contentDescription = tuple.title,
         contentScale = ContentScale.Crop,
         modifier = Modifier
-            .border(
-                width = 2.dp,
-                color = MaterialTheme.colorScheme.secondary,
-                shape = MaterialTheme.shapes.medium,
-            )
-            .clip(MaterialTheme.shapes.medium)
-            .size(imageSizeDp)
-            .background(Color.White),
+          .border(
+            width = 2.dp,
+            color = MaterialTheme.colorScheme.secondary,
+            shape = MaterialTheme.shapes.medium,
+          )
+          .clip(MaterialTheme.shapes.medium)
+          .size(imageSizeDp)
+          .background(Color.White),
       )
 
       Column {
@@ -101,9 +104,9 @@ internal fun CatalogTupleRow(
           overflow = TextOverflow.Ellipsis,
           fontWeight = FontWeight.SemiBold
         )
-        Row(
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.spacedBy(10.dp)
+        FlowRow(
+          horizontalArrangement = Arrangement.spacedBy(10.dp),
+          verticalArrangement = Arrangement.Center
         ) {
           SuggestionChip(
             onClick = { },
