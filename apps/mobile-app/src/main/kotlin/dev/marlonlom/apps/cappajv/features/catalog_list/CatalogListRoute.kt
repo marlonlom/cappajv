@@ -6,9 +6,11 @@
 package dev.marlonlom.apps.cappajv.features.catalog_list
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,6 +22,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.R
@@ -56,11 +59,15 @@ fun CatalogListRoute(
   when (catalogListUiState) {
     CatalogListUiState.Empty -> Unit
     CatalogListUiState.Loading -> {
-      Box(
+      Column(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
       ) {
-        CircularProgressIndicator()
+        CircularProgressIndicator(
+          modifier = Modifier.size(64.dp),
+          strokeWidth = 2.dp
+        )
       }
     }
 
