@@ -6,41 +6,45 @@
 package dev.marlonlom.apps.cappajv.features.catalog_list.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.features.catalog_list.parts.CatalogListHeadline
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesChipGroup
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListBanner
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListTuplesSlot
+import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 /**
- * Default portrait catalog list screen composable ui.
+ * Compact tableTop catalog list screen composable ui.
  *
  * @author marlonlom
  *
  * @param appState Application ui state.
- * @param catalogItemsListState Catalog items lazy list state.
- * @param catalogItems Catalog items list.
- * @param categories Categories list.
- * @param selectedCategory Selected category name.
- * @param onSelectedCategoryChanged Action for category selected.
- * @param onCatalogItemSelected Action for catalog item selected.
- * @param modifier Modifier for this composable.
+ * @param catalogItemsListState
+ * @param catalogItems
+ * @param categories
+ * @param selectedCategory
+ * @param onSelectedCategoryChanged
+ * @param onCatalogItemSelected
  */
-@ExperimentalPagerApi
 @ExperimentalLayoutApi
+@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @Composable
-fun DefaultPortraitCatalogListScreen(
+fun CompactTableTopCatalogListScreen(
   appState: CappajvAppState,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
@@ -50,24 +54,38 @@ fun DefaultPortraitCatalogListScreen(
   onCatalogItemSelected: (Long) -> Unit,
   modifier: Modifier = Modifier,
 ) {
+
+  val hingeRatio = (appState.devicePosture as DevicePosture.Separating.TableTop).hingeRatio
+
   Column(
     modifier = modifier
       .fillMaxWidth()
       .safeContentPadding(),
-    horizontalAlignment = Alignment.CenterHorizontally
+    verticalArrangement = Arrangement.SpaceAround
   ) {
-    CatalogListHeadline(appState)
-    CatalogListBanner()
-    CatalogCategoriesChipGroup(
-      categories = categories,
-      selectedCategory = selectedCategory,
-      onCategoryChipSelected = { onSelectedCategoryChanged(it) },
-      isScrollable = true,
-    )
+
+    Column(
+      modifier = modifier
+        .fillMaxHeight(hingeRatio),
+    ) {
+      CatalogListHeadline(appState)
+      CatalogListBanner()
+      CatalogCategoriesChipGroup(
+        categories = categories,
+        selectedCategory = selectedCategory,
+        onCategoryChipSelected = { onSelectedCategoryChanged(it) },
+        isScrollable = true
+      )
+    }
+
+    Spacer(modifier = Modifier.height(60.dp))
+
     CatalogListTuplesSlot(
+      appState = appState,
       catalogItemsListState = catalogItemsListState,
       catalogTuples = catalogItems,
       onCatalogItemTupleClicked = { onCatalogItemSelected(it) },
     )
+
   }
 }

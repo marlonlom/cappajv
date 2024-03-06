@@ -23,12 +23,14 @@ import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.features.catalog_list.parts.CatalogTupleRow
+import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 /**
  * Catalog list tuples slot composable ui.
  *
  * @author marlonlom
  *
+ * @param appState Application ui state.
  * @param catalogItemsListState Catalog items lazy list state.
  * @param catalogTuples Catalog tuples list.
  * @param onCatalogItemTupleClicked Action for catalog tuple selected.
@@ -37,6 +39,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.parts.CatalogTupleRow
 @ExperimentalFoundationApi
 @Composable
 fun CatalogListTuplesSlot(
+  appState: CappajvAppState,
   catalogItemsListState: LazyListState,
   catalogTuples: List<CatalogItemTuple>,
   onCatalogItemTupleClicked: (Long) -> Unit,
@@ -63,6 +66,7 @@ fun CatalogListTuplesSlot(
       key = CatalogItemTuple::id,
     ) { tuple ->
       CatalogTupleRow(
+        appState = appState,
         tuple = tuple,
         onCatalogItemTupleClicked = onCatalogItemTupleClicked,
       )
