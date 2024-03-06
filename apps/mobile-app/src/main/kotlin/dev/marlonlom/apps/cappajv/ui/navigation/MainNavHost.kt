@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.features.catalog_favorites.FavoriteProductsRoute
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListRoute
 import dev.marlonlom.apps.cappajv.features.catalog_search.SearchProductsRoute
@@ -26,6 +27,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param appState Application ui state.
  * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
@@ -51,6 +53,7 @@ fun MainNavHost(
  *
  * @param appState Application ui state.
  */
+@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi

@@ -16,6 +16,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.navigation.MainNavHost
@@ -34,6 +35,7 @@ import timber.log.Timber
  * @param selectedPosition
  * @param onSelectedPositionChanged
  */
+@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
@@ -50,12 +52,13 @@ internal fun MainScaffoldContent(
     [MainScaffoldContent]
      scaffoldContentType=${appState.scaffoldContentType}
      devicePosture=${appState.devicePosture}
+     isLandscape=${appState.isLandscape}
   """.trimIndent()
   )
   Box(
     modifier = Modifier
-        .safeDrawingPadding()
-        .padding(paddingValues),
+      .safeDrawingPadding()
+      .padding(paddingValues),
     contentAlignment = Alignment.Center,
   ) {
     when (appState.navigationType) {
@@ -78,14 +81,16 @@ internal fun MainScaffoldContent(
           )
 
           MainNavHost(
-            appState = appState, appContentCallbacks
+            appState = appState,
+            appContentCallbacks = appContentCallbacks,
           )
         }
       }
 
       NavigationType.BOTTOM_NAV -> {
         MainNavHost(
-          appState = appState, appContentCallbacks
+          appState = appState,
+          appContentCallbacks = appContentCallbacks,
         )
       }
     }
