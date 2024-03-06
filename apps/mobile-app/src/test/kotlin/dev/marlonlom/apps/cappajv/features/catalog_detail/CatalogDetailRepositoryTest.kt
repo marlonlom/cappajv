@@ -42,6 +42,8 @@ internal class CatalogDetailRepositoryTest {
       picture = "https://juanvaldez.com/wp-content/uploads/2022/10/Granizado-juan-Valdez.jpg",
       category = "Category one",
       detail = "Lorem ipsum",
+      samplePunctuation = "",
+      punctuationsCount = 0,
     )
     val foundProduct = repository.find(expectedItem.id).first()
     assertNotNull(foundProduct)

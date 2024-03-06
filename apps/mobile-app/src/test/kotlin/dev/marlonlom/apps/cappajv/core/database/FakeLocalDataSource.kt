@@ -30,6 +30,8 @@ internal class FakeLocalDataSource(
         title = it.title,
         picture = it.picture,
         category = "Category one",
+        samplePunctuation = "",
+        punctuationsCount = 0,
       )
     })
   }
@@ -46,7 +48,9 @@ internal class FakeLocalDataSource(
           titleNormalized = it.title.lowercase(),
           picture = it.picture,
           category = "Category one",
-          detail = "Lorem ipsum"
+          detail = "Lorem ipsum",
+          samplePunctuation = "",
+          punctuationsCount = 0,
         ) else NONE
       }
     return flowOf(listResponse)
@@ -90,6 +94,16 @@ internal class FakeLocalDataSource(
   override fun deleteAllPunctuations() = Unit
 
   companion object {
-    val NONE = CatalogItem(-1, "", "", "", "", "", "")
+    val NONE = CatalogItem(
+      id = -1,
+      title = "",
+      slug = "",
+      titleNormalized = "",
+      picture = "",
+      category = "",
+      detail = "",
+      samplePunctuation = "",
+      punctuationsCount = 0
+    )
   }
 }
