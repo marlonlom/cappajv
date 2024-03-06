@@ -30,28 +30,36 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
+import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 /**
  * Catalog tuple row composable ui.
  *
  * @author marlonlom
  *
+ * @param appState Application ui state.
  * @param tuple Catalog item.
  * @param onCatalogItemTupleClicked Action for catalog item selected.
  * @param modifier Modifier for this composable.
  */
 @Composable
 internal fun CatalogTupleRow(
+  appState: CappajvAppState,
   tuple: CatalogItemTuple,
   onCatalogItemTupleClicked: (Long) -> Unit,
   modifier: Modifier = Modifier,
 ) {
+
+  val imageSizeDp = getCatalogTupleImageSizeDp(appState)
+
   Card(
     modifier = modifier.fillMaxWidth(),
     shape = CardDefaults.outlinedShape,
@@ -75,20 +83,22 @@ internal fun CatalogTupleRow(
         contentDescription = tuple.title,
         contentScale = ContentScale.Crop,
         modifier = Modifier
-          .border(
-            width = 2.dp,
-            color = MaterialTheme.colorScheme.secondary,
-            shape = MaterialTheme.shapes.medium,
-          )
-          .clip(MaterialTheme.shapes.medium)
-          .size(100.dp)
-          .background(Color.White),
+            .border(
+                width = 2.dp,
+                color = MaterialTheme.colorScheme.secondary,
+                shape = MaterialTheme.shapes.medium,
+            )
+            .clip(MaterialTheme.shapes.medium)
+            .size(imageSizeDp)
+            .background(Color.White),
       )
 
       Column {
         Text(
           text = tuple.title,
-          style = MaterialTheme.typography.titleLarge,
+          style = getCatalogTupleTitleStyle(appState),
+          maxLines = 1,
+          overflow = TextOverflow.Ellipsis,
           fontWeight = FontWeight.SemiBold
         )
         Row(
@@ -117,9 +127,9 @@ internal fun CatalogTupleRow(
 
           if (tuple.punctuationsCount > 1) {
             Text(
-              text = stringResource(
-                R.string.text_catalog_hint_more_punctuations,
-                tuple.punctuationsCount - 1
+              text = gePunctuationCountText(
+                appState = appState,
+                punctuationsCount = tuple.punctuationsCount - 1
               )
             )
           }
@@ -127,4 +137,35 @@ internal fun CatalogTupleRow(
       }
     }
   }
+}
+
+@Composable
+private fun gePunctuationCountText(
+  appState: CappajvAppState,
+  punctuationsCount: Int,
+) = when {
+  appState.isCompactWidth.and(appState.isLandscape.not())
+    .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> "+$punctuationsCount"
+
+  else -> stringResource(
+    R.string.text_catalog_hint_more_punctuations,
+    punctuationsCount
+  )
+}
+
+@Composable
+private fun getCatalogTupleImageSizeDp(appState: CappajvAppState) = when {
+  appState.isCompactWidth.and(appState.isLandscape.not())
+    .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> 56.dp
+
+  else -> 100.dp
+}
+
+
+@Composable
+private fun getCatalogTupleTitleStyle(appState: CappajvAppState) = when {
+  appState.isCompactWidth.and(appState.isLandscape.not())
+    .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> MaterialTheme.typography.titleMedium
+
+  else -> MaterialTheme.typography.titleLarge
 }

@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.apps.cappajv.features.catalog_list.screens.CompactTableTopCatalogListScreen
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.DefaultPortraitCatalogListScreen
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.LandscapeCompactCatalogListScreen
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
@@ -45,6 +46,19 @@ fun CatalogListContent(
   when {
     appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal) -> {
       LandscapeCompactCatalogListScreen(
+        appState = appState,
+        catalogItemsListState = catalogItemsListState,
+        catalogItems = catalogItems,
+        categories = categories,
+        selectedCategory = selectedCategory,
+        onSelectedCategoryChanged = onSelectedCategoryChanged,
+        onCatalogItemSelected = onCatalogItemSelected,
+      )
+    }
+
+    appState.isCompactWidth.and(appState.isLandscape.not())
+      .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> {
+      CompactTableTopCatalogListScreen(
         appState = appState,
         catalogItemsListState = catalogItemsListState,
         catalogItems = catalogItems,
