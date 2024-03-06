@@ -26,7 +26,7 @@ interface CatalogItemsDao {
    *
    * @return Product items list, or empty list, as Flow.
    */
-  @Query("SELECT c.id, c.title, c.category, c.picture FROM catalog_item c")
+  @Query("SELECT c.id, c.title, c.category, c.picture, c.samplePunctuation, c.punctuationsCount FROM catalog_item c")
   fun getProducts(): Flow<List<CatalogItemTuple>>
 
   /**

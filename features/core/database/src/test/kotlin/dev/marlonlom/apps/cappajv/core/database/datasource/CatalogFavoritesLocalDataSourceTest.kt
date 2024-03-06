@@ -45,6 +45,8 @@ internal class CatalogFavoritesLocalDataSourceTest {
       title = "Pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
     )
     dataSource.insertAllFavoriteProducts(product)
     dataSource.getFavorites().collect { items ->
@@ -66,6 +68,8 @@ internal class CatalogFavoritesLocalDataSourceTest {
       title = "Pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
     )
     dataSource.insertAllFavoriteProducts(product)
     dataSource.deleteAllFavorites()
@@ -84,12 +88,16 @@ internal class CatalogFavoritesLocalDataSourceTest {
         title = "Pod",
         picture = "https://noimage.no.com/no.png",
         category = "CategoryOne",
+        samplePunctuation = "",
+        punctuationsCount = 0,
       ),
       CatalogFavoriteItem(
         id = 2L,
         title = "Tinto",
         picture = "https://noimage.no.com/no.png",
         category = "CategoryTwo",
+        samplePunctuation = "",
+        punctuationsCount = 0,
       )
     )
     dataSource.insertAllFavoriteProducts(*products)

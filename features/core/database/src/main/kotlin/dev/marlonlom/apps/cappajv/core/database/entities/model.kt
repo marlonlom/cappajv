@@ -20,6 +20,8 @@ import androidx.room.Entity
  * @property picture Product item picture url.
  * @property category Product item category.
  * @property detail Product item detail.
+ * @property samplePunctuation Sample punctuation text.
+ * @property punctuationsCount Punctuations count.
  */
 @Entity(
   tableName = "catalog_item",
@@ -40,6 +42,10 @@ data class CatalogItem(
   val category: String,
   @ColumnInfo
   val detail: String,
+  @ColumnInfo
+  val samplePunctuation: String,
+  @ColumnInfo
+  val punctuationsCount: Int,
 )
 
 /**
@@ -51,6 +57,8 @@ data class CatalogItem(
  * @property title Product item title.
  * @property picture Product item picture url.
  * @property category Product item category.
+ * @property samplePunctuation Sample punctuation text.
+ * @property punctuationsCount Punctuations count.
  */
 @Entity(
   tableName = "catalog_item_favorite",
@@ -65,6 +73,10 @@ data class CatalogFavoriteItem(
   val picture: String,
   @ColumnInfo
   val category: String,
+  @ColumnInfo
+  val samplePunctuation: String,
+  @ColumnInfo
+  val punctuationsCount: Int,
 )
 
 /**
@@ -101,6 +113,8 @@ data class CatalogPunctuation(
  * @property title Product item title.
  * @property picture Product item picture url.
  * @property category Product item category.
+ * @property samplePunctuation Sample punctuation text.
+ * @property punctuationsCount Punctuations count.
  */
 data class CatalogItemTuple(
   @ColumnInfo
@@ -111,4 +125,8 @@ data class CatalogItemTuple(
   val picture: String,
   @ColumnInfo
   val category: String,
+  @ColumnInfo
+  val samplePunctuation: String,
+  @ColumnInfo
+  val punctuationsCount: Int,
 )

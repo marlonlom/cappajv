@@ -23,7 +23,7 @@ internal class FakeCatalogItemsDao(
 
   override fun getProducts(): Flow<List<CatalogItemTuple>> =
     flowOf(list.map {
-      CatalogItemTuple(it.id, it.title, it.picture, it.category)
+      CatalogItemTuple(it.id, it.title, it.picture, it.category, it.samplePunctuation, it.punctuationsCount)
     })
 
   override fun findProduct(productId: Long): Flow<CatalogItem?> =

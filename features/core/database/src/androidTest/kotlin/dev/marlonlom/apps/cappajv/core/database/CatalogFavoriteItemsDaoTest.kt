@@ -56,6 +56,8 @@ internal class CatalogFavoriteItemsDaoTest {
       title = "Pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
     )
     dao.insertAll(entity)
     val list = dao.getFavoriteItems().first()
@@ -69,6 +71,8 @@ internal class CatalogFavoriteItemsDaoTest {
       title = "Pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
     )
     dao.insertAll(entity)
     dao.deleteAll()
@@ -83,6 +87,8 @@ internal class CatalogFavoriteItemsDaoTest {
       title = "Pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
     )
     val entities = arrayOf(
       remainingItem,
@@ -91,6 +97,8 @@ internal class CatalogFavoriteItemsDaoTest {
         title = "Tinto",
         picture = "https://noimage.no.com/no.png",
         category = "CategoryOne",
+        samplePunctuation = "",
+        punctuationsCount = 0,
       )
     )
     dao.insertAll(*entities)

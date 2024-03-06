@@ -54,13 +54,17 @@ internal class CatalogItemsDaoTest {
       titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
+      detail = "Lorem ipsum",
+      samplePunctuation = "",
+      punctuationsCount = 0
     )
     val expectedTuple = CatalogItemTuple(
       id = 1L,
       title = "Pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
     )
     dao.insertAll(entity)
     val list = dao.getProducts().first()
@@ -76,7 +80,9 @@ internal class CatalogItemsDaoTest {
       titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
+      detail = "Lorem ipsum",
+      samplePunctuation = "",
+      punctuationsCount = 0
     )
     dao.insertAll(entity)
     dao.deleteAll()
@@ -93,7 +99,9 @@ internal class CatalogItemsDaoTest {
       titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
+      detail = "Lorem ipsum",
+      samplePunctuation = "",
+      punctuationsCount = 0
     )
     dao.insertAll(product)
 

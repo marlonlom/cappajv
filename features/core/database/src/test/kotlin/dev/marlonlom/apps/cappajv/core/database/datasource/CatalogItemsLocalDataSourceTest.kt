@@ -49,7 +49,9 @@ internal class CatalogItemsLocalDataSourceTest {
       titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
+      detail = "Lorem ipsum",
+      samplePunctuation = "",
+      punctuationsCount = 0
     )
     dataSource.insertAllProducts(product)
     dataSource.findProduct(product.id).collect { item: CatalogItem? ->
@@ -79,7 +81,9 @@ internal class CatalogItemsLocalDataSourceTest {
       titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
+      detail = "Lorem ipsum",
+      samplePunctuation = "Unit: 1234pts",
+      punctuationsCount = 1
     )
     dataSource.insertAllProducts(product)
     dataSource.getAllProducts()
@@ -95,6 +99,8 @@ internal class CatalogItemsLocalDataSourceTest {
             assertEquals("Pod", tuple.title)
             assertEquals("CategoryOne", tuple.category)
             assertEquals("https://noimage.no.com/no.png", tuple.picture)
+            assertEquals("Unit: 1234pts", tuple.samplePunctuation)
+            assertEquals(1, tuple.punctuationsCount)
           }
 
           else -> fail()
@@ -111,7 +117,9 @@ internal class CatalogItemsLocalDataSourceTest {
       titleNormalized = "pod",
       picture = "https://noimage.no.com/no.png",
       category = "CategoryOne",
-      detail = "Lorem ipsum"
+      detail = "Lorem ipsum",
+      samplePunctuation = "",
+      punctuationsCount = 0
     )
     dataSource.insertAllProducts(product)
     dataSource.deleteAllProducts()
