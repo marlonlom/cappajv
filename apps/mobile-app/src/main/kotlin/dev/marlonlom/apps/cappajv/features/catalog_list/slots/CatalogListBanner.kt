@@ -61,7 +61,7 @@ fun CatalogListBanner(
       yield()
       delay(5000)
       pagerState.animateScrollToPage(
-        page = (pagerState.currentPage + 1) % (pagerState.pageCount)
+        page = pagerState.currentPage + 1 % pagerState.pageCount
       )
     }
   }
