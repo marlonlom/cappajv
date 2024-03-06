@@ -47,9 +47,9 @@ fun CatalogListHeadline(
 
   Row(
     modifier = modifier
-      .background(MaterialTheme.colorScheme.surface)
-      .fillMaxWidth()
-      .padding(rowPaddingValues),
+        .background(MaterialTheme.colorScheme.surface)
+        .fillMaxWidth()
+        .padding(rowPaddingValues),
     verticalAlignment = Alignment.Bottom,
     horizontalArrangement = Arrangement.SpaceBetween
   ) {
@@ -64,7 +64,7 @@ fun CatalogListHeadline(
       painter = painterResource(R.drawable.img_juan_valdez_logo),
       contentDescription = null,
       contentScale = ContentScale.FillBounds,
-      modifier = Modifier.size(64.dp)
+      modifier = Modifier.size(if (appState.isLandscape) 36.dp else 64.dp)
     )
   }
 }

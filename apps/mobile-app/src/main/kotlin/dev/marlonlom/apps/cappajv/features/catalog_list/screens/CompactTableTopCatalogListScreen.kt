@@ -18,7 +18,6 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.features.catalog_list.parts.CatalogListHeadline
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesChipGroup
@@ -41,7 +40,6 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param onCatalogItemSelected
  */
 @ExperimentalLayoutApi
-@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @Composable
 fun CompactTableTopCatalogListScreen(
@@ -69,7 +67,7 @@ fun CompactTableTopCatalogListScreen(
         .fillMaxHeight(hingeRatio),
     ) {
       CatalogListHeadline(appState)
-      CatalogListBanner()
+      CatalogListBanner(appState)
       CatalogCategoriesChipGroup(
         categories = categories,
         selectedCategory = selectedCategory,

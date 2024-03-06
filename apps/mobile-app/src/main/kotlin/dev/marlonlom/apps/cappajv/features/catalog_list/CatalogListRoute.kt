@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.google.accompanist.pager.ExperimentalPagerApi
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
@@ -40,7 +39,6 @@ import timber.log.Timber
  * @param appState Application ui state
  * @param viewModel Catalog list viewmodel.
  */
-@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
