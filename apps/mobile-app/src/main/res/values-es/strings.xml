@@ -27,7 +27,7 @@
   <string name="text_welcome_button">Empezar</string>
   <!-- feature: home / catalog list -->
   <string name="text_catalog_list_title">Consigue nuestros premios</string>
-  <string name="text_catalog_list_see_all">See all</string>
+  <string name="text_catalog_subtitle_all_products">Nuestros productos</string>
   <string-array name="array_catalog_list_categories">
     <item>Todos</item>
     <item>Bebidas frías</item>
