@@ -106,7 +106,6 @@ internal fun CatalogTupleRow(
         )
         FlowRow(
           horizontalArrangement = Arrangement.spacedBy(10.dp),
-          verticalArrangement = Arrangement.Center
         ) {
           SuggestionChip(
             onClick = { },
@@ -133,7 +132,8 @@ internal fun CatalogTupleRow(
               text = gePunctuationCountText(
                 appState = appState,
                 punctuationsCount = tuple.punctuationsCount - 1
-              )
+              ),
+              modifier = Modifier.align(Alignment.CenterVertically)
             )
           }
         }
