@@ -14,7 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import dev.marlonlom.apps.cappajv.features.catalog_favorites.FavoriteProductsRoute
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListRoute
-import dev.marlonlom.apps.cappajv.features.catalog_search.SearchProductsRoute
+import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchRoute
 import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
@@ -88,6 +88,6 @@ internal fun NavGraphBuilder.catalogSearchDestination(
   appState: CappajvAppState,
 ) {
   composable(CatalogDestination.SearchProducts.route) {
-    SearchProductsRoute(appState)
+    CatalogSearchRoute(appState)
   }
 }
