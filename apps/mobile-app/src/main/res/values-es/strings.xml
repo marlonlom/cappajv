@@ -35,6 +35,9 @@
     <item>Bebidas calientes</item>
     <item>Pastelería</item>
   </string-array>
+  <!-- feature: home / catalog search -->
+  <string name="text_catalog_search_title">Buscar en el catálogo</string>
+  <string name="text_catalog_search_placeholder">Buscar</string>
   <!-- feature: home / settings -->
   <string name="text_settings_dark_theme">Tema oscuro</string>
   <string name="text_settings_dynamic_colors">Colores dinámicos</string>
