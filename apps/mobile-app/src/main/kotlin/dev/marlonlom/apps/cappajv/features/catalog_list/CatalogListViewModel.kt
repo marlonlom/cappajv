@@ -35,15 +35,5 @@ class CatalogListViewModel(
 
   /** UI state object for view model */
   val uiState = repository.allProducts.stateIn(viewModelScope, SharingStarted.Eagerly, Loading)
-
-  companion object {
-    fun factory(
-      repository: CatalogListRepository
-    ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-      @Suppress("UNCHECKED_CAST")
-      override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CatalogListViewModel(repository) as T
-      }
-    }
-  }
+  
 }
