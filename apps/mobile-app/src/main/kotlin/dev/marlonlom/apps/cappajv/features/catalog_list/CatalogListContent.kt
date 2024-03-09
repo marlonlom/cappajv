@@ -43,7 +43,7 @@ fun CatalogListContent(
   onCatalogItemSelected: (Long) -> Unit,
 ) {
   when {
-    appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal) -> {
+    appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal).and(appState.isCompactHeight) -> {
       LandscapeCompactCatalogListScreen(
         appState = appState,
         catalogItemsListState = catalogItemsListState,
