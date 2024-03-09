@@ -35,5 +35,5 @@ class CatalogListViewModel(
 
   /** UI state object for view model */
   val uiState = repository.allProducts.stateIn(viewModelScope, SharingStarted.Eagerly, Loading)
-  
+
 }
