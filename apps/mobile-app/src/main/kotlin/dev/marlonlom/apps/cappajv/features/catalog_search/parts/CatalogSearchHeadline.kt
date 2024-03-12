@@ -35,6 +35,10 @@ fun CatalogSearchHeadline(
     appState.isCompactHeight -> PaddingValues(vertical = 20.dp)
     else -> PaddingValues(top = 40.dp, bottom = 20.dp)
   }
+  val titleTextStyle = when {
+    appState.isCompactHeight -> MaterialTheme.typography.headlineSmall
+    else -> MaterialTheme.typography.headlineMedium
+  }
 
   Row(
     modifier = modifier
@@ -47,7 +51,7 @@ fun CatalogSearchHeadline(
     Text(
       modifier = Modifier.fillMaxWidth(0.75f),
       text = stringResource(R.string.text_catalog_search_title),
-      style = MaterialTheme.typography.headlineLarge,
+      style = titleTextStyle,
       fontWeight = FontWeight.Bold,
       maxLines = 1
     )
