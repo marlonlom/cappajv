@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -48,6 +49,7 @@ fun CatalogSearchSlot(
 ) {
   val keyboardController = LocalSoftwareKeyboardController.current
   val textFieldColors = getSearchSlotTextFieldColors()
+  val focusManager = LocalFocusManager.current
 
   OutlinedTextField(
     value = queryText.value,
@@ -66,6 +68,7 @@ fun CatalogSearchSlot(
     keyboardActions = KeyboardActions(
       onSearch = {
         keyboardController?.hide()
+        focusManager.clearFocus()
         onSearchReady()
       }),
     leadingIcon = {
@@ -78,6 +81,7 @@ fun CatalogSearchSlot(
       if (showClearIcon.value) {
         IconButton(onClick = {
           queryText.value = ""
+          focusManager.clearFocus()
         }) {
           Icon(
             imageVector = Icons.TwoTone.Clear,
@@ -91,6 +95,7 @@ fun CatalogSearchSlot(
     },
   )
 }
+
 
 @Composable
 private fun getSearchSlotTextFieldColors() = OutlinedTextFieldDefaults.colors(
