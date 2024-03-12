@@ -7,6 +7,7 @@ package dev.marlonlom.apps.cappajv.di
 
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailViewModel
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListViewModel
+import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchViewModel
 import dev.marlonlom.apps.cappajv.features.settings.SettingsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
@@ -14,6 +15,7 @@ import org.koin.dsl.module
 val viewModelsModule = module {
   includes(dataModule)
   viewModelOf(::CatalogListViewModel)
+  viewModelOf(::CatalogSearchViewModel)
   viewModelOf(::CatalogDetailViewModel)
   viewModelOf(::SettingsViewModel)
 }

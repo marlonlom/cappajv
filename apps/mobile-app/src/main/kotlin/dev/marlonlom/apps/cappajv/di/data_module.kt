@@ -22,7 +22,8 @@ val dataModule = module {
       LocalDataSourceImpl(
         catalogItemsDao = db.catalogProductsDao(),
         catalogPunctuationsDao = db.catalogPunctuationsDao(),
-        catalogFavoriteItemsDao = db.catalogFavoriteItemsDao()
+        catalogFavoriteItemsDao = db.catalogFavoriteItemsDao(),
+        catalogSearchDao = db.catalogSearchDao(),
       )
     }
   }
