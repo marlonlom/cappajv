@@ -5,13 +5,16 @@
 
 package dev.marlonlom.apps.cappajv.core.database.datasource
 
+import dev.marlonlom.apps.cappajv.core.database.dao.CatalogItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogPunctuationsDao
+import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogSearchDao
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -27,7 +30,8 @@ internal class CatalogPunctuationsLocalDataSourceTest {
     dataSource = LocalDataSourceImpl(
       catalogItemsDao = FakeCatalogItemsDao(),
       catalogPunctuationsDao = FakeCatalogPunctuationsDao(),
-      catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao()
+      catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao(),
+      catalogSearchDao = FakeCatalogSearchDao()
     )
   }
 
