@@ -86,6 +86,7 @@ fun CatalogSearchInputSlot(
         IconButton(onClick = {
           queryText.value = ""
           focusManager.clearFocus()
+          onSearchReady()
         }) {
           Icon(
             imageVector = Icons.TwoTone.Clear,
