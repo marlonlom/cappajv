@@ -33,14 +33,18 @@ import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 /**
- * Catalog search slot composable ui.
+ * Catalog search input slot composable ui.
  *
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param queryText Query text for searching.
+ * @param showClearIcon True/False if query text should be cleared.
+ * @param onSearchReady Action for query text ready for search.
+ * @param modifier Modifier for this composable.
  */
 @Composable
-fun CatalogSearchSlot(
+fun CatalogSearchInputSlot(
   appState: CappajvAppState,
   queryText: MutableState<String>,
   showClearIcon: State<Boolean>,
@@ -55,9 +59,9 @@ fun CatalogSearchSlot(
     value = queryText.value,
     onValueChange = { queryText.value = it },
     modifier = modifier
-        .fillMaxWidth()
-        .background(MaterialTheme.colorScheme.surface)
-        .heightIn(min = 56.dp),
+      .fillMaxWidth()
+      .background(MaterialTheme.colorScheme.surface)
+      .heightIn(min = 56.dp),
     singleLine = true,
     shape = MaterialTheme.shapes.medium,
     colors = textFieldColors,
