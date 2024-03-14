@@ -5,24 +5,28 @@
 
 package dev.marlonlom.apps.cappajv.features.catalog_search
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.apps.cappajv.features.catalog_search.parts.CatalogSearchHeadline
-import dev.marlonlom.apps.cappajv.features.catalog_search.slots.CatalogSearchSlot
+import dev.marlonlom.apps.cappajv.features.catalog_search.slots.CatalogSearchInputSlot
+import dev.marlonlom.apps.cappajv.features.catalog_search.slots.CatalogSearchResultsSlot
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
+@ExperimentalFoundationApi
 @Composable
-fun SearchProductsRoute(
+fun CatalogSearchRoute(
   appState: CappajvAppState,
   viewModel: CatalogSearchViewModel = koinViewModel(),
 ) {
@@ -32,8 +36,12 @@ fun SearchProductsRoute(
     else -> 20.dp
   }
 
-  val queryText = rememberSaveable { mutableStateOf("") }
-  val showClearIcon = remember { derivedStateOf { queryText.value.isNotEmpty() } }
+  val queryText = rememberSaveable { viewModel.queryText }
+  val showClearIcon = remember {
+    derivedStateOf { viewModel.queryText.value.isNotEmpty() }
+  }
+
+  val searchResultState by viewModel.searchResult.collectAsStateWithLifecycle()
 
   Column(
     modifier = Modifier
@@ -41,12 +49,17 @@ fun SearchProductsRoute(
       .padding(contentHorizontalPadding)
   ) {
     CatalogSearchHeadline(appState)
-    CatalogSearchSlot(
+    CatalogSearchInputSlot(
       appState = appState,
       queryText = queryText,
       showClearIcon = showClearIcon,
-      onSearchReady = {
-        Timber.d("[SearchProductsRoute] onSearchReady(${queryText.value})")
+      onSearchReady = viewModel::onQueryTextChanged,
+    )
+    CatalogSearchResultsSlot(
+      appState = appState,
+      searchResultUiState = searchResultState,
+      onSearchedItemClicked = {
+        Timber.d("[CatalogSearchRoute] clicked item[$it] ")
       },
     )
   }
