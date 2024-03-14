@@ -30,7 +30,9 @@ class CatalogSearchRepository(
    *
    * @param searchText Query text.
    */
-  suspend fun performSearch(searchText: String): Flow<List<CatalogItemTuple>> = withContext(coroutineDispatcher) {
+  suspend fun performSearch(
+    searchText: String
+  ): Flow<List<CatalogItemTuple>> = withContext(coroutineDispatcher) {
     localDataSource.searchProducts("%$searchText%")
   }
 }
