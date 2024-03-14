@@ -47,12 +47,14 @@ import kotlinx.coroutines.yield
  *
  * @author marlonlom
  *
- * @param modifier
+ * @param appState Application ui state.
+ * @param modifier Modifier for this composable.
  */
 @ExperimentalFoundationApi
 @Composable
 fun CatalogListBanner(
-  appState: CappajvAppState, modifier: Modifier = Modifier
+  appState: CappajvAppState,
+  modifier: Modifier = Modifier,
 ) {
   val bannerImagesList = listOf(
     painterResource(R.drawable.img_catalog_home_banner_01),
@@ -82,7 +84,7 @@ fun CatalogListBanner(
         .fillMaxWidth()
     ) { page ->
       BannerCard(
-        page = page,
+        pageIndex = page,
         pagerState = pagerState,
         bannerImage = bannerImagesList[page],
       )
@@ -98,10 +100,19 @@ fun CatalogListBanner(
 
 }
 
+/**
+ * Banner card item content composable ui.
+ *
+ * @author marlonlom
+ *
+ * @param pageIndex Page index for displayed banner.
+ * @param pagerState Pager ui state for displayed banner.
+ * @param bannerImage Banner picture painter resource.
+ */
 @ExperimentalFoundationApi
 @Composable
 private fun BannerCard(
-  page: Int,
+  pageIndex: Int,
   pagerState: PagerState,
   bannerImage: Painter
 ) {
@@ -109,7 +120,7 @@ private fun BannerCard(
     onClick = {},
     shape = MaterialTheme.shapes.large,
     modifier = Modifier.graphicsLayer {
-      val pageOffset = pagerState.currentPage.minus(page).plus(pagerState.currentPageOffsetFraction)
+      val pageOffset = pagerState.currentPage.minus(pageIndex).plus(pagerState.currentPageOffsetFraction)
 
       lerp(
         start = 0.85f,
@@ -136,6 +147,15 @@ private fun BannerCard(
   }
 }
 
+/**
+ * Horizontal pager indicator composable ui.
+ *
+ * @author marlonlom
+ *
+ * @param activeColor Color that indicates the active displayed banner.
+ * @param pagerState Pager ui state for displayed banner.
+ * @param modifier Modifier for this composable.
+ */
 @ExperimentalFoundationApi
 @Composable
 fun HorizontalPagerIndicator(
