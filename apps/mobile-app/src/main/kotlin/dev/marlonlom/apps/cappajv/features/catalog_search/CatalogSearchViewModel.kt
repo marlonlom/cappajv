@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * Catalog search viewmodel.
@@ -30,7 +29,8 @@ import timber.log.Timber
 class CatalogSearchViewModel(
   private val repository: CatalogSearchRepository
 ) : ViewModel() {
-  val queryText = mutableStateOf("")
+  var queryText = mutableStateOf("")
+    private set
 
   private val _searchResult = MutableStateFlow<CatalogSearchUiState>(None)
 
@@ -40,6 +40,7 @@ class CatalogSearchViewModel(
     initialValue = None
   )
 
+  /** Handles query text value change. */
   fun onQueryTextChanged() {
     viewModelScope.launch {
       if (queryText.value.isNotEmpty()) {
@@ -53,7 +54,6 @@ class CatalogSearchViewModel(
   }
 
   private suspend fun performSearch() {
-    Timber.d("[CatalogSearchViewModel] performSearch(${queryText.value})")
     repository.performSearch(queryText.value).collect { list ->
       _searchResult.update {
         when {
