@@ -90,8 +90,9 @@ internal class FakeLocalDataSource(
         )
       }
       .filter {
-        it.title.lowercase().contains(searchText.lowercase()).or(
-          it.titleNormalized.lowercase().contains(searchText.lowercase())
+        val queryingText = searchText.lowercase().replace("%","").trim()
+        it.title.lowercase().contains(queryingText).or(
+          it.titleNormalized.lowercase().contains(queryingText)
         )
       }.map {
         CatalogItemTuple(
