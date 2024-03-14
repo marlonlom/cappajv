@@ -43,6 +43,12 @@ fun CatalogListContent(
   onCatalogItemSelected: (Long) -> Unit,
 ) {
   when {
+
+    (appState.devicePosture is DevicePosture.Separating.Book).and(appState.isCompactHeight.not())
+      .and(appState.isLandscape.not()) -> {
+
+    }
+
     appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal).and(appState.isCompactHeight) -> {
       LandscapeCompactCatalogListScreen(
         appState = appState,

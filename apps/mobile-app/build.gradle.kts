@@ -52,7 +52,7 @@ android {
 
   }
   composeOptions {
-    kotlinCompilerExtensionVersion = libs.versions.kotlin.compose.compiler.get()
+    kotlinCompilerExtensionVersion = libs.versions.kotlinComposeCompiler.get()
   }
   packaging {
     resources {
