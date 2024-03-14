@@ -84,6 +84,7 @@ internal fun NavGraphBuilder.catalogFavoritesDestination(
  *
  * @param appState Application ui state.
  */
+@ExperimentalFoundationApi
 internal fun NavGraphBuilder.catalogSearchDestination(
   appState: CappajvAppState,
 ) {
