@@ -38,6 +38,10 @@
   <!-- feature: home / catalog search -->
   <string name="text_catalog_search_title">Buscar en el catálogo</string>
   <string name="text_catalog_search_placeholder">Buscar</string>
+  <string name="text_catalog_search_default_subtitle">Explora el catálogo</string>
+  <string name="text_catalog_search_default_detail">Busca artículos de catálogo para comprar en tiendas.</string>
+  <string name="text_catalog_search_empty_subtitle">No se encontró ningún artículo del catálogo.\nInténtelo de nuevo.</string>
+  <string name="text_catalog_search_success_subtitle">Artículos encontrados: %1$s</string>
   <!-- feature: home / settings -->
   <string name="text_settings_dark_theme">Tema oscuro</string>
   <string name="text_settings_dynamic_colors">Colores dinámicos</string>
