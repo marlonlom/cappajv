@@ -40,7 +40,7 @@ internal class CatalogSearchViewModelTest {
   @Before
   fun setUp() {
     MockitoAnnotations.openMocks(this)
-    viewModel = CatalogSearchViewModel(CatalogSearchRepository((fakeLocalDataSource)))
+    viewModel = CatalogSearchViewModel(CatalogSearchRepository(fakeLocalDataSource))
   }
 
   @Test
