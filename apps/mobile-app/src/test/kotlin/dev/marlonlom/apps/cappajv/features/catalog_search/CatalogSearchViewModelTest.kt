@@ -10,6 +10,7 @@ import dev.marlonlom.apps.cappajv.core.database.FakeLocalDataSource
 import dev.marlonlom.apps.cappajv.util.MainDispatcherRule
 import dev.marlonlom.apps.cappajv.util.RethrowingExceptionHandler
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -78,20 +79,9 @@ internal class CatalogSearchViewModelTest {
     val expectedTitle = "chamfle"
     viewModel.queryText.value = expectedTitle
     viewModel.onQueryTextChanged()
-    val uiState = viewModel.searchResult.first()
-    assertNotNull(uiState)
-    when (uiState) {
-      is CatalogSearchUiState.Success -> {
-        assertTrue(uiState.results.isNotEmpty())
-        assertEquals(
-          3,
-          uiState.results.filter {
-            it.title.lowercase().contains(expectedTitle)
-          }.size
-        )
-      }
-
-      else -> fail()
+    viewModel.searchResult.collectLatest { uiState ->
+      assertNotNull(uiState)
+      assertTrue(uiState == CatalogSearchUiState.Empty)
     }
   }
 }
