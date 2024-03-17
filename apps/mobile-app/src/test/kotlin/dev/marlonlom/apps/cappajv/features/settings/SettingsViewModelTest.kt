@@ -12,6 +12,7 @@ import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.mutablePreferencesOf
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
 import dev.marlonlom.apps.cappajv.util.MainDispatcherRule
+import dev.marlonlom.apps.cappajv.util.RethrowingExceptionHandler
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
@@ -29,6 +30,9 @@ internal class SettingsViewModelTest {
 
   @get:Rule
   val mainDispatcherRule = MainDispatcherRule()
+
+  @get:Rule
+  val throwRule = RethrowingExceptionHandler()
 
   private lateinit var viewModel: SettingsViewModel
 
