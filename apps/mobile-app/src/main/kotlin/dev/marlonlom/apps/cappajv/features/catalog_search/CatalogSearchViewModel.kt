@@ -12,9 +12,9 @@ import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchUiState.E
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchUiState.None
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchUiState.Searching
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchUiState.Success
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -42,24 +42,12 @@ class CatalogSearchViewModel(
 
   /** Handles query text value change. */
   fun onQueryTextChanged() {
+    _searchResult.value = if (queryText.value.isNotEmpty()) Searching else None
+    if (_searchResult.value is None) return
     viewModelScope.launch {
-      if (queryText.value.isNotEmpty()) {
-        _searchResult.value = Searching
-        delay(1_000)
-        performSearch()
-      } else {
-        _searchResult.value = None
-      }
-    }
-  }
-
-  private suspend fun performSearch() {
-    repository.performSearch(queryText.value).collect { list ->
       _searchResult.update {
-        when {
-          list.isEmpty() -> Empty
-          else -> Success(list)
-        }
+        val searchResults = repository.performSearch(queryText.value).first()
+        if (searchResults.isEmpty()) Empty else Success(searchResults)
       }
     }
   }
