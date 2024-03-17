@@ -20,12 +20,9 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.MockitoAnnotations
+import org.mockito.kotlin.mock
 
 @ExperimentalCoroutinesApi
 internal class SettingsViewModelTest {
@@ -35,26 +32,19 @@ internal class SettingsViewModelTest {
 
   private lateinit var viewModel: SettingsViewModel
 
-  @Mock
-  private lateinit var mockDataStore: DataStore<Preferences>
-
-  @Before
-  fun setup() {
-    MockitoAnnotations.openMocks(this)
-  }
-
-
   @Test
   fun `Should return sampled settings from local storage`() = runTest {
-    `when`(mockDataStore.data).thenReturn(
-      flowOf(
-        mutablePreferencesOf(
-          booleanPreferencesKey("dark_theme") to true,
-          booleanPreferencesKey("dynamic_colors") to true,
-          booleanPreferencesKey("is_onboarding") to false
+    val mockDataStore = mock<DataStore<Preferences>> {
+      on(it.data).thenReturn(
+        flowOf(
+          mutablePreferencesOf(
+            booleanPreferencesKey("dark_theme") to true,
+            booleanPreferencesKey("dynamic_colors") to true,
+            booleanPreferencesKey("is_onboarding") to false
+          )
         )
       )
-    )
+    }
     viewModel = SettingsViewModel(UserPreferencesRepository(mockDataStore))
     val uiState = viewModel.uiState.first()
     assertNotNull(uiState)
@@ -72,7 +62,9 @@ internal class SettingsViewModelTest {
 
   @Test
   fun `Should return default settings from local storage`() = runTest {
-    `when`(mockDataStore.data).thenReturn(flowOf(emptyPreferences()))
+    val mockDataStore = mock<DataStore<Preferences>> {
+      on(it.data).thenReturn(flowOf(emptyPreferences()))
+    }
     viewModel = SettingsViewModel(UserPreferencesRepository(mockDataStore))
     val uiState = viewModel.uiState.first()
     assertNotNull(uiState)
