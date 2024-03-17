@@ -6,7 +6,6 @@
 package dev.marlonlom.apps.cappajv.features.settings
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
 import kotlinx.coroutines.flow.SharingStarted.Companion.Eagerly
@@ -54,23 +53,6 @@ class SettingsViewModel(
     }
   }
 
-  companion object {
-
-    /**
-     * Provides a factory for creating an instance for view model.
-     *
-     * @param repository Catalog settings repository dependency.
-     * @return
-     */
-    fun factory(
-      repository: UserPreferencesRepository
-    ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-      @Suppress("UNCHECKED_CAST")
-      override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return SettingsViewModel(repository) as T
-      }
-    }
-  }
 }
 
 /**

@@ -8,6 +8,7 @@ package dev.marlonlom.apps.cappajv.core.database.datasource
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogPunctuationsDao
+import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogSearchDao
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.runBlocking
@@ -26,7 +27,8 @@ internal class CatalogFavoritesLocalDataSourceTest {
     dataSource = LocalDataSourceImpl(
       catalogItemsDao = FakeCatalogItemsDao(),
       catalogPunctuationsDao = FakeCatalogPunctuationsDao(),
-      catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao()
+      catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao(),
+      catalogSearchDao = FakeCatalogSearchDao()
     )
   }
 

@@ -36,6 +36,12 @@
     <item>Hot drinks</item>
     <item>Pastry</item>
   </string-array>
+  <!-- feature: home / catalog search -->
+  <string name="text_catalog_search_title">Search the catalog</string>
+  <string name="text_catalog_search_placeholder">Search</string>
+  <string name="text_catalog_search_default_subtitle">Explore the catalog</string>
+  <string name="text_catalog_search_default_detail">Look for catalog items to buy in stores.</string>
+  <string name="text_catalog_search_empty_subtitle">No catalog item was found.\nTry again.</string>
   <!-- feature: home / settings -->
   <string name="text_settings_dark_theme">Dark theme</string>
   <string name="text_settings_dynamic_colors">Dynamic colors</string>
@@ -47,4 +53,5 @@
   <string name="url_settings_pdtp" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
   <string name="url_settings_privacy_policy" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
   <string name="url_settings_terms_conditions" translatable="false">https://juanvaldez.com/amigosjuanvaldez/terminos-y-condiciones</string>
+  <string name="text_catalog_search_success_subtitle">Found items: %1$s</string>
 </resources>
