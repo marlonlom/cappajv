@@ -86,25 +86,27 @@ internal class FakeLocalDataSource(
           category = "Category one",
           detail = "Lorem ipsum",
           samplePunctuation = "",
-          punctuationsCount = 0,
+          punctuationsCount = it.punctuations.size - 1,
         )
       }
-      .filter {
-        val queryingText = searchText.lowercase().replace("%","").trim()
-        it.title.lowercase().contains(queryingText).or(
-          it.titleNormalized.lowercase().contains(queryingText)
-        )
-      }.map {
-        CatalogItemTuple(
-          id = it.id,
-          title = it.title,
-          picture = it.picture,
-          category = "Category one",
-          samplePunctuation = "",
-          punctuationsCount = 0,
-        )
-      }
-    return flowOf(listResponse)
+
+    val itemTuples: List<CatalogItemTuple> = listResponse.filter {
+      val queryingText = searchText.lowercase().replace("%", "").trim()
+      it.title.lowercase().contains(queryingText).or(
+        it.titleNormalized.lowercase().contains(queryingText)
+      )
+    }.map {
+      CatalogItemTuple(
+        id = it.id,
+        title = it.title,
+        picture = it.picture,
+        category = "Category one",
+        samplePunctuation = "",
+        punctuationsCount = it.punctuationsCount,
+      )
+    }
+
+    return flowOf(itemTuples)
   }
 
   override fun insertAllProducts(vararg products: CatalogItem) = Unit
