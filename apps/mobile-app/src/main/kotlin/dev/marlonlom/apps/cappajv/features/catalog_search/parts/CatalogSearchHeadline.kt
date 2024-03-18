@@ -15,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.R
+import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 /**
@@ -40,6 +41,12 @@ fun CatalogSearchHeadline(
     else -> MaterialTheme.typography.headlineMedium
   }
 
+  val maxTitleLines = when {
+    appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal) -> 2
+    appState.isLandscape.and(appState.devicePosture is DevicePosture.Separating.Book) -> 2
+    else -> 1
+  }
+
   Row(
     modifier = modifier
       .background(MaterialTheme.colorScheme.surface)
@@ -53,7 +60,7 @@ fun CatalogSearchHeadline(
       text = stringResource(R.string.text_catalog_search_title),
       style = titleTextStyle,
       fontWeight = FontWeight.Bold,
-      maxLines = 1
+      maxLines = maxTitleLines
     )
   }
 }

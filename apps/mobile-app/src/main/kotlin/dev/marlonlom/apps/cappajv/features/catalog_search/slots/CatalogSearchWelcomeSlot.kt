@@ -27,10 +27,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.R
+import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 
 @Composable
-fun CatalogSearchWelcomeSlot() {
+fun CatalogSearchWelcomeSlot(appState: CappajvAppState) {
+  val imageSize = when {
+    appState.isCompactHeight -> 72.dp
+    else -> 120.dp
+  }
   Column(
     modifier = Modifier
       .fillMaxSize()
@@ -41,8 +46,7 @@ fun CatalogSearchWelcomeSlot() {
     Image(
       painter = painterResource(id = R.drawable.img_catalog_search_welcome),
       contentDescription = null,
-      modifier = Modifier
-        .size(120.dp),
+      modifier = Modifier.size(imageSize),
       contentScale = ContentScale.FillBounds
     )
 

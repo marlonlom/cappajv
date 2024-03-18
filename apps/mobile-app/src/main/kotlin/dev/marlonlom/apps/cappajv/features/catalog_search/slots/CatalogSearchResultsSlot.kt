@@ -9,7 +9,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchUiState
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
-import timber.log.Timber
 
 /**
  * Catalog search results slot composable ui.
@@ -27,11 +26,11 @@ fun CatalogSearchResultsSlot(
   onSearchedItemClicked: (Long) -> Unit,
 ) {
   when (searchResultUiState) {
-    CatalogSearchUiState.None -> CatalogSearchWelcomeSlot()
+    CatalogSearchUiState.None -> CatalogSearchWelcomeSlot(appState)
 
     CatalogSearchUiState.Searching -> CatalogSearchingSlot()
 
-    CatalogSearchUiState.Empty -> CatalogEmptyResultsSlot()
+    CatalogSearchUiState.Empty -> CatalogEmptyResultsSlot(appState=appState)
 
     is CatalogSearchUiState.Success -> CatalogSuccessResultsSlot(
       searchResults = searchResultUiState.results,

@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.R
+import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 /**
  * Catalog empty result slot composable ui.
@@ -33,8 +34,13 @@ import dev.marlonlom.apps.cappajv.R
  */
 @Composable
 fun CatalogEmptyResultsSlot(
+  appState: CappajvAppState,
   modifier: Modifier = Modifier,
 ) {
+  val imageSize = when {
+    appState.isCompactHeight -> 72.dp
+    else -> 120.dp
+  }
   Column(
     modifier = modifier
       .fillMaxSize()
@@ -45,7 +51,7 @@ fun CatalogEmptyResultsSlot(
     Image(
       painter = painterResource(R.drawable.img_catalog_search_empty),
       contentDescription = null,
-      modifier = modifier.size(120.dp),
+      modifier = modifier.size(imageSize),
       contentScale = ContentScale.FillBounds
     )
     Text(
