@@ -73,6 +73,41 @@ internal class FakeLocalDataSource(
   }
 
   override fun getFavorites(): Flow<List<CatalogFavoriteItem>> = flowOf(localFavoriteItems)
+  override fun searchProducts(searchText: String): Flow<List<CatalogItemTuple>> {
+    val listResponse = remoteDataService.fetchData()
+      .successOr(emptyList())
+      .map {
+        CatalogItem(
+          id = it.id,
+          title = it.title,
+          slug = it.title.slug,
+          titleNormalized = it.title.slug.replace("-", " "),
+          picture = it.picture,
+          category = "Category one",
+          detail = "Lorem ipsum",
+          samplePunctuation = "",
+          punctuationsCount = it.punctuations.size - 1,
+        )
+      }
+
+    val itemTuples: List<CatalogItemTuple> = listResponse.filter {
+      val queryingText = searchText.lowercase().replace("%", "").trim()
+      it.title.lowercase().contains(queryingText).or(
+        it.titleNormalized.lowercase().contains(queryingText)
+      )
+    }.map {
+      CatalogItemTuple(
+        id = it.id,
+        title = it.title,
+        picture = it.picture,
+        category = "Category one",
+        samplePunctuation = "",
+        punctuationsCount = it.punctuationsCount,
+      )
+    }
+
+    return flowOf(itemTuples)
+  }
 
   override fun insertAllProducts(vararg products: CatalogItem) = Unit
 

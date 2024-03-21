@@ -8,8 +8,10 @@ package dev.marlonlom.apps.cappajv.core.database.datasource
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogFavoriteItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogPunctuationsDao
+import dev.marlonlom.apps.cappajv.core.database.dao.CatalogSearchDao
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import kotlinx.coroutines.flow.Flow
 
@@ -21,11 +23,13 @@ import kotlinx.coroutines.flow.Flow
  * @property catalogItemsDao Catalog products dao.
  * @property catalogPunctuationsDao Catalog punctuations dao.
  * @property catalogFavoriteItemsDao Catalog favorite items dao.
+ * @property catalogSearchDao Catalog search dao.
  */
 class LocalDataSourceImpl(
-    private val catalogItemsDao: CatalogItemsDao,
-    private val catalogPunctuationsDao: CatalogPunctuationsDao,
-    private val catalogFavoriteItemsDao: CatalogFavoriteItemsDao,
+  private val catalogItemsDao: CatalogItemsDao,
+  private val catalogPunctuationsDao: CatalogPunctuationsDao,
+  private val catalogFavoriteItemsDao: CatalogFavoriteItemsDao,
+  private val catalogSearchDao: CatalogSearchDao,
 ) : LocalDataSource {
 
   override fun getAllProducts() = catalogItemsDao.getProducts()
@@ -38,6 +42,9 @@ class LocalDataSourceImpl(
     catalogFavoriteItemsDao.insertAll(*favoriteItems)
 
   override fun getFavorites(): Flow<List<CatalogFavoriteItem>> = catalogFavoriteItemsDao.getFavoriteItems()
+
+  override fun searchProducts(searchText: String): Flow<List<CatalogItemTuple>> =
+    catalogSearchDao.searchProducts(searchText)
 
   override fun insertAllProducts(vararg products: CatalogItem) =
     catalogItemsDao.insertAll(*products)

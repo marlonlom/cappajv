@@ -7,7 +7,7 @@
     "picture": "https://juanvaldez.com/wp-content/uploads/2022/10/Afogatto-Juan-Valdez.jpg",
     "punctuations": [
       {
-        "label": "Affogato",
+        "label": "Unit",
         "pointsQty": 1750
       }
     ]
@@ -360,7 +360,7 @@
   },
   {
     "id": "12971",
-    "title": "Nevado cafe",
+    "title": "Nevado café",
     "category": "Cold drinks",
     "detail": "It is a creamy cold coffee-based drink decorated with Chantilly.",
     "picture": "https://juanvaldez.com/wp-content/uploads/2023/02/nevado_de_cafe___300ml_700x700px.jpg",

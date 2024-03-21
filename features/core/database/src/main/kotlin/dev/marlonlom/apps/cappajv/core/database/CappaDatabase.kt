@@ -12,6 +12,7 @@ import androidx.room.RoomDatabase
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogFavoriteItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogItemsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.CatalogPunctuationsDao
+import dev.marlonlom.apps.cappajv.core.database.dao.CatalogSearchDao
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
@@ -27,7 +28,7 @@ import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
     CatalogFavoriteItem::class,
     CatalogPunctuation::class
   ],
-  version = 5,
+  version = 6,
   exportSchema = false
 )
 abstract class CappaDatabase : RoomDatabase() {
@@ -52,6 +53,13 @@ abstract class CappaDatabase : RoomDatabase() {
    * @return Catalog dao
    */
   abstract fun catalogPunctuationsDao(): CatalogPunctuationsDao
+
+  /**
+   * Catalog search dao instance.
+   *
+   * @return Catalog dao
+   */
+  abstract fun catalogSearchDao(): CatalogSearchDao
 
   companion object {
 

@@ -12,7 +12,6 @@ import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
 import dev.marlonlom.apps.cappajv.ui.util.slug
-import dev.marlonlom.apps.cappajv.ui.util.toSentenceCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -28,6 +27,7 @@ import dev.marlonlom.apps.cappajv.core.catalog_source.CatalogItem as RemoteCatal
  *
  * @property localDataSource Local data source.
  * @property catalogDataService Catalog data service.
+ * @property coroutineDispatcher Coroutine dispatcher for this repository.
  */
 class CatalogListRepository(
   private val localDataSource: LocalDataSource,
@@ -96,7 +96,7 @@ private val RemoteCatalogItem.toEntity: CatalogItem
     id = id,
     title = title,
     slug = title.slug,
-    titleNormalized = title.toSentenceCase,
+    titleNormalized = title.slug.replace("-", " "),
     picture = picture,
     category = category,
     detail = detail,

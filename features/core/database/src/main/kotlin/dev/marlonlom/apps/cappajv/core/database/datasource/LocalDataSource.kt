@@ -49,6 +49,13 @@ interface LocalDataSource {
   fun getFavorites(): Flow<List<CatalogFavoriteItem>>
 
   /**
+   * Return Catalog searched items by provided query text.
+   *
+   * @param searchText Query text.
+   */
+  fun searchProducts(searchText: String): Flow<List<CatalogItemTuple>>
+
+  /**
    * Insert all product items.
    *
    * @param products Product items as typed array.
