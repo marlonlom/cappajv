@@ -1,7 +1,7 @@
 [versions]
-agp = "8.3.1"
-kotlin = "1.9.22"
-kotlinComposeCompiler = "1.5.8"
+agp = "8.3.0"
+kotlin = "1.9.23"
+kotlinComposeCompiler = "1.5.11"
 ksp = "1.9.22-1.0.18"
 
 [libraries]
@@ -23,8 +23,8 @@ coil-compose = "io.coil-kt:coil-compose:2.6.0"
 google-guava = "com.google.guava:guava:33.1.0-android"
 google-oss-licenses = "com.google.android.gms:play-services-oss-licenses:17.0.1"
 google-oss-licenses-plugin = "com.google.android.gms:oss-licenses-plugin:0.10.6"
-kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22"
-kotlin-serialization-plugin = "org.jetbrains.kotlin:kotlin-serialization:1.9.22"
+kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.23"
+kotlin-serialization-plugin = "org.jetbrains.kotlin:kotlin-serialization:1.9.23"
 kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0"
 kotlinx-coroutines-core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0"
 kotlinx-serialization-json = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
