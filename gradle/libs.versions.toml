@@ -2,7 +2,7 @@
 agp = "8.3.0"
 kotlin = "1.9.23"
 kotlinComposeCompiler = "1.5.11"
-ksp = "1.9.22-1.0.18"
+ksp = "1.9.23-1.0.19"
 
 [libraries]
 # implementation
