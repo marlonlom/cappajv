@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.R
+import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
 
@@ -42,11 +43,17 @@ fun CatalogListHeadline(
 ) {
 
   val rowPaddingValues = when {
+    appState.isLandscape.not().and(appState.devicePosture is DevicePosture.Separating)
+      .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> PaddingValues(vertical = 20.dp)
+
     appState.isCompactHeight -> PaddingValues(vertical = 20.dp)
     else -> PaddingValues(top = 40.dp, bottom = 20.dp)
   }
 
   val headlineTextStyle = when {
+    appState.isLandscape.not().and(appState.devicePosture is DevicePosture.Separating)
+      .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> MaterialTheme.typography.headlineSmall
+
     appState.isLandscape.and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> MaterialTheme.typography.headlineSmall
     else -> MaterialTheme.typography.headlineLarge
   }

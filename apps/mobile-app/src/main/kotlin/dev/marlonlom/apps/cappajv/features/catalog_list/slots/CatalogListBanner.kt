@@ -38,6 +38,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import dev.marlonlom.apps.cappajv.R
+import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
 import kotlinx.coroutines.delay
@@ -77,6 +78,10 @@ fun CatalogListBanner(
   }
 
   val horizontalPagerHeight = when {
+    appState.isLandscape.not()
+      .and(appState.devicePosture is DevicePosture.Separating)
+      .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> 100.dp
+
     appState.isLandscape.and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> 100.dp
     appState.isLandscape -> 120.dp
     else -> 160.dp
