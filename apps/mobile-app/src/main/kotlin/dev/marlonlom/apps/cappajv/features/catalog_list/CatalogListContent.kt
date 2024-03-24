@@ -99,7 +99,7 @@ fun CatalogListContent(
         onCatalogItemSelected = onCatalogItemSelected,
       )
     }
-    
+
     appState.isCompactHeight.and(appState.isLandscape)
       .and(appState.scaffoldContentType == ScaffoldContentType.SinglePane)
       .and(appState.devicePosture is DevicePosture.Separating.Book) -> {
