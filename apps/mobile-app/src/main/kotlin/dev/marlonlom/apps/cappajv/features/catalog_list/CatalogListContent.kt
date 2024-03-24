@@ -14,6 +14,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.screens.CompactTableTopC
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.DefaultPortraitCatalogListScreen
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.LandscapeCompactCatalogListScreen
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.LandscapeTwoPaneCatalogListScreen
+import dev.marlonlom.apps.cappajv.features.catalog_list.screens.TableTopCatalogListScreen
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
@@ -47,6 +48,19 @@ fun CatalogListContent(
   when {
 
     appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal)
+      .and(appState.isCompactHeight) -> {
+      LandscapeCompactCatalogListScreen(
+        appState = appState,
+        catalogItemsListState = catalogItemsListState,
+        catalogItems = catalogItems,
+        categories = categories,
+        selectedCategory = selectedCategory,
+        onSelectedCategoryChanged = onSelectedCategoryChanged,
+        onCatalogItemSelected = onCatalogItemSelected,
+      )
+    }
+
+    appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal)
       .and(listOf(NavigationType.EXPANDED_NAV, NavigationType.NAVIGATION_RAIL).contains(appState.navigationType)) -> {
       LandscapeTwoPaneCatalogListScreen(
         appState = appState,
@@ -72,8 +86,10 @@ fun CatalogListContent(
       )
     }
 
-    appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal).and(appState.isCompactHeight) -> {
-      LandscapeCompactCatalogListScreen(
+    (appState.devicePosture is DevicePosture.Separating.TableTop)
+      .and(appState.isCompactWidth.not())
+      .and(appState.isLandscape.not()) -> {
+      TableTopCatalogListScreen(
         appState = appState,
         catalogItemsListState = catalogItemsListState,
         catalogItems = catalogItems,
@@ -83,7 +99,7 @@ fun CatalogListContent(
         onCatalogItemSelected = onCatalogItemSelected,
       )
     }
-
+    
     appState.isCompactHeight.and(appState.isLandscape)
       .and(appState.scaffoldContentType == ScaffoldContentType.SinglePane)
       .and(appState.devicePosture is DevicePosture.Separating.Book) -> {
