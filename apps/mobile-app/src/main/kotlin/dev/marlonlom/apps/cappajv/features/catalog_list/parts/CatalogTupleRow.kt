@@ -32,12 +32,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import androidx.core.text.trimmedLength
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
 
 /**
  * Catalog tuple row composable ui.
@@ -65,9 +65,13 @@ internal fun CatalogTupleRow(
       onCatalogItemTupleClicked(tuple.id)
     },
   ) {
+    val verticalAlignment = when {
+      appState.navigationType == NavigationType.EXPANDED_NAV -> Alignment.Bottom
+      else -> Alignment.CenterVertically
+    }
     Row(
       modifier = modifier.padding(vertical = 10.dp),
-      verticalAlignment = Alignment.CenterVertically,
+      verticalAlignment = verticalAlignment,
       horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
       CatalogTuplePosterImage(tuple, appState)
@@ -77,7 +81,7 @@ internal fun CatalogTupleRow(
           .padding(end = 10.dp)
       ) {
         CatalogTupleTitle(tuple, appState)
-        CatalogTupleSamplePunctuationText(tuple)
+        CatalogTupleSamplePunctuationText(tuple, appState)
       }
     }
   }
@@ -88,11 +92,13 @@ internal fun CatalogTupleRow(
  *
  * @author marlonlom
  *
- * @param tuple Catalog item.
+ * @param tuple Catalog item tuple data.
+ * @param appState Application ui state.
  */
 @Composable
 private fun CatalogTupleSamplePunctuationText(
-  tuple: CatalogItemTuple
+  tuple: CatalogItemTuple,
+  appState: CappajvAppState,
 ) {
   val samplePunctuationTxt = buildAnnotatedString {
     val textParts = tuple.samplePunctuation.split(":")
@@ -102,11 +108,7 @@ private fun CatalogTupleSamplePunctuationText(
         color = MaterialTheme.colorScheme.secondary,
       )
     ) {
-      val punctuationTitle = when {
-        textParts[0].trimmedLength() > 10 -> textParts[0].split(" ")[0].plus(" ...")
-        else -> textParts[0]
-      }
-      append(punctuationTitle)
+      append(textParts[0])
     }
     append(": ")
     append(textParts[1].trim())
@@ -122,9 +124,21 @@ private fun CatalogTupleSamplePunctuationText(
       }
     }
   }
+
+  val textStyle = when {
+    appState.navigationType == NavigationType.EXPANDED_NAV -> MaterialTheme.typography.bodyLarge
+    else -> MaterialTheme.typography.labelMedium
+  }
+
+  val bottomPadding = when {
+    appState.navigationType == NavigationType.EXPANDED_NAV -> 10.dp
+    else -> 0.dp
+  }
+
   Text(
+    modifier = Modifier.padding(bottom = bottomPadding),
     text = samplePunctuationTxt,
-    style = MaterialTheme.typography.labelMedium,
+    style = textStyle,
   )
 }
 
@@ -138,7 +152,8 @@ private fun CatalogTupleSamplePunctuationText(
  */
 @Composable
 private fun CatalogTupleTitle(
-  tuple: CatalogItemTuple, appState: CappajvAppState
+  tuple: CatalogItemTuple,
+  appState: CappajvAppState,
 ) {
   Text(
     text = tuple.title,
@@ -160,7 +175,8 @@ private fun CatalogTupleTitle(
  */
 @Composable
 private fun CatalogTuplePosterImage(
-  tuple: CatalogItemTuple, appState: CappajvAppState
+  tuple: CatalogItemTuple,
+  appState: CappajvAppState,
 ) {
   val imageRequest = ImageRequest.Builder(LocalContext.current).data(tuple.picture).crossfade(true).build()
 
@@ -180,8 +196,15 @@ private fun CatalogTuplePosterImage(
   )
 }
 
+/**
+ * returns catalog tuple card image size.
+ *
+ * @param appState Application ui state.
+ */
 @Composable
 private fun getCatalogTupleImageSizeDp(appState: CappajvAppState): DpSize = when {
+  appState.navigationType == NavigationType.EXPANDED_NAV -> DpSize(88.dp, 104.dp)
+
   appState.isCompactWidth.and(appState.isLandscape.not())
     .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> DpSize(48.dp, 56.dp)
 
@@ -189,8 +212,15 @@ private fun getCatalogTupleImageSizeDp(appState: CappajvAppState): DpSize = when
 }
 
 
+/**
+ * returns catalog tuple card title text style.
+ *
+ * @param appState Application ui state.
+ */
 @Composable
 private fun getCatalogTupleTitleStyle(appState: CappajvAppState) = when {
+  appState.navigationType == NavigationType.EXPANDED_NAV -> MaterialTheme.typography.titleLarge
+
   appState.isCompactWidth.and(appState.isLandscape.not())
     .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> MaterialTheme.typography.bodyMedium
 
