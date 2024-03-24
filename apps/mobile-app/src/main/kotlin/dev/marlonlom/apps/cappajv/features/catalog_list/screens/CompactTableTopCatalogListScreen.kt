@@ -72,7 +72,6 @@ fun CompactTableTopCatalogListScreen(
         categories = categories,
         selectedCategory = selectedCategory,
         onCategoryChipSelected = { onSelectedCategoryChanged(it) },
-        isScrollable = true
       )
     }
 

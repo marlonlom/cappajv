@@ -50,8 +50,8 @@ fun DefaultPortraitCatalogListScreen(
 ) {
   Column(
     modifier = modifier
-        .fillMaxWidth()
-        .safeContentPadding(),
+      .fillMaxWidth()
+      .safeContentPadding(),
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     CatalogListHeadline(appState)
@@ -60,7 +60,6 @@ fun DefaultPortraitCatalogListScreen(
       categories = categories,
       selectedCategory = selectedCategory,
       onCategoryChipSelected = { onSelectedCategoryChanged(it) },
-      isScrollable = true,
     )
     CatalogListTuplesSlot(
       appState = appState,
