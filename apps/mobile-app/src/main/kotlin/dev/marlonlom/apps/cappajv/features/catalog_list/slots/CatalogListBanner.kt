@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.yield
 
@@ -75,12 +76,18 @@ fun CatalogListBanner(
     }
   }
 
+  val horizontalPagerHeight = when {
+    appState.isLandscape.and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> 100.dp
+    appState.isLandscape -> 120.dp
+    else -> 160.dp
+  }
+
   Column {
     HorizontalPager(
       state = pagerState,
       contentPadding = PaddingValues(0.dp),
       modifier = modifier
-        .height(if (appState.isLandscape) 120.dp else 160.dp)
+        .height(horizontalPagerHeight)
         .fillMaxWidth()
     ) { page ->
       BannerCard(

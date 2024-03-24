@@ -46,7 +46,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @ExperimentalLayoutApi
 @ExperimentalFoundationApi
 @Composable
-fun TwoPaneCatalogListScreen(
+fun LandscapeTwoPaneCatalogListScreen(
   appState: CappajvAppState,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
