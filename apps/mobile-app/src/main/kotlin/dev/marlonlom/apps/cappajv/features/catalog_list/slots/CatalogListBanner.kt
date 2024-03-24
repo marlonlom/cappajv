@@ -114,7 +114,7 @@ fun CatalogListBanner(
 private fun BannerCard(
   pageIndex: Int,
   pagerState: PagerState,
-  bannerImage: Painter
+  bannerImage: Painter,
 ) {
   Card(
     onClick = {},
@@ -164,7 +164,7 @@ fun HorizontalPagerIndicator(
   modifier: Modifier = Modifier,
 ) {
   Row(
-    Modifier
+    modifier
       .wrapContentHeight()
       .fillMaxWidth()
       .padding(bottom = 10.dp),
@@ -172,7 +172,10 @@ fun HorizontalPagerIndicator(
     horizontalArrangement = Arrangement.Center
   ) {
     repeat(pagerState.pageCount) { iteration ->
-      val color = if (pagerState.currentPage == iteration) activeColor else Color.LightGray
+      val color = when (pagerState.currentPage) {
+        iteration -> activeColor
+        else -> activeColor.copy(alpha = 0.25f)
+      }
       Box(
         modifier = modifier
           .padding(2.dp)
