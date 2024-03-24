@@ -7,7 +7,6 @@ package dev.marlonlom.apps.cappajv.features.catalog_list.slots
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -33,7 +32,6 @@ import androidx.compose.ui.unit.dp
  *
  * @param selectedCategory Selected category.
  * @param onCategoryChipSelected Action for category changed.
- * @param isScrollable True/False if scroll is handled, default to false.
  */
 @ExperimentalLayoutApi
 @Composable
@@ -41,7 +39,6 @@ fun CatalogCategoriesChipGroup(
   categories: List<String>,
   selectedCategory: String,
   onCategoryChipSelected: (String) -> Unit,
-  isScrollable: Boolean = false,
 ) {
   val list = categories.mapIndexed { index, category ->
     Pair(
@@ -74,31 +71,17 @@ fun CatalogCategoriesChipGroup(
     )
   }
 
-  if (isScrollable) {
-    LazyRow(
-      horizontalArrangement = Arrangement.spacedBy(
-        space = 10.dp,
-        alignment = Alignment.Start,
-      ),
-    ) {
-      items(
-        items = list,
-        key = { it.first }
-      ) { category ->
-        addCategoryFilterChip(category)
-      }
-    }
-  } else {
-    FlowRow(
-      horizontalArrangement = Arrangement.spacedBy(
-        space = 10.dp,
-        alignment = Alignment.Start,
-      ),
-      verticalArrangement = Arrangement.spacedBy(4.dp),
-    ) {
-      list.forEach { category ->
-        addCategoryFilterChip(category)
-      }
+  LazyRow(
+    horizontalArrangement = Arrangement.spacedBy(
+      space = 10.dp,
+      alignment = Alignment.Start,
+    ),
+  ) {
+    items(
+      items = list,
+      key = { it.first }
+    ) { category ->
+      addCategoryFilterChip(category)
     }
   }
 }

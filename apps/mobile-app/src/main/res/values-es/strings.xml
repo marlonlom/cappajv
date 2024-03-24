@@ -10,16 +10,6 @@
   <string name="destination_search">Buscar</string>
   <string name="destination_settings">Ajustes</string>
   <string name="destination_detail">Detalle</string>
-  <string name="home_title_enjoy">disfruta</string>
-  <string name="home_title_exclusive_items">Productos exclusivos</string>
-  <string name="home_text_list_loading">El catálogo se está cargando…</string>
-  <string name="search_title_idem">buscar</string>
-  <string name="search_title_catalog_products">Productos del catálogo</string>
-  <string name="search_text_list_loading">Buscando en el catálogo…</string>
-  <string name="detail_text_points">Puntos</string>
-  <string name="settings_title_application">configuraciones de la</string>
-  <string name="settings_title_txt">Aplicación</string>
-  <string name="settings_label_app_version">Versión de la aplicación</string>
   <string name="destination_favorites">Favoritos</string>
   <!-- feature: onboarding / welcome -->
   <string name="text_welcome_title">Bienvenidos</string>
@@ -28,7 +18,6 @@
   <!-- feature: home / catalog list -->
   <string name="text_catalog_list_title">Consigue nuestros premios</string>
   <string name="text_catalog_subtitle_all_products">Nuestros productos</string>
-  <string name="text_catalog_hint_more_punctuations">%1$s más</string>
   <string-array name="array_catalog_list_categories">
     <item>Todos</item>
     <item>Bebidas frías</item>
