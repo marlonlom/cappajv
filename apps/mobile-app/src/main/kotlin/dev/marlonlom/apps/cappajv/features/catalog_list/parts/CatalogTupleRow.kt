@@ -71,7 +71,11 @@ internal fun CatalogTupleRow(
       horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
       CatalogTuplePosterImage(tuple, appState)
-      Column {
+      Column(
+        modifier = modifier
+          .fillMaxWidth()
+          .padding(end = 10.dp)
+      ) {
         CatalogTupleTitle(tuple, appState)
         CatalogTupleSamplePunctuationText(tuple)
       }
@@ -79,6 +83,13 @@ internal fun CatalogTupleRow(
   }
 }
 
+/**
+ * Catalog tuple sample punctuation text composable ui.
+ *
+ * @author marlonlom
+ *
+ * @param tuple Catalog item.
+ */
 @Composable
 private fun CatalogTupleSamplePunctuationText(
   tuple: CatalogItemTuple
@@ -88,7 +99,7 @@ private fun CatalogTupleSamplePunctuationText(
     withStyle(
       SpanStyle(
         fontWeight = FontWeight.SemiBold,
-        color = MaterialTheme.colorScheme.secondary
+        color = MaterialTheme.colorScheme.secondary,
       )
     ) {
       val punctuationTitle = when {
@@ -127,8 +138,7 @@ private fun CatalogTupleSamplePunctuationText(
  */
 @Composable
 private fun CatalogTupleTitle(
-  tuple: CatalogItemTuple,
-  appState: CappajvAppState
+  tuple: CatalogItemTuple, appState: CappajvAppState
 ) {
   Text(
     text = tuple.title,
@@ -150,13 +160,9 @@ private fun CatalogTupleTitle(
  */
 @Composable
 private fun CatalogTuplePosterImage(
-  tuple: CatalogItemTuple,
-  appState: CappajvAppState
+  tuple: CatalogItemTuple, appState: CappajvAppState
 ) {
-  val imageRequest = ImageRequest.Builder(LocalContext.current)
-    .data(tuple.picture)
-    .crossfade(true)
-    .build()
+  val imageRequest = ImageRequest.Builder(LocalContext.current).data(tuple.picture).crossfade(true).build()
 
   AsyncImage(
     model = imageRequest,
