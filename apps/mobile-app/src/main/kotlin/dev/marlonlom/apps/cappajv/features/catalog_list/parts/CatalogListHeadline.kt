@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
 
 /**
  * Catalog listing headline composable ui.
@@ -45,18 +46,23 @@ fun CatalogListHeadline(
     else -> PaddingValues(top = 40.dp, bottom = 20.dp)
   }
 
+  val headlineTextStyle = when {
+    appState.isLandscape.and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> MaterialTheme.typography.headlineSmall
+    else -> MaterialTheme.typography.headlineLarge
+  }
+
   Row(
     modifier = modifier
-        .background(MaterialTheme.colorScheme.surface)
-        .fillMaxWidth()
-        .padding(rowPaddingValues),
+      .background(MaterialTheme.colorScheme.surface)
+      .fillMaxWidth()
+      .padding(rowPaddingValues),
     verticalAlignment = Alignment.Bottom,
     horizontalArrangement = Arrangement.SpaceBetween
   ) {
     Text(
       modifier = Modifier.fillMaxWidth(0.75f),
       text = stringResource(R.string.text_catalog_list_title),
-      style = MaterialTheme.typography.headlineLarge,
+      style = headlineTextStyle,
       fontWeight = FontWeight.Bold,
       maxLines = 2
     )

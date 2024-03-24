@@ -25,6 +25,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.parts.CatalogListHeadlin
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesChipGroup
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListBanner
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListTuplesSlot
+import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 
@@ -45,7 +46,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @ExperimentalLayoutApi
 @ExperimentalFoundationApi
 @Composable
-fun TwoPaneCatalogListScreen(
+fun LandscapeTwoPaneCatalogListScreen(
   appState: CappajvAppState,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
@@ -55,13 +56,17 @@ fun TwoPaneCatalogListScreen(
   onCatalogItemSelected: (Long) -> Unit,
   modifier: Modifier = Modifier,
 ) {
+  val listColumnWidthFraction = when {
+    appState.devicePosture is DevicePosture.Separating.Book -> 0.4f
+    else -> 0.33f
+  }
   Row(
     modifier = modifier.fillMaxWidth(),
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.spacedBy(20.dp)
   ) {
     Column(
-      modifier = modifier.fillMaxWidth(0.33f)
+      modifier = modifier.fillMaxWidth(listColumnWidthFraction)
     ) {
       CatalogListHeadline(appState)
       CatalogListBanner(appState)
