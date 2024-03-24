@@ -13,9 +13,11 @@ import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.CompactTableTopCatalogListScreen
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.DefaultPortraitCatalogListScreen
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.LandscapeCompactCatalogListScreen
+import dev.marlonlom.apps.cappajv.features.catalog_list.screens.TwoPaneCatalogListScreen
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
+import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
 
 /**
  * Catalog list content composable ui, conditioned by application ui state.
@@ -43,6 +45,19 @@ fun CatalogListContent(
   onCatalogItemSelected: (Long) -> Unit,
 ) {
   when {
+
+    appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal)
+      .and(appState.navigationType == NavigationType.EXPANDED_NAV) -> {
+      TwoPaneCatalogListScreen(
+        appState = appState,
+        catalogItemsListState = catalogItemsListState,
+        catalogItems = catalogItems,
+        categories = categories,
+        selectedCategory = selectedCategory,
+        onSelectedCategoryChanged = onSelectedCategoryChanged,
+        onCatalogItemSelected = onCatalogItemSelected,
+      )
+    }
 
     (appState.devicePosture is DevicePosture.Separating.Book).and(appState.isCompactHeight.not())
       .and(appState.isLandscape.not()) -> {
@@ -101,3 +116,4 @@ fun CatalogListContent(
     }
   }
 }
+
