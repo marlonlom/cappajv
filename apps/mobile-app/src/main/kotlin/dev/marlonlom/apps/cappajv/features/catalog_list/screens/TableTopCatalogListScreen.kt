@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
@@ -37,6 +36,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param isRouting True/False if should navigate through routing.
  * @param catalogItemsListState Catalog items lazy list state.
  * @param catalogItems Catalog items list.
  * @param categories Categories list.
@@ -50,12 +50,13 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @Composable
 fun TableTopCatalogListScreen(
   appState: CappajvAppState,
+  isRouting: Boolean,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
   categories: List<String>,
   selectedCategory: String,
   onSelectedCategoryChanged: (String) -> Unit,
-  onCatalogItemSelected: (Long) -> Unit,
+  onCatalogItemSelected: (Long, Boolean) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   val hingeRatio = (appState.devicePosture as DevicePosture.Separating.TableTop).hingeRatio
@@ -81,7 +82,7 @@ fun TableTopCatalogListScreen(
           appState = appState,
           catalogItemsListState = catalogItemsListState,
           catalogTuples = catalogItems,
-          onCatalogItemTupleClicked = onCatalogItemSelected,
+          onCatalogItemTupleClicked = { onCatalogItemSelected(it, isRouting) },
         )
       }
     }

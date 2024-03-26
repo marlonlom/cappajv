@@ -42,8 +42,8 @@ fun CatalogSearchRoute(
     showClearIcon = showClearIcon,
     onSearchReady = viewModel::onQueryTextChanged,
     searchResultUiState = searchResultState,
-    onSearchedItemClicked = {
-      Timber.d("[CatalogSearchRoute] clicked item[$it] ")
+    onSearchedItemClicked = { catalogId, isRouting ->
+      Timber.d("[CatalogSearchRoute] clicked item[$catalogId], isRouting=$isRouting ")
     },
   )
 }

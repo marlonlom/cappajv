@@ -32,6 +32,7 @@ import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param isRouting True/False if should navigate through routing.
  * @param catalogItemsListState Catalog items lazy list state.
  * @param catalogItems Catalog items list.
  * @param categories Categories list.
@@ -45,12 +46,13 @@ import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
 @Composable
 fun LandscapeCompactCatalogListScreen(
   appState: CappajvAppState,
+  isRouting: Boolean,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
   categories: List<String>,
   selectedCategory: String,
   onSelectedCategoryChanged: (String) -> Unit,
-  onCatalogItemSelected: (Long) -> Unit,
+  onCatalogItemSelected: (Long, Boolean) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   val splitRatio = when {
@@ -82,7 +84,7 @@ fun LandscapeCompactCatalogListScreen(
         appState = appState,
         catalogItemsListState = catalogItemsListState,
         catalogTuples = catalogItems,
-        onCatalogItemTupleClicked = onCatalogItemSelected,
+        onCatalogItemTupleClicked = { onCatalogItemSelected(it, isRouting) },
       )
     }
   }

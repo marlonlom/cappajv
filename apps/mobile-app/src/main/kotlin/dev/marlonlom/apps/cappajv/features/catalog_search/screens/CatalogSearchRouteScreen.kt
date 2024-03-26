@@ -34,44 +34,45 @@ fun CatalogSearchRouteScreen(
   showClearIcon: State<Boolean>,
   onSearchReady: () -> Unit,
   searchResultUiState: CatalogSearchUiState,
-  onSearchedItemClicked: (Long) -> Unit,
-) {
-  when {
-    appState.isLandscape
-      .and(appState.devicePosture is DevicePosture.Separating.Book)
-      .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> {
-      LandscapeTwoPaneCatalogSearchScreen(
-        appState = appState,
-        queryText = queryText,
-        showClearIcon = showClearIcon,
-        onSearchReady = onSearchReady,
-        searchResultUiState = searchResultUiState,
-        onSearchedItemClicked = onSearchedItemClicked
-      )
-    }
+  onSearchedItemClicked: (Long, Boolean) -> Unit,
+) = when {
+  appState.isLandscape
+    .and(appState.devicePosture is DevicePosture.Separating.Book)
+    .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> {
+    LandscapeTwoPaneCatalogSearchScreen(
+      appState = appState,
+      isRouting = false,
+      queryText = queryText,
+      showClearIcon = showClearIcon,
+      onSearchReady = onSearchReady,
+      searchResultUiState = searchResultUiState,
+      onSearchedItemClicked = onSearchedItemClicked
+    )
+  }
 
-    appState.isLandscape
-      .and(appState.devicePosture == DevicePosture.Normal)
-      .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> {
-      LandscapeTwoPaneCatalogSearchScreen(
-        appState = appState,
-        queryText = queryText,
-        showClearIcon = showClearIcon,
-        onSearchReady = onSearchReady,
-        searchResultUiState = searchResultUiState,
-        onSearchedItemClicked = onSearchedItemClicked
-      )
-    }
+  appState.isLandscape
+    .and(appState.devicePosture == DevicePosture.Normal)
+    .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> {
+    LandscapeTwoPaneCatalogSearchScreen(
+      appState = appState,
+      isRouting = false,
+      queryText = queryText,
+      showClearIcon = showClearIcon,
+      onSearchReady = onSearchReady,
+      searchResultUiState = searchResultUiState,
+      onSearchedItemClicked = onSearchedItemClicked
+    )
+  }
 
-    else -> {
-      DefaultPortraitCatalogSearchScreen(
-        appState = appState,
-        queryText = queryText,
-        showClearIcon = showClearIcon,
-        onSearchReady = onSearchReady,
-        searchResultUiState = searchResultUiState,
-        onSearchedItemClicked = onSearchedItemClicked
-      )
-    }
+  else -> {
+    DefaultPortraitCatalogSearchScreen(
+      appState = appState,
+      isRouting = true,
+      queryText = queryText,
+      showClearIcon = showClearIcon,
+      onSearchReady = onSearchReady,
+      searchResultUiState = searchResultUiState,
+      onSearchedItemClicked = onSearchedItemClicked
+    )
   }
 }

@@ -32,24 +32,27 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @author marlonlom
  *
  * @param appState Application ui state.
- * @param catalogItemsListState
- * @param catalogItems
- * @param categories
- * @param selectedCategory
- * @param onSelectedCategoryChanged
- * @param onCatalogItemSelected
+ * @param isRouting True/False if should navigate through routing.
+ * @param catalogItemsListState Catalog items lazy list state.
+ * @param catalogItems Catalog items list.
+ * @param categories Categories list.
+ * @param selectedCategory Selected category name.
+ * @param onSelectedCategoryChanged Action for category selected.
+ * @param onCatalogItemSelected Action for catalog item selected.
+ * @param modifier Modifier for this composable.
  */
 @ExperimentalLayoutApi
 @ExperimentalFoundationApi
 @Composable
 fun CompactTableTopCatalogListScreen(
   appState: CappajvAppState,
+  isRouting: Boolean,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
   categories: List<String>,
   selectedCategory: String,
   onSelectedCategoryChanged: (String) -> Unit,
-  onCatalogItemSelected: (Long) -> Unit,
+  onCatalogItemSelected: (Long, Boolean) -> Unit,
   modifier: Modifier = Modifier,
 ) {
 
@@ -81,7 +84,7 @@ fun CompactTableTopCatalogListScreen(
       appState = appState,
       catalogItemsListState = catalogItemsListState,
       catalogTuples = catalogItems,
-      onCatalogItemTupleClicked = { onCatalogItemSelected(it) },
+      onCatalogItemTupleClicked = { onCatalogItemSelected(it, isRouting) },
     )
 
   }

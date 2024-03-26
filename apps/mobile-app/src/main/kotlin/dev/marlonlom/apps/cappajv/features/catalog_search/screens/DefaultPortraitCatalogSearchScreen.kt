@@ -36,11 +36,12 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @Composable
 internal fun DefaultPortraitCatalogSearchScreen(
   appState: CappajvAppState,
+  isRouting: Boolean,
   queryText: MutableState<String>,
   showClearIcon: State<Boolean>,
   onSearchReady: () -> Unit,
   searchResultUiState: CatalogSearchUiState,
-  onSearchedItemClicked: (Long) -> Unit
+  onSearchedItemClicked: (Long, Boolean) -> Unit,
 ) {
   val contentHorizontalPadding = when {
     appState.isLandscape.not().and(appState.isMediumWidth) -> 40.dp
@@ -63,6 +64,7 @@ internal fun DefaultPortraitCatalogSearchScreen(
     CatalogSearchResultsSlot(
       appState = appState,
       searchResultUiState = searchResultUiState,
+      isRouting = isRouting,
       onSearchedItemClicked = onSearchedItemClicked,
     )
   }
