@@ -37,20 +37,21 @@ import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
  *
  * @author marlonlom
  *
- * @param row
- * @param onSearchedItemClicked
+ * @param tuple Catalog item tuple.
+ * @param isRouting True/False if should navigate through routing.
+ * @param onSearchedItemClicked Action for searched item clicked.
  * @param modifier Modifier for this composable.
- *
  */
 @Composable
 fun CatalogSearchedItemCard(
-  row: CatalogItemTuple,
-  onSearchedItemClicked: (Long) -> Unit,
+  tuple: CatalogItemTuple,
+  isRouting: Boolean,
+  onSearchedItemClicked: (Long, Boolean) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   OutlinedCard(
     onClick = {
-      onSearchedItemClicked(row.id)
+      onSearchedItemClicked(tuple.id, isRouting)
     },
     border = BorderStroke(0.dp, Color.Transparent),
     modifier = modifier.fillMaxWidth(),
@@ -65,11 +66,11 @@ fun CatalogSearchedItemCard(
       horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
       val imageRequest = ImageRequest.Builder(LocalContext.current)
-        .data(row.picture).crossfade(true).build()
+        .data(tuple.picture).crossfade(true).build()
 
       AsyncImage(
         model = imageRequest,
-        contentDescription = row.title,
+        contentDescription = tuple.title,
         contentScale = ContentScale.Crop,
         modifier = modifier
           .border(
@@ -84,14 +85,14 @@ fun CatalogSearchedItemCard(
 
       Column {
         Text(
-          text = row.title,
+          text = tuple.title,
           style = MaterialTheme.typography.titleLarge,
           maxLines = 1,
           overflow = TextOverflow.Ellipsis,
           fontWeight = FontWeight.SemiBold,
         )
         Text(
-          text = row.category,
+          text = tuple.category,
           style = MaterialTheme.typography.bodyLarge,
         )
       }

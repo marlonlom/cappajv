@@ -31,6 +31,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_search.parts.CatalogSearchedI
  * @author marlonlom
  *
  * @param searchResults Catalog searched items list.
+ * @param isRouting True/False if should navigate through routing.
  * @param onSearchedItemClicked Action for searched item clicked.
  * @param modifier Modifier for this composable.
  *
@@ -39,7 +40,8 @@ import dev.marlonlom.apps.cappajv.features.catalog_search.parts.CatalogSearchedI
 @Composable
 fun CatalogSuccessResultsSlot(
   searchResults: List<CatalogItemTuple>,
-  onSearchedItemClicked: (Long) -> Unit,
+  isRouting: Boolean,
+  onSearchedItemClicked: (Long, Boolean) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   LazyColumn(
@@ -66,7 +68,8 @@ fun CatalogSuccessResultsSlot(
       key = CatalogItemTuple::id,
     ) { row ->
       CatalogSearchedItemCard(
-        row = row,
+        tuple = row,
+        isRouting = isRouting,
         onSearchedItemClicked = onSearchedItemClicked
       )
     }

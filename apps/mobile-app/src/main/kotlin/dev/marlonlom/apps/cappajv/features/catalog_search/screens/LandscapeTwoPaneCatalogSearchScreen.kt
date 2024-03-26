@@ -33,6 +33,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param isRouting True/False if should navigate through routing.
  * @param queryText Query text for searching.
  * @param showClearIcon True/False if query text should be cleared.
  * @param onSearchReady Action for query text ready for search.
@@ -43,11 +44,12 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @Composable
 internal fun LandscapeTwoPaneCatalogSearchScreen(
   appState: CappajvAppState,
+  isRouting: Boolean,
   queryText: MutableState<String>,
   showClearIcon: State<Boolean>,
   onSearchReady: () -> Unit,
   searchResultUiState: CatalogSearchUiState,
-  onSearchedItemClicked: (Long) -> Unit
+  onSearchedItemClicked: (Long, Boolean) -> Unit,
 ) {
   Row {
     Column(
@@ -66,6 +68,7 @@ internal fun LandscapeTwoPaneCatalogSearchScreen(
       CatalogSearchResultsSlot(
         appState = appState,
         searchResultUiState = searchResultUiState,
+        isRouting = isRouting,
         onSearchedItemClicked = onSearchedItemClicked,
       )
     }
