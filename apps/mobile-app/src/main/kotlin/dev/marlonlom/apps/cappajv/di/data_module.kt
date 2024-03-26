@@ -11,6 +11,7 @@ import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSourceImpl
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
 import dev.marlonlom.apps.cappajv.dataStore
+import dev.marlonlom.apps.cappajv.features.catalog_favorites.CatalogFavoritesRepository
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListRepository
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchRepository
 import org.koin.android.ext.koin.androidContext
@@ -35,6 +36,11 @@ val dataModule = module {
     CatalogListRepository(
       localDataSource = get(),
       catalogDataService = get(),
+    )
+  }
+  single<CatalogFavoritesRepository> {
+    CatalogFavoritesRepository(
+      localDataSource = get(),
     )
   }
   single<CatalogSearchRepository> {
