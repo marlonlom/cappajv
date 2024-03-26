@@ -122,7 +122,7 @@ internal class FakeLocalDataSource(
     localFavoriteItems.clear()
   }
 
-  override fun deleteFavorite(productId: Long) {
+  override suspend fun deleteFavorite(productId: Long) {
     localFavoriteItems.removeIf { it.id == productId }
   }
 
