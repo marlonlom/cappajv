@@ -56,7 +56,7 @@ class LocalDataSourceImpl(
 
   override fun deleteAllFavorites() = catalogFavoriteItemsDao.deleteAll()
 
-  override fun deleteFavorite(productId: Long) = catalogFavoriteItemsDao.delete(productId)
+  override suspend fun deleteFavorite(productId: Long) = catalogFavoriteItemsDao.delete(productId)
 
   override fun deleteAllPunctuations() = catalogPunctuationsDao.deleteAll()
 

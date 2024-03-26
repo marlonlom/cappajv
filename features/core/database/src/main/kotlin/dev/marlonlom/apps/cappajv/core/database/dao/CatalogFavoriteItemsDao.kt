@@ -48,6 +48,6 @@ interface CatalogFavoriteItemsDao {
    * @param productId Product item id.
    */
   @Query("DELETE FROM catalog_item_favorite WHERE id = :productId")
-  fun delete(productId: Long)
+  suspend fun delete(productId: Long)
 
 }
