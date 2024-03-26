@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import dev.marlonlom.apps.cappajv.features.catalog_favorites.FavoriteProductsRoute
+import dev.marlonlom.apps.cappajv.features.catalog_favorites.CatalogFavoritesRoute
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListRoute
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchRoute
 import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
@@ -69,11 +69,12 @@ internal fun NavGraphBuilder.catalogListDestination(
  *
  * @param appState Application ui state.
  */
+@ExperimentalFoundationApi
 internal fun NavGraphBuilder.catalogFavoritesDestination(
   appState: CappajvAppState,
 ) {
   composable(CatalogDestination.FavoriteProducts.route) {
-    FavoriteProductsRoute(appState)
+    CatalogFavoritesRoute(appState)
   }
 }
 
