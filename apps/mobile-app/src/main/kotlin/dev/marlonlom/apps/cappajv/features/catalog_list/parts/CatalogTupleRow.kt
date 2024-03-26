@@ -70,7 +70,7 @@ internal fun CatalogTupleRow(
       else -> Alignment.CenterVertically
     }
     Row(
-      modifier = modifier.padding(vertical = 10.dp),
+      modifier = modifier.padding(vertical = 4.dp),
       verticalAlignment = verticalAlignment,
       horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
