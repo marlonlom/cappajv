@@ -43,101 +43,106 @@ fun CatalogListContent(
   categories: List<String>,
   selectedCategory: String,
   onSelectedCategoryChanged: (String) -> Unit,
-  onCatalogItemSelected: (Long) -> Unit,
-) {
-  when {
+  onCatalogItemSelected: (Long, Boolean) -> Unit,
+) = when {
 
-    appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal)
-      .and(appState.isCompactHeight) -> {
-      LandscapeCompactCatalogListScreen(
-        appState = appState,
-        catalogItemsListState = catalogItemsListState,
-        catalogItems = catalogItems,
-        categories = categories,
-        selectedCategory = selectedCategory,
-        onSelectedCategoryChanged = onSelectedCategoryChanged,
-        onCatalogItemSelected = onCatalogItemSelected,
-      )
-    }
+  appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal)
+    .and(appState.isCompactHeight) -> {
+    LandscapeCompactCatalogListScreen(
+      appState = appState,
+      isRouting = true,
+      catalogItemsListState = catalogItemsListState,
+      catalogItems = catalogItems,
+      categories = categories,
+      selectedCategory = selectedCategory,
+      onSelectedCategoryChanged = onSelectedCategoryChanged,
+      onCatalogItemSelected = onCatalogItemSelected,
+    )
+  }
 
-    appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal)
-      .and(listOf(NavigationType.EXPANDED_NAV, NavigationType.NAVIGATION_RAIL).contains(appState.navigationType)) -> {
-      LandscapeTwoPaneCatalogListScreen(
-        appState = appState,
-        catalogItemsListState = catalogItemsListState,
-        catalogItems = catalogItems,
-        categories = categories,
-        selectedCategory = selectedCategory,
-        onSelectedCategoryChanged = onSelectedCategoryChanged,
-        onCatalogItemSelected = onCatalogItemSelected,
-      )
-    }
+  appState.isLandscape.and(appState.devicePosture == DevicePosture.Normal)
+    .and(listOf(NavigationType.EXPANDED_NAV, NavigationType.NAVIGATION_RAIL).contains(appState.navigationType)) -> {
+    LandscapeTwoPaneCatalogListScreen(
+      appState = appState,
+      isRouting = false,
+      catalogItemsListState = catalogItemsListState,
+      catalogItems = catalogItems,
+      categories = categories,
+      selectedCategory = selectedCategory,
+      onSelectedCategoryChanged = onSelectedCategoryChanged,
+      onCatalogItemSelected = onCatalogItemSelected,
+    )
+  }
 
-    (appState.devicePosture is DevicePosture.Separating.Book).and(appState.isCompactHeight.not())
-      .and(appState.isLandscape) -> {
-      LandscapeTwoPaneCatalogListScreen(
-        appState = appState,
-        catalogItemsListState = catalogItemsListState,
-        catalogItems = catalogItems,
-        categories = categories,
-        selectedCategory = selectedCategory,
-        onSelectedCategoryChanged = onSelectedCategoryChanged,
-        onCatalogItemSelected = onCatalogItemSelected,
-      )
-    }
+  (appState.devicePosture is DevicePosture.Separating.Book).and(appState.isCompactHeight.not())
+    .and(appState.isLandscape) -> {
+    LandscapeTwoPaneCatalogListScreen(
+      appState = appState,
+      isRouting = false,
+      catalogItemsListState = catalogItemsListState,
+      catalogItems = catalogItems,
+      categories = categories,
+      selectedCategory = selectedCategory,
+      onSelectedCategoryChanged = onSelectedCategoryChanged,
+      onCatalogItemSelected = onCatalogItemSelected,
+    )
+  }
 
-    (appState.devicePosture is DevicePosture.Separating.TableTop)
-      .and(appState.isCompactWidth.not())
-      .and(appState.isLandscape.not()) -> {
-      TableTopCatalogListScreen(
-        appState = appState,
-        catalogItemsListState = catalogItemsListState,
-        catalogItems = catalogItems,
-        categories = categories,
-        selectedCategory = selectedCategory,
-        onSelectedCategoryChanged = onSelectedCategoryChanged,
-        onCatalogItemSelected = onCatalogItemSelected,
-      )
-    }
-    
-    appState.isCompactHeight.and(appState.isLandscape)
-      .and(appState.scaffoldContentType == ScaffoldContentType.SinglePane)
-      .and(appState.devicePosture is DevicePosture.Separating.Book) -> {
-      LandscapeCompactCatalogListScreen(
-        appState = appState,
-        catalogItemsListState = catalogItemsListState,
-        catalogItems = catalogItems,
-        categories = categories,
-        selectedCategory = selectedCategory,
-        onSelectedCategoryChanged = onSelectedCategoryChanged,
-        onCatalogItemSelected = onCatalogItemSelected,
-      )
-    }
+  (appState.devicePosture is DevicePosture.Separating.TableTop)
+    .and(appState.isCompactWidth.not())
+    .and(appState.isLandscape.not()) -> {
+    TableTopCatalogListScreen(
+      appState = appState,
+      isRouting = false,
+      catalogItemsListState = catalogItemsListState,
+      catalogItems = catalogItems,
+      categories = categories,
+      selectedCategory = selectedCategory,
+      onSelectedCategoryChanged = onSelectedCategoryChanged,
+      onCatalogItemSelected = onCatalogItemSelected,
+    )
+  }
 
-    appState.isCompactWidth.and(appState.isLandscape.not())
-      .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> {
-      CompactTableTopCatalogListScreen(
-        appState = appState,
-        catalogItemsListState = catalogItemsListState,
-        catalogItems = catalogItems,
-        categories = categories,
-        selectedCategory = selectedCategory,
-        onSelectedCategoryChanged = onSelectedCategoryChanged,
-        onCatalogItemSelected = onCatalogItemSelected,
-      )
-    }
+  appState.isCompactHeight.and(appState.isLandscape)
+    .and(appState.scaffoldContentType == ScaffoldContentType.SinglePane)
+    .and(appState.devicePosture is DevicePosture.Separating.Book) -> {
+    LandscapeCompactCatalogListScreen(
+      appState = appState,
+      isRouting = true,
+      catalogItemsListState = catalogItemsListState,
+      catalogItems = catalogItems,
+      categories = categories,
+      selectedCategory = selectedCategory,
+      onSelectedCategoryChanged = onSelectedCategoryChanged,
+      onCatalogItemSelected = onCatalogItemSelected,
+    )
+  }
 
-    else -> {
-      DefaultPortraitCatalogListScreen(
-        appState = appState,
-        catalogItemsListState = catalogItemsListState,
-        catalogItems = catalogItems,
-        categories = categories,
-        selectedCategory = selectedCategory,
-        onSelectedCategoryChanged = onSelectedCategoryChanged,
-        onCatalogItemSelected = onCatalogItemSelected,
-      )
-    }
+  appState.isCompactWidth.and(appState.isLandscape.not())
+    .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> {
+    CompactTableTopCatalogListScreen(
+      appState = appState,
+      isRouting = true,
+      catalogItemsListState = catalogItemsListState,
+      catalogItems = catalogItems,
+      categories = categories,
+      selectedCategory = selectedCategory,
+      onSelectedCategoryChanged = onSelectedCategoryChanged,
+      onCatalogItemSelected = onCatalogItemSelected,
+    )
+  }
+
+  else -> {
+    DefaultPortraitCatalogListScreen(
+      appState = appState,
+      isRouting = true,
+      catalogItemsListState = catalogItemsListState,
+      catalogItems = catalogItems,
+      categories = categories,
+      selectedCategory = selectedCategory,
+      onSelectedCategoryChanged = onSelectedCategoryChanged,
+      onCatalogItemSelected = onCatalogItemSelected,
+    )
   }
 }
 

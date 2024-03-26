@@ -98,8 +98,8 @@ fun CatalogListRoute(
             catalogListScrollState.animateScrollToItem(0)
           }
         },
-        onCatalogItemSelected = { itemId ->
-          Timber.d("[CatalogListRoute] CatalogItemTuple.id[$itemId]")
+        onCatalogItemSelected = { catalogId, isRouting ->
+          Timber.d("[CatalogListRoute] clicked item[$catalogId], isRouting=$isRouting ")
         },
       )
     }

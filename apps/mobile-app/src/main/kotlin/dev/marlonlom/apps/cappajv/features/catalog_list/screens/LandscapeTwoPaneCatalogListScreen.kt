@@ -35,6 +35,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param isRouting True/False if should navigate through routing.
  * @param catalogItemsListState Catalog items lazy list state.
  * @param catalogItems Catalog items list.
  * @param categories Categories list.
@@ -48,12 +49,13 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @Composable
 fun LandscapeTwoPaneCatalogListScreen(
   appState: CappajvAppState,
+  isRouting: Boolean,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
   categories: List<String>,
   selectedCategory: String,
   onSelectedCategoryChanged: (String) -> Unit,
-  onCatalogItemSelected: (Long) -> Unit,
+  onCatalogItemSelected: (Long, Boolean) -> Unit,
   modifier: Modifier = Modifier,
 ) {
   val listColumnWidthFraction = when {
@@ -79,7 +81,7 @@ fun LandscapeTwoPaneCatalogListScreen(
         appState = appState,
         catalogItemsListState = catalogItemsListState,
         catalogTuples = catalogItems,
-        onCatalogItemTupleClicked = { onCatalogItemSelected(it) },
+        onCatalogItemTupleClicked = { onCatalogItemSelected(it, isRouting) },
       )
     }
     Column(
