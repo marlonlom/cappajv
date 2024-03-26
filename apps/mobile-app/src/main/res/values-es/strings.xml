@@ -24,6 +24,11 @@
     <item>Bebidas calientes</item>
     <item>Pastelería</item>
   </string-array>
+  <!-- feature: home / catalog favorites -->
+  <string name="text_catalog_favorites_title">Favoritos</string>
+  <string name="text_catalog_favorites_empty_title">¡Aún no hay artículos favoritos!</string>
+  <string name="text_catalog_favorites_empty_label">\nToque el ícono del corazón en cualquier artículo del catálogo para agregarlo a sus favoritos.</string>
+  <string name="text_catalog_favorites_success_remove_icon_hint">Eliminar favorito</string>
   <!-- feature: home / catalog search -->
   <string name="text_catalog_search_title">Buscar en el catálogo</string>
   <string name="text_catalog_search_placeholder">Buscar</string>
