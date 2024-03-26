@@ -30,7 +30,7 @@ internal class FakeCatalogFavoriteItemsDao(
     list.clear()
   }
 
-  override fun delete(productId: Long) {
+  override suspend fun delete(productId: Long) {
     list.removeIf { it.id == productId }
   }
 }

@@ -91,7 +91,7 @@ interface LocalDataSource {
    *
    * @param productId Product item id.
    */
-  fun deleteFavorite(productId: Long)
+  suspend fun deleteFavorite(productId: Long)
 
   /**
    * Delete all punctuations.

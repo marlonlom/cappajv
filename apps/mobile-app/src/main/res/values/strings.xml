@@ -25,6 +25,11 @@
     <item>Hot drinks</item>
     <item>Pastry</item>
   </string-array>
+  <!-- feature: home / catalog favorites -->
+  <string name="text_catalog_favorites_title">Favorites</string>
+  <string name="text_catalog_favorites_empty_title">No favorites yet!</string>
+  <string name="text_catalog_favorites_empty_label">\nTap the heart icon on any catalog item to add it to your favorites.</string>
+  <string name="text_catalog_favorites_success_remove_icon_hint">Remove favorite</string>
   <!-- feature: home / catalog search -->
   <string name="text_catalog_search_title">Search the catalog</string>
   <string name="text_catalog_search_placeholder">Search</string>
