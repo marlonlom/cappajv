@@ -58,7 +58,7 @@ fun MainNavHost(
  * @author marlonlom
  *
  * @param appState Application ui state.
- * @param appContentCallbacks Application callbacks.
+ * @param appContentCallbacks Application content callbacks.
  */
 @ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
@@ -79,8 +79,9 @@ internal fun NavGraphBuilder.catalogListDestination(
  * @author marlonlom
  *
  * @param appState Application ui state.
- * @param appContentCallbacks Application callbacks.
+ * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 internal fun NavGraphBuilder.catalogFavoritesDestination(
   appState: CappajvAppState,
@@ -97,8 +98,9 @@ internal fun NavGraphBuilder.catalogFavoritesDestination(
  * @author marlonlom
  *
  * @param appState Application ui state.
- * @param appContentCallbacks Application callbacks.
+ * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 internal fun NavGraphBuilder.catalogSearchDestination(
   appState: CappajvAppState,
@@ -115,7 +117,7 @@ internal fun NavGraphBuilder.catalogSearchDestination(
  * @author marlonlom
  *
  * @param appState Application ui state.
- * @param appContentCallbacks Application callbacks.
+ * @param appContentCallbacks Application content callbacks.
  */
 @ExperimentalCoroutinesApi
 private fun NavGraphBuilder.catalogDetailDestination(
