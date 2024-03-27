@@ -20,6 +20,7 @@ import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.navigation.MainNavHost
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import timber.log.Timber
 
 
@@ -31,9 +32,11 @@ import timber.log.Timber
  * @param paddingValues Padding values.
  * @param appState Application ui state.
  * @param appContentCallbacks Application content callbacks.
+ * @param isTopDestination True/False if current destination is home, favorites or search.
  * @param selectedPosition
  * @param onSelectedPositionChanged
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
@@ -42,6 +45,7 @@ internal fun MainScaffoldContent(
   paddingValues: PaddingValues,
   appState: CappajvAppState,
   appContentCallbacks: AppContentCallbacks,
+  isTopDestination: Boolean,
   selectedPosition: Int,
   onSelectedPositionChanged: (Int, String) -> Unit
 ) {
@@ -62,6 +66,7 @@ internal fun MainScaffoldContent(
     when (appState.navigationType) {
       NavigationType.EXPANDED_NAV -> {
         ExpandedNavigationDrawer(
+          isTopDestination = isTopDestination,
           selectedPosition = selectedPosition,
           onSelectedPositionChanged = onSelectedPositionChanged,
         ) {
@@ -73,10 +78,12 @@ internal fun MainScaffoldContent(
 
       NavigationType.NAVIGATION_RAIL -> {
         Row {
-          MainNavigationRail(
-            selectedPosition = selectedPosition,
-            onSelectedPositionChanged = onSelectedPositionChanged,
-          )
+          if (isTopDestination) {
+            MainNavigationRail(
+              selectedPosition = selectedPosition,
+              onSelectedPositionChanged = onSelectedPositionChanged,
+            )
+          }
 
           MainNavHost(
             appState = appState,
