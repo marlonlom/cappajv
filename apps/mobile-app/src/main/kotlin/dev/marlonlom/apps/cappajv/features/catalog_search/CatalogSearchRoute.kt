@@ -13,9 +13,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.apps.cappajv.features.catalog_search.screens.CatalogSearchRouteScreen
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.compose.koinViewModel
-import timber.log.Timber
 
 /**
  * Catalog search route composable ui.
@@ -23,12 +24,15 @@ import timber.log.Timber
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application callbacks.
  * @param viewModel Catalog search viewmodel.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @Composable
 fun CatalogSearchRoute(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   viewModel: CatalogSearchViewModel = koinViewModel(),
 ) {
   val queryText = rememberSaveable { viewModel.queryText }
@@ -36,14 +40,20 @@ fun CatalogSearchRoute(
     derivedStateOf { viewModel.queryText.value.isNotEmpty() }
   }
   val searchResultState by viewModel.searchResult.collectAsStateWithLifecycle()
+  val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle()
   CatalogSearchRouteScreen(
     appState = appState,
+    appContentCallbacks = appContentCallbacks,
     queryText = queryText,
     showClearIcon = showClearIcon,
     onSearchReady = viewModel::onQueryTextChanged,
     searchResultUiState = searchResultState,
+    selectedCatalogId = selectedCatalogId,
     onSearchedItemClicked = { catalogId, isRouting ->
-      Timber.d("[CatalogSearchRoute] clicked item[$catalogId], isRouting=$isRouting ")
+      viewModel.selectCatalogItem(catalogId)
+      if (isRouting) {
+        appState.goToDetail(catalogId)
+      }
     },
   )
 }

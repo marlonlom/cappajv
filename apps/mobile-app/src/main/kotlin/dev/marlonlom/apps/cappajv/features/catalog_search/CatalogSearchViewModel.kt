@@ -52,4 +52,11 @@ class CatalogSearchViewModel(
     }
   }
 
+  private val _selectedCatalogId = MutableStateFlow(0L)
+  val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId
+
+  fun selectCatalogItem(catalogId: Long) {
+    _selectedCatalogId.value = catalogId
+  }
+
 }
