@@ -6,7 +6,6 @@
 package dev.marlonlom.apps.cappajv.features.catalog_list.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -15,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,6 +41,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * @param catalogItems Catalog items list.
  * @param categories Categories list.
  * @param selectedCategory Selected category name.
+ * @param selectedCatalogId Selected catalog item id.
  * @param onSelectedCategoryChanged Action for category selected.
  * @param onCatalogItemSelected Action for catalog item selected.
  * @param modifier Modifier for this composable.
@@ -92,11 +91,8 @@ fun LandscapeTwoPaneCatalogListScreen(
     }
     Column(
       modifier = modifier
-          .fillMaxSize()
-          .safeContentPadding()
-          .background(
-              MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.25f)
-          ),
+        .fillMaxSize()
+        .safeContentPadding(),
     ) {
       CatalogDetailRoute(
         appState = appState,

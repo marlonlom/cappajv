@@ -32,6 +32,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * @param catalogItems Catalog items list.
  * @param categories Categories list.
  * @param selectedCategory Selected category name.
+ * @param selectedCatalogId Selected catalog item id.
  * @param onSelectedCategoryChanged Action for category selected.
  * @param onCatalogItemSelected Action for catalog item selected.
  */
@@ -55,7 +56,6 @@ fun CatalogListContent(
     .and(appState.isCompactHeight) -> {
     LandscapeCompactCatalogListScreen(
       appState = appState,
-      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
@@ -120,7 +120,6 @@ fun CatalogListContent(
     .and(appState.devicePosture is DevicePosture.Separating.Book) -> {
     LandscapeCompactCatalogListScreen(
       appState = appState,
-      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
@@ -135,13 +134,11 @@ fun CatalogListContent(
     .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> {
     CompactTableTopCatalogListScreen(
       appState = appState,
-      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
       categories = categories,
       selectedCategory = selectedCategory,
-      selectedCatalogId = selectedCatalogId,
       onSelectedCategoryChanged = onSelectedCategoryChanged,
       onCatalogItemSelected = onCatalogItemSelected,
     )
@@ -150,13 +147,11 @@ fun CatalogListContent(
   else -> {
     DefaultPortraitCatalogListScreen(
       appState = appState,
-      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
       categories = categories,
       selectedCategory = selectedCategory,
-      selectedCatalogId = selectedCatalogId,
       onSelectedCategoryChanged = onSelectedCategoryChanged,
       onCatalogItemSelected = onCatalogItemSelected,
     )

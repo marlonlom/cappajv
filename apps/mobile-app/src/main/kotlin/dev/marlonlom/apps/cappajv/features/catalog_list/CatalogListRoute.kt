@@ -31,14 +31,13 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
-import timber.log.Timber
 
 /**
  * Catalog list route composable ui.
  *
  * @author marlonlom
  *
- * @param appState Application ui state
+ * @param appState Application ui state.
  * @param appContentCallbacks Application callbacks.
  * @param viewModel Catalog list viewmodel.
  */
@@ -107,7 +106,6 @@ fun CatalogListRoute(
           }
         },
         onCatalogItemSelected = { catalogId, isRouting ->
-          Timber.d("[CatalogListRoute] clicked item[$catalogId], isRouting=$isRouting ")
           viewModel.selectCatalogItem(catalogId)
           if (isRouting) {
             appState.goToDetail(catalogId)
