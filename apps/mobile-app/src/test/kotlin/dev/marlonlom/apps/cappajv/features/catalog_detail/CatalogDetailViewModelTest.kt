@@ -5,7 +5,6 @@
 
 package dev.marlonlom.apps.cappajv.features.catalog_detail
 
-import androidx.lifecycle.SavedStateHandle
 import dev.marlonlom.apps.cappajv.core.catalog_source.CatalogDataService
 import dev.marlonlom.apps.cappajv.core.database.FakeLocalDataSource
 import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSource
@@ -55,8 +54,7 @@ internal class CatalogDetailViewModelTest {
       repository = CatalogDetailRepository(
         localDataSource = mockLocalDataSource,
         coroutineDispatcher = UnconfinedTestDispatcher()
-      ),
-      savedStateHandle = SavedStateHandle()
+      )
     )
   }
 
