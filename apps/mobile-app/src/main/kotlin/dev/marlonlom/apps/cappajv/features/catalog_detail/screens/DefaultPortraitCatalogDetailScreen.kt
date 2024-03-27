@@ -17,12 +17,14 @@ import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailUiState
 import dev.marlonlom.apps.cappajv.features.catalog_detail.parts.CatalogDetailTopBar
 import dev.marlonlom.apps.cappajv.features.catalog_detail.slots.CatalogDetailResultsSlot
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 
 @Composable
 fun DefaultPortraitCatalogDetailScreen(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   detailUiState: CatalogDetailUiState,
   isRouting: Boolean,
 ) {
@@ -39,6 +41,6 @@ fun DefaultPortraitCatalogDetailScreen(
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     CatalogDetailTopBar(appState, isRouting)
-    CatalogDetailResultsSlot(appState, detailUiState)
+    CatalogDetailResultsSlot(appState, appContentCallbacks, detailUiState)
   }
 }
