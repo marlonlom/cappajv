@@ -119,6 +119,7 @@ internal fun NavGraphBuilder.catalogSearchDestination(
  * @param appState Application ui state.
  * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalFoundationApi
 @ExperimentalCoroutinesApi
 private fun NavGraphBuilder.catalogDetailDestination(
   appState: CappajvAppState,
