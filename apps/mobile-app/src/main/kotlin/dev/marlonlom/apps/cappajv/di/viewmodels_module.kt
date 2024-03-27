@@ -10,9 +10,11 @@ import dev.marlonlom.apps.cappajv.features.catalog_favorites.CatalogFavoritesVie
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListViewModel
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchViewModel
 import dev.marlonlom.apps.cappajv.features.settings.SettingsViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
+@ExperimentalCoroutinesApi
 val viewModelsModule = module {
   includes(dataModule)
   viewModelOf(::CatalogListViewModel)
