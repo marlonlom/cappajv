@@ -6,7 +6,7 @@
   -->
 
 <resources>
-  <string name="app_name" translatable="false">cappa</string>
+  <string name="app_name" translatable="false">cappajv</string>
   <string name="destination_home">Home</string>
   <string name="destination_search">Search</string>
   <string name="destination_settings">Settings</string>
@@ -36,6 +36,12 @@
   <string name="text_catalog_search_default_subtitle">Explore the catalog</string>
   <string name="text_catalog_search_default_detail">Look for catalog items to buy in stores.</string>
   <string name="text_catalog_search_empty_subtitle">No catalog item was found.\nTry again.</string>
+  <string name="text_catalog_search_success_subtitle">Found items: %1$s</string>
+  <!-- feature: home / catalog detail -->
+  <string name="text_catalog_detail_navigate_back_icon_hint">Navigate back</string>
+  <string name="text_catalog_detail_button_favorite">Favorite</string>
+  <string name="text_catalog_detail_button_share">Share</string>
+  <string name="text_catalog_detail_sharing">%1$s! Pay it with your Amigo Juan Valdez points. Try it, you\'ll love it!\n\n#AmigosJuanValdez #CompartirEsVivir \n\nhttps://juanvaldez.com/amigosjuanvaldez/catalogo-de-puntos-en-tiendas/</string>
   <!-- feature: home / settings -->
   <string name="text_settings_dark_theme">Dark theme</string>
   <string name="text_settings_dynamic_colors">Dynamic colors</string>
@@ -47,5 +53,4 @@
   <string name="url_settings_pdtp" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
   <string name="url_settings_privacy_policy" translatable="false">https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</string>
   <string name="url_settings_terms_conditions" translatable="false">https://juanvaldez.com/amigosjuanvaldez/terminos-y-condiciones</string>
-  <string name="text_catalog_search_success_subtitle">Found items: %1$s</string>
 </resources>
