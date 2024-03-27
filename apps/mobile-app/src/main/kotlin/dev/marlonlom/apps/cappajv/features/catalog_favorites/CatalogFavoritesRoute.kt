@@ -10,9 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.apps.cappajv.features.catalog_favorites.screens.CatalogFavoritesRouteScreen
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import org.koin.androidx.compose.koinViewModel
-import timber.log.Timber
 
 /**
  * Catalog favorites route composable ui.
@@ -20,20 +20,28 @@ import timber.log.Timber
  * @author marlonlom
  *
  * @param appState Application ui state.
+* @param appContentCallbacks Application content callbacks.
  * @param viewModel Catalog favorites viewmodel.
  */
 @ExperimentalFoundationApi
 @Composable
 fun CatalogFavoritesRoute(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   viewModel: CatalogFavoritesViewModel = koinViewModel(),
 ) {
   val favoritesListState by viewModel.favoritesListState.collectAsStateWithLifecycle()
+  val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle()
   CatalogFavoritesRouteScreen(
     appState = appState,
+    appContentCallbacks = appContentCallbacks,
+    selectedCatalogId = selectedCatalogId,
     favoritesListState = favoritesListState,
     onFavoriteItemClicked = { catalogId, isRouting ->
-      Timber.d("[CatalogFavoritesRoute] clicked item[$catalogId], isRouting=$isRouting ")
+      viewModel.selectCatalogItem(catalogId)
+      if (isRouting) {
+        appState.goToDetail(catalogId)
+      }
     },
     onFavoriteItemRemoved = viewModel::deleteFavorite,
   )
