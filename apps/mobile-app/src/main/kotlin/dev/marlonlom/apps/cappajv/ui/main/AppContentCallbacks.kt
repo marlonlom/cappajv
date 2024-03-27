@@ -28,7 +28,7 @@ data class AppContentCallbacks(
   val onOnboardingComplete: () -> Unit,
   val openOssLicencesInfo: () -> Unit,
   val openExternalUrl: (String) -> Unit,
-  val onShareIconClicked: (String) -> Unit,
+  val onShareIconClicked: (Context, String) -> Unit,
 )
 
 /**
@@ -54,8 +54,8 @@ internal fun newAppContentCallbacks(
     Timber.d("[AppContentCallbacks.openExternalUrl] Should open external url '$externalUrl'.")
     CustomTabsOpener.openUrl(activityContext, externalUrl)
   },
-  onShareIconClicked = { message ->
-    Timber.d("[AppContentCallbacks.onShareIconClicked] Should share a book.")
-    CatalogItemSharingUtil.beginShare(activityContext, message)
+  onShareIconClicked = { ctx, message ->
+    Timber.d("[AppContentCallbacks.onShareIconClicked] Should share a catalog item.")
+    CatalogItemSharingUtil.beginShare(ctx, message)
   },
 )

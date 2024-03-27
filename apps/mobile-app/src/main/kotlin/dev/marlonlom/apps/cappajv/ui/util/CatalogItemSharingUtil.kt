@@ -22,7 +22,6 @@ object CatalogItemSharingUtil {
    *
    * @param context Application context.
    * @param message Message as text.
-   *
    */
   fun beginShare(
     context: Context,
@@ -35,7 +34,7 @@ object CatalogItemSharingUtil {
     }.apply {
       ContextCompat.startActivity(
         /* context = */ context,
-        /* intent = */ Intent.createChooser(this, "Share"),
+        /* intent = */ Intent.createChooser(this, context.getString(R.string.text_catalog_detail_button_share)),
         /* options = */ null
       )
     }
