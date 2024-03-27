@@ -41,6 +41,7 @@
   <string name="text_catalog_detail_navigate_back_icon_hint">Navigate back</string>
   <string name="text_catalog_detail_button_favorite">Favorite</string>
   <string name="text_catalog_detail_button_share">Share</string>
+  <string name="text_catalog_detail_points">Points</string>
   <string name="text_catalog_detail_sharing">%1$s! Pay it with your Amigo Juan Valdez points. Try it, you\'ll love it!\n\n#AmigosJuanValdez #CompartirEsVivir \n\nhttps://juanvaldez.com/amigosjuanvaldez/catalogo-de-puntos-en-tiendas/</string>
   <!-- feature: home / settings -->
   <string name="text_settings_dark_theme">Dark theme</string>
