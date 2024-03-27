@@ -28,6 +28,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
  * @param catalogItemsListState Catalog items lazy list state.
  * @param catalogItems Catalog items list.
  * @param categories Categories list.

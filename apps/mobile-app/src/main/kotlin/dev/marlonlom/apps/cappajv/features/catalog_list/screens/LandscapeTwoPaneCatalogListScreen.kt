@@ -36,6 +36,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
  * @param isRouting True/False if should navigate through routing.
  * @param catalogItemsListState Catalog items lazy list state.
  * @param catalogItems Catalog items list.

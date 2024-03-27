@@ -26,12 +26,8 @@ class CatalogListViewModel(
   private val repository: CatalogListRepository
 ) : ViewModel() {
 
-  init {
-    viewModelScope.launch {
-      Timber.d("[CatalogListViewModel] launching fetchCatalogItems()")
-      repository.fetchCatalogItems()
-    }
-  }
+  private val _selectedCatalogId = MutableStateFlow(0L)
+  val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId
 
   /** UI state object for view model */
   val uiState = repository.allProducts.stateIn(
@@ -40,8 +36,12 @@ class CatalogListViewModel(
     initialValue = Loading
   )
 
-  private val _selectedCatalogId = MutableStateFlow(0L)
-  val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId
+  init {
+    viewModelScope.launch {
+      Timber.d("[CatalogListViewModel] launching fetchCatalogItems()")
+      repository.fetchCatalogItems()
+    }
+  }
 
   fun selectCatalogItem(catalogId: Long) {
     _selectedCatalogId.value = catalogId
