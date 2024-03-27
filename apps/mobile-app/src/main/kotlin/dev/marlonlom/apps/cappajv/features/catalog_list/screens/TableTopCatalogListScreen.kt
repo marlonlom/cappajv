@@ -22,12 +22,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailRoute
 import dev.marlonlom.apps.cappajv.features.catalog_list.parts.CatalogListHeadline
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesChipGroup
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListBanner
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListTuplesSlot
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 /**
@@ -45,6 +47,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param onCatalogItemSelected Action for catalog item selected.
  * @param modifier Modifier for this composable.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalLayoutApi
 @ExperimentalFoundationApi
 @Composable
@@ -55,6 +58,7 @@ fun TableTopCatalogListScreen(
   catalogItems: List<CatalogItemTuple>,
   categories: List<String>,
   selectedCategory: String,
+  selectedCatalogId: Long,
   onSelectedCategoryChanged: (String) -> Unit,
   onCatalogItemSelected: (Long, Boolean) -> Unit,
   modifier: Modifier = Modifier,
@@ -95,7 +99,11 @@ fun TableTopCatalogListScreen(
           MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.25f)
         ),
     ) {
-
+      CatalogDetailRoute(
+          appState = appState,
+          isRouting = isRouting,
+          catalogId = selectedCatalogId,
+      )
     }
   }
 }

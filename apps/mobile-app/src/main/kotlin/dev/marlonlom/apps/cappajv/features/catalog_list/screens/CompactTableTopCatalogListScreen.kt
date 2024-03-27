@@ -51,6 +51,7 @@ fun CompactTableTopCatalogListScreen(
   catalogItems: List<CatalogItemTuple>,
   categories: List<String>,
   selectedCategory: String,
+  selectedCatalogId: Long,
   onSelectedCategoryChanged: (String) -> Unit,
   onCatalogItemSelected: (Long, Boolean) -> Unit,
   modifier: Modifier = Modifier,

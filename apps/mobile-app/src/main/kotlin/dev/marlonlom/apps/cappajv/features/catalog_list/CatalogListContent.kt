@@ -19,6 +19,7 @@ import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * Catalog list content composable ui, conditioned by application ui state.
@@ -33,6 +34,7 @@ import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
  * @param onSelectedCategoryChanged Action for category selected.
  * @param onCatalogItemSelected Action for catalog item selected.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @ExperimentalLayoutApi
 @Composable
@@ -42,6 +44,7 @@ fun CatalogListContent(
   catalogItems: List<CatalogItemTuple>,
   categories: List<String>,
   selectedCategory: String,
+  selectedCatalogId: Long,
   onSelectedCategoryChanged: (String) -> Unit,
   onCatalogItemSelected: (Long, Boolean) -> Unit,
 ) = when {
@@ -69,6 +72,7 @@ fun CatalogListContent(
       catalogItems = catalogItems,
       categories = categories,
       selectedCategory = selectedCategory,
+      selectedCatalogId = selectedCatalogId,
       onSelectedCategoryChanged = onSelectedCategoryChanged,
       onCatalogItemSelected = onCatalogItemSelected,
     )
@@ -83,6 +87,7 @@ fun CatalogListContent(
       catalogItems = catalogItems,
       categories = categories,
       selectedCategory = selectedCategory,
+      selectedCatalogId = selectedCatalogId,
       onSelectedCategoryChanged = onSelectedCategoryChanged,
       onCatalogItemSelected = onCatalogItemSelected,
     )
@@ -98,6 +103,7 @@ fun CatalogListContent(
       catalogItems = catalogItems,
       categories = categories,
       selectedCategory = selectedCategory,
+      selectedCatalogId = selectedCatalogId,
       onSelectedCategoryChanged = onSelectedCategoryChanged,
       onCatalogItemSelected = onCatalogItemSelected,
     )
@@ -127,6 +133,7 @@ fun CatalogListContent(
       catalogItems = catalogItems,
       categories = categories,
       selectedCategory = selectedCategory,
+      selectedCatalogId = selectedCatalogId,
       onSelectedCategoryChanged = onSelectedCategoryChanged,
       onCatalogItemSelected = onCatalogItemSelected,
     )
@@ -140,6 +147,7 @@ fun CatalogListContent(
       catalogItems = catalogItems,
       categories = categories,
       selectedCategory = selectedCategory,
+      selectedCatalogId = selectedCatalogId,
       onSelectedCategoryChanged = onSelectedCategoryChanged,
       onCatalogItemSelected = onCatalogItemSelected,
     )
