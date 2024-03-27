@@ -45,10 +45,10 @@ fun MainNavHost(
     navController = appState.navController,
     startDestination = CatalogList.route,
   ) {
-    catalogListDestination(appState)
-    catalogFavoritesDestination(appState)
-    catalogSearchDestination(appState)
-    catalogDetailDestination(appState)
+    catalogListDestination(appState, appContentCallbacks)
+    catalogFavoritesDestination(appState, appContentCallbacks)
+    catalogSearchDestination(appState, appContentCallbacks)
+    catalogDetailDestination(appState, appContentCallbacks)
   }
 }
 
@@ -58,6 +58,7 @@ fun MainNavHost(
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application callbacks.
  */
 @ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
@@ -65,9 +66,10 @@ fun MainNavHost(
 @ExperimentalLayoutApi
 internal fun NavGraphBuilder.catalogListDestination(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
 ) {
   composable(CatalogList.route) {
-    CatalogListRoute(appState)
+    CatalogListRoute(appState, appContentCallbacks)
   }
 }
 
@@ -77,13 +79,15 @@ internal fun NavGraphBuilder.catalogListDestination(
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application callbacks.
  */
 @ExperimentalFoundationApi
 internal fun NavGraphBuilder.catalogFavoritesDestination(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
 ) {
   composable(FavoriteProducts.route) {
-    CatalogFavoritesRoute(appState)
+    CatalogFavoritesRoute(appState, appContentCallbacks)
   }
 }
 
@@ -93,13 +97,15 @@ internal fun NavGraphBuilder.catalogFavoritesDestination(
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application callbacks.
  */
 @ExperimentalFoundationApi
 internal fun NavGraphBuilder.catalogSearchDestination(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
 ) {
   composable(SearchProducts.route) {
-    CatalogSearchRoute(appState)
+    CatalogSearchRoute(appState, appContentCallbacks)
   }
 }
 
@@ -109,10 +115,12 @@ internal fun NavGraphBuilder.catalogSearchDestination(
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application callbacks.
  */
 @ExperimentalCoroutinesApi
 private fun NavGraphBuilder.catalogDetailDestination(
-  appState: CappajvAppState
+  appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks
 ) {
   composable(
     route = Detail.route,
@@ -121,6 +129,7 @@ private fun NavGraphBuilder.catalogDetailDestination(
     val catalogDetailId = requireNotNull(backStackEntry.arguments?.getLong(Detail.ITEM_ID_ARG))
     CatalogDetailRoute(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogId = catalogDetailId
     )
