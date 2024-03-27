@@ -22,7 +22,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * @author marlonlom
  *
  * @param appState Application ui state.
- * @param appContentCallbacks Application callbacks.
+* @param appContentCallbacks Application content callbacks.
  * @param queryText Query text for searching.
  * @param showClearIcon True/False if query text should be cleared.
  * @param onSearchReady Action for query text ready for search.

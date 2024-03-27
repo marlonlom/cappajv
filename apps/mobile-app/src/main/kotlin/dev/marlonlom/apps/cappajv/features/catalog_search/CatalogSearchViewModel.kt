@@ -40,6 +40,9 @@ class CatalogSearchViewModel(
     initialValue = None
   )
 
+  private val _selectedCatalogId = MutableStateFlow(0L)
+  val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId
+
   /** Handles query text value change. */
   fun onQueryTextChanged() {
     _searchResult.value = if (queryText.value.isNotEmpty()) Searching else None
@@ -51,9 +54,6 @@ class CatalogSearchViewModel(
       }
     }
   }
-
-  private val _selectedCatalogId = MutableStateFlow(0L)
-  val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId
 
   fun selectCatalogItem(catalogId: Long) {
     _selectedCatalogId.value = catalogId
