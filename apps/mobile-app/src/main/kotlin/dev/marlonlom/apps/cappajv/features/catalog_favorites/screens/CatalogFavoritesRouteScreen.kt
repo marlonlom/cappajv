@@ -8,6 +8,7 @@ package dev.marlonlom.apps.cappajv.features.catalog_favorites.screens
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import dev.marlonlom.apps.cappajv.features.catalog_favorites.CatalogFavoritesUiState
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 /**
@@ -16,6 +17,8 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @author Marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
+ * @param selectedCatalogId Selected catalog item id.
  * @param favoritesListState Catalog favorites ui state.
  * @param onFavoriteItemClicked Action for favorite item clicked.
  * @param onFavoriteItemRemoved Action for favorite item removed.
@@ -24,6 +27,8 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @Composable
 fun CatalogFavoritesRouteScreen(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
+  selectedCatalogId: Long,
   favoritesListState: CatalogFavoritesUiState,
   onFavoriteItemClicked: (Long, Boolean) -> Unit,
   onFavoriteItemRemoved: (Long) -> Unit,

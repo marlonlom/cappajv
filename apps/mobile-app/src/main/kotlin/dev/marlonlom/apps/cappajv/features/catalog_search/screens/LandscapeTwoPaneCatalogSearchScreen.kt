@@ -15,17 +15,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailRoute
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchUiState
 import dev.marlonlom.apps.cappajv.features.catalog_search.parts.CatalogSearchHeadline
 import dev.marlonlom.apps.cappajv.features.catalog_search.slots.CatalogSearchInputSlot
 import dev.marlonlom.apps.cappajv.features.catalog_search.slots.CatalogSearchResultsSlot
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * Landscape two-pane catalog search screen composable ui.
@@ -40,12 +42,15 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param searchResultUiState Catalog search results ui state.
  * @param onSearchedItemClicked Action for searched item clicked.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @Composable
 internal fun LandscapeTwoPaneCatalogSearchScreen(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   isRouting: Boolean,
   queryText: MutableState<String>,
+  selectedCatalogId: Long,
   showClearIcon: State<Boolean>,
   onSearchReady: () -> Unit,
   searchResultUiState: CatalogSearchUiState,
@@ -78,7 +83,12 @@ internal fun LandscapeTwoPaneCatalogSearchScreen(
         .fillMaxSize()
         .safeContentPadding(),
     ) {
-      Text(text = "Detail")
+      CatalogDetailRoute(
+        appState = appState,
+        appContentCallbacks = appContentCallbacks,
+        isRouting = isRouting,
+        catalogId = selectedCatalogId,
+      )
     }
   }
 }

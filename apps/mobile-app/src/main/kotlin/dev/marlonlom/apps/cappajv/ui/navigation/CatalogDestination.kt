@@ -82,7 +82,7 @@ sealed class CatalogDestination(
    * @author marlonlom
    */
   data object Detail : CatalogDestination(
-    route = "catalog/item/itemId",
+    route = "catalog/detail/{itemId}",
     title = R.string.destination_detail,
     icon = Icons.Rounded.Info
   ) {
@@ -92,12 +92,12 @@ sealed class CatalogDestination(
      *
      * @param itemId Selected product item id.
      */
-    fun createRoute(itemId: Long) = "catalog/item/$itemId"
+    fun createRoute(itemId: Long) = "catalog/detail/$itemId"
 
-    private const val itemIdArg = "itemId"
+    const val ITEM_ID_ARG = "itemId"
 
     /** Navigation arguments for detail destination route. */
-    val arguments = listOf(navArgument(itemIdArg) {
+    val navArguments = listOf(navArgument(ITEM_ID_ARG) {
       type = NavType.LongType
       defaultValue = 0L
     })

@@ -27,6 +27,9 @@ class CatalogFavoritesViewModel(
     initialValue = Empty
   )
 
+  private val _selectedCatalogId = MutableStateFlow(0L)
+  val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId
+
   init {
     this.fetchAllFavorites()
   }
@@ -44,5 +47,9 @@ class CatalogFavoritesViewModel(
     viewModelScope.launch {
       repository.deleteFavorite(catalogId)
     }
+  }
+
+  fun selectCatalogItem(catalogId: Long) {
+    _selectedCatalogId.value = catalogId
   }
 }

@@ -36,6 +36,12 @@
   <string name="text_catalog_search_default_detail">Busca artículos de catálogo para comprar en tiendas.</string>
   <string name="text_catalog_search_empty_subtitle">No se encontró ningún artículo del catálogo.\nInténtelo de nuevo.</string>
   <string name="text_catalog_search_success_subtitle">Artículos encontrados: %1$s</string>
+  <!-- feature: home / catalog detail -->
+  <string name="text_catalog_detail_navigate_back_icon_hint">Navegar hacia atrás</string>
+  <string name="text_catalog_detail_button_favorite">Favorito</string>
+  <string name="text_catalog_detail_button_share">Compartir</string>
+  <string name="text_catalog_detail_points">Puntos</string>
+  <string name="text_catalog_detail_sharing">%1$s! Pagalo con tus puntos Amigo Juan Valdez. ¡Pruébalo, te encantará!\n\n#AmigosJuanValdez #CompartirEsVivir \n\nhttps://juanvaldez.com/amigosjuanvaldez/catalogo-de-puntos-en-tiendas/</string>
   <!-- feature: home / settings -->
   <string name="text_settings_dark_theme">Tema oscuro</string>
   <string name="text_settings_dynamic_colors">Colores dinámicos</string>

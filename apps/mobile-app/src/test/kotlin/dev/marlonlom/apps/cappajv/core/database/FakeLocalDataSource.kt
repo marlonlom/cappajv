@@ -36,8 +36,8 @@ internal class FakeLocalDataSource(
     })
   }
 
-  override fun findProduct(productId: Long): Flow<CatalogItem> {
-    val listResponse = remoteDataService.fetchData()
+  override fun findProduct(productId: Long): Flow<CatalogItem?> = flowOf(
+    remoteDataService.fetchData()
       .successOr(emptyList())
       .find { it.id == productId }
       .let {
@@ -51,10 +51,10 @@ internal class FakeLocalDataSource(
           detail = "Lorem ipsum",
           samplePunctuation = "",
           punctuationsCount = 0,
-        ) else NONE
+        )
+        else null
       }
-    return flowOf(listResponse)
-  }
+  )
 
   override fun getPunctuations(productId: Long): Flow<List<CatalogPunctuation>> {
     val listResponse: RemoteCatalogItem = remoteDataService.fetchData()

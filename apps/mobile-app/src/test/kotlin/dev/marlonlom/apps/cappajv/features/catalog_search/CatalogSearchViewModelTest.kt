@@ -10,8 +10,6 @@ import dev.marlonlom.apps.cappajv.core.database.FakeLocalDataSource
 import dev.marlonlom.apps.cappajv.util.MainDispatcherRule
 import dev.marlonlom.apps.cappajv.util.RethrowingExceptionHandler
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -47,7 +45,7 @@ internal class CatalogSearchViewModelTest {
   @Test
   fun `Should return default search ui state`() = runTest {
     viewModel.onQueryTextChanged()
-    val uiState = viewModel.searchResult.first()
+    val uiState = viewModel.searchResult.value
     assertTrue(viewModel.queryText.value.isEmpty())
     assertEquals(CatalogSearchUiState.None, uiState)
   }
@@ -57,7 +55,7 @@ internal class CatalogSearchViewModelTest {
     val expectedTitle = "torta"
     viewModel.queryText.value = expectedTitle
     viewModel.onQueryTextChanged()
-    val uiState = viewModel.searchResult.first()
+    val uiState = viewModel.searchResult.value
     assertNotNull(uiState)
     when (uiState) {
       is CatalogSearchUiState.Success -> {
@@ -79,9 +77,8 @@ internal class CatalogSearchViewModelTest {
     val expectedTitle = "chamfle"
     viewModel.queryText.value = expectedTitle
     viewModel.onQueryTextChanged()
-    viewModel.searchResult.collectLatest { uiState ->
-      assertNotNull(uiState)
-      assertTrue(uiState == CatalogSearchUiState.Empty)
-    }
+    val uiState = viewModel.searchResult.value
+    assertNotNull(uiState)
+    assertTrue(uiState == CatalogSearchUiState.Empty)
   }
 }

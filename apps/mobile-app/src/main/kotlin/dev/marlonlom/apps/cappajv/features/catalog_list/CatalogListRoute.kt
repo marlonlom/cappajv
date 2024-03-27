@@ -26,25 +26,29 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
-import timber.log.Timber
 
 /**
  * Catalog list route composable ui.
  *
  * @author marlonlom
  *
- * @param appState Application ui state
+ * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
  * @param viewModel Catalog list viewmodel.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
 @Composable
 fun CatalogListRoute(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   viewModel: CatalogListViewModel = koinViewModel(),
 ) {
   val coroutineScope = rememberCoroutineScope()
@@ -52,6 +56,7 @@ fun CatalogListRoute(
   val firstCategory = categoriesList.first()
   val selectedCategory = rememberSaveable { mutableStateOf(firstCategory) }
   val catalogListUiState: CatalogListUiState by viewModel.uiState.collectAsStateWithLifecycle()
+  val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle()
   val catalogListScrollState = rememberLazyListState()
 
   when (catalogListUiState) {
@@ -87,10 +92,12 @@ fun CatalogListRoute(
 
       CatalogListContent(
         appState = appState,
+        appContentCallbacks = appContentCallbacks,
         catalogItemsListState = catalogListScrollState,
         catalogItems = catalogItemsList.value,
         categories = categoriesList,
         selectedCategory = selectedCategory.value,
+        selectedCatalogId = selectedCatalogId,
         onSelectedCategoryChanged = { category ->
           selectedCategory.value = category
           catalogItemsList.value = filteredCatalogByCategory(category)
@@ -99,7 +106,10 @@ fun CatalogListRoute(
           }
         },
         onCatalogItemSelected = { catalogId, isRouting ->
-          Timber.d("[CatalogListRoute] clicked item[$catalogId], isRouting=$isRouting ")
+          viewModel.selectCatalogItem(catalogId)
+          if (isRouting) {
+            appState.goToDetail(catalogId)
+          }
         },
       )
     }

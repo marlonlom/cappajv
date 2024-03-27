@@ -11,6 +11,7 @@ import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSourceImpl
 import dev.marlonlom.apps.cappajv.core.preferences.UserPreferencesRepository
 import dev.marlonlom.apps.cappajv.dataStore
+import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailRepository
 import dev.marlonlom.apps.cappajv.features.catalog_favorites.CatalogFavoritesRepository
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListRepository
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchRepository
@@ -45,6 +46,11 @@ val dataModule = module {
   }
   single<CatalogSearchRepository> {
     CatalogSearchRepository(
+      localDataSource = get(),
+    )
+  }
+  single<CatalogDetailRepository> {
+    CatalogDetailRepository(
       localDataSource = get(),
     )
   }

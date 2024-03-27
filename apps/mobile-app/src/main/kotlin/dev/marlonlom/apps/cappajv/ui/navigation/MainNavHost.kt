@@ -12,11 +12,17 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailRoute
 import dev.marlonlom.apps.cappajv.features.catalog_favorites.CatalogFavoritesRoute
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListRoute
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchRoute
 import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination.CatalogList
+import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination.Detail
+import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination.FavoriteProducts
+import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination.SearchProducts
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * Main navigation host composable ui.
@@ -26,6 +32,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param appState Application ui state.
  * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
@@ -36,11 +43,12 @@ fun MainNavHost(
 ) {
   NavHost(
     navController = appState.navController,
-    startDestination = CatalogDestination.CatalogList.route,
+    startDestination = CatalogList.route,
   ) {
-    catalogListDestination(appState)
-    catalogFavoritesDestination(appState)
-    catalogSearchDestination(appState)
+    catalogListDestination(appState, appContentCallbacks)
+    catalogFavoritesDestination(appState, appContentCallbacks)
+    catalogSearchDestination(appState, appContentCallbacks)
+    catalogDetailDestination(appState, appContentCallbacks)
   }
 }
 
@@ -50,15 +58,18 @@ fun MainNavHost(
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
 internal fun NavGraphBuilder.catalogListDestination(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
 ) {
-  composable(CatalogDestination.CatalogList.route) {
-    CatalogListRoute(appState)
+  composable(CatalogList.route) {
+    CatalogListRoute(appState, appContentCallbacks)
   }
 }
 
@@ -68,13 +79,16 @@ internal fun NavGraphBuilder.catalogListDestination(
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 internal fun NavGraphBuilder.catalogFavoritesDestination(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
 ) {
-  composable(CatalogDestination.FavoriteProducts.route) {
-    CatalogFavoritesRoute(appState)
+  composable(FavoriteProducts.route) {
+    CatalogFavoritesRoute(appState, appContentCallbacks)
   }
 }
 
@@ -84,12 +98,43 @@ internal fun NavGraphBuilder.catalogFavoritesDestination(
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 internal fun NavGraphBuilder.catalogSearchDestination(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
 ) {
-  composable(CatalogDestination.SearchProducts.route) {
-    CatalogSearchRoute(appState)
+  composable(SearchProducts.route) {
+    CatalogSearchRoute(appState, appContentCallbacks)
+  }
+}
+
+/**
+ * Catalog details destination composable extension for navigation graph builder.
+ *
+ * @author marlonlom
+ *
+ * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
+ */
+@ExperimentalFoundationApi
+@ExperimentalCoroutinesApi
+private fun NavGraphBuilder.catalogDetailDestination(
+  appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks
+) {
+  composable(
+    route = Detail.route,
+    arguments = Detail.navArguments
+  ) { backStackEntry ->
+    val catalogDetailId = requireNotNull(backStackEntry.arguments?.getLong(Detail.ITEM_ID_ARG))
+    CatalogDetailRoute(
+      appState = appState,
+      appContentCallbacks = appContentCallbacks,
+      isRouting = true,
+      catalogId = catalogDetailId
+    )
   }
 }

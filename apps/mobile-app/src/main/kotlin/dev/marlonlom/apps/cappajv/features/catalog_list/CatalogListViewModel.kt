@@ -6,9 +6,9 @@
 package dev.marlonlom.apps.cappajv.features.catalog_list
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import dev.marlonlom.apps.cappajv.features.catalog_list.CatalogListUiState.Loading
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -26,6 +26,16 @@ class CatalogListViewModel(
   private val repository: CatalogListRepository
 ) : ViewModel() {
 
+  private val _selectedCatalogId = MutableStateFlow(0L)
+  val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId
+
+  /** UI state object for view model */
+  val uiState = repository.allProducts.stateIn(
+    scope = viewModelScope,
+    started = SharingStarted.Eagerly,
+    initialValue = Loading
+  )
+
   init {
     viewModelScope.launch {
       Timber.d("[CatalogListViewModel] launching fetchCatalogItems()")
@@ -33,7 +43,7 @@ class CatalogListViewModel(
     }
   }
 
-  /** UI state object for view model */
-  val uiState = repository.allProducts.stateIn(viewModelScope, SharingStarted.Eagerly, Loading)
-
+  fun selectCatalogItem(catalogId: Long) {
+    _selectedCatalogId.value = catalogId
+  }
 }

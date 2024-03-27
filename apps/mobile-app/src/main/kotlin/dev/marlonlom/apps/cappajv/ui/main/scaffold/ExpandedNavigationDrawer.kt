@@ -24,16 +24,19 @@ import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination
  *
  * @author marlonlom
  *
+ * @param isTopDestination True/False if current destination is home, favorites or search.
  * @param selectedPosition Selected index.
  * @param onSelectedPositionChanged Action for selected navigation bar item index changed.
+ * @param content
  */
 @Composable
 fun ExpandedNavigationDrawer(
+  isTopDestination: Boolean,
   selectedPosition: Int,
   onSelectedPositionChanged: (Int, String) -> Unit,
   content: @Composable () -> Unit,
-) {
-  PermanentNavigationDrawer(
+) = when {
+  isTopDestination -> PermanentNavigationDrawer(
     drawerContent = {
       PermanentDrawerSheet(
         modifier = Modifier
@@ -43,13 +46,15 @@ fun ExpandedNavigationDrawer(
       ) {
         NavigationDrawerContent(
           selectedPosition = selectedPosition,
-          onSelectedPositionChanged = onSelectedPositionChanged
+          onSelectedPositionChanged = onSelectedPositionChanged,
         )
       }
     },
   ) {
     content()
   }
+
+  else -> content()
 }
 
 /**
@@ -62,8 +67,7 @@ fun ExpandedNavigationDrawer(
  */
 @Composable
 internal fun NavigationDrawerContent(
-  selectedPosition: Int,
-  onSelectedPositionChanged: (Int, String) -> Unit
+  selectedPosition: Int, onSelectedPositionChanged: (Int, String) -> Unit
 ) {
   CatalogDestination.topCatalogDestinations.forEachIndexed { index, destination ->
     NavigationDrawerItem(
@@ -74,8 +78,7 @@ internal fun NavigationDrawerContent(
       },
       icon = {
         Icon(
-          imageVector = destination.icon,
-          contentDescription = stringResource(id = destination.title)
+          imageVector = destination.icon, contentDescription = stringResource(id = destination.title)
         )
       },
       label = {

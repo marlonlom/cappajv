@@ -11,8 +11,10 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import dev.marlonlom.apps.cappajv.features.catalog_search.CatalogSearchUiState
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * Catalog search route screen content composable ui.
@@ -20,20 +22,24 @@ import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
  * @param queryText Query text for searching.
  * @param showClearIcon True/False if query text should be cleared.
  * @param onSearchReady Action for query text ready for search.
  * @param searchResultUiState Catalog search results ui state.
  * @param onSearchedItemClicked Action for searched item clicked.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @Composable
 fun CatalogSearchRouteScreen(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   queryText: MutableState<String>,
   showClearIcon: State<Boolean>,
   onSearchReady: () -> Unit,
   searchResultUiState: CatalogSearchUiState,
+  selectedCatalogId: Long,
   onSearchedItemClicked: (Long, Boolean) -> Unit,
 ) = when {
   appState.isLandscape
@@ -41,8 +47,10 @@ fun CatalogSearchRouteScreen(
     .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> {
     LandscapeTwoPaneCatalogSearchScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = false,
       queryText = queryText,
+      selectedCatalogId = selectedCatalogId,
       showClearIcon = showClearIcon,
       onSearchReady = onSearchReady,
       searchResultUiState = searchResultUiState,
@@ -55,8 +63,10 @@ fun CatalogSearchRouteScreen(
     .and(appState.navigationType == NavigationType.NAVIGATION_RAIL) -> {
     LandscapeTwoPaneCatalogSearchScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = false,
       queryText = queryText,
+      selectedCatalogId = selectedCatalogId,
       showClearIcon = showClearIcon,
       onSearchReady = onSearchReady,
       searchResultUiState = searchResultUiState,

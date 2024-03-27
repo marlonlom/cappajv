@@ -23,6 +23,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.main.MainActivityUiState
 import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * Main scaffold composable ui.
@@ -33,6 +34,7 @@ import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
  * @param appState Main application ui state
  * @param appContentCallbacks Application content callbacks.
  */
+@ExperimentalCoroutinesApi
 @ExperimentalFoundationApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
@@ -96,14 +98,16 @@ fun MainScaffold(
       paddingValues = paddingValues,
       appState = appState,
       appContentCallbacks = appContentCallbacks,
+      isTopDestination = isTopDestination,
       selectedPosition = bottomNavSelectedIndex,
-    ) { position, route ->
-      if (route == CatalogDestination.Settings.route) {
-        showSettingsDialog = true
-      } else {
-        bottomNavSelectedIndex = position
-        appState.changeTopDestination(route)
-      }
-    }
+      onSelectedPositionChanged = { position, route ->
+        if (route == CatalogDestination.Settings.route) {
+          showSettingsDialog = true
+        } else {
+          bottomNavSelectedIndex = position
+          appState.changeTopDestination(route)
+        }
+      },
+    )
   }
 }
