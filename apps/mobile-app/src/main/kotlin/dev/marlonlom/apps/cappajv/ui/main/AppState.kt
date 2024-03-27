@@ -11,11 +11,11 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentClassifier
+import dev.marlonlom.apps.cappajv.ui.navigation.CatalogDestination.Detail
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationTypeSelector
 
 /**
@@ -90,12 +90,17 @@ data class CappajvAppState(
    */
   fun changeTopDestination(selectedRoute: String) {
     navController.navigate(selectedRoute) {
-      popUpTo(navController.graph.findStartDestination().id) {
-        saveState = true
-        inclusive = true
+      navController.graph.startDestinationRoute?.let { route ->
+        popUpTo(route) {
+          saveState = true
+        }
+        launchSingleTop = true
+        restoreState = true
       }
-      launchSingleTop = true
-      restoreState = true
     }
+  }
+
+  fun goToDetail(catalogId: Long) {
+    navController.navigate(Detail.createRoute(catalogId))
   }
 }
