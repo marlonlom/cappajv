@@ -6,6 +6,7 @@
 package dev.marlonlom.apps.cappajv.features.catalog_detail
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -24,6 +25,7 @@ import org.koin.androidx.compose.koinViewModel
  * @param catalogId Selected catalog item id.
  * @param viewModel Catalog detail viewmodel.
  */
+@ExperimentalFoundationApi
 @ExperimentalCoroutinesApi
 @Composable
 fun CatalogDetailRoute(
