@@ -50,7 +50,7 @@ internal class SettingsViewModelTest {
       )
     }
     viewModel = SettingsViewModel(UserPreferencesRepository(mockDataStore))
-    val uiState = viewModel.uiState.first()
+    val uiState = viewModel.uiState.value
     assertNotNull(uiState)
     when (uiState) {
       is SettingsUiState.Success -> {
@@ -70,7 +70,7 @@ internal class SettingsViewModelTest {
       on(it.data).thenReturn(flowOf(emptyPreferences()))
     }
     viewModel = SettingsViewModel(UserPreferencesRepository(mockDataStore))
-    val uiState = viewModel.uiState.first()
+    val uiState = viewModel.uiState.value
     assertNotNull(uiState)
     when (uiState) {
       is SettingsUiState.Success -> {
