@@ -27,6 +27,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesC
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListBanner
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListTuplesSlot
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -52,6 +53,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @Composable
 fun LandscapeTwoPaneCatalogListScreen(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   isRouting: Boolean,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
@@ -98,6 +100,7 @@ fun LandscapeTwoPaneCatalogListScreen(
     ) {
       CatalogDetailRoute(
         appState = appState,
+        appContentCallbacks = appContentCallbacks,
         isRouting = isRouting,
         catalogId = selectedCatalogId,
       )

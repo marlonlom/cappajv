@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.apps.cappajv.R
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -38,6 +39,7 @@ import timber.log.Timber
  * @author marlonlom
  *
  * @param appState Application ui state
+ * @param appContentCallbacks Application callbacks.
  * @param viewModel Catalog list viewmodel.
  */
 @ExperimentalCoroutinesApi
@@ -47,6 +49,7 @@ import timber.log.Timber
 @Composable
 fun CatalogListRoute(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   viewModel: CatalogListViewModel = koinViewModel(),
 ) {
   val coroutineScope = rememberCoroutineScope()
@@ -90,6 +93,7 @@ fun CatalogListRoute(
 
       CatalogListContent(
         appState = appState,
+        appContentCallbacks = appContentCallbacks,
         catalogItemsListState = catalogListScrollState,
         catalogItems = catalogItemsList.value,
         categories = categoriesList,

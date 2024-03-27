@@ -23,6 +23,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesC
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListBanner
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListTuplesSlot
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
 
@@ -46,6 +47,7 @@ import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
 @Composable
 fun LandscapeCompactCatalogListScreen(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   isRouting: Boolean,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,

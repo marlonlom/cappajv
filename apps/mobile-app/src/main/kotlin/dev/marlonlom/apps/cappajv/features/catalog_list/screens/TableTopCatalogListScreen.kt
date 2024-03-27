@@ -28,6 +28,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesC
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListBanner
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListTuplesSlot
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -53,6 +54,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @Composable
 fun TableTopCatalogListScreen(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   isRouting: Boolean,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
@@ -100,9 +102,10 @@ fun TableTopCatalogListScreen(
         ),
     ) {
       CatalogDetailRoute(
-          appState = appState,
-          isRouting = isRouting,
-          catalogId = selectedCatalogId,
+        appState = appState,
+        appContentCallbacks = appContentCallbacks,
+        isRouting = isRouting,
+        catalogId = selectedCatalogId,
       )
     }
   }

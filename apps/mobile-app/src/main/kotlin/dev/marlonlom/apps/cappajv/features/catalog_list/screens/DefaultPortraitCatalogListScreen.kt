@@ -19,6 +19,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.parts.CatalogListHeadlin
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogCategoriesChipGroup
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListBanner
 import dev.marlonlom.apps.cappajv.features.catalog_list.slots.CatalogListTuplesSlot
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 /**
@@ -41,6 +42,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 @Composable
 fun DefaultPortraitCatalogListScreen(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   isRouting: Boolean,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,

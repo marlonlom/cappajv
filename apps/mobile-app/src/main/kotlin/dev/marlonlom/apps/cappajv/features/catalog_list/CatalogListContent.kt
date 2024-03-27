@@ -16,6 +16,7 @@ import dev.marlonlom.apps.cappajv.features.catalog_list.screens.LandscapeCompact
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.LandscapeTwoPaneCatalogListScreen
 import dev.marlonlom.apps.cappajv.features.catalog_list.screens.TableTopCatalogListScreen
 import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
+import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
 import dev.marlonlom.apps.cappajv.ui.navigation.NavigationType
@@ -40,6 +41,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @Composable
 fun CatalogListContent(
   appState: CappajvAppState,
+  appContentCallbacks: AppContentCallbacks,
   catalogItemsListState: LazyListState,
   catalogItems: List<CatalogItemTuple>,
   categories: List<String>,
@@ -53,6 +55,7 @@ fun CatalogListContent(
     .and(appState.isCompactHeight) -> {
     LandscapeCompactCatalogListScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
@@ -67,6 +70,7 @@ fun CatalogListContent(
     .and(listOf(NavigationType.EXPANDED_NAV, NavigationType.NAVIGATION_RAIL).contains(appState.navigationType)) -> {
     LandscapeTwoPaneCatalogListScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = false,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
@@ -82,6 +86,7 @@ fun CatalogListContent(
     .and(appState.isLandscape) -> {
     LandscapeTwoPaneCatalogListScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = false,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
@@ -98,6 +103,7 @@ fun CatalogListContent(
     .and(appState.isLandscape.not()) -> {
     TableTopCatalogListScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = false,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
@@ -114,6 +120,7 @@ fun CatalogListContent(
     .and(appState.devicePosture is DevicePosture.Separating.Book) -> {
     LandscapeCompactCatalogListScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
@@ -128,6 +135,7 @@ fun CatalogListContent(
     .and(appState.devicePosture is DevicePosture.Separating.TableTop) -> {
     CompactTableTopCatalogListScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
@@ -142,6 +150,7 @@ fun CatalogListContent(
   else -> {
     DefaultPortraitCatalogListScreen(
       appState = appState,
+      appContentCallbacks = appContentCallbacks,
       isRouting = true,
       catalogItemsListState = catalogItemsListState,
       catalogItems = catalogItems,
