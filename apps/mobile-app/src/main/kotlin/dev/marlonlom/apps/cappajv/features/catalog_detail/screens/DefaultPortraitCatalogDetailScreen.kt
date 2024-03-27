@@ -5,10 +5,13 @@
 
 package dev.marlonlom.apps.cappajv.features.catalog_detail.screens
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,6 +24,7 @@ import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
 
+@ExperimentalFoundationApi
 @Composable
 fun DefaultPortraitCatalogDetailScreen(
   appState: CappajvAppState,
@@ -35,6 +39,7 @@ fun DefaultPortraitCatalogDetailScreen(
   }
   Column(
     modifier = Modifier
+      .verticalScroll(rememberScrollState())
       .padding(horizontal = contentHorizontalPadding)
       .fillMaxSize()
       .background(MaterialTheme.colorScheme.surface),
