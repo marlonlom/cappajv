@@ -24,7 +24,7 @@ import org.koin.androidx.compose.koinViewModel
  * @author marlonlom
  *
  * @param appState Application ui state.
-* @param appContentCallbacks Application content callbacks.
+ * @param appContentCallbacks Application content callbacks.
  * @param viewModel Catalog search viewmodel.
  */
 @ExperimentalCoroutinesApi

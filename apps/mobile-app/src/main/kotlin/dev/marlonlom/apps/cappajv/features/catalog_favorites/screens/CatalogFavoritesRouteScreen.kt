@@ -17,7 +17,7 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @author Marlonlom
  *
  * @param appState Application ui state.
- * @param appContentCallbacks Application content callbacks. Application content callbacks.
+ * @param appContentCallbacks Application content callbacks.
  * @param selectedCatalogId Selected catalog item id.
  * @param favoritesListState Catalog favorites ui state.
  * @param onFavoriteItemClicked Action for favorite item clicked.
