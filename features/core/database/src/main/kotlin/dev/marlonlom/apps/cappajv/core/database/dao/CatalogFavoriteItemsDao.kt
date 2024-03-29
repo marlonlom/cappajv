@@ -50,4 +50,13 @@ interface CatalogFavoriteItemsDao {
   @Query("DELETE FROM catalog_item_favorite WHERE id = :productId")
   suspend fun delete(productId: Long)
 
+  /**
+   * Returns 1 if a product with the provided ID exists as a favorite, otherwise returns 0.
+   *
+   * @param productId Product item id.
+   * @return Number that indicates if product id exists as favorite, as Flow.
+   */
+  @Query("SELECT COUNT(f.id) FROM catalog_item_favorite f WHERE f.id = :productId")
+  fun isFavorite(productId: Long): Flow<Int>
+
 }

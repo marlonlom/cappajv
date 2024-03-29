@@ -33,4 +33,6 @@ internal class FakeCatalogFavoriteItemsDao(
   override suspend fun delete(productId: Long) {
     list.removeIf { it.id == productId }
   }
+
+  override fun isFavorite(productId: Long): Flow<Int> = flowOf(list.count { it.id == productId })
 }

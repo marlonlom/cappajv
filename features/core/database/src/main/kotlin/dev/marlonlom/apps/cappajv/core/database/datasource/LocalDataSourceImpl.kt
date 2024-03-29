@@ -60,4 +60,6 @@ class LocalDataSourceImpl(
 
   override fun deleteAllPunctuations() = catalogPunctuationsDao.deleteAll()
 
+  override fun isFavorite(productId: Long): Flow<Int> = catalogFavoriteItemsDao.isFavorite(productId)
+
 }

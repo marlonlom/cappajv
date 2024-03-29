@@ -108,4 +108,24 @@ internal class CatalogFavoriteItemsDaoTest {
     Truth.assertThat(list).contains(remainingItem)
   }
 
+  @Test
+  fun shouldInsertThenFailCheckThatIsFavoriteItem() = runBlocking {
+    val actual = dao.isFavorite(1234L).first()
+    Truth.assertThat(actual).isEqualTo(0)
+  }
+
+  @Test
+  fun shouldInsertThenSuccessCheckThatIsFavoriteItem() = runBlocking {
+    val entity = CatalogFavoriteItem(
+      id = 1L,
+      title = "Pod",
+      picture = "https://noimage.no.com/no.png",
+      category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
+    )
+    dao.insertAll(entity)
+    val actual = dao.isFavorite(entity.id).first()
+    Truth.assertThat(actual).isEqualTo(1)
+  }
 }

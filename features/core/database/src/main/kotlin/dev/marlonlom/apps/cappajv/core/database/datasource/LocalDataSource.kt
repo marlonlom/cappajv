@@ -98,6 +98,13 @@ interface LocalDataSource {
    */
   fun deleteAllPunctuations()
 
+  /**
+   * Returns 1 if a product with the provided ID exists as a favorite, otherwise returns 0.
+   *
+   * @param productId Product item id.
+   * @return Number that indicates if product id exists as favorite, as Flow.
+   */
+  fun isFavorite(productId: Long): Flow<Int>
 
 }
 

@@ -11,6 +11,7 @@ import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogPunctuationsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogSearchDao
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -109,6 +110,27 @@ internal class CatalogFavoritesLocalDataSourceTest {
         assertTrue(list.isNotEmpty())
         assertNotNull(list.firstOrNull())
       }
+  }
+
+  @Test
+  fun `Should insert then fail check that is favorite item`() = runBlocking {
+    val actual = dataSource.isFavorite(1234L).first()
+    assertEquals(0, actual)
+  }
+
+  @Test
+  fun shouldInsertThenSuccessCheckThatIsFavoriteItem() = runBlocking {
+    val entity = CatalogFavoriteItem(
+      id = 1L,
+      title = "Pod",
+      picture = "https://noimage.no.com/no.png",
+      category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
+    )
+    dataSource.insertAllFavoriteProducts(entity)
+    val actual = dataSource.isFavorite(entity.id).first()
+    assertEquals(1, actual)
   }
 
 }
