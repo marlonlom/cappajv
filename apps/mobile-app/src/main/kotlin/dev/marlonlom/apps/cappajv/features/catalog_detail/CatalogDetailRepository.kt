@@ -16,6 +16,8 @@ import kotlinx.coroutines.flow.combine
 /**
  * Data class definition for catalog item detail.
  *
+ * @author marlonlom
+ *
  * @property product product detail
  * @property points product points list
  */
@@ -26,6 +28,8 @@ data class CatalogDetail(
 
 /**
  * Catalog details repository class.
+ *
+ * @author marlonlom
  *
  * @property localDataSource local data source dependency
  * @property coroutineDispatcher coroutine dispatcher
