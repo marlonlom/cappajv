@@ -50,7 +50,7 @@ fun CatalogDetailButtonsBar(
 ) {
   Row(
     modifier = Modifier
-      .padding(top = 20.dp, bottom = 10.dp),
+      .padding(vertical = 5.dp),
     horizontalArrangement = Arrangement.spacedBy(16.dp),
     verticalAlignment = Alignment.CenterVertically,
   ) {

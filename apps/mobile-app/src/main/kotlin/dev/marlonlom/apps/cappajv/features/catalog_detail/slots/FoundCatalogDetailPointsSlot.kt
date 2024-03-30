@@ -38,14 +38,14 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @author marlonlom
  *
  * @param appState Application ui state.
- * @param points Catalog item points information
+ * @param punctuations Catalog item points information
  * @param modifier Modifier for this composable.
  */
 @ExperimentalFoundationApi
 @Composable
 fun FoundCatalogDetailPointsSlot(
   appState: CappajvAppState,
-  points: List<CatalogPunctuation>,
+  punctuations: List<CatalogPunctuation>,
   modifier: Modifier = Modifier,
 ) {
   Text(
@@ -59,19 +59,28 @@ fun FoundCatalogDetailPointsSlot(
     textAlign = TextAlign.Center,
     style = MaterialTheme.typography.bodyMedium,
   )
-  points.forEach { catalogPunctuation ->
+  punctuations.forEach { catalogPunctuation ->
     CatalogPunctuationItemCard(
       appState = appState,
-      catalogPunctuation = catalogPunctuation,
+      punctuation = catalogPunctuation,
     )
   }
   Spacer(Modifier.height(20.dp))
 }
 
+/**
+ * Catalog punctuation item card composable ui.
+ *
+ * @author marlonlom
+ *
+ * @param appState Application ui state.
+ * @param punctuation Catalog item points information
+ * @param modifier Modifier for this composable.
+ */
 @Composable
 fun CatalogPunctuationItemCard(
   appState: CappajvAppState,
-  catalogPunctuation: CatalogPunctuation,
+  punctuation: CatalogPunctuation,
   modifier: Modifier = Modifier,
 ) {
   Row(
@@ -89,12 +98,12 @@ fun CatalogPunctuationItemCard(
     )
     Column {
       Text(
-        text = "${catalogPunctuation.points} pts",
+        text = "${punctuation.points} pts",
         color = MaterialTheme.colorScheme.primary,
         fontWeight = FontWeight.Bold,
         style = MaterialTheme.typography.titleLarge
       )
-      Text(text = catalogPunctuation.label)
+      Text(text = punctuation.label)
     }
   }
 }
