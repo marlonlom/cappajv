@@ -19,18 +19,23 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import dev.marlonlom.apps.cappajv.ui.layout.DevicePosture
+import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
+import dev.marlonlom.apps.cappajv.ui.main.scaffold.ScaffoldContentType
 
 /**
  * Catalog favorite item card image composable.
  *
  * @author marlonlom
  *
+ * @param appState Application ui state.
  * @param title Title for content description.
  * @param picture Image picture url.
  * @param modifier Modifier for this composable.
  */
 @Composable
 fun CatalogDetailImage(
+  appState: CappajvAppState,
   title: String,
   picture: String,
   modifier: Modifier = Modifier,
@@ -44,7 +49,7 @@ fun CatalogDetailImage(
       shape = MaterialTheme.shapes.medium,
     )
     .clip(MaterialTheme.shapes.medium)
-    .size(DpSize(184.dp, 240.dp))
+    .size(catalogDetailImageDpSize(appState))
     .background(Color.White)
 
   AsyncImage(
@@ -53,4 +58,17 @@ fun CatalogDetailImage(
     contentScale = ContentScale.Crop,
     modifier = imageModifier,
   )
+}
+
+@Composable
+private fun catalogDetailImageDpSize(
+  appState: CappajvAppState
+) = when {
+  appState.isCompactWidth
+    .and(appState.scaffoldContentType == ScaffoldContentType.SinglePane)
+    .and(appState.isLandscape.not()).and(
+      appState.devicePosture is DevicePosture.Separating.TableTop
+    ) -> DpSize(112.dp, 160.dp)
+
+  else -> DpSize(184.dp, 240.dp)
 }

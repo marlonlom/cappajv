@@ -12,8 +12,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 
@@ -39,15 +41,19 @@ internal fun CatalogDetailProductCategoryText(product: CatalogItem) {
 }
 
 @Composable
-internal fun CatalogDetailProductTitle(product: CatalogItem) {
+internal fun CatalogDetailProductTitle(
+  product: CatalogItem,
+  topBaselinePadding: Dp = 60.dp,
+  titleTextStyle: TextStyle = MaterialTheme.typography.headlineLarge
+) {
   Text(
     modifier = Modifier
       .fillMaxWidth()
-      .paddingFromBaseline(60.dp, 10.dp),
+      .paddingFromBaseline(topBaselinePadding, 10.dp),
     textAlign = TextAlign.Center,
     text = product.title,
     fontWeight = FontWeight.Bold,
-    style = MaterialTheme.typography.headlineLarge
+    style = titleTextStyle
   )
 }
 
