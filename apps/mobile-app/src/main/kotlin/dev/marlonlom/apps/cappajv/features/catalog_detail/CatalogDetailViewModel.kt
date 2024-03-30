@@ -8,6 +8,8 @@ package dev.marlonlom.apps.cappajv.features.catalog_detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailUiState.Found
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailUiState.NotFound
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,6 +17,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 /**
  * Catalog detail view model class.
@@ -51,10 +54,41 @@ class CatalogDetailViewModel(
     savedStateHandle[CATALOG_DETAIL_ID_KEY] = itemId
   }
 
+  /**
+   * Handles favorite state for catalog detail item.
+   *
+   * @param product Catalog detail item.
+   * @param isFavorite True/False for catalog detail item to be marked as favorite.
+   */
+  fun toggleFavorite(
+    product: CatalogItem,
+    isFavorite: Boolean
+  ) {
+    viewModelScope.launch {
+      if (isFavorite) {
+        val favoriteItem = product.let {
+          CatalogFavoriteItem(
+            it.id,
+            it.title,
+            it.picture,
+            it.category,
+            it.samplePunctuation,
+            it.punctuationsCount
+          )
+        }
+        repository.saveFavorite(favoriteItem)
+      } else {
+        repository.deleteFavorite(product.id)
+      }
+    }
+  }
+
   companion object {
 
+    /** Constant for default catalog item id. */
     private const val NO_CATALOG_ID = 0L
 
+    /** Constant for default catalog item id key. */
     private const val CATALOG_DETAIL_ID_KEY = "CATALOG_DETAIL_ID"
 
   }
