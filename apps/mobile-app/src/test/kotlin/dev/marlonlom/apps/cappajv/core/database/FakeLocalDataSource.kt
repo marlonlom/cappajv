@@ -111,8 +111,8 @@ internal class FakeLocalDataSource(
 
   override fun insertAllProducts(vararg products: CatalogItem) = Unit
 
-  override fun insertAllFavoriteProducts(vararg favoriteItems: CatalogFavoriteItem) {
-    localFavoriteItems.addAll(favoriteItems)
+  override suspend fun insertFavoriteProduct(favoriteItem: CatalogFavoriteItem) {
+    localFavoriteItems.add(favoriteItem)
   }
 
   override fun insertAllPunctuations(vararg punctuations: CatalogPunctuation) = Unit
@@ -127,18 +127,8 @@ internal class FakeLocalDataSource(
   }
 
   override fun deleteAllPunctuations() = Unit
+  override fun isFavorite(productId: Long): Flow<Int> = flowOf(
+    localFavoriteItems.count { it.id == productId }
+  )
 
-  companion object {
-    val NONE = CatalogItem(
-      id = -1,
-      title = "",
-      slug = "",
-      titleNormalized = "",
-      picture = "",
-      category = "",
-      detail = "",
-      samplePunctuation = "",
-      punctuationsCount = 0
-    )
-  }
 }

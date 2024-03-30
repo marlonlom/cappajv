@@ -8,8 +8,10 @@ package dev.marlonlom.apps.cappajv.features.catalog_detail
 import dev.marlonlom.apps.cappajv.core.catalog_source.CatalogDataService
 import dev.marlonlom.apps.cappajv.core.database.FakeLocalDataSource
 import dev.marlonlom.apps.cappajv.core.database.datasource.LocalDataSource
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailUiState.Found
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailUiState.NotFound
+import dev.marlonlom.apps.cappajv.ui.util.slug
 import dev.marlonlom.apps.cappajv.util.MainDispatcherRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -23,7 +25,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.MockitoAnnotations
+import org.mockito.kotlin.doSuspendableAnswer
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.stub
 import java.util.Locale
 
 @ExperimentalCoroutinesApi
@@ -42,6 +46,17 @@ internal class CatalogDetailViewModelTest {
     }
     on(mock.getPunctuations(anyLong())).thenAnswer {
       fakeLocalDataSource.getPunctuations(it.getArgument(0))
+    }
+    on(mock.isFavorite(anyLong())).thenAnswer {
+      fakeLocalDataSource.isFavorite(it.getArgument(0))
+    }
+    mock.stub {
+      onBlocking { mock.insertFavoriteProduct(org.mockito.kotlin.any()) }.doSuspendableAnswer {
+        fakeLocalDataSource.insertFavoriteProduct(it.getArgument(0))
+      }
+      onBlocking { mock.deleteFavorite(anyLong()) }.doSuspendableAnswer {
+        fakeLocalDataSource.deleteFavorite(it.getArgument(0))
+      }
     }
   }
 
@@ -80,5 +95,32 @@ internal class CatalogDetailViewModelTest {
     val detailState = viewModel.detail.value
     assertNotNull(detailState)
     assertTrue(detailState == NotFound)
+  }
+
+  @Test
+  fun `Should mark single product item as favorite`() = runTest {
+    val catalogItem = CatalogItem(
+      id = 15396L,
+      title = "Granizado",
+      slug = "Granizado".slug,
+      titleNormalized = "Granizado".slug.replace("-", " "),
+      picture = "https://juanvaldez.com/wp-content/uploads/2022/10/Granizado-juan-Valdez.jpg",
+      category = "Category one",
+      detail = ",",
+      samplePunctuation = "",
+      punctuationsCount = 0,
+    )
+    viewModel.toggleFavorite(catalogItem, true)
+    viewModel.find(catalogItem.id)
+    when (val detailState = viewModel.detail.value) {
+      is Found -> {
+        assertNotNull(detailState.detail.product)
+        assertEquals(catalogItem.id, detailState.detail.product.id)
+        assertTrue(detailState.detail.points.isNotEmpty())
+        assertTrue(detailState.detail.isFavorite)
+      }
+
+      NotFound -> fail("Not found")
+    }
   }
 }
