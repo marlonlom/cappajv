@@ -25,12 +25,16 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  * @param appState Application ui state.
  * @param appContentCallbacks Application content callbacks.
  * @param product Catalog detailed information.
+ * @param isFavorite True/False if catalog detail item is favorite.
+ * @param onCatalogItemFavoriteChanged Action for catalog detail item favorite state changed.
  */
 @Composable
 fun FoundCatalogDetailHeadingSlot(
   appState: CappajvAppState,
   appContentCallbacks: AppContentCallbacks,
   product: CatalogItem,
+  isFavorite: Boolean,
+  onCatalogItemFavoriteChanged: (CatalogItem, Boolean) -> Unit,
 ) = Column(
   horizontalAlignment = Alignment.CenterHorizontally,
 ) {
@@ -42,8 +46,10 @@ fun FoundCatalogDetailHeadingSlot(
   CatalogDetailProductCategoryText(product)
   CatalogDetailButtonsBar(
     appState = appState,
-    product = product,
     appContentCallbacks = appContentCallbacks,
+    product = product,
+    isFavorite = isFavorite,
+    onCatalogItemFavoriteChanged = onCatalogItemFavoriteChanged,
   )
   CatalogDetailProductDescriptionText(product)
 }
