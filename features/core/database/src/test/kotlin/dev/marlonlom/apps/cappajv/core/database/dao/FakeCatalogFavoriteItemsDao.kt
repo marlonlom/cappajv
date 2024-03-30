@@ -22,8 +22,8 @@ internal class FakeCatalogFavoriteItemsDao(
 
   override fun getFavoriteItems(): Flow<List<CatalogFavoriteItem>> = flowOf(list)
 
-  override fun insertAll(vararg products: CatalogFavoriteItem) {
-    list.addAll(products)
+  override suspend fun insert(product: CatalogFavoriteItem) {
+    list.add(product)
   }
 
   override fun deleteAll() {

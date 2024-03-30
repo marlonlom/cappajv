@@ -51,7 +51,7 @@ internal class CatalogFavoritesLocalDataSourceTest {
       samplePunctuation = "",
       punctuationsCount = 0,
     )
-    dataSource.insertAllFavoriteProducts(product)
+    dataSource.insertFavoriteProduct(product)
     dataSource.getFavorites().collect { items ->
       assertNotNull(items)
       assertTrue(items.isNotEmpty())
@@ -74,7 +74,7 @@ internal class CatalogFavoritesLocalDataSourceTest {
       samplePunctuation = "",
       punctuationsCount = 0,
     )
-    dataSource.insertAllFavoriteProducts(product)
+    dataSource.insertFavoriteProduct(product)
     dataSource.deleteAllFavorites()
     dataSource.getFavorites()
       .filter { list -> list.indexOfFirst { it.id == 1L } >= 0 }
@@ -103,7 +103,9 @@ internal class CatalogFavoritesLocalDataSourceTest {
         punctuationsCount = 0,
       )
     )
-    dataSource.insertAllFavoriteProducts(*products)
+    products.forEach {
+      dataSource.insertFavoriteProduct(it)
+    }
     dataSource.deleteFavorite(2L)
     dataSource.getFavorites()
       .collect { list ->
@@ -128,7 +130,7 @@ internal class CatalogFavoritesLocalDataSourceTest {
       samplePunctuation = "",
       punctuationsCount = 0,
     )
-    dataSource.insertAllFavoriteProducts(entity)
+    dataSource.insertFavoriteProduct(entity)
     val actual = dataSource.isFavorite(entity.id).first()
     assertEquals(1, actual)
   }

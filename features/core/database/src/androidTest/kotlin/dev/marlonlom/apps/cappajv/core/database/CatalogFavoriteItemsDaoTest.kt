@@ -59,7 +59,7 @@ internal class CatalogFavoriteItemsDaoTest {
       samplePunctuation = "",
       punctuationsCount = 0,
     )
-    dao.insertAll(entity)
+    dao.insert(entity)
     val list = dao.getFavoriteItems().first()
     Truth.assertThat(list).contains(entity)
   }
@@ -74,7 +74,7 @@ internal class CatalogFavoriteItemsDaoTest {
       samplePunctuation = "",
       punctuationsCount = 0,
     )
-    dao.insertAll(entity)
+    dao.insert(entity)
     dao.deleteAll()
     val list = dao.getFavoriteItems().first()
     Truth.assertThat(list).isEmpty()
@@ -101,7 +101,9 @@ internal class CatalogFavoriteItemsDaoTest {
         punctuationsCount = 0,
       )
     )
-    dao.insertAll(*entities)
+    entities.forEach {
+      dao.insert(it)
+    }
     dao.delete(2L)
     val list = dao.getFavoriteItems().first()
     Truth.assertThat(list).isNotEmpty()
@@ -124,7 +126,7 @@ internal class CatalogFavoriteItemsDaoTest {
       samplePunctuation = "",
       punctuationsCount = 0,
     )
-    dao.insertAll(entity)
+    dao.insert(entity)
     val actual = dao.isFavorite(entity.id).first()
     Truth.assertThat(actual).isEqualTo(1)
   }

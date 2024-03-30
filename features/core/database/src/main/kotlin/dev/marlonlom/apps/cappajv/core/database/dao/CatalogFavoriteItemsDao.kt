@@ -6,6 +6,7 @@
 package dev.marlonlom.apps.cappajv.core.database.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Upsert
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
@@ -29,12 +30,12 @@ interface CatalogFavoriteItemsDao {
   fun getFavoriteItems(): Flow<List<CatalogFavoriteItem>>
 
   /**
-   * Upsert product items.
+   * Inserts catalog product item.
    *
-   * @param products product items as typed array.
+   * @param product Catalog product item.
    */
-  @Upsert
-  fun insertAll(vararg products: CatalogFavoriteItem)
+  @Insert
+  suspend fun insert(product: CatalogFavoriteItem)
 
   /**
    * Deletes all product items in local storage.

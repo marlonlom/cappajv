@@ -38,8 +38,8 @@ class LocalDataSourceImpl(
 
   override fun getPunctuations(productId: Long) = catalogPunctuationsDao.findByProduct(productId)
 
-  override suspend fun insertAllFavoriteProducts(vararg favoriteItems: CatalogFavoriteItem) =
-    catalogFavoriteItemsDao.insertAll(*favoriteItems)
+  override suspend fun insertFavoriteProduct(favoriteItem: CatalogFavoriteItem) =
+    catalogFavoriteItemsDao.insert(favoriteItem)
 
   override fun getFavorites(): Flow<List<CatalogFavoriteItem>> = catalogFavoriteItemsDao.getFavoriteItems()
 

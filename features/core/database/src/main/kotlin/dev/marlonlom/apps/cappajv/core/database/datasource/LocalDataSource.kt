@@ -65,9 +65,9 @@ interface LocalDataSource {
   /**
    * Insert all favorite catalog products.
    *
-   * @param favoriteItems Favorite catalog products as typed array.
+   * @param favoriteItem Favorite catalog products as typed array.
    */
-  suspend fun insertAllFavoriteProducts(vararg favoriteItems: CatalogFavoriteItem)
+  suspend fun insertFavoriteProduct(favoriteItem: CatalogFavoriteItem)
 
   /**
    * Insert all punctuations.
