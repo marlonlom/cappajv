@@ -6,6 +6,7 @@
 package dev.marlonlom.apps.cappajv.core.database.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Upsert
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
@@ -29,12 +30,12 @@ interface CatalogFavoriteItemsDao {
   fun getFavoriteItems(): Flow<List<CatalogFavoriteItem>>
 
   /**
-   * Upsert product items.
+   * Inserts catalog product item.
    *
-   * @param products product items as typed array.
+   * @param product Catalog product item.
    */
-  @Upsert
-  fun insertAll(vararg products: CatalogFavoriteItem)
+  @Insert
+  suspend fun insert(product: CatalogFavoriteItem)
 
   /**
    * Deletes all product items in local storage.
@@ -49,5 +50,14 @@ interface CatalogFavoriteItemsDao {
    */
   @Query("DELETE FROM catalog_item_favorite WHERE id = :productId")
   suspend fun delete(productId: Long)
+
+  /**
+   * Returns 1 if a product with the provided ID exists as a favorite, otherwise returns 0.
+   *
+   * @param productId Product item id.
+   * @return Number that indicates if product id exists as favorite, as Flow.
+   */
+  @Query("SELECT COUNT(f.id) FROM catalog_item_favorite f WHERE f.id = :productId")
+  fun isFavorite(productId: Long): Flow<Int>
 
 }

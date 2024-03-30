@@ -22,6 +22,8 @@ import org.koin.androidx.compose.koinViewModel
  * @author marlonlom
  *
  * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
+ * @param isRouting True/False if should navigate through routing.
  * @param catalogId Selected catalog item id.
  * @param viewModel Catalog detail viewmodel.
  */
@@ -48,7 +50,8 @@ fun CatalogDetailRoute(
   CatalogDetailRouteScreen(
     appState = appState,
     appContentCallbacks = appContentCallbacks,
-    isRouting = isRouting,
     detailUiState = detailUiState,
+    isRouting = isRouting,
+    onCatalogItemFavoriteChanged = viewModel::toggleFavorite,
   )
 }

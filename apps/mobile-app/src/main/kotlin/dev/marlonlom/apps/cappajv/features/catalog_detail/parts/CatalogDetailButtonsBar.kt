@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.Icon
@@ -35,13 +36,17 @@ import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
  *
  * @param appState Application ui state.
  * @param appContentCallbacks Application content callbacks.
- * @param product Catalog detailed information
+ * @param product Catalog detailed information.
+ * @param isFavorite True/False if catalog detail item is favorite.
+ * @param onCatalogItemFavoriteChanged Action for catalog detail item favorite state changed.
  */
 @Composable
 fun CatalogDetailButtonsBar(
   appState: CappajvAppState,
   appContentCallbacks: AppContentCallbacks,
   product: CatalogItem,
+  isFavorite: Boolean,
+  onCatalogItemFavoriteChanged: (CatalogItem, Boolean) -> Unit,
 ) {
   Row(
     modifier = Modifier
@@ -50,10 +55,13 @@ fun CatalogDetailButtonsBar(
     verticalAlignment = Alignment.CenterVertically,
   ) {
     OutlinedButton(
-      onClick = { /*TODO*/ },
+      onClick = { onCatalogItemFavoriteChanged(product, !isFavorite) },
       shape = MaterialTheme.shapes.small,
     ) {
-      Icon(imageVector = Icons.Rounded.FavoriteBorder, contentDescription = null)
+      Icon(
+        imageVector = if (isFavorite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder,
+        contentDescription = null
+      )
       Spacer(modifier = Modifier.width(10.dp))
       Text(text = stringResource(id = R.string.text_catalog_detail_button_favorite))
     }

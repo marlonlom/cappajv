@@ -11,6 +11,7 @@ import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogPunctuationsDao
 import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogSearchDao
 import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -50,7 +51,7 @@ internal class CatalogFavoritesLocalDataSourceTest {
       samplePunctuation = "",
       punctuationsCount = 0,
     )
-    dataSource.insertAllFavoriteProducts(product)
+    dataSource.insertFavoriteProduct(product)
     dataSource.getFavorites().collect { items ->
       assertNotNull(items)
       assertTrue(items.isNotEmpty())
@@ -73,7 +74,7 @@ internal class CatalogFavoritesLocalDataSourceTest {
       samplePunctuation = "",
       punctuationsCount = 0,
     )
-    dataSource.insertAllFavoriteProducts(product)
+    dataSource.insertFavoriteProduct(product)
     dataSource.deleteAllFavorites()
     dataSource.getFavorites()
       .filter { list -> list.indexOfFirst { it.id == 1L } >= 0 }
@@ -102,13 +103,36 @@ internal class CatalogFavoritesLocalDataSourceTest {
         punctuationsCount = 0,
       )
     )
-    dataSource.insertAllFavoriteProducts(*products)
+    products.forEach {
+      dataSource.insertFavoriteProduct(it)
+    }
     dataSource.deleteFavorite(2L)
     dataSource.getFavorites()
       .collect { list ->
         assertTrue(list.isNotEmpty())
         assertNotNull(list.firstOrNull())
       }
+  }
+
+  @Test
+  fun `Should insert then fail check that is favorite item`() = runBlocking {
+    val actual = dataSource.isFavorite(1234L).first()
+    assertEquals(0, actual)
+  }
+
+  @Test
+  fun shouldInsertThenSuccessCheckThatIsFavoriteItem() = runBlocking {
+    val entity = CatalogFavoriteItem(
+      id = 1L,
+      title = "Pod",
+      picture = "https://noimage.no.com/no.png",
+      category = "CategoryOne",
+      samplePunctuation = "",
+      punctuationsCount = 0,
+    )
+    dataSource.insertFavoriteProduct(entity)
+    val actual = dataSource.isFavorite(entity.id).first()
+    assertEquals(1, actual)
   }
 
 }

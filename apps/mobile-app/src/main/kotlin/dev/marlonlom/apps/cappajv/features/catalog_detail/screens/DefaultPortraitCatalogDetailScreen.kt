@@ -17,13 +17,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.apps.cappajv.features.catalog_detail.CatalogDetailUiState
 import dev.marlonlom.apps.cappajv.features.catalog_detail.parts.CatalogDetailTopBar
 import dev.marlonlom.apps.cappajv.features.catalog_detail.slots.CatalogDetailResultsSlot
 import dev.marlonlom.apps.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.apps.cappajv.ui.main.CappajvAppState
 
-
+/**
+ * @author marlonlom
+ *
+ * @param appState Application ui state.
+ * @param appContentCallbacks Application content callbacks.
+ * @param detailUiState Catalog detail ui state.
+ * @param isRouting True/False if should navigate through routing.
+ * @param onCatalogItemFavoriteChanged Action for catalog detail item favorite state changed.
+ */
 @ExperimentalFoundationApi
 @Composable
 fun DefaultPortraitCatalogDetailScreen(
@@ -31,6 +40,7 @@ fun DefaultPortraitCatalogDetailScreen(
   appContentCallbacks: AppContentCallbacks,
   detailUiState: CatalogDetailUiState,
   isRouting: Boolean,
+  onCatalogItemFavoriteChanged: (CatalogItem, Boolean) -> Unit,
 ) {
   val contentHorizontalPadding = when {
     appState.isLandscape.not().and(appState.isMediumWidth) -> 40.dp
@@ -46,6 +56,11 @@ fun DefaultPortraitCatalogDetailScreen(
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     CatalogDetailTopBar(appState, isRouting)
-    CatalogDetailResultsSlot(appState, appContentCallbacks, detailUiState)
+    CatalogDetailResultsSlot(
+      appState = appState,
+      appContentCallbacks = appContentCallbacks,
+      detailUiState = detailUiState,
+      onCatalogItemFavoriteChanged = onCatalogItemFavoriteChanged
+    )
   }
 }
