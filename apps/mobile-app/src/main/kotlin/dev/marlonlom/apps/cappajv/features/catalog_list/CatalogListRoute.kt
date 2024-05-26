@@ -55,8 +55,12 @@ fun CatalogListRoute(
   val categoriesList = stringArrayResource(R.array.array_catalog_list_categories).toList()
   val firstCategory = categoriesList.first()
   val selectedCategory = rememberSaveable { mutableStateOf(firstCategory) }
-  val catalogListUiState: CatalogListUiState by viewModel.uiState.collectAsStateWithLifecycle()
-  val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle()
+  val catalogListUiState: CatalogListUiState by viewModel.uiState.collectAsStateWithLifecycle(
+    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+  )
+  val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle(
+    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+  )
   val catalogListScrollState = rememberLazyListState()
 
   when (catalogListUiState) {

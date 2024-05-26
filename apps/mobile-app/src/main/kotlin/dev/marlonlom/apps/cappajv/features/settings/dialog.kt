@@ -47,7 +47,9 @@ fun SettingsDialog(
   openExternalUrl: (String) -> Unit,
   viewModel: SettingsViewModel = koinViewModel()
 ) {
-  val settingsUiState by viewModel.uiState.collectAsStateWithLifecycle()
+  val settingsUiState by viewModel.uiState.collectAsStateWithLifecycle(
+    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+  )
   when (settingsUiState) {
     is SettingsUiState.Success -> {
       SettingsDialogContent(
