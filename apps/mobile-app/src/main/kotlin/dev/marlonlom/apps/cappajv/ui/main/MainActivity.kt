@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
       .flowWithLifecycle(lifecycle)
       .map { layoutInfo ->
         val foldingFeature = layoutInfo.displayFeatures
-          .filterIsInstance(FoldingFeature::class.java)
+          .filterIsInstance<FoldingFeature>()
           .firstOrNull()
         DevicePostureDetector.fromLayoutInfo(foldingFeature)
       }.stateIn(
@@ -92,7 +92,9 @@ class MainActivity : ComponentActivity() {
       )
 
     setContent {
-      val devicePosture by devicePostureFlow.collectAsStateWithLifecycle()
+      val devicePosture by devicePostureFlow.collectAsStateWithLifecycle(
+        lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+      )
       val appState = rememberCappajvAppState(
         windowSizeClass = calculateWindowSizeClass(this),
         devicePosture = devicePosture,

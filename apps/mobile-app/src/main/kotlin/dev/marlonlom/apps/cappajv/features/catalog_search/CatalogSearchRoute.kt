@@ -39,8 +39,12 @@ fun CatalogSearchRoute(
   val showClearIcon = remember {
     derivedStateOf { viewModel.queryText.value.isNotEmpty() }
   }
-  val searchResultState by viewModel.searchResult.collectAsStateWithLifecycle()
-  val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle()
+  val searchResultState by viewModel.searchResult.collectAsStateWithLifecycle(
+    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+  )
+  val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle(
+    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+  )
   CatalogSearchRouteScreen(
     appState = appState,
     appContentCallbacks = appContentCallbacks,

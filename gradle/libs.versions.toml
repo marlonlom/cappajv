@@ -1,8 +1,7 @@
 [versions]
 agp = "8.4.1"
-kotlin = "1.9.23"
-kotlinComposeCompiler = "1.5.11"
-ksp = "1.9.23-1.0.20"
+kotlin = "2.0.0"
+ksp = "2.0.0-1.0.21"
 
 [libraries]
 # implementation
@@ -23,8 +22,8 @@ coil-compose = "io.coil-kt:coil-compose:2.6.0"
 google-guava = "com.google.guava:guava:33.2.0-android"
 google-oss-licenses = "com.google.android.gms:play-services-oss-licenses:17.0.1"
 google-oss-licenses-plugin = "com.google.android.gms:oss-licenses-plugin:0.10.6"
-kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.23"
-kotlin-serialization-plugin = "org.jetbrains.kotlin:kotlin-serialization:1.9.23"
+kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0"
+kotlin-serialization-plugin = "org.jetbrains.kotlin:kotlin-serialization:2.0.0"
 kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
 kotlinx-coroutines-core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1"
 kotlinx-serialization-json = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
@@ -66,6 +65,7 @@ google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [bundles]
 database-room = ["androidx-room-ktx", "androidx-room-runtime"]
