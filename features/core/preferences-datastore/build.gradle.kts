@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-  namespace = "dev.marlonlom.apps.cappajv.core.preferences"
+  namespace = "dev.marlonlom.cappajv.core.preferences"
   compileSdk = 34
 
   defaultConfig {
