@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.apps.cappajv.core.catalog_source
+package dev.marlonlom.cappajv.core.catalog_source
 
 import kotlinx.serialization.Serializable
 
