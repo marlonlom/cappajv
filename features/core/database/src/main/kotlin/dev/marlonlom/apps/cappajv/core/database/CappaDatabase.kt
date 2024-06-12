@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.apps.cappajv.core.database
+package dev.marlonlom.cappajv.core.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import dev.marlonlom.apps.cappajv.core.database.dao.CatalogFavoriteItemsDao
-import dev.marlonlom.apps.cappajv.core.database.dao.CatalogItemsDao
-import dev.marlonlom.apps.cappajv.core.database.dao.CatalogPunctuationsDao
-import dev.marlonlom.apps.cappajv.core.database.dao.CatalogSearchDao
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogPunctuation
+import dev.marlonlom.cappajv.core.database.dao.CatalogFavoriteItemsDao
+import dev.marlonlom.cappajv.core.database.dao.CatalogItemsDao
+import dev.marlonlom.cappajv.core.database.dao.CatalogPunctuationsDao
+import dev.marlonlom.cappajv.core.database.dao.CatalogSearchDao
+import dev.marlonlom.cappajv.core.database.entities.CatalogFavoriteItem
+import dev.marlonlom.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.cappajv.core.database.entities.CatalogPunctuation
 
 /**
  * Cappajv room database class.

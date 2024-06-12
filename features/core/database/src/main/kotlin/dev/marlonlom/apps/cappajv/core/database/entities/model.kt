@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.apps.cappajv.core.database.entities
+package dev.marlonlom.cappajv.core.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

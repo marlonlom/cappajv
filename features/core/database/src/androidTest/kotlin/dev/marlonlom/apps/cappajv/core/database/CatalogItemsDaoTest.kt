@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.apps.cappajv.core.database
+package dev.marlonlom.cappajv.core.database
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -11,9 +11,9 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
-import dev.marlonlom.apps.cappajv.core.database.dao.CatalogItemsDao
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItem
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.cappajv.core.database.dao.CatalogItemsDao
+import dev.marlonlom.cappajv.core.database.entities.CatalogItem
+import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After

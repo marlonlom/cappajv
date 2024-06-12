@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.apps.cappajv.core.database.dao
+package dev.marlonlom.cappajv.core.database.dao
 
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
+import dev.marlonlom.cappajv.core.database.entities.CatalogFavoriteItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

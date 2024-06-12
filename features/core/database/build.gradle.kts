@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-  namespace = "dev.marlonlom.apps.cappajv.core.database"
+  namespace = "dev.marlonlom.cappajv.core.database"
   compileSdk = 34
 
   defaultConfig {
