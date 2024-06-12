@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.apps.cappajv.core.preferences
+package dev.marlonlom.cappajv.core.preferences
 
 /**
  * User settings data class.

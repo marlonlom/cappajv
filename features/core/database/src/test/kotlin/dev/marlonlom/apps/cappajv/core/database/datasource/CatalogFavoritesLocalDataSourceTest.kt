@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.apps.cappajv.core.database.datasource
+package dev.marlonlom.cappajv.core.database.datasource
 
-import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
-import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogItemsDao
-import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogPunctuationsDao
-import dev.marlonlom.apps.cappajv.core.database.dao.FakeCatalogSearchDao
-import dev.marlonlom.apps.cappajv.core.database.entities.CatalogFavoriteItem
+import dev.marlonlom.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
+import dev.marlonlom.cappajv.core.database.dao.FakeCatalogItemsDao
+import dev.marlonlom.cappajv.core.database.dao.FakeCatalogPunctuationsDao
+import dev.marlonlom.cappajv.core.database.dao.FakeCatalogSearchDao
+import dev.marlonlom.cappajv.core.database.entities.CatalogFavoriteItem
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
