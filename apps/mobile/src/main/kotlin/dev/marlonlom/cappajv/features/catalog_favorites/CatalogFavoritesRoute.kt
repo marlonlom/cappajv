@@ -31,10 +31,10 @@ fun CatalogFavoritesRoute(
   viewModel: CatalogFavoritesViewModel = koinViewModel(),
 ) {
   val favoritesListState by viewModel.favoritesListState.collectAsStateWithLifecycle(
-    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
   )
   val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle(
-    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
   )
   CatalogFavoritesRouteScreen(
     appState = appState,

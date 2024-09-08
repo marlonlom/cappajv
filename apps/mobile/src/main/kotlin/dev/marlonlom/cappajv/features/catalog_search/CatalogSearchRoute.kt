@@ -40,10 +40,10 @@ fun CatalogSearchRoute(
     derivedStateOf { viewModel.queryText.value.isNotEmpty() }
   }
   val searchResultState by viewModel.searchResult.collectAsStateWithLifecycle(
-    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
   )
   val selectedCatalogId by viewModel.selectedCatalogId.collectAsStateWithLifecycle(
-    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
   )
   CatalogSearchRouteScreen(
     appState = appState,

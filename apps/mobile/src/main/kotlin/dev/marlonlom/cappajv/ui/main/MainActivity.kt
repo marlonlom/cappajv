@@ -93,7 +93,7 @@ class MainActivity : ComponentActivity() {
 
     setContent {
       val devicePosture by devicePostureFlow.collectAsStateWithLifecycle(
-        lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+        lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
       )
       val appState = rememberCappajvAppState(
         windowSizeClass = calculateWindowSizeClass(this),
