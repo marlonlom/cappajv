@@ -14,12 +14,13 @@ plugins {
 
 android {
   namespace = "dev.marlonlom.cappajv"
-  compileSdk = 34
+  compileSdk = 35
 
   defaultConfig {
     applicationId = "dev.marlonlom.cappajv"
     minSdk = 24
-    targetSdk = 34
+    //noinspection OldTargetApi
+    targetSdk = 35
     versionCode = 1
     versionName = "1.0.0"
 
