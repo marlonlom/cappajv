@@ -46,7 +46,7 @@ fun CatalogDetailRoute(
 
   viewModel.find(catalogId)
   val detailUiState by viewModel.detail.collectAsStateWithLifecycle(
-    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
   )
 
   CatalogDetailRouteScreen(

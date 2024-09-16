@@ -48,7 +48,7 @@ fun SettingsDialog(
   viewModel: SettingsViewModel = koinViewModel()
 ) {
   val settingsUiState by viewModel.uiState.collectAsStateWithLifecycle(
-    lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
   )
   when (settingsUiState) {
     is SettingsUiState.Success -> {

@@ -12,7 +12,7 @@ plugins {
 
 android {
   namespace = "dev.marlonlom.cappajv.core.database"
-  compileSdk = 34
+  compileSdk = 35
 
   defaultConfig {
     minSdk = 24
