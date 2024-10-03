@@ -13,7 +13,7 @@ androidx-datastore-preferences = "androidx.datastore:datastore-preferences:1.1.1
 androidx-lifecycle-runtime-ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.8.6"
 androidx-lifecycle-runtime-compose = "androidx.lifecycle:lifecycle-runtime-compose:2.8.6"
 androidx-activity-compose = "androidx.activity:activity-compose:1.9.2"
-androidx-navigation-runtime-ktx = "androidx.navigation:navigation-runtime-ktx:2.8.1"
+androidx-navigation-runtime-ktx = "androidx.navigation:navigation-runtime-ktx:2.8.2"
 androidx-room-compiler = "androidx.room:room-compiler:2.6.1"
 androidx-room-ktx = "androidx.room:room-ktx:2.6.1"
 androidx-room-runtime = "androidx.room:room-runtime:2.6.1"
@@ -46,7 +46,7 @@ androidx-arch-core-testing = "androidx.arch.core:core-testing:2.2.0"
 google-truth = "com.google.truth:truth:1.4.4"
 
 # androidx-compose-implementation-with-bom
-androidx-compose-bom = "androidx.compose:compose-bom:2024.09.02"
+androidx-compose-bom = "androidx.compose:compose-bom:2024.09.03"
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-material3-wsc = { module = "androidx.compose.material3:material3-window-size-class" }
