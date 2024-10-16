@@ -10,7 +10,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.mutablePreferencesOf
-import dev.marlonlom.cappajv.core.preferences.UserPreferencesRepository
+import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
 import dev.marlonlom.cappajv.util.MainDispatcherRule
 import dev.marlonlom.cappajv.util.RethrowingExceptionHandler
 import kotlinx.coroutines.ExperimentalCoroutinesApi

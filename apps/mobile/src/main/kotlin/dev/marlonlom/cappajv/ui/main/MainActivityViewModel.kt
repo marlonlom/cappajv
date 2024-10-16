@@ -8,8 +8,8 @@ package dev.marlonlom.cappajv.ui.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import dev.marlonlom.cappajv.core.preferences.UserPreferencesRepository
-import dev.marlonlom.cappajv.core.preferences.UserSettings
+import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
+import dev.marlonlom.cappajv.core.preferences.entities.UserSettings
 import dev.marlonlom.cappajv.ui.main.MainActivityUiState.Loading
 import dev.marlonlom.cappajv.ui.main.MainActivityUiState.Success
 import kotlinx.coroutines.flow.SharingStarted

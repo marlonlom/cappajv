@@ -9,7 +9,7 @@ import dev.marlonlom.cappajv.core.catalog_source.CatalogDataService
 import dev.marlonlom.cappajv.core.database.CappaDatabase
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSourceImpl
-import dev.marlonlom.cappajv.core.preferences.UserPreferencesRepository
+import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
 import dev.marlonlom.cappajv.dataStore
 import dev.marlonlom.cappajv.features.catalog_detail.CatalogDetailRepository
 import dev.marlonlom.cappajv.features.catalog_favorites.CatalogFavoritesRepository

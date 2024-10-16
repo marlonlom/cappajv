@@ -7,7 +7,7 @@ package dev.marlonlom.cappajv.features.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.marlonlom.cappajv.core.preferences.UserPreferencesRepository
+import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
 import kotlinx.coroutines.flow.SharingStarted.Companion.Eagerly
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
