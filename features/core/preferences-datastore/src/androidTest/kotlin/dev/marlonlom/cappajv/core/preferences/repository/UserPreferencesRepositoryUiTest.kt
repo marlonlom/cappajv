@@ -3,10 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.cappajv.core.preferences
+package dev.marlonlom.cappajv.core.preferences.repository
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
+import dev.marlonlom.cappajv.core.preferences.constants.TestablePreferencesDataStore
+import dev.marlonlom.cappajv.core.preferences.entities.UserColorContrasts
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
@@ -60,6 +62,27 @@ class UserPreferencesRepositoryUiTest {
       with(preferences) {
         assertThat(this.useDarkTheme).isTrue()
         assertThat(this.useDynamicColor).isFalse()
+      }
+    }
+  }
+
+  @Test
+  fun repository_testFetchInitialColorContrastPreference() {
+    testCoroutineScope.launch {
+      val preferences = repository!!.userPreferencesFlow.first()
+      with(preferences) {
+        assertThat(this.colorContrast).isEqualTo(UserColorContrasts.STANDARD)
+      }
+    }
+  }
+
+  @Test
+  fun repository_toggleColorContrastStringSettings() {
+    testCoroutineScope.launch {
+      repository!!.updateStringSetting("color_contrast", UserColorContrasts.HIGH.name)
+      val preferences = repository!!.userPreferencesFlow.first()
+      with(preferences) {
+        assertThat(this.colorContrast).isEqualTo(UserColorContrasts.HIGH)
       }
     }
   }

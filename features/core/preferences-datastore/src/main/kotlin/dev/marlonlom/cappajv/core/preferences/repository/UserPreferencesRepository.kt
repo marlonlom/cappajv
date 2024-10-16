@@ -3,13 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.cappajv.core.preferences
+package dev.marlonlom.cappajv.core.preferences.repository
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
+import dev.marlonlom.cappajv.core.preferences.constants.UserPreferenceKeys
+import dev.marlonlom.cappajv.core.preferences.entities.UserColorContrasts
+import dev.marlonlom.cappajv.core.preferences.entities.UserSettings
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -26,22 +28,6 @@ class UserPreferencesRepository(
   private val dataStore: DataStore<Preferences>,
 ) {
 
-  private object UserPreferenceKeys {
-
-    private val booleanKeys = arrayOf("dark_theme", "dynamic_colors", "is_onboarding")
-
-    val DARK_THEME = booleanPreferencesKey(booleanKeys[0])
-    val DYNAMIC_COLORS = booleanPreferencesKey(booleanKeys[1])
-    val IS_ONBOARDING = booleanPreferencesKey(booleanKeys[2])
-
-    fun getBooleanPref(key: String) = when (booleanKeys.indexOf(key)) {
-      0 -> DARK_THEME
-      1 -> DYNAMIC_COLORS
-      2 -> IS_ONBOARDING
-      else -> null
-    }
-  }
-
   /** User preferences information as Flow. */
   val userPreferencesFlow: Flow<UserSettings> = dataStore.data
     .catch { throwable ->
@@ -55,8 +41,28 @@ class UserPreferencesRepository(
       val useDarkTheme = prefs[UserPreferenceKeys.DARK_THEME] ?: false
       val useDynamicColors = prefs[UserPreferenceKeys.DYNAMIC_COLORS] ?: true
       val isOnboarding = prefs[UserPreferenceKeys.IS_ONBOARDING] ?: true
-      UserSettings(useDarkTheme, useDynamicColors,isOnboarding)
+      val colorContrast = prefs[UserPreferenceKeys.COLOR_CONTRAST] ?: UserColorContrasts.STANDARD.name
+
+      UserSettings(
+        useDarkTheme = useDarkTheme,
+        useDynamicColor = useDynamicColors,
+        isOnboarding = isOnboarding,
+        colorContrast = UserColorContrasts.valueOf(colorContrast)
+      )
     }
+
+  /**
+   * Updates the string value for selected setting key.
+   *
+   * @param stringKey String preference key.
+   * @param newStringValue String preference value for update.
+   */
+  suspend fun updateStringSetting(stringKey: String, newStringValue: String) {
+    dataStore.edit { preferences ->
+      val stringPref = UserPreferenceKeys.getStringPref(stringKey)
+      if (stringPref != null) preferences[stringPref] = newStringValue
+    }
+  }
 
   /**
    * Toggles the boolean value for selected setting key.
@@ -67,9 +73,7 @@ class UserPreferencesRepository(
   suspend fun toggleBooleanSetting(booleanKey: String, newBooleanValue: Boolean) {
     dataStore.edit { preferences ->
       val booleanPref = UserPreferenceKeys.getBooleanPref(booleanKey)
-      if (booleanPref != null) {
-        preferences[booleanPref] = newBooleanValue
-      }
+      if (booleanPref != null) preferences[booleanPref] = newBooleanValue
     }
   }
 
