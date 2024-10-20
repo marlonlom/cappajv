@@ -11,7 +11,7 @@ import dev.marlonlom.cappajv.features.catalog_list.CatalogListViewModel
 import dev.marlonlom.cappajv.features.catalog_search.CatalogSearchViewModel
 import dev.marlonlom.cappajv.features.settings.SettingsViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 @ExperimentalCoroutinesApi
