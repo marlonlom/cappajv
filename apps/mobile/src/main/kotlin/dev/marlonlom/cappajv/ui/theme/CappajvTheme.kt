@@ -101,6 +101,7 @@ internal object BrandColorSchemes {
  *
  * @param darkTheme True/False if dark theme is applied.
  * @param dynamicColor True/False if dynamic colors are applied.
+ * @param colorContrast Selected color contrast, defaults to [BrandedColorContrasts.STANDARD]
  * @param content Composable ui contents.
  */
 @ExperimentalMaterial3Api
@@ -109,6 +110,7 @@ fun CappajvTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
   // Dynamic color is available on Android 12+
   dynamicColor: Boolean = true,
+  colorContrast: String = BrandedColorContrasts.STANDARD.name.lowercase(),
   content: @Composable () -> Unit
 ) {
   val colorScheme = when {
@@ -117,8 +119,7 @@ fun CappajvTheme(
       if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
     }
 
-    darkTheme -> BrandColorSchemes.dark
-    else -> BrandColorSchemes.light
+    else -> BrandedColorContrasts.findColorScheme(colorContrast,darkTheme)
   }
 
   val view = LocalView.current
