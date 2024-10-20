@@ -11,15 +11,15 @@ import dev.marlonlom.cappajv.features.catalog_list.CatalogListViewModel
 import dev.marlonlom.cappajv.features.catalog_search.CatalogSearchViewModel
 import dev.marlonlom.cappajv.features.settings.SettingsViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.koin.core.module.dsl.viewModelOf
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 @ExperimentalCoroutinesApi
 val viewModelsModule = module {
   includes(dataModule)
-  viewModelOf(::CatalogListViewModel)
-  viewModelOf(::CatalogFavoritesViewModel)
-  viewModelOf(::CatalogSearchViewModel)
-  viewModelOf(::CatalogDetailViewModel)
-  viewModelOf(::SettingsViewModel)
+  viewModel { CatalogListViewModel(get()) }
+  viewModel { CatalogFavoritesViewModel(get()) }
+  viewModel { CatalogSearchViewModel(get()) }
+  viewModel { CatalogDetailViewModel(get()) }
+  viewModel { SettingsViewModel(get()) }
 }
