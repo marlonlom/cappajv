@@ -7,7 +7,7 @@ package dev.marlonlom.cappajv.di
 
 import dev.marlonlom.cappajv.ui.main.MainActivityViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 val mainActivityModule = module {
