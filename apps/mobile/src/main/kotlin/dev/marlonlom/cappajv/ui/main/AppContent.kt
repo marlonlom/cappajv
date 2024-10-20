@@ -12,6 +12,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import dev.marlonlom.cappajv.features.welcome.WelcomeRoute
 import dev.marlonlom.cappajv.ui.main.scaffold.MainScaffold
+import dev.marlonlom.cappajv.ui.theme.CappajvColorContrasts
 import dev.marlonlom.cappajv.ui.theme.CappajvTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -47,6 +48,20 @@ private fun shouldUseDarkTheme(
 }
 
 /**
+ * Returns the color contrast applied to the ui.
+ *
+ * @param mainActivityUiState Main activity ui state.
+ * @return Color contrast name.
+ */
+@Composable
+private fun shouldUseColorContrast(
+  mainActivityUiState: MainActivityUiState
+): String = when (mainActivityUiState) {
+  MainActivityUiState.Loading -> CappajvColorContrasts.STANDARD
+  is MainActivityUiState.Success -> mainActivityUiState.userData.colorContrast
+}.name
+
+/**
  * Application main content composable ui.
  *
  * @author marlonlom
@@ -68,7 +83,8 @@ fun AppContent(
   onOnboardingComplete: () -> Unit,
 ) = CappajvTheme(
   darkTheme = shouldUseDarkTheme(mainActivityUiState),
-  dynamicColor = shouldUseDynamicColor(mainActivityUiState)
+  dynamicColor = shouldUseDynamicColor(mainActivityUiState),
+  colorContrast = shouldUseColorContrast(mainActivityUiState)
 ) {
   when (mainActivityUiState) {
     MainActivityUiState.Loading -> Unit
