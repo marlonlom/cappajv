@@ -93,7 +93,7 @@ fun AppContent(
       if (mainActivityUiState.userData.isOnboarding) {
         WelcomeRoute(
           appState = appUiState,
-          onContinueHomeButtonClicked = onOnboardingComplete
+          onOnboardingFinished = onOnboardingComplete
         )
       } else {
         MainScaffold(

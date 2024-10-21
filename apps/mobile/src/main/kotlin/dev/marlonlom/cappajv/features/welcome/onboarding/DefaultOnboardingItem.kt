@@ -10,9 +10,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -46,7 +48,8 @@ internal fun DefaultOnboardingItem(
   modifier: Modifier = Modifier
 ) {
   Column(
-    modifier = modifier
+    modifier = Modifier
+      .fillMaxWidth()
       .background(MaterialTheme.colorScheme.surface)
       .padding(4.dp),
     verticalArrangement = Arrangement.Center,
@@ -65,7 +68,9 @@ internal fun DefaultOnboardingItem(
     Spacer(Modifier.height(24.dp))
 
     Text(
-      modifier = modifier.padding(bottom = 4.dp),
+      modifier = modifier
+        .widthIn(max = 600.dp)
+        .padding(bottom = 4.dp),
       text = stringResource(item.second),
       fontWeight = FontWeight.Bold,
       maxLines = 1,
@@ -75,7 +80,9 @@ internal fun DefaultOnboardingItem(
     )
 
     Text(
-      modifier = modifier.padding(bottom = 4.dp),
+      modifier = modifier
+        .widthIn(max = 600.dp)
+        .padding(bottom = 4.dp),
       text = stringResource(item.third),
       color = MaterialTheme.colorScheme.onSurface,
       textAlign = TextAlign.Center
