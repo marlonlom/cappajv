@@ -54,7 +54,8 @@ internal fun DefaultOnboardingScreen(
 
   Column(
     horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = modifier.fillMaxWidth()
+    modifier = modifier
+      .fillMaxWidth()
       .background(MaterialTheme.colorScheme.background)
       .padding(top = 24.dp, bottom = 16.dp)
   ) {
@@ -64,7 +65,10 @@ internal fun DefaultOnboardingScreen(
       key = { pos -> OnboardingItemsData.list[pos] },
       pageSize = PageSize.Fill
     ) { pos ->
-      DefaultOnboardingItem(OnboardingItemsData.list[pos])
+      DefaultOnboardingItem(
+        item = OnboardingItemsData.list[pos],
+        testTag = "onboarding_item_$pos"
+      )
     }
     Spacer(
       modifier = Modifier

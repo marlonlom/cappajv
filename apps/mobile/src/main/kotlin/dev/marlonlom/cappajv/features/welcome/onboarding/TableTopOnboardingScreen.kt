@@ -18,23 +18,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.cappajv.ui.layout.DevicePosture
-import dev.marlonlom.cappajv.ui.main.CappajvAppState
 
 /**
  * TableTop folding mode onboarding screen composable ui.
  *
  * @author marlonlom
  *
- * @param appState Application ui state.
- * @param onContinueHomeButtonClicked Action for continue to home screen button clicked.
+ * @param devicePosture Application device posture.
+ * @param onOnboardingFinished Action for onboarding finished event.
  */
 @Composable
 internal fun TableTopOnboardingScreen(
-  appState: CappajvAppState,
-  onContinueHomeButtonClicked: () -> Unit
+  devicePosture: DevicePosture,
+  onOnboardingFinished: () -> Unit
 ) {
-  val columnHeightRatio = when (appState.devicePosture) {
-    is DevicePosture.Separating.TableTop -> appState.devicePosture.hingeRatio
+  val columnHeightRatio = when (devicePosture) {
+    is DevicePosture.Separating.TableTop -> devicePosture.hingeRatio
     else -> 0.5f
   }
 
@@ -48,7 +47,7 @@ internal fun TableTopOnboardingScreen(
       verticalAlignment = Alignment.CenterVertically,
     ) {
       DefaultLandscapeOnboardingScreen(
-        onOnboardingFinished = onContinueHomeButtonClicked
+        onOnboardingFinished = onOnboardingFinished
       )
     }
     Row(

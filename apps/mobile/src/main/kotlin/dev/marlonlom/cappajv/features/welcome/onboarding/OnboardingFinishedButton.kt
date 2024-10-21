@@ -11,6 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import dev.marlonlom.cappajv.R
 
@@ -28,7 +29,7 @@ internal fun OnboardingFinishedButton(
   modifier: Modifier = Modifier
 ) {
   Button(
-    modifier = modifier,
+    modifier = modifier.testTag("onboarding_finish_btn"),
     onClick = {
       onButtonClicked()
     },
