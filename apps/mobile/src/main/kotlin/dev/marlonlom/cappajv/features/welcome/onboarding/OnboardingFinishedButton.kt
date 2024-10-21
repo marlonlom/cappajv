@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package dev.marlonlom.cappajv.features.welcome.parts
+package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -14,8 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import dev.marlonlom.cappajv.R
 
+/**
+ * Button composable ui.
+ *
+ * @author marlonlom
+ *
+ * @param onContinueHomeButtonClicked Action for continue to home screen button clicked.
+ * @param modifier Modifier for this composable.
+ */
 @Composable
-internal fun WelcomeButton(
+internal fun GotoHomeScreenButton(
   onContinueHomeButtonClicked: () -> Unit,
   modifier: Modifier = Modifier
 ) {
