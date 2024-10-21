@@ -13,9 +13,13 @@
   <string name="destination_detail">Detail</string>
   <string name="destination_favorites">Favorites</string>
   <!-- feature: onboarding / welcome -->
-  <string name="text_welcome_title">Welcome</string>
-  <string name="text_welcome_detail">Below you will be able to see the product catalog of the Amigos Juan Valdez® program, in which you will be able to live the unique experience of visiting the Juan Valdez® Café stores using your points to exchange them for food, drinks, prizes and benefits.</string>
-  <string name="text_welcome_button">Get started</string>
+  <string name="text_onboarding_button">Get started</string>
+  <string name="text_onboarding_title_01">Welcome</string>
+  <string name="text_onboarding_detail_01">Explore our exclusive points catalog, each product has its own points value waiting to be discovered.</string>
+  <string name="text_onboarding_title_02">Make it yours!</string>
+  <string name="text_onboarding_detail_02">Our catalog allows you to mark your favorite products as favorites, making your path to redeem points on your favorite coffee or snack easy and seamless.</string>
+  <string name="text_onboarding_title_03">Ready, redeem!</string>
+  <string name="text_onboarding_detail_03">Once you\'ve chosen your favorites, simply check back through the catalog to redeem them every time you visit your nearest Juan Valdez store.</string>
   <!-- feature: home / catalog list -->
   <string name="text_catalog_list_title">Get our rewards</string>
   <string name="text_catalog_subtitle_all_products">Our products</string>

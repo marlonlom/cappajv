@@ -12,9 +12,13 @@
   <string name="destination_detail">Detalle</string>
   <string name="destination_favorites">Favoritos</string>
   <!-- feature: onboarding / welcome -->
-  <string name="text_welcome_title">Bienvenidos</string>
-  <string name="text_welcome_detail">A continuación podrás ver el catálogo de productos del programa Amigos Juan Valdez®, en el cual podrás vivir la experiencia única de visitar las tiendas Juan Valdez® Café utilizando tus puntos para canjearlos por alimentos, bebidas, premios y beneficios.</string>
-  <string name="text_welcome_button">Empezar</string>
+  <string name="text_onboarding_button">Empezar</string>
+  <string name="text_onboarding_title_01">Bienvenido</string>
+  <string name="text_onboarding_detail_01">Explora nuestro catálogo exclusivo de puntos, cada producto tiene su propio valor en puntos que espera ser descubierto.</string>
+  <string name="text_onboarding_title_02">¡Hazlo tuyo!</string>
+  <string name="text_onboarding_detail_02">Nuestro catálogo te permite marcar tus productos preferidos como favoritos, así,  tu camino para canjear puntos en tu café o refrigerio favorito se vuelve fácil y sin problemas.</string>
+  <string name="text_onboarding_title_03">¡Listo, canjea!</string>
+  <string name="text_onboarding_detail_03">Una vez que hayas elegido tus favoritos, simplemente vuelve a consultar el catálogo para canjearlos cada vez que visites la tienda Juan Valdez más cercana.</string>
   <!-- feature: home / catalog list -->
   <string name="text_catalog_list_title">Consigue nuestros premios</string>
   <string name="text_catalog_subtitle_all_products">Nuestros productos</string>
