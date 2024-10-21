@@ -19,18 +19,18 @@ import dev.marlonlom.cappajv.R
  *
  * @author marlonlom
  *
- * @param onContinueHomeButtonClicked Action for continue to home screen button clicked.
+ * @param onButtonClicked Action for continue to home screen button clicked.
  * @param modifier Modifier for this composable.
  */
 @Composable
-internal fun GotoHomeScreenButton(
-  onContinueHomeButtonClicked: () -> Unit,
+internal fun OnboardingFinishedButton(
+  onButtonClicked: () -> Unit,
   modifier: Modifier = Modifier
 ) {
   Button(
     modifier = modifier,
     onClick = {
-      onContinueHomeButtonClicked()
+      onButtonClicked()
     },
     shape = MaterialTheme.shapes.small,
     colors = ButtonDefaults.buttonColors(
@@ -39,7 +39,7 @@ internal fun GotoHomeScreenButton(
     )
   ) {
     Text(
-      text = stringResource(R.string.text_welcome_button),
+      text = stringResource(R.string.text_onboarding_button),
       style = MaterialTheme.typography.bodyLarge,
     )
   }
