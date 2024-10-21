@@ -52,7 +52,7 @@ fun WelcomeRoute(
         when {
 
           appState.devicePosture is DevicePosture.Separating.Book -> {
-            BookOnboardingScreen(appState, onOnboardingFinished)
+            BookOnboardingScreen(appState.devicePosture, onOnboardingFinished)
           }
 
           appState.isCompactHeight -> {
@@ -68,11 +68,11 @@ fun WelcomeRoute(
       is ScaffoldContentType.TwoPane -> {
         when (appState.devicePosture) {
           is DevicePosture.Separating.TableTop -> {
-            TableTopOnboardingScreen(appState, onOnboardingFinished)
+            TableTopOnboardingScreen(appState.devicePosture, onOnboardingFinished)
           }
 
           is DevicePosture.Separating.Book -> {
-            BookOnboardingScreen(appState, onOnboardingFinished)
+            BookOnboardingScreen(appState.devicePosture, onOnboardingFinished)
           }
 
           else -> {

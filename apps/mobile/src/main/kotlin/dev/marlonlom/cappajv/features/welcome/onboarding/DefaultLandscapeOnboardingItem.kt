@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -40,18 +41,21 @@ import dev.marlonlom.cappajv.ui.theme.CappajvTheme
  * @author marlonlom
  *
  * @param item Onboarding item as triple.
+ * @param testTag Test tag.
  * @param modifier Modifier for this composable.
  */
 @Composable
 internal fun DefaultLandscapeOnboardingItem(
   item: Triple<Int, Int, Int>,
+  testTag: String = "onboarding_item",
   modifier: Modifier = Modifier
 ) {
   Row(
     modifier = modifier
       .heightIn(max = 180.dp)
       .background(MaterialTheme.colorScheme.surface)
-      .padding(10.dp),
+      .padding(10.dp)
+      .testTag(testTag),
     horizontalArrangement = Arrangement.spacedBy(40.dp),
     verticalAlignment = Alignment.CenterVertically
   ) {
@@ -87,19 +91,14 @@ internal fun DefaultLandscapeOnboardingItem(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(
-  showBackground = true,
-  locale = "es",
-  device = Devices.AUTOMOTIVE_1024p,
-  widthDp = 720
+  showBackground = true, locale = "es", device = Devices.AUTOMOTIVE_1024p, widthDp = 720
 )
 @Composable
 private fun DefaultLandscapeOnboardingItemPreview() {
   CappajvTheme(dynamicColor = false) {
     DefaultLandscapeOnboardingItem(
       item = Triple(
-        R.drawable.img_onboarding_01,
-        R.string.text_onboarding_title_01,
-        R.string.text_onboarding_detail_01
+        R.drawable.img_onboarding_01, R.string.text_onboarding_title_01, R.string.text_onboarding_detail_01
       )
     )
   }
@@ -107,18 +106,14 @@ private fun DefaultLandscapeOnboardingItemPreview() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(
-  showBackground = true,
-  device = Devices.AUTOMOTIVE_1024p,
-  widthDp = 720
+  showBackground = true, device = Devices.AUTOMOTIVE_1024p, widthDp = 720
 )
 @Composable
 private fun DefaultLandscapeOnboardingItem2Preview() {
   CappajvTheme(dynamicColor = false) {
     DefaultLandscapeOnboardingItem(
       item = Triple(
-        R.drawable.img_onboarding_02,
-        R.string.text_onboarding_title_02,
-        R.string.text_onboarding_detail_02
+        R.drawable.img_onboarding_02, R.string.text_onboarding_title_02, R.string.text_onboarding_detail_02
       )
     )
   }
@@ -126,19 +121,14 @@ private fun DefaultLandscapeOnboardingItem2Preview() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(
-  showBackground = true,
-  locale = "es",
-  device = Devices.AUTOMOTIVE_1024p,
-  widthDp = 720
+  showBackground = true, locale = "es", device = Devices.AUTOMOTIVE_1024p, widthDp = 720
 )
 @Composable
 private fun DefaultLandscapeOnboardingItem3Preview() {
   CappajvTheme(darkTheme = true, dynamicColor = false) {
     DefaultLandscapeOnboardingItem(
       item = Triple(
-        R.drawable.img_onboarding_03,
-        R.string.text_onboarding_title_03,
-        R.string.text_onboarding_detail_03
+        R.drawable.img_onboarding_03, R.string.text_onboarding_title_03, R.string.text_onboarding_detail_03
       )
     )
   }

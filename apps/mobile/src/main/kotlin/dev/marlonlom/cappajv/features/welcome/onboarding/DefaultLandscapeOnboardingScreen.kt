@@ -70,7 +70,10 @@ internal fun DefaultLandscapeOnboardingScreen(
         key = { pos -> OnboardingItemsData.list[pos] },
         pageSize = PageSize.Fill
       ) { pos ->
-        DefaultLandscapeOnboardingItem(OnboardingItemsData.list[pos])
+        DefaultLandscapeOnboardingItem(
+          item = OnboardingItemsData.list[pos],
+          testTag = "onboarding_item_$pos"
+        )
       }
       Spacer(
         modifier = Modifier

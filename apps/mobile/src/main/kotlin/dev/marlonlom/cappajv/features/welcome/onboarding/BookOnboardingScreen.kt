@@ -15,23 +15,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import dev.marlonlom.cappajv.ui.layout.DevicePosture
-import dev.marlonlom.cappajv.ui.main.CappajvAppState
 
 /**
  * Book mode folding onboarding screen composable ui.
  *
  * @author marlonlom
  *
- * @param appState Application ui state.
- * @param onContinueHomeButtonClicked Action for continue to home screen button clicked.
+ * @param devicePosture Application device posture.
+ * @param onOnboardingFinished Action for onboarding finished event.
  */
 @Composable
 internal fun BookOnboardingScreen(
-  appState: CappajvAppState,
-  onContinueHomeButtonClicked: () -> Unit
+  devicePosture: DevicePosture,
+  onOnboardingFinished: () -> Unit
 ) {
-  val columnWidthRatio = when (appState.devicePosture) {
-    is DevicePosture.Separating.Book -> appState.devicePosture.hingeRatio
+  val columnWidthRatio = when (devicePosture) {
+    is DevicePosture.Separating.Book -> devicePosture.hingeRatio
     else -> 0.5f
   }
   Row(
@@ -46,11 +45,13 @@ internal fun BookOnboardingScreen(
       Box(modifier = Modifier.fillMaxSize()) { }
     }
     Column(
-      modifier = Modifier.fillMaxWidth().safeContentPadding(),
+      modifier = Modifier
+        .fillMaxWidth()
+        .safeContentPadding(),
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       DefaultOnboardingScreen(
-        onOnboardingFinished = onContinueHomeButtonClicked
+        onOnboardingFinished = onOnboardingFinished
       )
     }
   }
