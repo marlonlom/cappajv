@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main.scaffold
 
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -22,7 +21,6 @@ import dev.marlonlom.cappajv.ui.navigation.MainNavHost
 import dev.marlonlom.cappajv.ui.navigation.NavigationType
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import timber.log.Timber
-
 
 /**
  * Main scaffold content composable ui.
@@ -47,7 +45,7 @@ internal fun MainScaffoldContent(
   appContentCallbacks: AppContentCallbacks,
   isTopDestination: Boolean,
   selectedPosition: Int,
-  onSelectedPositionChanged: (Int, String) -> Unit
+  onSelectedPositionChanged: (Int, String) -> Unit,
 ) {
   Timber.d(
     """
@@ -55,7 +53,7 @@ internal fun MainScaffoldContent(
      scaffoldContentType=${appState.scaffoldContentType}
      devicePosture=${appState.devicePosture}
      isLandscape=${appState.isLandscape}
-  """.trimIndent()
+    """.trimIndent(),
   )
   Box(
     modifier = Modifier
@@ -71,7 +69,8 @@ internal fun MainScaffoldContent(
           onSelectedPositionChanged = onSelectedPositionChanged,
         ) {
           MainNavHost(
-            appState = appState, appContentCallbacks
+            appState = appState,
+            appContentCallbacks,
           )
         }
       }

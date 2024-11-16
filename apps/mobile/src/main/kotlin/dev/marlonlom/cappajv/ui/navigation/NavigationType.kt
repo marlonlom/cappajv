@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.navigation
 
 import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
@@ -13,11 +12,7 @@ import dev.marlonlom.cappajv.ui.layout.DevicePosture
 object NavigationTypeSelector {
 
   @JvmStatic
-  fun fromWindowSize(
-    wsc: WindowSizeClass,
-    devicePosture: DevicePosture,
-    screenWidthDp: Int,
-  ): NavigationType = when {
+  fun fromWindowSize(wsc: WindowSizeClass, devicePosture: DevicePosture, screenWidthDp: Int): NavigationType = when {
     screenWidthDp >= 720 -> NavigationType.EXPANDED_NAV
     screenWidthDp >= 600 -> NavigationType.NAVIGATION_RAIL
     isCompactHeight(devicePosture, wsc) -> NavigationType.NAVIGATION_RAIL
@@ -37,5 +32,7 @@ object NavigationTypeSelector {
 }
 
 enum class NavigationType {
-  BOTTOM_NAV, NAVIGATION_RAIL, EXPANDED_NAV
+  BOTTOM_NAV,
+  NAVIGATION_RAIL,
+  EXPANDED_NAV,
 }

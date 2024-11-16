@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv
 
 import android.app.Application
@@ -27,7 +26,6 @@ import timber.log.Timber
  * @author marlonlom
  */
 val Context.dataStore by preferencesDataStore("cappajv-preferences")
-
 
 /**
  * Cappajv Application class.
@@ -74,5 +72,4 @@ class CappajvApp : Application(), ImageLoaderFactory {
       modules(appModule)
     }
   }
-
 }

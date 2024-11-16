@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main.scaffold
 
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -44,12 +43,11 @@ fun MainScaffold(
   appState: CappajvAppState,
   appContentCallbacks: AppContentCallbacks,
 ) {
-
   val currentAppRoute = appState.navController.currentBackStackEntryAsState().value?.destination?.route
     ?: CatalogDestination.CatalogList.route
   var bottomNavSelectedIndex by rememberSaveable {
     mutableIntStateOf(
-      CatalogDestination.topCatalogDestinations.map { it.route }.indexOf(currentAppRoute)
+      CatalogDestination.topCatalogDestinations.map { it.route }.indexOf(currentAppRoute),
     )
   }
   val isTopDestination = currentAppRoute in CatalogDestination.topCatalogDestinations.map { it.route }
@@ -61,7 +59,7 @@ fun MainScaffold(
       appState = appState,
       onDialogDismissed = { showSettingsDialog = false },
       openOssLicencesInfo = appContentCallbacks.openOssLicencesInfo,
-      openExternalUrl = appContentCallbacks.openExternalUrl
+      openExternalUrl = appContentCallbacks.openExternalUrl,
     )
   }
 

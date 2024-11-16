@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main.scaffold
 
 import dev.marlonlom.cappajv.ui.layout.DevicePosture
@@ -33,7 +32,7 @@ sealed interface ScaffoldContentType {
    * @property hingeRatio Hinge ratio as percentage number.
    */
   data class TwoPane(
-    val hingeRatio: Float = 0.5f
+    val hingeRatio: Float = 0.5f,
   ) : ScaffoldContentType
 }
 
@@ -59,7 +58,6 @@ object ScaffoldContentClassifier {
     isMediumWidth: Boolean,
     isCompactHeight: Boolean,
   ): ScaffoldContentType = when {
-
     isMediumWidth.not().and(!isExpandedWidth.not()) -> when (devicePosture) {
       is DevicePosture.Separating.TableTop -> TwoPane(devicePosture.hingeRatio)
       else -> SinglePane

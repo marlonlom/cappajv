@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.settings
 
 import androidx.datastore.core.DataStore
@@ -43,9 +42,9 @@ internal class SettingsViewModelTest {
           mutablePreferencesOf(
             booleanPreferencesKey("dark_theme") to true,
             booleanPreferencesKey("dynamic_colors") to true,
-            booleanPreferencesKey("is_onboarding") to false
-          )
-        )
+            booleanPreferencesKey("is_onboarding") to false,
+          ),
+        ),
       )
     }
     viewModel = SettingsViewModel(UserPreferencesRepository(mockDataStore))

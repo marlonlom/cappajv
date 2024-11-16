@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.navigation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -12,10 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import dev.marlonlom.cappajv.features.catalog_detail.CatalogDetailRoute
-import dev.marlonlom.cappajv.features.catalog_favorites.CatalogFavoritesRoute
-import dev.marlonlom.cappajv.features.catalog_list.CatalogListRoute
-import dev.marlonlom.cappajv.features.catalog_search.CatalogSearchRoute
+import dev.marlonlom.cappajv.features.catalog.detail.CatalogDetailRoute
+import dev.marlonlom.cappajv.features.catalog.favorites.CatalogFavoritesRoute
+import dev.marlonlom.cappajv.features.catalog.list.CatalogListRoute
+import dev.marlonlom.cappajv.features.catalog.search.CatalogSearchRoute
 import dev.marlonlom.cappajv.ui.main.AppContentCallbacks
 import dev.marlonlom.cappajv.ui.main.CappajvAppState
 import dev.marlonlom.cappajv.ui.navigation.CatalogDestination.CatalogList
@@ -37,10 +36,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalMaterial3Api
 @ExperimentalLayoutApi
 @Composable
-fun MainNavHost(
-  appState: CappajvAppState,
-  appContentCallbacks: AppContentCallbacks,
-) {
+fun MainNavHost(appState: CappajvAppState, appContentCallbacks: AppContentCallbacks) {
   NavHost(
     navController = appState.navController,
     startDestination = CatalogList.route,
@@ -123,18 +119,18 @@ internal fun NavGraphBuilder.catalogSearchDestination(
 @ExperimentalCoroutinesApi
 private fun NavGraphBuilder.catalogDetailDestination(
   appState: CappajvAppState,
-  appContentCallbacks: AppContentCallbacks
+  appContentCallbacks: AppContentCallbacks,
 ) {
   composable(
     route = Detail.route,
-    arguments = Detail.navArguments
+    arguments = Detail.navArguments,
   ) { backStackEntry ->
     val catalogDetailId = requireNotNull(backStackEntry.arguments?.getLong(Detail.ITEM_ID_ARG))
     CatalogDetailRoute(
       appState = appState,
       appContentCallbacks = appContentCallbacks,
       isRouting = true,
-      catalogId = catalogDetailId
+      catalogId = catalogDetailId,
     )
   }
 }

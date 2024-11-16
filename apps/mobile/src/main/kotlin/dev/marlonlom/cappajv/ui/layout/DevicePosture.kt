@@ -2,9 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.layout
-
 
 import android.graphics.Rect
 import androidx.window.layout.FoldingFeature
@@ -75,8 +73,5 @@ sealed interface DevicePosture {
       override val orientation: FoldingFeature.Orientation,
       override val isSeparating: Boolean,
     ) : Separating
-
   }
-
 }
-

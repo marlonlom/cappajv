@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main
 
 import android.content.Context
@@ -40,11 +39,8 @@ data class AppContentCallbacks(
  */
 @ExperimentalCoroutinesApi
 @Composable
-internal fun newAppContentCallbacks(
-  activityContext: Context,
-) = AppContentCallbacks(
+internal fun newAppContentCallbacks(activityContext: Context) = AppContentCallbacks(
   onOnboardingComplete = {
-
   },
   openOssLicencesInfo = {
     Timber.d("[AppContentCallbacks.openOssLicencesInfo] Should open oss licences information content.")

@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.foundation.background
@@ -40,10 +39,7 @@ import dev.marlonlom.cappajv.ui.theme.CappajvTheme
  * @param modifier Modifier for this composable.
  */
 @Composable
-internal fun DefaultLandscapeOnboardingScreen(
-  onOnboardingFinished: () -> Unit,
-  modifier: Modifier = Modifier
-) {
+internal fun DefaultLandscapeOnboardingScreen(onOnboardingFinished: () -> Unit, modifier: Modifier = Modifier) {
   val pagerState = rememberPagerState { OnboardingItemsData.list.size }
   var continueHomeButtonVisible by remember { mutableStateOf(false) }
 
@@ -57,57 +53,54 @@ internal fun DefaultLandscapeOnboardingScreen(
     horizontalAlignment = Alignment.CenterHorizontally,
     modifier = modifier
       .background(MaterialTheme.colorScheme.background)
-      .padding(top = 24.dp, bottom = 16.dp)
+      .padding(top = 24.dp, bottom = 16.dp),
   ) {
     Column(
       modifier = modifier.fillMaxWidth(0.75f),
       horizontalAlignment = Alignment.CenterHorizontally,
-      verticalArrangement = Arrangement.Center
+      verticalArrangement = Arrangement.Center,
     ) {
       HorizontalPager(
         modifier = Modifier.weight(1f),
         state = pagerState,
         key = { pos -> OnboardingItemsData.list[pos] },
-        pageSize = PageSize.Fill
+        pageSize = PageSize.Fill,
       ) { pos ->
         DefaultLandscapeOnboardingItem(
           item = OnboardingItemsData.list[pos],
-          testTag = "onboarding_item_$pos"
+          testTag = "onboarding_item_$pos",
         )
       }
       Spacer(
         modifier = Modifier
           .fillMaxWidth()
-          .height(10.dp)
+          .height(10.dp),
       )
       OnboardingDotsIndicator(
         totalDots = OnboardingItemsData.list.size,
         selectedIndex = pagerState.currentPage,
         selectedColor = MaterialTheme.colorScheme.onPrimaryContainer,
-        unSelectedColor = MaterialTheme.colorScheme.primaryContainer
+        unSelectedColor = MaterialTheme.colorScheme.primaryContainer,
       )
       Spacer(
         modifier = Modifier
           .fillMaxWidth()
-          .height(20.dp)
+          .height(20.dp),
       )
       if (continueHomeButtonVisible) {
         OnboardingFinishedButton(onButtonClicked = onOnboardingFinished)
         Spacer(modifier = Modifier.height(20.dp))
       }
     }
-
   }
-
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(
   showBackground = true,
   device = Devices.AUTOMOTIVE_1024p,
   widthDp = 720,
-  heightDp = 360
+  heightDp = 360,
 )
 @Composable
 private fun DefaultLandscapeOnboardingScreenPreview() {

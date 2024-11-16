@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.ui.test.isDisplayed
@@ -30,7 +29,7 @@ internal class BookOnboardingScreenUiTest {
     bounds = android.graphics.Rect(),
     0.5f,
     orientation = FoldingFeature.Orientation.HORIZONTAL,
-    true
+    true,
   )
 
   @Test
@@ -40,7 +39,9 @@ internal class BookOnboardingScreenUiTest {
         BookOnboardingScreen(devicePosture, onOnboardingFinished = {})
       }
       onNodeWithText("Welcome").isDisplayed()
-      onNodeWithText("Explore our exclusive points catalog, each product has its own points value waiting to be discovered.").isDisplayed()
+      onNodeWithText(
+        "Explore our exclusive points catalog, each product has its own points value waiting to be discovered.",
+      ).isDisplayed()
     }
   }
 
@@ -52,7 +53,10 @@ internal class BookOnboardingScreenUiTest {
       }
       onNodeWithTag("onboarding_item_0").onParent().performScrollToIndex(1)
       onNodeWithText("Make it yours!").isDisplayed()
-      onNodeWithText("Our catalog allows you to mark your favorite products as favorites, making your path to redeem points on your favorite coffee or snack easy and seamless.").isDisplayed()
+      onNodeWithText(
+        "Our catalog allows you to mark your favorite products as favorites, " +
+          "making your path to redeem points on your favorite coffee or snack easy and seamless.",
+      ).isDisplayed()
     }
   }
 
@@ -64,10 +68,16 @@ internal class BookOnboardingScreenUiTest {
       }
       onNodeWithTag("onboarding_item_0").onParent().performScrollToIndex(1)
       onNodeWithText("Make it yours!").isDisplayed()
-      onNodeWithText("Our catalog allows you to mark your favorite products as favorites, making your path to redeem points on your favorite coffee or snack easy and seamless.").isDisplayed()
+      onNodeWithText(
+        "Our catalog allows you to mark your favorite products as favorites, making your path to " +
+          "redeem points on your favorite coffee or snack easy and seamless.",
+      ).isDisplayed()
       onNodeWithTag("onboarding_item_1").onParent().performScrollToIndex(0)
       onNodeWithText("Welcome").isDisplayed()
-      onNodeWithText("Explore our exclusive points catalog, each product has its own points value waiting to be discovered.").isDisplayed()
+      onNodeWithText(
+        "Explore our exclusive points catalog, each product has its own points value " +
+          "waiting to be discovered.",
+      ).isDisplayed()
     }
   }
 
@@ -83,7 +93,10 @@ internal class BookOnboardingScreenUiTest {
       onNodeWithTag("onboarding_item_0").onParent().performScrollToIndex(1)
       onNodeWithTag("onboarding_item_1").onParent().performScrollToIndex(2)
       onNodeWithText("Ready, redeem!").isDisplayed()
-      onNodeWithText("Once you\'ve chosen your favorites, simply check back through the catalog to redeem them every time you visit your nearest Juan Valdez store.").isDisplayed()
+      onNodeWithText(
+        "Once you\'ve chosen your favorites, simply check back through the catalog to redeem " +
+          "them every time you visit your nearest Juan Valdez store.",
+      ).isDisplayed()
       onNodeWithTag("onboarding_finish_btn").performClick()
       Truth.assertThat(clicked).isTrue()
     }

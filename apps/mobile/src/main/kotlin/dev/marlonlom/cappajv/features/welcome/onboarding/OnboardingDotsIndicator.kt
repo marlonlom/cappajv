@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.foundation.background
@@ -42,22 +41,21 @@ internal fun OnboardingDotsIndicator(
   selectedIndex: Int,
   selectedColor: Color,
   unSelectedColor: Color,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   LazyRow(
     modifier = modifier
       .background(MaterialTheme.colorScheme.surface)
       .wrapContentWidth()
-      .wrapContentHeight()
+      .wrapContentHeight(),
   ) {
-
     items(totalDots) { index ->
       val boxColor = if (index == selectedIndex) selectedColor else unSelectedColor
       Box(
         modifier = Modifier
           .size(10.dp)
           .clip(CircleShape)
-          .background(boxColor)
+          .background(boxColor),
       )
 
       if (index != totalDots - 1) {
@@ -77,7 +75,7 @@ private fun OnboardingDotsIndicatorPreview() {
       totalDots = 3,
       selectedIndex = 1,
       selectedColor = MaterialTheme.colorScheme.onPrimaryContainer,
-      unSelectedColor = MaterialTheme.colorScheme.primaryContainer
+      unSelectedColor = MaterialTheme.colorScheme.primaryContainer,
     )
   }
 }

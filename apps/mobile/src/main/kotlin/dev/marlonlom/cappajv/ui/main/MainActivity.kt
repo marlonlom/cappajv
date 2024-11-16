@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main
 
 import android.content.res.Configuration
@@ -88,18 +87,18 @@ class MainActivity : ComponentActivity() {
       }.stateIn(
         scope = lifecycleScope,
         started = SharingStarted.Eagerly,
-        initialValue = DevicePosture.Normal
+        initialValue = DevicePosture.Normal,
       )
 
     setContent {
       val devicePosture by devicePostureFlow.collectAsStateWithLifecycle(
-        lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+        lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current,
       )
       val appState = rememberCappajvAppState(
         windowSizeClass = calculateWindowSizeClass(this),
         devicePosture = devicePosture,
         screenWidthDp = LocalConfiguration.current.smallestScreenWidthDp,
-        isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+        isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE,
       )
 
       AppContent(
@@ -110,5 +109,4 @@ class MainActivity : ComponentActivity() {
       )
     }
   }
-
 }

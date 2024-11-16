@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.theme
 
 import android.app.Activity
@@ -36,7 +35,7 @@ fun CappajvTheme(
   // Dynamic color is available on Android 12+
   dynamicColor: Boolean = true,
   colorContrast: String = CappajvColorContrasts.STANDARD.name,
-  content: @Composable () -> Unit
+  content: @Composable () -> Unit,
 ) {
   val colorScheme = when {
     dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -60,6 +59,6 @@ fun CappajvTheme(
     colorScheme = colorScheme,
     typography = CappajvFont.appTypography,
     shapes = CappajvShapes.shapes,
-    content = content
+    content = content,
   )
 }

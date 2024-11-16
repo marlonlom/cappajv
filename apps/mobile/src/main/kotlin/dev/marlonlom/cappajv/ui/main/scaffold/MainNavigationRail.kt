@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main.scaffold
 
 import androidx.compose.material3.Icon
@@ -22,10 +21,7 @@ import dev.marlonlom.cappajv.ui.navigation.CatalogDestination
  * @param onSelectedPositionChanged Action for selected navigation bar item index changed.
  */
 @Composable
-fun MainNavigationRail(
-  selectedPosition: Int,
-  onSelectedPositionChanged: (Int, String) -> Unit,
-) {
+fun MainNavigationRail(selectedPosition: Int, onSelectedPositionChanged: (Int, String) -> Unit) {
   NavigationRail {
     CatalogDestination.topCatalogDestinations.forEachIndexed { index, destination ->
       NavigationRailItem(
@@ -36,7 +32,7 @@ fun MainNavigationRail(
         icon = {
           Icon(
             imageVector = destination.icon,
-            contentDescription = stringResource(id = destination.title)
+            contentDescription = stringResource(id = destination.title),
           )
         },
         label = {

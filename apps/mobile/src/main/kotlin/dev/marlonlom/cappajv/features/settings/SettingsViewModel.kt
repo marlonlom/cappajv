@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.settings
 
 import androidx.lifecycle.ViewModel
@@ -22,7 +21,7 @@ import kotlinx.coroutines.launch
  * @property repository User preferences repository.
  */
 class SettingsViewModel(
-  private val repository: UserPreferencesRepository
+  private val repository: UserPreferencesRepository,
 ) : ViewModel() {
 
   /** User preferences ui state as Flow. */
@@ -32,8 +31,8 @@ class SettingsViewModel(
         UserEditableSettings(
           useDarkTheme = it.useDarkTheme,
           useDynamicColor = it.useDynamicColor,
-          isOnboarding = it.isOnboarding
-        )
+          isOnboarding = it.isOnboarding,
+        ),
       )
     }.stateIn(
       scope = viewModelScope,
@@ -52,7 +51,6 @@ class SettingsViewModel(
       repository.toggleBooleanSetting(key, booleanValue)
     }
   }
-
 }
 
 /**
@@ -91,6 +89,6 @@ sealed interface SettingsUiState {
    * @property settings User editable settings information.
    */
   data class Success(
-    val settings: UserEditableSettings
+    val settings: UserEditableSettings,
   ) : SettingsUiState
 }

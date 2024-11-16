@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main.scaffold
 
 import androidx.compose.foundation.layout.padding
@@ -66,9 +65,7 @@ fun ExpandedNavigationDrawer(
  * @param onSelectedPositionChanged Action for selected navigation bar item index changed.
  */
 @Composable
-internal fun NavigationDrawerContent(
-  selectedPosition: Int, onSelectedPositionChanged: (Int, String) -> Unit
-) {
+internal fun NavigationDrawerContent(selectedPosition: Int, onSelectedPositionChanged: (Int, String) -> Unit) {
   CatalogDestination.topCatalogDestinations.forEachIndexed { index, destination ->
     NavigationDrawerItem(
       shape = MaterialTheme.shapes.large,
@@ -78,7 +75,8 @@ internal fun NavigationDrawerContent(
       },
       icon = {
         Icon(
-          imageVector = destination.icon, contentDescription = stringResource(id = destination.title)
+          imageVector = destination.icon,
+          contentDescription = stringResource(id = destination.title),
         )
       },
       label = {

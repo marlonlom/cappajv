@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.theme
 
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -48,6 +47,6 @@ internal object CappajvFont {
     bodySmall = baseline.bodySmall.copy(fontFamily = defaultFontFamily),
     labelLarge = baseline.labelLarge.copy(fontFamily = defaultFontFamily),
     labelMedium = baseline.labelMedium.copy(fontFamily = defaultFontFamily),
-    labelSmall = baseline.labelSmall.copy(fontFamily = defaultFontFamily)
+    labelSmall = baseline.labelSmall.copy(fontFamily = defaultFontFamily),
   )
 }

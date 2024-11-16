@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.foundation.layout.Box
@@ -25,17 +24,14 @@ import dev.marlonlom.cappajv.ui.layout.DevicePosture
  * @param onOnboardingFinished Action for onboarding finished event.
  */
 @Composable
-internal fun BookOnboardingScreen(
-  devicePosture: DevicePosture,
-  onOnboardingFinished: () -> Unit
-) {
+internal fun BookOnboardingScreen(devicePosture: DevicePosture, onOnboardingFinished: () -> Unit) {
   val columnWidthRatio = when (devicePosture) {
     is DevicePosture.Separating.Book -> devicePosture.hingeRatio
     else -> 0.5f
   }
   Row(
     modifier = Modifier.fillMaxSize(),
-    verticalAlignment = Alignment.CenterVertically
+    verticalAlignment = Alignment.CenterVertically,
   ) {
     Column(
       modifier = Modifier
@@ -51,9 +47,8 @@ internal fun BookOnboardingScreen(
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       DefaultOnboardingScreen(
-        onOnboardingFinished = onOnboardingFinished
+        onOnboardingFinished = onOnboardingFinished,
       )
     }
   }
-
 }

@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.foundation.layout.Arrangement
@@ -28,10 +27,7 @@ import dev.marlonlom.cappajv.ui.layout.DevicePosture
  * @param onOnboardingFinished Action for onboarding finished event.
  */
 @Composable
-internal fun TableTopOnboardingScreen(
-  devicePosture: DevicePosture,
-  onOnboardingFinished: () -> Unit
-) {
+internal fun TableTopOnboardingScreen(devicePosture: DevicePosture, onOnboardingFinished: () -> Unit) {
   val columnHeightRatio = when (devicePosture) {
     is DevicePosture.Separating.TableTop -> devicePosture.hingeRatio
     else -> 0.5f
@@ -47,7 +43,7 @@ internal fun TableTopOnboardingScreen(
       verticalAlignment = Alignment.CenterVertically,
     ) {
       DefaultLandscapeOnboardingScreen(
-        onOnboardingFinished = onOnboardingFinished
+        onOnboardingFinished = onOnboardingFinished,
       )
     }
     Row(

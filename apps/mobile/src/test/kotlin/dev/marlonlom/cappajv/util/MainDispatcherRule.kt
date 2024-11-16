@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.util
 
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +20,7 @@ import org.junit.runner.Description
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 class MainDispatcherRule(
-  private val testDispatcher: TestDispatcher = UnconfinedTestDispatcher()
+  private val testDispatcher: TestDispatcher = UnconfinedTestDispatcher(),
 ) : TestWatcher() {
   override fun starting(description: Description) {
     Dispatchers.setMain(testDispatcher)

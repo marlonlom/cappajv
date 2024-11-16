@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome
 
 import androidx.compose.foundation.background
@@ -31,10 +30,7 @@ import dev.marlonlom.cappajv.ui.main.scaffold.ScaffoldContentType
  * @param onOnboardingFinished Action for continue button clicked.
  */
 @Composable
-fun WelcomeRoute(
-  appState: CappajvAppState,
-  onOnboardingFinished: () -> Unit
-) {
+fun WelcomeRoute(appState: CappajvAppState, onOnboardingFinished: () -> Unit) {
   val contentHorizontalPadding = when {
     appState.devicePosture is DevicePosture.Separating.Book -> 0.dp
     appState.isCompactWidth.not() -> 80.dp
@@ -45,12 +41,11 @@ fun WelcomeRoute(
       .background(MaterialTheme.colorScheme.background)
       .fillMaxSize()
       .padding(horizontal = contentHorizontalPadding),
-    contentAlignment = Alignment.Center
+    contentAlignment = Alignment.Center,
   ) {
     when (appState.scaffoldContentType) {
       ScaffoldContentType.SinglePane -> {
         when {
-
           appState.devicePosture is DevicePosture.Separating.Book -> {
             BookOnboardingScreen(appState.devicePosture, onOnboardingFinished)
           }
@@ -79,7 +74,6 @@ fun WelcomeRoute(
             DefaultOnboardingScreen(onOnboardingFinished)
           }
         }
-
       }
     }
   }
