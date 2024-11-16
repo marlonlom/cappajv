@@ -32,8 +32,7 @@ object CatalogItemSharingUtil {
       putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
       putExtra(Intent.EXTRA_TEXT, message)
     }.apply {
-      ContextCompat.startActivity(
-        /* context = */ context,
+      context.startActivity(
         /* intent = */ Intent.createChooser(this, context.getString(R.string.text_catalog_detail_button_share)),
         /* options = */ null
       )
