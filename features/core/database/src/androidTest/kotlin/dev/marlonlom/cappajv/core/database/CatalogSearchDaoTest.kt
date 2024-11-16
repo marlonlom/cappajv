@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database
 
 import android.content.Context
@@ -68,13 +67,11 @@ internal class CatalogSearchDaoTest {
     catalogProductsDao.deleteAll()
   }
 
-  private fun fillSampleCatalogItems(
-    catalogProductsDao: CatalogItemsDao
-  ) {
+  private fun fillSampleCatalogItems(catalogProductsDao: CatalogItemsDao) {
     listOf(
       "affogato", "almojabana", "cappuccino",
       "chai", "chocolate", "granizado",
-      "pandebono", "torta de banano", "torta de zanahoria"
+      "pandebono", "torta de banano", "torta de zanahoria",
     ).mapIndexed { index, title ->
       CatalogItem(
         id = index.toLong() + 1,
@@ -85,11 +82,11 @@ internal class CatalogSearchDaoTest {
         category = "CategoryOne",
         detail = title,
         samplePunctuation = "",
-        punctuationsCount = 0
+        punctuationsCount = 0,
       )
     }.also { items ->
       catalogProductsDao.insertAll(
-        *items.toTypedArray()
+        *items.toTypedArray(),
       )
     }
   }

@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.dao
 
 import dev.marlonlom.cappajv.core.database.entities.CatalogItem
@@ -19,12 +18,10 @@ import java.util.Locale
  * @property list Mutable punctuations list.
  */
 internal class FakeCatalogSearchDao(
-  private val list: MutableList<CatalogItem> = mutableListOf()
+  private val list: MutableList<CatalogItem> = mutableListOf(),
 ) : CatalogSearchDao {
 
-  override fun searchProducts(
-    searchText: String
-  ): Flow<List<CatalogItemTuple>> = flowOf(
+  override fun searchProducts(searchText: String): Flow<List<CatalogItemTuple>> = flowOf(
     list
       .filter {
         val searchingText = searchText.lowercase(Locale.getDefault())
@@ -37,9 +34,9 @@ internal class FakeCatalogSearchDao(
           it.picture,
           it.category,
           it.samplePunctuation,
-          it.punctuationsCount
+          it.punctuationsCount,
         )
-      }
+      },
   )
 
   internal fun insertAll(vararg products: CatalogItem) {

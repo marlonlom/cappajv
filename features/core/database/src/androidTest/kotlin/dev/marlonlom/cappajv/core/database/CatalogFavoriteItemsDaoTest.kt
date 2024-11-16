@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database
 
 import android.content.Context
@@ -99,7 +98,7 @@ internal class CatalogFavoriteItemsDaoTest {
         category = "CategoryOne",
         samplePunctuation = "",
         punctuationsCount = 0,
-      )
+      ),
     )
     entities.forEach {
       dao.insert(it)

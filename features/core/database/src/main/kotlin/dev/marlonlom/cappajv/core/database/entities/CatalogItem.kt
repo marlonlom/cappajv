@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.entities
 
 import androidx.room.ColumnInfo
@@ -25,7 +24,7 @@ import androidx.room.Entity
  */
 @Entity(
   tableName = "catalog_item",
-  primaryKeys = ["id", "category"]
+  primaryKeys = ["id", "category"],
 )
 data class CatalogItem(
   @ColumnInfo
@@ -47,4 +46,3 @@ data class CatalogItem(
   @ColumnInfo
   val punctuationsCount: Int,
 )
-

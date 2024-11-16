@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.dao
 
 import dev.marlonlom.cappajv.core.database.entities.CatalogFavoriteItem
@@ -17,7 +16,7 @@ import kotlinx.coroutines.flow.flowOf
  * @property list Mutable punctuations list.
  */
 internal class FakeCatalogFavoriteItemsDao(
-  private val list: MutableList<CatalogFavoriteItem> = mutableListOf()
+  private val list: MutableList<CatalogFavoriteItem> = mutableListOf(),
 ) : CatalogFavoriteItemsDao {
 
   override fun getFavoriteItems(): Flow<List<CatalogFavoriteItem>> = flowOf(list)

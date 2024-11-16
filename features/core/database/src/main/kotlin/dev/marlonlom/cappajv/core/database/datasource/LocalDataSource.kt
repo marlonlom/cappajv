@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.datasource
 
 import dev.marlonlom.cappajv.core.database.entities.CatalogFavoriteItem
@@ -105,6 +104,4 @@ interface LocalDataSource {
    * @return Number that indicates if product id exists as favorite, as Flow.
    */
   fun isFavorite(productId: Long): Flow<Int>
-
 }
-

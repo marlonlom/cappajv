@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.dao
 
 import androidx.room.Dao
@@ -51,5 +50,4 @@ interface CatalogItemsDao {
    */
   @Query("DELETE FROM catalog_item")
   fun deleteAll()
-
 }

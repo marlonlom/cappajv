@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database
 
 import android.content.Context
@@ -26,10 +25,10 @@ import dev.marlonlom.cappajv.core.database.entities.CatalogPunctuation
   entities = [
     CatalogItem::class,
     CatalogFavoriteItem::class,
-    CatalogPunctuation::class
+    CatalogPunctuation::class,
   ],
   version = 6,
-  exportSchema = false
+  exportSchema = false,
 )
 abstract class CappaDatabase : RoomDatabase() {
 
@@ -81,14 +80,11 @@ abstract class CappaDatabase : RoomDatabase() {
       }
     }
 
-    private fun buildDatabase(
-      context: Context
-    ): CappaDatabase =
-      Room.databaseBuilder(
-        context = context,
-        klass = CappaDatabase::class.java,
-        name = DATABASE_NAME
-      ).fallbackToDestructiveMigration()
-        .build()
+    private fun buildDatabase(context: Context): CappaDatabase = Room.databaseBuilder(
+      context = context,
+      klass = CappaDatabase::class.java,
+      name = DATABASE_NAME,
+    ).fallbackToDestructiveMigration()
+      .build()
   }
 }

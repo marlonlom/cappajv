@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.dao
 
 import androidx.room.Dao
@@ -25,8 +24,9 @@ interface CatalogSearchDao {
    * @return Product items list, or empty list, as Flow.
    */
   @Query(
-    "SELECT c.id, c.title, c.category, c.picture, c.samplePunctuation, c.punctuationsCount FROM catalog_item c WHERE LOWER(c.titleNormalized) LIKE :searchText OR LOWER(c.title) LIKE :searchText "
+    "SELECT c.id, c.title, c.category, c.picture, c.samplePunctuation, c.punctuationsCount " +
+      "FROM catalog_item c WHERE LOWER(c.titleNormalized) LIKE :searchText " +
+      "OR LOWER(c.title) LIKE :searchText ",
   )
   fun searchProducts(searchText: String): Flow<List<CatalogItemTuple>>
-
 }
