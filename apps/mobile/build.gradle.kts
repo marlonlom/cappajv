@@ -64,7 +64,7 @@ dependencies {
 
   implementation(project(":features:core:catalog"))
   implementation(project(":features:core:database"))
-  implementation(project(":features:core:preferences-datastore"))
+  implementation(project(":features:core:preferences"))
 
   val composeBom = platform(libs.androidx.compose.bom)
   implementation(composeBom)
