@@ -2,8 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
-package dev.marlonlom.cappajv.core.catalog_source
+package dev.marlonlom.cappajv.core.catalog
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
@@ -39,11 +38,11 @@ internal class CatalogDataServiceTest {
       punctuations = listOf(
         Punctuation(
           label = "Mediano",
-          pointsQty = 2225
-        )
+          pointsQty = 2225,
+        ),
       ),
       category = "Bebidas frías",
-      detail = "Es una bebida fría y refrescante de café con hielo granizado."
+      detail = "Es una bebida fría y refrescante de café con hielo granizado.",
     )
     val list = catalogResponse.successOr(emptyList())
     val foundItem = list.single { it.id == 15396L }
@@ -60,7 +59,7 @@ internal class CatalogDataServiceTest {
       picture = "https://nopic.com/img/null.jpg",
       category = "",
       detail = "",
-      punctuations = listOf()
+      punctuations = listOf(),
     )
     val list = catalogResponse.successOr(emptyList())
     val foundItem = list.find { it.id == expectedItem.id }
@@ -88,5 +87,4 @@ internal class CatalogDataServiceTest {
     assertNotNull(catalogResponse.failure())
     assertTrue(catalogResponse.failure() is CatalogDataSerializationException)
   }
-
 }

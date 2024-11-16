@@ -22,6 +22,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Cappajv"
 include(":apps:mobile")
-include(":features:core:catalog-source")
+include(":features:core:catalog")
 include(":features:core:database")
 include(":features:core:preferences-datastore")
