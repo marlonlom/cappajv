@@ -5,7 +5,7 @@
 
 package dev.marlonlom.cappajv.di
 
-import dev.marlonlom.cappajv.core.catalog_source.CatalogDataService
+import dev.marlonlom.cappajv.core.catalog.CatalogDataService
 import dev.marlonlom.cappajv.core.database.CappaDatabase
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSourceImpl

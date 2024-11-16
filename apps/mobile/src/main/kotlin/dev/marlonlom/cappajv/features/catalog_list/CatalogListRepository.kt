@@ -5,9 +5,9 @@
 
 package dev.marlonlom.cappajv.features.catalog_list
 
-import dev.marlonlom.cappajv.core.catalog_source.CatalogDataService
-import dev.marlonlom.cappajv.core.catalog_source.Punctuation
-import dev.marlonlom.cappajv.core.catalog_source.Response
+import dev.marlonlom.cappajv.core.catalog.CatalogDataService
+import dev.marlonlom.cappajv.core.catalog.Punctuation
+import dev.marlonlom.cappajv.core.catalog.Response
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.cappajv.core.database.entities.CatalogPunctuation
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.withContext
 import timber.log.Timber
-import dev.marlonlom.cappajv.core.catalog_source.CatalogItem as RemoteCatalogItem
+import dev.marlonlom.cappajv.core.catalog.CatalogItem as RemoteCatalogItem
 
 /**
  * Catalog list repository class
