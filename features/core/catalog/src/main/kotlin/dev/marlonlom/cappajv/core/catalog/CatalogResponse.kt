@@ -2,8 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
-package dev.marlonlom.cappajv.core.catalog_source
+package dev.marlonlom.cappajv.core.catalog
 
 import kotlinx.serialization.Serializable
 
@@ -26,7 +25,7 @@ data class CatalogItem(
   val picture: String,
   val category: String,
   val detail: String,
-  val punctuations: List<Punctuation>
+  val punctuations: List<Punctuation>,
 )
 
 /**
@@ -40,9 +39,8 @@ data class CatalogItem(
 @Serializable
 data class Punctuation(
   val label: String,
-  val pointsQty: Int
+  val pointsQty: Int,
 )
-
 
 /**
  * A generic class that holds a value or an exception

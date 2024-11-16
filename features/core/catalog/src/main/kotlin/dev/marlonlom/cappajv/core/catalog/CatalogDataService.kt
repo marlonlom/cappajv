@@ -2,8 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
-package dev.marlonlom.cappajv.core.catalog_source
+package dev.marlonlom.cappajv.core.catalog
 
 import kotlinx.serialization.json.Json
 import java.io.InputStream
@@ -17,7 +16,7 @@ import java.util.Locale
  * @property language Selected language for fetching catalog data, default to english (en).
  */
 class CatalogDataService(
-  private val language: String = Locale.ENGLISH.language
+  private val language: String = Locale.ENGLISH.language,
 ) {
 
   private var catalogJsonPath = if (language == "es") CATALOG_JSON_FILENAME else ENG_CATALOG_JSON_FILENAME
@@ -35,7 +34,7 @@ class CatalogDataService(
     return try {
       val readText = getJsonResourceAsStream()?.bufferedReader()?.readText()
         ?: return Response.Failure(
-          CatalogDataNotFoundException()
+          CatalogDataNotFoundException(),
         )
       Response.Success(Json.decodeFromString(readText))
     } catch (exception: RuntimeException) {
