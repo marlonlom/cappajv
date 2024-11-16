@@ -2,12 +2,10 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.util
 
 import android.content.Context
 import android.content.Intent
-import androidx.core.content.ContextCompat
 import dev.marlonlom.cappajv.R
 
 /**
@@ -23,20 +21,18 @@ object CatalogItemSharingUtil {
    * @param context Application context.
    * @param message Message as text.
    */
-  fun beginShare(
-    context: Context,
-    message: String,
-  ) {
+  fun beginShare(context: Context, message: String) {
     Intent(Intent.ACTION_SEND).apply {
       type = "text/plain"
       putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
       putExtra(Intent.EXTRA_TEXT, message)
     }.apply {
       context.startActivity(
-        /* intent = */ Intent.createChooser(this, context.getString(R.string.text_catalog_detail_button_share)),
-        /* options = */ null
+        /* intent = */
+        Intent.createChooser(this, context.getString(R.string.text_catalog_detail_button_share)),
+        /* options = */
+        null,
       )
     }
   }
-
 }

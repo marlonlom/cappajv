@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.foundation.Image
@@ -48,7 +47,7 @@ import dev.marlonlom.cappajv.ui.theme.CappajvTheme
 internal fun DefaultOnboardingItem(
   item: Triple<Int, Int, Int>,
   testTag: String = "onboarding_item",
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   Column(
     modifier = Modifier
@@ -57,16 +56,15 @@ internal fun DefaultOnboardingItem(
       .padding(4.dp)
       .testTag(testTag),
     verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
-
     Image(
       painter = painterResource(id = item.first),
       contentDescription = "image",
       contentScale = ContentScale.Fit,
       modifier = Modifier
         .size(DpSize(200.dp, 160.dp))
-        .clip(RoundedCornerShape(10.dp))
+        .clip(RoundedCornerShape(10.dp)),
     )
 
     Spacer(Modifier.height(24.dp))
@@ -80,7 +78,7 @@ internal fun DefaultOnboardingItem(
       maxLines = 1,
       color = MaterialTheme.colorScheme.onSurface,
       textAlign = TextAlign.Center,
-      style = MaterialTheme.typography.titleLarge
+      style = MaterialTheme.typography.titleLarge,
     )
 
     Text(
@@ -89,7 +87,7 @@ internal fun DefaultOnboardingItem(
         .padding(bottom = 4.dp),
       text = stringResource(item.third),
       color = MaterialTheme.colorScheme.onSurface,
-      textAlign = TextAlign.Center
+      textAlign = TextAlign.Center,
     )
   }
 }
@@ -103,8 +101,8 @@ private fun OnboardingItemPreview() {
       item = Triple(
         R.drawable.img_onboarding_01,
         R.string.text_onboarding_title_01,
-        R.string.text_onboarding_detail_01
-      )
+        R.string.text_onboarding_detail_01,
+      ),
     )
   }
 }
@@ -118,8 +116,8 @@ private fun OnboardingItemPreview2() {
       item = Triple(
         R.drawable.img_onboarding_02,
         R.string.text_onboarding_title_02,
-        R.string.text_onboarding_detail_02
-      )
+        R.string.text_onboarding_detail_02,
+      ),
     )
   }
 }
@@ -133,8 +131,8 @@ private fun OnboardingItemPreview3() {
       item = Triple(
         R.drawable.img_onboarding_03,
         R.string.text_onboarding_title_03,
-        R.string.text_onboarding_detail_03
-      )
+        R.string.text_onboarding_detail_03,
+      ),
     )
   }
 }

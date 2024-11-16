@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main
 
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -23,9 +22,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * @return true/false
  */
 @Composable
-private fun shouldUseDynamicColor(
-  mainActivityUiState: MainActivityUiState
-): Boolean = when (mainActivityUiState) {
+private fun shouldUseDynamicColor(mainActivityUiState: MainActivityUiState): Boolean = when (mainActivityUiState) {
   MainActivityUiState.Loading -> false
   is MainActivityUiState.Success -> mainActivityUiState.userData.useDynamicColor
 }
@@ -37,9 +34,7 @@ private fun shouldUseDynamicColor(
  * @return true/false
  */
 @Composable
-private fun shouldUseDarkTheme(
-  mainActivityUiState: MainActivityUiState
-): Boolean = when (mainActivityUiState) {
+private fun shouldUseDarkTheme(mainActivityUiState: MainActivityUiState): Boolean = when (mainActivityUiState) {
   MainActivityUiState.Loading -> isSystemInDarkTheme()
   is MainActivityUiState.Success -> {
     val useDarkTheme = mainActivityUiState.userData.useDarkTheme
@@ -54,9 +49,7 @@ private fun shouldUseDarkTheme(
  * @return Color contrast name.
  */
 @Composable
-private fun shouldUseColorContrast(
-  mainActivityUiState: MainActivityUiState
-): String = when (mainActivityUiState) {
+private fun shouldUseColorContrast(mainActivityUiState: MainActivityUiState): String = when (mainActivityUiState) {
   MainActivityUiState.Loading -> CappajvColorContrasts.STANDARD
   is MainActivityUiState.Success -> mainActivityUiState.userData.colorContrast
 }.name
@@ -84,7 +77,7 @@ fun AppContent(
 ) = CappajvTheme(
   darkTheme = shouldUseDarkTheme(mainActivityUiState),
   dynamicColor = shouldUseDynamicColor(mainActivityUiState),
-  colorContrast = shouldUseColorContrast(mainActivityUiState)
+  colorContrast = shouldUseColorContrast(mainActivityUiState),
 ) {
   when (mainActivityUiState) {
     MainActivityUiState.Loading -> Unit
@@ -93,7 +86,7 @@ fun AppContent(
       if (mainActivityUiState.userData.isOnboarding) {
         WelcomeRoute(
           appState = appUiState,
-          onOnboardingFinished = onOnboardingComplete
+          onOnboardingFinished = onOnboardingComplete,
         )
       } else {
         MainScaffold(

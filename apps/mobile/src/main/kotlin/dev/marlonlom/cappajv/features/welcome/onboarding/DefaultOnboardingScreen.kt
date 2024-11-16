@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.foundation.background
@@ -39,10 +38,7 @@ import dev.marlonlom.cappajv.ui.theme.CappajvTheme
  * @param modifier Modifier for this composable.
  */
 @Composable
-internal fun DefaultOnboardingScreen(
-  onOnboardingFinished: () -> Unit,
-  modifier: Modifier = Modifier
-) {
+internal fun DefaultOnboardingScreen(onOnboardingFinished: () -> Unit, modifier: Modifier = Modifier) {
   val pagerState = rememberPagerState { OnboardingItemsData.list.size }
   var continueHomeButtonVisible by remember { mutableStateOf(false) }
 
@@ -57,34 +53,34 @@ internal fun DefaultOnboardingScreen(
     modifier = modifier
       .fillMaxWidth()
       .background(MaterialTheme.colorScheme.background)
-      .padding(top = 24.dp, bottom = 16.dp)
+      .padding(top = 24.dp, bottom = 16.dp),
   ) {
     HorizontalPager(
       modifier = Modifier.weight(1f),
       state = pagerState,
       key = { pos -> OnboardingItemsData.list[pos] },
-      pageSize = PageSize.Fill
+      pageSize = PageSize.Fill,
     ) { pos ->
       DefaultOnboardingItem(
         item = OnboardingItemsData.list[pos],
-        testTag = "onboarding_item_$pos"
+        testTag = "onboarding_item_$pos",
       )
     }
     Spacer(
       modifier = Modifier
         .fillMaxWidth()
-        .height(32.dp)
+        .height(32.dp),
     )
     OnboardingDotsIndicator(
       totalDots = OnboardingItemsData.list.size,
       selectedIndex = pagerState.currentPage,
       selectedColor = MaterialTheme.colorScheme.onPrimaryContainer,
-      unSelectedColor = MaterialTheme.colorScheme.primaryContainer
+      unSelectedColor = MaterialTheme.colorScheme.primaryContainer,
     )
     Spacer(
       modifier = Modifier
         .fillMaxWidth()
-        .height(64.dp)
+        .height(64.dp),
     )
     if (continueHomeButtonVisible) {
       OnboardingFinishedButton(onButtonClicked = onOnboardingFinished)

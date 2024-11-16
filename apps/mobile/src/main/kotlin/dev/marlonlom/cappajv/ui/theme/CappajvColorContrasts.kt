@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.theme
 
 import androidx.compose.material3.ColorScheme
@@ -98,7 +97,7 @@ internal enum class CappajvColorContrasts(
       surfaceContainer = Color(0xFF271D1D),
       surfaceContainerHigh = Color(0xFF322827),
       surfaceContainerHighest = Color(0xFF3D3231),
-    )
+    ),
   ),
 
   /** Branded color contrast: Medium. */
@@ -176,7 +175,7 @@ internal enum class CappajvColorContrasts(
       surfaceContainer = Color(0xFF271D1D),
       surfaceContainerHigh = Color(0xFF322827),
       surfaceContainerHighest = Color(0xFF3D3231),
-    )
+    ),
   ),
 
   /** Branded color contrast: High. */
@@ -254,8 +253,9 @@ internal enum class CappajvColorContrasts(
       surfaceContainer = Color(0xFF271D1D),
       surfaceContainerHigh = Color(0xFF322827),
       surfaceContainerHighest = Color(0xFF3D3231),
-    )
-  );
+    ),
+  ),
+  ;
 
   /**
    * Utility functions for enum class.
@@ -271,12 +271,8 @@ internal enum class CappajvColorContrasts(
      * @param darkTheme True/False is dark theme is applied.
      * @return Selected color contrast scheme.
      */
-    fun findColorScheme(
-      colorContrast: String,
-      darkTheme: Boolean
-    ): ColorScheme = valueOf(colorContrast).let {
+    fun findColorScheme(colorContrast: String, darkTheme: Boolean): ColorScheme = valueOf(colorContrast).let {
       if (darkTheme) it.dark else it.light
     }
   }
-
 }

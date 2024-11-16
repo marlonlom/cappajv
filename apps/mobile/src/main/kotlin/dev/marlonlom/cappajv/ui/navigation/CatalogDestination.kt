@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.navigation
 
 import androidx.annotation.StringRes
@@ -29,7 +28,7 @@ import dev.marlonlom.cappajv.R
 sealed class CatalogDestination(
   val route: String,
   @StringRes val title: Int,
-  val icon: ImageVector
+  val icon: ImageVector,
 ) {
 
   /**
@@ -40,7 +39,7 @@ sealed class CatalogDestination(
   data object CatalogList : CatalogDestination(
     route = "catalog/home",
     title = R.string.destination_home,
-    icon = Icons.Rounded.Coffee
+    icon = Icons.Rounded.Coffee,
   )
 
   /**
@@ -51,7 +50,7 @@ sealed class CatalogDestination(
   data object FavoriteProducts : CatalogDestination(
     route = "catalog/favorites",
     title = R.string.destination_favorites,
-    icon = Icons.Rounded.Favorite
+    icon = Icons.Rounded.Favorite,
   )
 
   /**
@@ -62,7 +61,7 @@ sealed class CatalogDestination(
   data object SearchProducts : CatalogDestination(
     route = "catalog/search",
     title = R.string.destination_search,
-    icon = Icons.Rounded.Search
+    icon = Icons.Rounded.Search,
   )
 
   /**
@@ -73,7 +72,7 @@ sealed class CatalogDestination(
   data object Settings : CatalogDestination(
     route = "settings",
     title = R.string.destination_settings,
-    icon = Icons.Rounded.Settings
+    icon = Icons.Rounded.Settings,
   )
 
   /**
@@ -84,7 +83,7 @@ sealed class CatalogDestination(
   data object Detail : CatalogDestination(
     route = "catalog/detail/{itemId}",
     title = R.string.destination_detail,
-    icon = Icons.Rounded.Info
+    icon = Icons.Rounded.Info,
   ) {
 
     /**
@@ -97,11 +96,12 @@ sealed class CatalogDestination(
     const val ITEM_ID_ARG = "itemId"
 
     /** Navigation arguments for detail destination route. */
-    val navArguments = listOf(navArgument(ITEM_ID_ARG) {
-      type = NavType.LongType
-      defaultValue = 0L
-    })
-
+    val navArguments = listOf(
+      navArgument(ITEM_ID_ARG) {
+        type = NavType.LongType
+        defaultValue = 0L
+      },
+    )
   }
 
   companion object {
@@ -114,6 +114,4 @@ sealed class CatalogDestination(
     val topCatalogDestinations: List<CatalogDestination>
       get() = listOf(CatalogList, FavoriteProducts, SearchProducts, Settings)
   }
-
 }
-

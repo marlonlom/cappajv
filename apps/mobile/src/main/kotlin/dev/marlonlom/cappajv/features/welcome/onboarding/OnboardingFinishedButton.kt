@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.features.welcome.onboarding
 
 import androidx.compose.material3.Button
@@ -24,10 +23,7 @@ import dev.marlonlom.cappajv.R
  * @param modifier Modifier for this composable.
  */
 @Composable
-internal fun OnboardingFinishedButton(
-  onButtonClicked: () -> Unit,
-  modifier: Modifier = Modifier
-) {
+internal fun OnboardingFinishedButton(onButtonClicked: () -> Unit, modifier: Modifier = Modifier) {
   Button(
     modifier = modifier.testTag("onboarding_finish_btn"),
     onClick = {
@@ -37,7 +33,7 @@ internal fun OnboardingFinishedButton(
     colors = ButtonDefaults.buttonColors(
       containerColor = MaterialTheme.colorScheme.primary,
       contentColor = MaterialTheme.colorScheme.onPrimary,
-    )
+    ),
   ) {
     Text(
       text = stringResource(R.string.text_onboarding_button),

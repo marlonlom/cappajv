@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.di
 
 import dev.marlonlom.cappajv.core.catalog.CatalogDataService
@@ -11,10 +10,10 @@ import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSourceImpl
 import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
 import dev.marlonlom.cappajv.dataStore
-import dev.marlonlom.cappajv.features.catalog_detail.CatalogDetailRepository
-import dev.marlonlom.cappajv.features.catalog_favorites.CatalogFavoritesRepository
-import dev.marlonlom.cappajv.features.catalog_list.CatalogListRepository
-import dev.marlonlom.cappajv.features.catalog_search.CatalogSearchRepository
+import dev.marlonlom.cappajv.features.catalog.detail.CatalogDetailRepository
+import dev.marlonlom.cappajv.features.catalog.favorites.CatalogFavoritesRepository
+import dev.marlonlom.cappajv.features.catalog.list.CatalogListRepository
+import dev.marlonlom.cappajv.features.catalog.search.CatalogSearchRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import java.util.Locale

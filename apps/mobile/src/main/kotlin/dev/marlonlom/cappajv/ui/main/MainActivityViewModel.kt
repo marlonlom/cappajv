@@ -2,14 +2,13 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
 import dev.marlonlom.cappajv.core.preferences.entities.UserSettings
+import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
 import dev.marlonlom.cappajv.ui.main.MainActivityUiState.Loading
 import dev.marlonlom.cappajv.ui.main.MainActivityUiState.Success
 import kotlinx.coroutines.flow.SharingStarted
@@ -26,7 +25,7 @@ import kotlinx.coroutines.launch
  * @property repository User preferences repository.
  */
 class MainActivityViewModel(
-  private val repository: UserPreferencesRepository
+  private val repository: UserPreferencesRepository,
 ) : ViewModel() {
 
   val uiState: StateFlow<MainActivityUiState> = repository
@@ -35,7 +34,7 @@ class MainActivityViewModel(
     .stateIn(
       scope = viewModelScope,
       initialValue = Loading,
-      started = SharingStarted.Eagerly
+      started = SharingStarted.Eagerly,
     )
 
   /** Sets onboarding setting to false to indicate it as completed. */
@@ -56,7 +55,6 @@ class MainActivityViewModel(
 
       @Suppress("UNCHECKED_CAST")
       override fun <T : ViewModel> create(modelClass: Class<T>): T = MainActivityViewModel(repository) as T
-
     }
   }
 }
@@ -83,6 +81,6 @@ sealed interface MainActivityUiState {
    * @property userData User settings data.
    */
   data class Success(
-    val userData: UserSettings
+    val userData: UserSettings,
   ) : MainActivityUiState
 }
