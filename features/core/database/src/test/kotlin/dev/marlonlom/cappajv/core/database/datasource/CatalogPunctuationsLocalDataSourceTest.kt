@@ -2,10 +2,8 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.datasource
 
-import dev.marlonlom.cappajv.core.database.dao.CatalogItemsDao
 import dev.marlonlom.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
 import dev.marlonlom.cappajv.core.database.dao.FakeCatalogItemsDao
 import dev.marlonlom.cappajv.core.database.dao.FakeCatalogPunctuationsDao
@@ -14,7 +12,6 @@ import dev.marlonlom.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.cappajv.core.database.entities.CatalogPunctuation
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.runBlocking
-import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -31,7 +28,7 @@ internal class CatalogPunctuationsLocalDataSourceTest {
       catalogItemsDao = FakeCatalogItemsDao(),
       catalogPunctuationsDao = FakeCatalogPunctuationsDao(),
       catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao(),
-      catalogSearchDao = FakeCatalogSearchDao()
+      catalogSearchDao = FakeCatalogSearchDao(),
     )
   }
 
@@ -54,13 +51,13 @@ internal class CatalogPunctuationsLocalDataSourceTest {
       category = "CategoryOne",
       detail = "Lorem ipsum",
       samplePunctuation = "",
-      punctuationsCount = 0
+      punctuationsCount = 0,
     )
     val productPoint = CatalogPunctuation(
       id = 11L,
       catalogItemId = product.id,
       label = "Unidad",
-      points = 1234L
+      points = 1234L,
     )
 
     dataSource.insertAllProducts(product)
@@ -68,7 +65,7 @@ internal class CatalogPunctuationsLocalDataSourceTest {
 
     combine(
       dataSource.findProduct(product.id),
-      dataSource.getPunctuations(product.id)
+      dataSource.getPunctuations(product.id),
     ) { productItem, productItemPoints ->
       Pair(productItem, productItemPoints)
     }.collect { pair: Pair<CatalogItem?, List<CatalogPunctuation>> ->
@@ -97,13 +94,13 @@ internal class CatalogPunctuationsLocalDataSourceTest {
       category = "CategoryOne",
       detail = "Lorem ipsum",
       samplePunctuation = "",
-      punctuationsCount = 0
+      punctuationsCount = 0,
     )
     val productPoint = CatalogPunctuation(
       id = 11L,
       catalogItemId = product.id,
       label = "Unidad",
-      points = 1234L
+      points = 1234L,
     )
 
     dataSource.insertAllProducts(product)
@@ -112,7 +109,7 @@ internal class CatalogPunctuationsLocalDataSourceTest {
 
     combine(
       dataSource.findProduct(product.id),
-      dataSource.getPunctuations(product.id)
+      dataSource.getPunctuations(product.id),
     ) { productItem, productItemPoints ->
       Pair(productItem, productItemPoints)
     }.collect { pair: Pair<CatalogItem?, List<CatalogPunctuation>> ->
@@ -121,5 +118,4 @@ internal class CatalogPunctuationsLocalDataSourceTest {
       assertTrue(pair.second.isEmpty())
     }
   }
-
 }

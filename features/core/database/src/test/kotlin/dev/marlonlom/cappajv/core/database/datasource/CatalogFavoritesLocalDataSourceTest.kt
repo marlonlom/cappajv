@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.datasource
 
 import dev.marlonlom.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
@@ -29,7 +28,7 @@ internal class CatalogFavoritesLocalDataSourceTest {
       catalogItemsDao = FakeCatalogItemsDao(),
       catalogPunctuationsDao = FakeCatalogPunctuationsDao(),
       catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao(),
-      catalogSearchDao = FakeCatalogSearchDao()
+      catalogSearchDao = FakeCatalogSearchDao(),
     )
   }
 
@@ -101,7 +100,7 @@ internal class CatalogFavoritesLocalDataSourceTest {
         category = "CategoryTwo",
         samplePunctuation = "",
         punctuationsCount = 0,
-      )
+      ),
     )
     products.forEach {
       dataSource.insertFavoriteProduct(it)
@@ -134,5 +133,4 @@ internal class CatalogFavoritesLocalDataSourceTest {
     val actual = dataSource.isFavorite(entity.id).first()
     assertEquals(1, actual)
   }
-
 }

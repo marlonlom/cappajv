@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.datasource
 
 import dev.marlonlom.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
@@ -30,7 +29,7 @@ internal class CatalogItemsLocalDataSourceTest {
       catalogItemsDao = FakeCatalogItemsDao(),
       catalogPunctuationsDao = FakeCatalogPunctuationsDao(),
       catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao(),
-      catalogSearchDao = FakeCatalogSearchDao()
+      catalogSearchDao = FakeCatalogSearchDao(),
     )
   }
 
@@ -53,7 +52,7 @@ internal class CatalogItemsLocalDataSourceTest {
       category = "CategoryOne",
       detail = "Lorem ipsum",
       samplePunctuation = "",
-      punctuationsCount = 0
+      punctuationsCount = 0,
     )
     dataSource.insertAllProducts(product)
     dataSource.findProduct(product.id).collect { item: CatalogItem? ->
@@ -85,7 +84,7 @@ internal class CatalogItemsLocalDataSourceTest {
       category = "CategoryOne",
       detail = "Lorem ipsum",
       samplePunctuation = "Unit: 1234pts",
-      punctuationsCount = 1
+      punctuationsCount = 1,
     )
     dataSource.insertAllProducts(product)
     dataSource.getAllProducts()
@@ -121,7 +120,7 @@ internal class CatalogItemsLocalDataSourceTest {
       category = "CategoryOne",
       detail = "Lorem ipsum",
       samplePunctuation = "",
-      punctuationsCount = 0
+      punctuationsCount = 0,
     )
     dataSource.insertAllProducts(product)
     dataSource.deleteAllProducts()
@@ -129,5 +128,4 @@ internal class CatalogItemsLocalDataSourceTest {
       assertNull(productItem)
     }
   }
-
 }

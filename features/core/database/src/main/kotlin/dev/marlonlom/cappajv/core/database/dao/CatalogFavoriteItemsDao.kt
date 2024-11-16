@@ -2,13 +2,11 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Upsert
 import dev.marlonlom.cappajv.core.database.entities.CatalogFavoriteItem
 import kotlinx.coroutines.flow.Flow
 
@@ -59,5 +57,4 @@ interface CatalogFavoriteItemsDao {
    */
   @Query("SELECT COUNT(f.id) FROM catalog_item_favorite f WHERE f.id = :productId")
   fun isFavorite(productId: Long): Flow<Int>
-
 }

@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.datasource
 
 import dev.marlonlom.cappajv.core.database.dao.FakeCatalogFavoriteItemsDao
@@ -31,7 +30,7 @@ internal class CatalogSearchLocalDataSourceTest {
       catalogItemsDao = FakeCatalogItemsDao(),
       catalogPunctuationsDao = FakeCatalogPunctuationsDao(),
       catalogFavoriteItemsDao = FakeCatalogFavoriteItemsDao(),
-      catalogSearchDao = fakeCatalogSearchDao
+      catalogSearchDao = fakeCatalogSearchDao,
     )
   }
 
@@ -68,7 +67,7 @@ internal class CatalogSearchLocalDataSourceTest {
     listOf(
       "affogato", "almojabana", "cappuccino",
       "chai", "chocolate", "granizado",
-      "pandebono", "torta de banano", "torta de zanahoria"
+      "pandebono", "torta de banano", "torta de zanahoria",
     ).mapIndexed { index, title ->
       CatalogItem(
         id = index.toLong() + 1,
@@ -79,13 +78,12 @@ internal class CatalogSearchLocalDataSourceTest {
         category = "CategoryOne",
         detail = title,
         samplePunctuation = "",
-        punctuationsCount = 0
+        punctuationsCount = 0,
       )
     }.also { items ->
       fakeCatalogSearchDao.insertAll(
-        *items.toTypedArray()
+        *items.toTypedArray(),
       )
     }
   }
-
 }

@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database
 
 import android.content.Context
@@ -56,7 +55,7 @@ internal class CatalogItemsDaoTest {
       category = "CategoryOne",
       detail = "Lorem ipsum",
       samplePunctuation = "",
-      punctuationsCount = 0
+      punctuationsCount = 0,
     )
     val expectedTuple = CatalogItemTuple(
       id = 1L,
@@ -82,7 +81,7 @@ internal class CatalogItemsDaoTest {
       category = "CategoryOne",
       detail = "Lorem ipsum",
       samplePunctuation = "",
-      punctuationsCount = 0
+      punctuationsCount = 0,
     )
     dao.insertAll(entity)
     dao.deleteAll()
@@ -101,7 +100,7 @@ internal class CatalogItemsDaoTest {
       category = "CategoryOne",
       detail = "Lorem ipsum",
       samplePunctuation = "",
-      punctuationsCount = 0
+      punctuationsCount = 0,
     )
     dao.insertAll(product)
 
@@ -110,5 +109,4 @@ internal class CatalogItemsDaoTest {
     assertThat(found).isNotNull()
     assertThat(found).isEqualTo(product)
   }
-
 }

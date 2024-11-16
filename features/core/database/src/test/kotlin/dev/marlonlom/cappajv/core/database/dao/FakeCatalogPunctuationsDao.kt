@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.core.database.dao
 
 import dev.marlonlom.cappajv.core.database.entities.CatalogPunctuation
@@ -17,7 +16,7 @@ import kotlinx.coroutines.flow.flowOf
  * @property list Mutable punctuations list.
  */
 class FakeCatalogPunctuationsDao(
-  private val list: MutableList<CatalogPunctuation> = mutableListOf()
+  private val list: MutableList<CatalogPunctuation> = mutableListOf(),
 ) : CatalogPunctuationsDao {
 
   override fun findByProduct(productId: Long): Flow<List<CatalogPunctuation>> =
