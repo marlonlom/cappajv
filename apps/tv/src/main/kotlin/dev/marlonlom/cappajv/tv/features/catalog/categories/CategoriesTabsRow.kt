@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRestorer
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Icon
@@ -18,6 +19,7 @@ import androidx.tv.material3.Tab
 import androidx.tv.material3.TabDefaults
 import androidx.tv.material3.TabRow
 import androidx.tv.material3.TabRowDefaults
+import dev.marlonlom.cappajv.tv.R
 
 /**
  * Categories tab with icons composable ui.
@@ -48,7 +50,9 @@ fun CategoriesTabsRow(
   tabs = {
     CategoryEntries.entries.forEachIndexed { index, category ->
       Tab(
-        modifier = modifier.padding(horizontal = 10.dp),
+        modifier = modifier
+          .padding(horizontal = 10.dp)
+          .testTag(stringResource(R.string.text_tag_category_tab, index)),
         selected = selectedTabIndex == index,
         onFocus = {},
         onClick = {
