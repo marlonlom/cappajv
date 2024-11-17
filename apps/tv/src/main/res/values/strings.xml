@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string name="app_name" translatable="false">Cappajv</string>
+  <!-- browse menu items -->
+  <string name="text_menu_home">Home</string>
+  <string name="text_menu_favorite">Favorites</string>
+  <string name="text_menu_settings">Settings</string>
+  <!-- common: catalog categories -->
+  <string name="text_category_hot">Hot drinks</string>
+  <string name="text_category_cold">Cold drinks</string>
+  <string name="text_category_pastry">Pastry</string>
+  <!-- screen: home -->
+  <string name="text_home_title">Get our rewards</string>
+  <!-- screen: favorites -->
+  <string name="text_favorites_title">Favorite products</string>
+</resources>
