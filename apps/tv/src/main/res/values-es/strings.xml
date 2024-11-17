@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2024 Marlonlom
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<resources>
+  <!-- browse menu items -->
+  <string name="text_menu_home">Catálogo</string>
+  <string name="text_menu_favorite">Favoritos</string>
+  <string name="text_menu_settings">Configuración</string>
+  <!-- common: catalog categories -->
+  <string name="text_category_hot">Bebidas calientes</string>
+  <string name="text_category_cold">Bebidas frías</string>
+  <string name="text_category_pastry">Pastelería</string>
+  <!-- screen: home -->
+  <string name="text_home_title">Conoce nuestros premios</string>
+  <!-- screen: favorites -->
+  <string name="text_favorites_title">Productos favoritos</string>
+</resources>
