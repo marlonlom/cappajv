@@ -14,6 +14,7 @@
   <string name="text_category_hot">Hot drinks</string>
   <string name="text_category_cold">Cold drinks</string>
   <string name="text_category_pastry">Pastry</string>
+  <string name="text_tag_category_tab" translatable="false">category_tab_%1$s</string>
   <!-- screen: home -->
   <string name="text_home_title">Get our rewards</string>
   <!-- screen: favorites -->
