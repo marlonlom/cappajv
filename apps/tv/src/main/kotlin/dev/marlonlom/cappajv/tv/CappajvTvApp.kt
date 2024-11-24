@@ -11,6 +11,7 @@ import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.request.CachePolicy
 import coil.util.DebugLogger
+import dev.marlonlom.cappajv.tv.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -54,6 +55,7 @@ class CappajvTvApp : Application(), ImageLoaderFactory {
     startKoin {
       androidContext(this@CappajvTvApp)
       androidLogger(Level.DEBUG)
+      modules(appModule)
     }
   }
 }
