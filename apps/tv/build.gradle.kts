@@ -2,10 +2,12 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
+
 plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.compose.compiler)
+  id("kotlinx-serialization")
 }
 
 android {
@@ -75,6 +77,7 @@ dependencies {
   implementation(libs.koin.androidx.compose)
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.kotlinx.serialization.json)
 
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)

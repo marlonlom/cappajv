@@ -16,14 +16,11 @@ import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.tv.material3.DrawerValue
 import androidx.tv.material3.Icon
 import androidx.tv.material3.MaterialTheme
@@ -32,21 +29,28 @@ import androidx.tv.material3.NavigationDrawerItem
 import androidx.tv.material3.NavigationDrawerItemDefaults
 import androidx.tv.material3.Text
 import androidx.tv.material3.rememberDrawerState
-import dev.marlonlom.cappajv.tv.features.catalog.favorites.CatalogFavoritesScreen
-import dev.marlonlom.cappajv.tv.features.catalog.home.CatalogHomeScreen
+import dev.marlonlom.cappajv.tv.ui.CappajvAppState
+import dev.marlonlom.cappajv.tv.ui.navigation.CappajvTvNavigationHost
+import dev.marlonlom.cappajv.tv.ui.navigation.CappajvTvScreen
+import dev.marlonlom.cappajv.tv.ui.rememberCappajvAppState
 
 /**
  * Tv browse content screen composable ui.
  *
  * @author marlonlom
  *
+ * @param appState The application ui state.
  * @param modifier The modifier for this composable.
  */
 @Composable
-fun TvBrowseScreen(modifier: Modifier = Modifier) {
-  var selectedIndex by remember { mutableIntStateOf(0) }
+fun TvBrowseScreen(
+  appState: CappajvAppState = rememberCappajvAppState(),
+  modifier: Modifier = Modifier
+) {
   val currentDrawerState = rememberDrawerState(DrawerValue.Closed)
-  val currentCtx = LocalContext.current
+  val currentRoute by appState.currentRouteFlow.collectAsStateWithLifecycle(
+    initialValue = CappajvTvScreen.Home.route
+  )
 
   NavigationDrawer(
     modifier = modifier
@@ -74,10 +78,14 @@ fun TvBrowseScreen(modifier: Modifier = Modifier) {
                 all = CornerSize(50)
               ),
             ),
-            selected = selectedIndex == index,
+            selected = currentRoute == entry.name.lowercase(),
             onClick = {
-              selectedIndex = index
-              println("menu changed: $selectedIndex - ${currentCtx.getString(entry.text)}")
+              val tvBrowseMenuItem = TvBrowseMenuItems.entries[index]
+              when (tvBrowseMenuItem) {
+                TvBrowseMenuItems.HOME -> appState.navigateToHome()
+                TvBrowseMenuItems.FAVORITES -> appState.navigateToFavorites()
+                TvBrowseMenuItems.SETTINGS -> appState.navigateToSettings()
+              }
             },
             leadingContent = {
               Icon(
@@ -92,15 +100,8 @@ fun TvBrowseScreen(modifier: Modifier = Modifier) {
         }
       }
     },
-  ) {
-    when (selectedIndex) {
-      TvBrowseMenuItems.FAVORITE.ordinal -> {
-        CatalogFavoritesScreen()
-      }
-
-      else -> {
-        CatalogHomeScreen()
-      }
-    }
-  }
+    content = {
+      CappajvTvNavigationHost(appState = appState)
+    },
+  )
 }
