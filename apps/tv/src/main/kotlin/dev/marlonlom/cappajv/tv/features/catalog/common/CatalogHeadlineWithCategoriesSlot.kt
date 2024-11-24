@@ -2,7 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.tv.ui.slots
+package dev.marlonlom.cappajv.tv.features.catalog.common
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
@@ -21,7 +21,7 @@ import androidx.tv.material3.Text
 import dev.marlonlom.cappajv.tv.features.catalog.categories.CategoriesTabsRow
 
 /**
- * Headline with title and categories slot composable ui.
+ * Catalog headline with title and categories slot composable ui.
  *
  * @author marlonlom
  *
@@ -31,7 +31,7 @@ import dev.marlonlom.cappajv.tv.features.catalog.categories.CategoriesTabsRow
  * @param modifier The modifier for this composable.
  */
 @Composable
-fun HeadlineWithCategoriesSlot(
+fun CatalogHeadlineWithCategoriesSlot(
   @StringRes title: Int,
   selectedTabIndex: Int,
   onTabSelected: (Int) -> Unit,
