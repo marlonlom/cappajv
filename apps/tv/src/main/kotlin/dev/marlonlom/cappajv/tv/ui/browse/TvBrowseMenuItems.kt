@@ -32,7 +32,7 @@ enum class TvBrowseMenuItems(
   HOME(R.string.text_menu_home, Icons.Default.Home),
 
   /** TV Browse menu items enum: Favorite */
-  FAVORITE(R.string.text_menu_favorite, Icons.Default.Favorite),
+  FAVORITES(R.string.text_menu_favorite, Icons.Default.Favorite),
 
   /** TV Browse menu items enum: Settings */
   SETTINGS(R.string.text_menu_settings, Icons.Default.Settings),
