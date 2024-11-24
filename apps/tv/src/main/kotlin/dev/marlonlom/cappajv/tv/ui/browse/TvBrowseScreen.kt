@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -67,10 +68,13 @@ fun TvBrowseScreen(modifier: Modifier = Modifier) {
             Spacer(Modifier.height(40.dp))
           }
           NavigationDrawerItem(
+            modifier = modifier.padding(10.dp),
             shape = NavigationDrawerItemDefaults.shape(
-              shape = MaterialTheme.shapes.medium,
+              shape = MaterialTheme.shapes.medium.copy(
+                all = CornerSize(50)
+              ),
             ),
-            selected = false,
+            selected = selectedIndex == index,
             onClick = {
               selectedIndex = index
               println("menu changed: $selectedIndex - ${currentCtx.getString(entry.text)}")
@@ -81,9 +85,10 @@ fun TvBrowseScreen(modifier: Modifier = Modifier) {
                 contentDescription = null,
               )
             },
-          ) {
-            Text(stringResource(entry.text))
-          }
+            content = {
+              Text(stringResource(entry.text))
+            },
+          )
         }
       }
     },
