@@ -9,6 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import dev.marlonlom.cappajv.tv.ui.browse.TvBrowseScreen
 import dev.marlonlom.cappajv.tv.ui.theme.CappajvTvTheme
+import org.koin.androidx.compose.KoinAndroidContext
 
 /**
  * Main TV Activity class.
@@ -21,8 +22,10 @@ class TvActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
-      CappajvTvTheme(isInDarkTheme = false) {
-        TvBrowseScreen()
+      CappajvTvTheme {
+        KoinAndroidContext {
+          TvBrowseScreen()
+        }
       }
     }
   }
