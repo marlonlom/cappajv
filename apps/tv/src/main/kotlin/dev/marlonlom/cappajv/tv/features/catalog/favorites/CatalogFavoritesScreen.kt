@@ -4,69 +4,124 @@
  */
 package dev.marlonlom.cappajv.tv.features.catalog.favorites
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
+import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.cappajv.tv.R
 import dev.marlonlom.cappajv.tv.features.catalog.categories.CategoryEntries
-import dev.marlonlom.cappajv.tv.ui.slots.HeadlineWithCategoriesSlot
+import dev.marlonlom.cappajv.tv.features.catalog.common.CatalogGridCategoryText
+import dev.marlonlom.cappajv.tv.features.catalog.common.CatalogGridItemCompactCard
+import dev.marlonlom.cappajv.tv.features.catalog.common.CatalogGridItemsLoadingIndicator
+import dev.marlonlom.cappajv.tv.features.catalog.common.CatalogLazyVerticalGrid
+import dev.marlonlom.cappajv.tv.features.catalog.favorites.CatalogFavoritesUiState.Success
+import org.koin.androidx.compose.koinViewModel
 
 /**
  * Catalog favorite list screen composable ui.
  *
  * @author marlonlom
  *
+ * @param onCatalogItemClicked Action for Grid catalog item selected.
  * @param modifier The modifier for this composable.
+ * @param viewModel The viewmodel for this composable.
  */
 @Composable
 fun CatalogFavoritesScreen(
-  modifier: Modifier = Modifier
+  onCatalogItemClicked: (CatalogItemTuple) -> Unit = {},
+  modifier: Modifier = Modifier,
+  viewModel: CatalogFavoritesViewModel = koinViewModel()
 ) {
   var selectedTabIndex by remember { mutableIntStateOf(0) }
+  val favoritesUiState = viewModel.uiState.collectAsStateWithLifecycle(
+    lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current,
+  )
+  val context = LocalContext.current
 
-  Column(
-    modifier = modifier
-      .fillMaxWidth()
-      .padding(horizontal = 20.dp),
-    verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally,
-  ) {
-    HeadlineWithCategoriesSlot(
-      title = R.string.text_favorites_title,
-      selectedTabIndex = selectedTabIndex,
-      onTabSelected = { index ->
-        selectedTabIndex = index
-      },
-    )
+  CatalogLazyVerticalGrid(
+    headingTitle = R.string.text_favorites_title,
+    selectedTabIndex = selectedTabIndex,
+    onTabSelected = { index ->
+      selectedTabIndex = index
+    },
+    catalogContent = {
+      when (favoritesUiState.value) {
+        CatalogFavoritesUiState.Empty -> {
+          item(span = { GridItemSpan(maxLineSpan) }) {
+            Text(
+              text = "No favorite items :(",
+              modifier = modifier.fillMaxSize(),
+              style = MaterialTheme.typography.titleMedium,
+              color = MaterialTheme.colorScheme.onSurface,
+              textAlign = TextAlign.Center
+            )
+          }
+        }
 
-    LazyVerticalGrid(
-      state = rememberLazyGridState(),
-      modifier = modifier.fillMaxWidth(),
-      columns = GridCells.Fixed(4),
-    ) {
-      item(span = { GridItemSpan(maxLineSpan) }) {
-        Text(
-          text = stringResource(CategoryEntries.entries[selectedTabIndex].text),
-          style = MaterialTheme.typography.bodyLarge,
-          color = MaterialTheme.colorScheme.onSurface,
-        )
+        CatalogFavoritesUiState.Fetching -> {
+          item(span = { GridItemSpan(maxLineSpan) }) {
+            CatalogGridItemsLoadingIndicator()
+          }
+        }
+
+        is Success -> {
+          item(span = { GridItemSpan(maxLineSpan) }) {
+            CatalogGridCategoryText(
+              categoryTitle = CategoryEntries.entries[selectedTabIndex].text
+            )
+          }
+
+          val categoryName = context.getString(CategoryEntries.entries[selectedTabIndex].text)
+          val catalogItems = (favoritesUiState.value as Success).results.filter {
+            it.category == categoryName
+          }
+
+
+          catalogItems.let {
+            if (it.isEmpty()) {
+              item(span = { GridItemSpan(maxLineSpan) }) {
+                Text(
+                  text = "No favorite items :(",
+                  modifier = modifier.fillMaxSize(),
+                  style = MaterialTheme.typography.titleMedium,
+                  color = MaterialTheme.colorScheme.onSurface,
+                  textAlign = TextAlign.Center
+                )
+              }
+            } else {
+              items(
+                items = catalogItems,
+                key = { favoriteItem -> favoriteItem.id }
+              ) { favoriteItem ->
+                CatalogGridItemCompactCard(
+                  catalogItem = favoriteItem,
+                  onCatalogItemClicked = onCatalogItemClicked
+                )
+              }
+            }
+          }
+
+
+
+          item(span = { GridItemSpan(maxLineSpan) }) {
+            Spacer(modifier.height(48.dp))
+          }
+        }
       }
     }
-  }
+  )
 }
