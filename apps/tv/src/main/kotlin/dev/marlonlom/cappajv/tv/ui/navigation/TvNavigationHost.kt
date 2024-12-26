@@ -25,17 +25,13 @@ fun CappajvTvNavigationHost(
   appState: CappajvAppState,
 ) = NavHost(
   navController = appState.navHostController,
-  startDestination = CappajvTvScreen.Home
+  startDestination = TvScreen.Listings
 ) {
-  composable<CappajvTvScreen.Home> {
+  composable<TvScreen.Listings> {
     CatalogHomeScreen()
   }
-
-  composable<CappajvTvScreen.Favorites> {
-    CatalogFavoritesScreen()
-  }
-
-  composable<CappajvTvScreen.Settings> {
+  
+  composable<TvScreen.Settings> {
     SettingsScreen()
   }
 

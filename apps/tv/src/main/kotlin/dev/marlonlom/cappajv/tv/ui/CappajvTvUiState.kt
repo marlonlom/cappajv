@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import dev.marlonlom.cappajv.tv.ui.navigation.CappajvTvScreen
+import dev.marlonlom.cappajv.tv.ui.navigation.TvScreenRoute
 import kotlinx.coroutines.flow.map
 
 /**
@@ -23,29 +23,32 @@ class CappajvAppState(
   val navHostController: NavHostController
 ) {
 
+  var browseMenuIndex: Int = -1
+
+  val detailId: Long = -1L
+
   val currentRouteFlow = navHostController.currentBackStackEntryFlow.map {
     it.destination.route
   }
 
   fun navigateToHome() {
-    navHostController.navigate(CappajvTvScreen.Home)
-  }
-
-  fun navigateToFavorites() {
-    navHostController.navigate(CappajvTvScreen.Favorites)
+    navHostController.navigate(TvScreenRoute.Catalog)
   }
 
   fun navigateToSettings() {
-    navHostController.navigate(CappajvTvScreen.Settings)
+    navHostController.navigate(TvScreenRoute.Settings)
   }
 
-  fun showCatalogDetails(itemId: String) {
-    navHostController.navigate(CappajvTvScreen.Detail(itemId))
+  fun navigateToDetails(itemId: Long) {
+    navHostController.navigate(TvScreenRoute.Detail(itemId))
   }
 
   fun backToHome() {
     navHostController.popBackStack()
-    navigateToHome()
+  }
+
+  fun changeBrowseMenuIndex(ordinal: Int) {
+    browseMenuIndex = ordinal
   }
 }
 

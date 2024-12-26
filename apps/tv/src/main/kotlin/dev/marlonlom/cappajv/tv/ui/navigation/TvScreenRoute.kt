@@ -15,27 +15,18 @@ import kotlinx.serialization.Serializable
  * @property route Screen route.
  */
 @Serializable
-sealed class CappajvTvScreen(
+sealed class TvScreen(
   val route: String
 ) {
 
   /**
-   * Catalog Home tv screen object.
+   * Catalog listings tv screen object.
    *
    * @author marlonlom
    *
    */
   @Serializable
-  data object Home : CappajvTvScreen("home")
-
-  /**
-   * Catalog favorites tv screen object.
-   *
-   * @author marlonlom
-   *
-   */
-  @Serializable
-  data object Favorites : CappajvTvScreen("favorites")
+  data object Listings : TvScreen("listings")
 
   /**
    * Catalog settings tv screen object.
@@ -44,7 +35,7 @@ sealed class CappajvTvScreen(
    *
    */
   @Serializable
-  data object Settings : CappajvTvScreen("settings")
+  data object Settings : TvScreen("settings")
 
 
   /**
@@ -53,7 +44,7 @@ sealed class CappajvTvScreen(
    * @property itemId Catalog item id.
    */
   @Serializable
-  data class Detail(
+  data class Details(
     private val itemId: String
-  ) : CappajvTvScreen("details/$itemId")
+  ) : TvScreen("details/$itemId")
 }
