@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
+import dev.marlonlom.cappajv.tv.ui.util.tvSafeContentPadding
 
 /**
  * Settings screen composable ui.
@@ -30,7 +31,9 @@ fun SettingsScreen(
   modifier: Modifier = Modifier
 ) {
   Column(
-    modifier = modifier.fillMaxSize(),
+    modifier = modifier
+      .fillMaxSize()
+      .tvSafeContentPadding(),
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
