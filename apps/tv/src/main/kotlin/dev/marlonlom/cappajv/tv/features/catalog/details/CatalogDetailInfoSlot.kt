@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.details
 
 import android.content.Context
@@ -41,12 +40,12 @@ import dev.marlonlom.cappajv.tv.ui.util.tvSafeContentPadding
 internal fun CatalogDetailInfoSlot(
   foundDetail: CatalogDetail,
   onMarkedFavorite: (CatalogItem, Boolean) -> Unit,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   val context = LocalContext.current
   val detailBackgroundRes = findBackgroundForItemCategory(
     context = context,
-    categoryText = foundDetail.product.category
+    categoryText = foundDetail.product.category,
   )
 
   Column(
@@ -57,18 +56,17 @@ internal fun CatalogDetailInfoSlot(
         contentScale = ContentScale.FillBounds,
         colorFilter = ColorFilter.tint(
           color = MaterialTheme.colorScheme.background,
-          blendMode = BlendMode.Softlight
-        )
+          blendMode = BlendMode.Softlight,
+        ),
       )
       .tvSafeContentPadding(),
     horizontalAlignment = Alignment.Start,
   ) {
-
     Spacer(modifier = modifier.weight(1.0f))
 
     CatalogDetailHeadingInfoSlot(
       foundDetail = foundDetail,
-      onMarkedFavorite = onMarkedFavorite
+      onMarkedFavorite = onMarkedFavorite,
     )
 
     Text(
@@ -81,7 +79,6 @@ internal fun CatalogDetailInfoSlot(
     )
 
     CatalogDetailInfoPointsSlot(foundDetail.points)
-
   }
 
   Spacer(modifier.height(48.dp))
@@ -109,4 +106,3 @@ fun findBackgroundForItemCategory(context: Context, categoryText: String): Int {
     else -> R.drawable.img_details_background_hot_drinks
   }
 }
-

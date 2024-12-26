@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.details
 
 import androidx.compose.foundation.background
@@ -52,14 +51,16 @@ import dev.marlonlom.cappajv.tv.R
  */
 @Composable
 internal fun CatalogDetailHeadingInfoSlot(
-  foundDetail: CatalogDetail, onMarkedFavorite: (CatalogItem, Boolean) -> Unit, modifier: Modifier = Modifier
+  foundDetail: CatalogDetail,
+  onMarkedFavorite: (CatalogItem, Boolean) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
   Row(
     modifier = modifier
       .fillMaxWidth(0.5f)
       .padding(vertical = 10.dp),
     horizontalArrangement = Arrangement.spacedBy(20.dp),
-    verticalAlignment = Alignment.Bottom
+    verticalAlignment = Alignment.Bottom,
   ) {
     AsyncImage(
       model = ImageRequest.Builder(LocalContext.current).data(foundDetail.product.picture).crossfade(true).build(),
@@ -70,7 +71,7 @@ internal fun CatalogDetailHeadingInfoSlot(
         .background(Color.White, RoundedCornerShape(20.dp))
         .aspectRatio(2f / 3F)
         .clip(RoundedCornerShape(20.dp))
-        .clipToBounds()
+        .clipToBounds(),
     )
 
     Column(
@@ -94,25 +95,25 @@ internal fun CatalogDetailHeadingInfoSlot(
       OutlinedButton(
         onClick = {
           onMarkedFavorite(foundDetail.product, !foundDetail.isFavorite)
-        }, colors = OutlinedButtonDefaults.colors(
+        },
+        colors = OutlinedButtonDefaults.colors(
           contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
           containerColor = MaterialTheme.colorScheme.primaryContainer,
-        )
+        ),
       ) {
         (if (foundDetail.isFavorite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder).also {
           Icon(
             imageVector = it,
             contentDescription = stringResource(R.string.text_detail_toggle_favorite_desc),
             modifier = Modifier.size(ButtonDefaults.IconSize),
-            tint = MaterialTheme.colorScheme.onPrimaryContainer
+            tint = MaterialTheme.colorScheme.onPrimaryContainer,
           )
         }
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text(
           text = stringResource(R.string.text_detail_label_like),
-          color = MaterialTheme.colorScheme.onPrimaryContainer
+          color = MaterialTheme.colorScheme.onPrimaryContainer,
         )
-
       }
     }
   }

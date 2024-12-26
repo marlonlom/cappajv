@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.browse
 
 import androidx.compose.foundation.background
@@ -44,10 +43,7 @@ import timber.log.Timber
  * @param modifier The modifier for this composable
  */
 @Composable
-fun CatalogBrowseScreen(
-  appState: CappajvTvUiState,
-  modifier: Modifier = Modifier
-) {
+fun CatalogBrowseScreen(appState: CappajvTvUiState, modifier: Modifier = Modifier) {
   val catalogBrowseDrawerState = rememberDrawerState(DrawerValue.Closed)
   val catalogBrowseStartWidth: Dp by remember {
     derivedStateOf {
@@ -88,7 +84,7 @@ fun CatalogBrowseScreen(
             },
             onCategorySelected = { index ->
               appState.changeHomeCategoryIndex(index)
-            }
+            },
           )
         }
       }
@@ -107,7 +103,7 @@ fun CatalogBrowseScreen(
 @Composable
 private fun NavigationDrawerScope.CatalogBrowseDrawerContent(
   appState: CappajvTvUiState,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) = Column(
   modifier = modifier
     .background(MaterialTheme.colorScheme.surfaceTint)

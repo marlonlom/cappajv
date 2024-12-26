@@ -35,5 +35,4 @@ class CatalogHomeViewModel(
       repository.fetchCatalogItems()
     }
   }
-
 }

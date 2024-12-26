@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.common
 
 import androidx.compose.foundation.background
@@ -39,11 +38,11 @@ import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
 fun CatalogGridItemCompactCard(
   catalogItem: CatalogItemTuple,
   onCatalogItemClicked: (CatalogItemTuple) -> Unit,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) = CompactCard(
   modifier = modifier
     .background(
-      MaterialTheme.colorScheme.background
+      MaterialTheme.colorScheme.background,
     ),
   image = {
     AsyncImage(
@@ -58,7 +57,7 @@ fun CatalogGridItemCompactCard(
         .background(Color.White)
         .padding(20.dp)
         .padding(bottom = 40.dp)
-        .clip(RoundedCornerShape(8.dp))
+        .clip(RoundedCornerShape(8.dp)),
     )
   },
   title = {
@@ -70,10 +69,10 @@ fun CatalogGridItemCompactCard(
       style = MaterialTheme.typography.titleMedium,
       modifier = modifier
         .fillMaxWidth()
-        .padding(10.dp)
+        .padding(10.dp),
     )
   },
   onClick = {
     onCatalogItemClicked(catalogItem)
-  }
+  },
 )

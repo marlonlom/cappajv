@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.ui.util
 
 import androidx.compose.foundation.layout.padding
@@ -20,7 +19,7 @@ fun Modifier.tvSafeContentPadding() = padding(
   start = 60.dp,
   end = 60.dp,
   top = 30.dp,
-  bottom = 0.dp
+  bottom = 0.dp,
 )
 
 /**
@@ -34,5 +33,5 @@ fun Modifier.tvSafeContentPadding(startPadding: Dp) = padding(
   start = startPadding,
   end = 60.dp,
   top = 30.dp,
-  bottom = 0.dp
+  bottom = 0.dp,
 )

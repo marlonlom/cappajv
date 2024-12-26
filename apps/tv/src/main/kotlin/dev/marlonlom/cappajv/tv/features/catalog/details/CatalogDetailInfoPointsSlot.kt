@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.details
 
 import androidx.compose.foundation.layout.Column
@@ -33,9 +32,7 @@ import dev.marlonlom.cappajv.tv.R
  * @param points List of catalog points for an item.
  */
 @Composable
-internal fun CatalogDetailInfoPointsSlot(
-  points: List<CatalogPunctuation>
-) = Column(
+internal fun CatalogDetailInfoPointsSlot(points: List<CatalogPunctuation>) = Column(
   modifier = Modifier
     .fillMaxWidth()
     .padding(bottom = 40.dp),
@@ -55,7 +52,7 @@ internal fun CatalogDetailInfoPointsSlot(
   ) {
     items(
       items = points,
-      key = { pt -> pt.id }
+      key = { pt -> pt.id },
     ) { pt ->
       CompactCard(
         modifier = Modifier
@@ -79,7 +76,8 @@ internal fun CatalogDetailInfoPointsSlot(
           val subtitleText = when {
             pt.label.indexOfFirst { t -> t == '(' } >= 0 -> pt.label.substring(
               0,
-              pt.label.indexOfFirst { t -> t == '(' })
+              pt.label.indexOfFirst { t -> t == '(' },
+            )
 
             else -> pt.label
           }.trim()
@@ -92,10 +90,10 @@ internal fun CatalogDetailInfoPointsSlot(
             text = subtitleText,
             maxLines = 1,
             textAlign = TextAlign.Center,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
           )
         },
-        image = {}
+        image = {},
       )
     }
   }

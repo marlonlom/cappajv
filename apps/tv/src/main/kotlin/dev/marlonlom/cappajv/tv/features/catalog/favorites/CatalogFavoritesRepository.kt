@@ -24,16 +24,18 @@ class CatalogFavoritesRepository(
   val allFavorites: Flow<CatalogFavoritesUiState> = localDataSource.getFavorites()
     .transform { tuples ->
       when {
-        tuples.isNotEmpty() -> CatalogFavoritesUiState.Success(tuples.map {
-          CatalogItemTuple(
-            it.id,
-            it.title,
-            it.picture,
-            it.category,
-            it.samplePunctuation,
-            it.punctuationsCount,
-          )
-        })
+        tuples.isNotEmpty() -> CatalogFavoritesUiState.Success(
+          tuples.map {
+            CatalogItemTuple(
+              it.id,
+              it.title,
+              it.picture,
+              it.category,
+              it.samplePunctuation,
+              it.punctuationsCount,
+            )
+          },
+        )
 
         else -> CatalogFavoritesUiState.Empty
       }.also { state ->

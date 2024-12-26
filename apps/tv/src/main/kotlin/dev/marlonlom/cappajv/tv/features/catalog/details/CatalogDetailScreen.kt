@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.details
 
 import androidx.activity.compose.BackHandler
@@ -27,7 +26,7 @@ fun CatalogDetailScreen(
   detailId: String,
   onNavigationBack: () -> Unit,
   viewModel: CatalogDetailViewModel = koinViewModel(),
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   BackHandler(onBack = onNavigationBack)
   viewModel.find(detailId.toLong())
@@ -40,7 +39,7 @@ fun CatalogDetailScreen(
       val foundDetail = detailUiState.value as CatalogDetailUiState.Found
       CatalogDetailInfoSlot(
         foundDetail = foundDetail.detail,
-        onMarkedFavorite = viewModel::toggleFavorite
+        onMarkedFavorite = viewModel::toggleFavorite,
       )
     }
 
@@ -48,6 +47,4 @@ fun CatalogDetailScreen(
       CatalogDetailNotFoundSlot(modifier)
     }
   }
-
 }
-

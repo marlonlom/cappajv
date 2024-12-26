@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.common
 
 import androidx.annotation.StringRes
@@ -23,10 +22,7 @@ import androidx.tv.material3.Text
  * @param modifier The modifier for this composable.
  */
 @Composable
-fun CatalogGridCategoryText(
-  @StringRes categoryTitle: Int,
-  modifier: Modifier = Modifier
-) = Text(
+fun CatalogGridCategoryText(@StringRes categoryTitle: Int, modifier: Modifier = Modifier) = Text(
   modifier = modifier.fillMaxWidth(),
   text = stringResource(categoryTitle),
   style = MaterialTheme.typography.titleMedium,
