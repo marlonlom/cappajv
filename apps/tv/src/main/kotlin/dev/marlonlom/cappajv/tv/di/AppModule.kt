@@ -9,10 +9,13 @@ import dev.marlonlom.cappajv.core.catalog.CatalogDataService
 import dev.marlonlom.cappajv.core.database.CappaDatabase
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSourceImpl
+import dev.marlonlom.cappajv.tv.features.catalog.details.CatalogDetailRepository
+import dev.marlonlom.cappajv.tv.features.catalog.details.CatalogDetailViewModel
 import dev.marlonlom.cappajv.tv.features.catalog.favorites.CatalogFavoritesRepository
 import dev.marlonlom.cappajv.tv.features.catalog.favorites.CatalogFavoritesViewModel
 import dev.marlonlom.cappajv.tv.features.catalog.home.CatalogHomeRepository
 import dev.marlonlom.cappajv.tv.features.catalog.home.CatalogHomeViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
@@ -24,6 +27,7 @@ import java.util.Locale
  * @author marlonlom
  *
  */
+@OptIn(ExperimentalCoroutinesApi::class)
 val appModule = module {
   /* Data sources (local, remote) */
   single<LocalDataSource> {
@@ -51,7 +55,13 @@ val appModule = module {
       localDataSource = get()
     )
   }
+  single<CatalogDetailRepository> {
+    CatalogDetailRepository(
+      localDataSource = get()
+    )
+  }
   /* View models */
   viewModelOf(::CatalogHomeViewModel)
   viewModelOf(::CatalogFavoritesViewModel)
+  viewModelOf(::CatalogDetailViewModel)
 }
