@@ -48,15 +48,15 @@ fun CategoriesTabsRow(
     )
   },
   tabs = {
-    CategoryEntries.entries.forEachIndexed { index, category ->
+    CategoryEntries.entries.sortedBy { it.ordinal }.forEach { category ->
       Tab(
         modifier = modifier
           .padding(horizontal = 10.dp)
-          .testTag(stringResource(R.string.text_tag_category_tab, index)),
-        selected = selectedTabIndex == index,
+          .testTag(stringResource(R.string.text_tag_category_tab, category.ordinal)),
+        selected = selectedTabIndex == category.ordinal,
         onFocus = {},
         onClick = {
-          onTabSelected(index)
+          onTabSelected(category.ordinal)
         },
         colors = TabDefaults.underlinedIndicatorTabColors(
           contentColor = MaterialTheme.colorScheme.surfaceTint,

@@ -18,7 +18,9 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import dev.marlonlom.cappajv.tv.ui.util.tvSafeContentPadding
 
 /**
  * Catalog lazy vertical grid composable ui.
@@ -37,13 +39,15 @@ fun CatalogLazyVerticalGrid(
   selectedTabIndex: Int,
   onTabSelected: (Int) -> Unit,
   catalogContent: LazyGridScope.() -> Unit,
+  startWidth: Dp,
   modifier: Modifier = Modifier
 ) = LazyVerticalGrid(
   state = rememberLazyGridState(),
   modifier = modifier
     .fillMaxWidth()
+    .tvSafeContentPadding(startWidth)
     .padding(horizontal = 20.dp),
-  columns = GridCells.Fixed(4),
+  columns = GridCells.Adaptive(160.dp),
   verticalArrangement = Arrangement.spacedBy(20.dp),
   horizontalArrangement = Arrangement.spacedBy(20.dp),
 ) {
