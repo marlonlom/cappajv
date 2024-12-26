@@ -7,7 +7,8 @@ package dev.marlonlom.cappajv.tv.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import dev.marlonlom.cappajv.tv.ui.browse.TvBrowseScreen
+import dev.marlonlom.cappajv.tv.ui.navigation.TvNavigationHost
+import dev.marlonlom.cappajv.tv.ui.rememberCappajvAppState
 import dev.marlonlom.cappajv.tv.ui.theme.CappajvTvTheme
 import org.koin.androidx.compose.KoinAndroidContext
 
@@ -24,7 +25,9 @@ class TvActivity : ComponentActivity() {
     setContent {
       CappajvTvTheme {
         KoinAndroidContext {
-          TvBrowseScreen()
+          TvNavigationHost(
+            appState = rememberCappajvAppState()
+          )
         }
       }
     }
