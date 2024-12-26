@@ -19,4 +19,14 @@
   <string name="text_home_title">Get our rewards</string>
   <!-- screen: favorites -->
   <string name="text_favorites_title">Favorite products</string>
+  <!-- screen: details -->
+  <string name="text_detail_subtitle_points">List of points</string>
+  <string name="text_detail_toggle_favorite_desc">Toggle favorite icon button</string>
+  <string name="text_detail_label_like">Like</string>
+  <!-- screen: settings / background image credits -->
+  <string-array name="array_background_img_credits">
+    <item>Photo by Lexi Anderson on Unsplash</item>
+    <item>Photo by Pariwat Pannium on Unsplash</item>
+    <item>Photo by Travis on Unsplash</item>
+  </string-array>
 </resources>

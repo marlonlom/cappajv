@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
   ~ Copyright 2024 Marlonlom
   ~ SPDX-License-Identifier: Apache-2.0
   -->
@@ -16,4 +18,14 @@
   <string name="text_home_title">Conoce nuestros premios</string>
   <!-- screen: favorites -->
   <string name="text_favorites_title">Productos favoritos</string>
+  <!-- screen: details -->
+  <string name="text_detail_subtitle_points">Listado de puntos</string>
+  <string name="text_detail_toggle_favorite_desc">Botón para alternar ícono favorito</string>
+  <string name="text_detail_label_like">Me gusta</string>
+  <!-- screen: settings / background image credits -->
+  <string-array name="array_background_img_credits">
+    <item>Foto de Lexi Anderson en Unsplash</item>
+    <item>Foto de Pariwat Pannium en Unsplash</item>
+    <item>Foto de Travis en Unsplash</item>
+  </string-array>
 </resources>
