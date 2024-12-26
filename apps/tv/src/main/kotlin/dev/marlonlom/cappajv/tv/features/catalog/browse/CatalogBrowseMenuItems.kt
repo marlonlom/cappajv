@@ -23,7 +23,7 @@ import dev.marlonlom.cappajv.tv.R
  * @param text Item text as string resource.
  * @param icon Item icon as image vector.
  */
-enum class TvBrowseMenuItems(
+enum class CatalogBrowseMenuItems(
   @StringRes val text: Int,
   val icon: ImageVector,
 ) {
