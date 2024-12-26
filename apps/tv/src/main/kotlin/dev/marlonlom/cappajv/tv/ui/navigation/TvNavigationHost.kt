@@ -5,13 +5,17 @@
 
 package dev.marlonlom.cappajv.tv.ui.navigation
 
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import dev.marlonlom.cappajv.tv.features.catalog.favorites.CatalogFavoritesScreen
-import dev.marlonlom.cappajv.tv.features.catalog.home.CatalogHomeScreen
+import androidx.navigation.toRoute
+import dev.marlonlom.cappajv.tv.features.catalog.browse.CatalogBrowseScreen
+import dev.marlonlom.cappajv.tv.features.catalog.details.CatalogDetailScreen
 import dev.marlonlom.cappajv.tv.features.settings.SettingsScreen
-import dev.marlonlom.cappajv.tv.ui.CappajvAppState
+import dev.marlonlom.cappajv.tv.ui.CappajvTvUiState
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * Tv navigation host composable ui.
@@ -20,19 +24,39 @@ import dev.marlonlom.cappajv.tv.ui.CappajvAppState
  *
  * @param appState The application ui state.
  */
+@OptIn(ExperimentalCoroutinesApi::class)
 @Composable
-fun CappajvTvNavigationHost(
-  appState: CappajvAppState,
+fun TvNavigationHost(
+  appState: CappajvTvUiState,
 ) = NavHost(
   navController = appState.navHostController,
-  startDestination = TvScreen.Listings
+  startDestination = TvScreenRoute.Catalog
 ) {
-  composable<TvScreen.Listings> {
-    CatalogHomeScreen()
+  composable<TvScreenRoute.Catalog>(
+    enterTransition = { fadeIn() },
+    exitTransition = { fadeOut() },
+  ) {
+    CatalogBrowseScreen(appState = appState)
   }
-  
-  composable<TvScreen.Settings> {
+
+  composable<TvScreenRoute.Settings>(
+    enterTransition = { fadeIn() },
+    exitTransition = { fadeOut() },
+  ) {
     SettingsScreen()
+  }
+
+  composable<TvScreenRoute.Detail>(
+    enterTransition = { fadeIn() },
+    exitTransition = { fadeOut() },
+  ) { backstackEntry ->
+    val detailId = backstackEntry.toRoute<TvScreenRoute.Detail>()
+    CatalogDetailScreen(
+      detailId = detailId.itemId,
+      onNavigationBack = {
+        appState.navigateBack()
+      },
+    )
   }
 
 }
