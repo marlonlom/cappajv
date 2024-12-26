@@ -44,8 +44,7 @@ fun CatalogGridItemCompactCard(
   modifier = modifier
     .background(
       MaterialTheme.colorScheme.background
-    )
-    .padding(10.dp),
+    ),
   image = {
     AsyncImage(
       model = ImageRequest.Builder(LocalContext.current)

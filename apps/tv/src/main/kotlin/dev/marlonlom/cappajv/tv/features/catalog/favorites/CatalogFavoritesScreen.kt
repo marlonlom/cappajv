@@ -10,13 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.tv.material3.MaterialTheme
@@ -42,11 +39,13 @@ import org.koin.androidx.compose.koinViewModel
  */
 @Composable
 fun CatalogFavoritesScreen(
-  onCatalogItemClicked: (CatalogItemTuple) -> Unit = {},
+  startWidth: Dp,
+  selectedCategory: Int,
+  onCatalogItemClicked: (CatalogItemTuple) -> Unit,
+  onCategorySelected: (Int) -> Unit,
   modifier: Modifier = Modifier,
-  viewModel: CatalogFavoritesViewModel = koinViewModel()
+  viewModel: CatalogFavoritesViewModel = koinViewModel(),
 ) {
-  var selectedTabIndex by remember { mutableIntStateOf(0) }
   val favoritesUiState = viewModel.uiState.collectAsStateWithLifecycle(
     lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current,
   )
@@ -54,17 +53,18 @@ fun CatalogFavoritesScreen(
 
   CatalogLazyVerticalGrid(
     headingTitle = R.string.text_favorites_title,
-    selectedTabIndex = selectedTabIndex,
+    selectedTabIndex = selectedCategory,
     onTabSelected = { index ->
-      selectedTabIndex = index
+      onCategorySelected(index)
     },
+    startWidth = startWidth,
     catalogContent = {
       when (favoritesUiState.value) {
         CatalogFavoritesUiState.Empty -> {
           item(span = { GridItemSpan(maxLineSpan) }) {
             Text(
               text = "No favorite items :(",
-              modifier = modifier.fillMaxSize(),
+              modifier = Modifier.fillMaxSize(),
               style = MaterialTheme.typography.titleMedium,
               color = MaterialTheme.colorScheme.onSurface,
               textAlign = TextAlign.Center
@@ -81,11 +81,11 @@ fun CatalogFavoritesScreen(
         is Success -> {
           item(span = { GridItemSpan(maxLineSpan) }) {
             CatalogGridCategoryText(
-              categoryTitle = CategoryEntries.entries[selectedTabIndex].text
+              categoryTitle = CategoryEntries.entries[selectedCategory].text
             )
           }
 
-          val categoryName = context.getString(CategoryEntries.entries[selectedTabIndex].text)
+          val categoryName = context.getString(CategoryEntries.entries[selectedCategory].text)
           val catalogItems = (favoritesUiState.value as Success).results.filter {
             it.category == categoryName
           }
@@ -122,6 +122,6 @@ fun CatalogFavoritesScreen(
           }
         }
       }
-    }
+    },
   )
 }

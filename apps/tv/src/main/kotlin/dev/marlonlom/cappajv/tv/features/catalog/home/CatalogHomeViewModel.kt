@@ -6,7 +6,6 @@ package dev.marlonlom.cappajv.tv.features.catalog.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -23,9 +22,6 @@ class CatalogHomeViewModel(
   private val repository: CatalogHomeRepository,
 ) : ViewModel() {
 
-  private val _selectedCatalogId = MutableStateFlow(0L)
-  val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId
-
   /** UI state object for view model */
   val uiState = repository.allProducts.stateIn(
     scope = viewModelScope,
@@ -40,7 +36,4 @@ class CatalogHomeViewModel(
     }
   }
 
-  fun selectCatalogItem(catalogId: Long) {
-    _selectedCatalogId.value = catalogId
-  }
 }

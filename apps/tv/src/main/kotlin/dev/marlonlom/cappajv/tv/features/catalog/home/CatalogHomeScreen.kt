@@ -8,13 +8,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
@@ -32,25 +29,26 @@ import org.koin.androidx.compose.koinViewModel
  * @author marlonlom
  *
  * @param onCatalogItemClicked Action for Grid catalog item selected.
- * @param modifier The modifier for this composable.
  * @param viewModel The viewmodel for this composable.
  */
 @Composable
 fun CatalogHomeScreen(
-  onCatalogItemClicked: (CatalogItemTuple) -> Unit = {},
-  modifier: Modifier = Modifier,
+  startWidth: Dp,
+  selectedCategory: Int,
+  onCatalogItemClicked: (CatalogItemTuple) -> Unit,
+  onCategorySelected: (Int) -> Unit,
   viewModel: CatalogHomeViewModel = koinViewModel()
 ) {
-  var selectedTabIndex by remember { mutableIntStateOf(0) }
   val homeUiState = viewModel.uiState.collectAsStateWithLifecycle(
     lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current,
   )
+  val context = LocalContext.current
 
   CatalogLazyVerticalGrid(
     headingTitle = R.string.text_home_title,
-    selectedTabIndex = selectedTabIndex,
+    selectedTabIndex = selectedCategory,
     onTabSelected = { index ->
-      selectedTabIndex = index
+      onCategorySelected(index)
     },
     catalogContent = {
       when (homeUiState.value) {
@@ -66,22 +64,21 @@ fun CatalogHomeScreen(
         }
 
         is CatalogHomeUiState.Listing -> {
+          val catalogMap: Map<String, List<CatalogItemTuple>> =
+            (homeUiState.value as CatalogHomeUiState.Listing).catalogMap
+          val categoryName = context.getString(CategoryEntries.entries[selectedCategory].text)
+
           item(span = { GridItemSpan(maxLineSpan) }) {
             Text(
-              modifier = modifier
+              modifier = Modifier
                 .fillMaxWidth(),
-              text = stringResource(CategoryEntries.entries[selectedTabIndex].text),
+              text = categoryName,
               style = MaterialTheme.typography.titleMedium,
               fontWeight = FontWeight.Bold,
               color = MaterialTheme.colorScheme.onSurface,
             )
           }
 
-          val catalogMap: Map<String, List<CatalogItemTuple>> =
-            (homeUiState.value as CatalogHomeUiState.Listing).catalogMap
-          val categoryName = catalogMap.keys.filterIndexed { pos, _ ->
-            pos == selectedTabIndex
-          }.first()
           catalogMap[categoryName]?.let { tuples ->
             items(tuples, { tuple -> tuple.id }) { tuple ->
               CatalogGridItemCompactCard(
@@ -92,6 +89,7 @@ fun CatalogHomeScreen(
           }
         }
       }
-    }
+    },
+    startWidth = startWidth
   )
 }
