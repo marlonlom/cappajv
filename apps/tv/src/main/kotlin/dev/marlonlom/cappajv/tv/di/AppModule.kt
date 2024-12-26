@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.di
 
 import dev.marlonlom.cappajv.core.catalog.CatalogDataService
@@ -52,12 +51,12 @@ val appModule = module {
   }
   single<CatalogFavoritesRepository> {
     CatalogFavoritesRepository(
-      localDataSource = get()
+      localDataSource = get(),
     )
   }
   single<CatalogDetailRepository> {
     CatalogDetailRepository(
-      localDataSource = get()
+      localDataSource = get(),
     )
   }
   /* View models */

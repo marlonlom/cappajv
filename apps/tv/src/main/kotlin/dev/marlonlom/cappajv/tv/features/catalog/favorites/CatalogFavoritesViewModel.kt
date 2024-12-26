@@ -33,5 +33,4 @@ class CatalogFavoritesViewModel(
       repository.deleteFavorite(catalogId)
     }
   }
-
 }

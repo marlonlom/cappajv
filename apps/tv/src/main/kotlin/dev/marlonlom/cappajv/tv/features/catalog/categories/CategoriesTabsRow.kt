@@ -32,11 +32,7 @@ import dev.marlonlom.cappajv.tv.R
  */
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun CategoriesTabsRow(
-  selectedTabIndex: Int,
-  onTabSelected: (Int) -> Unit,
-  modifier: Modifier = Modifier
-) = TabRow(
+fun CategoriesTabsRow(selectedTabIndex: Int, onTabSelected: (Int) -> Unit, modifier: Modifier = Modifier) = TabRow(
   modifier = modifier.focusRestorer(),
   selectedTabIndex = selectedTabIndex,
   indicator = { tabPositions, doesTabRowHaveFocus ->

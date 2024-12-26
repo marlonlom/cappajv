@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.ui.navigation
 
 import androidx.compose.animation.fadeIn
@@ -26,11 +25,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 @Composable
-fun TvNavigationHost(
-  appState: CappajvTvUiState,
-) = NavHost(
+fun TvNavigationHost(appState: CappajvTvUiState) = NavHost(
   navController = appState.navHostController,
-  startDestination = TvScreenRoute.Catalog
+  startDestination = TvScreenRoute.Catalog,
 ) {
   composable<TvScreenRoute.Catalog>(
     enterTransition = { fadeIn() },
@@ -58,5 +55,4 @@ fun TvNavigationHost(
       },
     )
   }
-
 }

@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.common
 
 import androidx.annotation.StringRes
@@ -40,7 +39,7 @@ fun CatalogLazyVerticalGrid(
   onTabSelected: (Int) -> Unit,
   catalogContent: LazyGridScope.() -> Unit,
   startWidth: Dp,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) = LazyVerticalGrid(
   state = rememberLazyGridState(),
   modifier = modifier

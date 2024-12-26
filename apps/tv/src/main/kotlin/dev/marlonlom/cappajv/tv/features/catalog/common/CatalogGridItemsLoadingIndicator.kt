@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.common
 
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,9 +22,7 @@ import androidx.tv.material3.Text
  * @param modifier The modifier for this composable.
  */
 @Composable
-fun CatalogGridItemsLoadingIndicator(
-  modifier: Modifier = Modifier
-) = Text(
+fun CatalogGridItemsLoadingIndicator(modifier: Modifier = Modifier) = Text(
   modifier = modifier
     .fillMaxWidth()
     .padding(20.dp),

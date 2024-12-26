@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.ui
 
 import androidx.compose.runtime.Composable
@@ -25,7 +24,7 @@ import kotlinx.coroutines.flow.map
  */
 @Stable
 class CappajvTvUiState(
-  val navHostController: NavHostController
+  val navHostController: NavHostController,
 ) {
 
   var browseMenuIndex by mutableIntStateOf(0)
@@ -74,7 +73,5 @@ class CappajvTvUiState(
  * @param navHostController
  */
 @Composable
-fun rememberCappajvAppState(
-  navHostController: NavHostController = rememberNavController()
-) = remember(navHostController) { CappajvTvUiState(navHostController) }
-
+fun rememberCappajvAppState(navHostController: NavHostController = rememberNavController()) =
+  remember(navHostController) { CappajvTvUiState(navHostController) }

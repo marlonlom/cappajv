@@ -26,7 +26,7 @@ class TvActivity : ComponentActivity() {
       CappajvTvTheme {
         KoinAndroidContext {
           TvNavigationHost(
-            appState = rememberCappajvAppState()
+            appState = rememberCappajvAppState(),
           )
         }
       }

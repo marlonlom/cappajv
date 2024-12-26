@@ -37,7 +37,7 @@ fun CatalogHomeScreen(
   selectedCategory: Int,
   onCatalogItemClicked: (CatalogItemTuple) -> Unit,
   onCategorySelected: (Int) -> Unit,
-  viewModel: CatalogHomeViewModel = koinViewModel()
+  viewModel: CatalogHomeViewModel = koinViewModel(),
 ) {
   val homeUiState = viewModel.uiState.collectAsStateWithLifecycle(
     lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current,
@@ -90,6 +90,6 @@ fun CatalogHomeScreen(
         }
       }
     },
-    startWidth = startWidth
+    startWidth = startWidth,
   )
 }

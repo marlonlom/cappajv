@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.catalog.details
 
 import androidx.compose.foundation.layout.Arrangement
@@ -18,12 +17,10 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 
 @Composable
-internal fun CatalogDetailNotFoundSlot(
-  modifier: Modifier = Modifier
-) = Column(
+internal fun CatalogDetailNotFoundSlot(modifier: Modifier = Modifier) = Column(
   modifier = modifier.fillMaxSize(),
   horizontalAlignment = Alignment.CenterHorizontally,
-  verticalArrangement = Arrangement.Center
+  verticalArrangement = Arrangement.Center,
 ) {
   Text(
     modifier = Modifier.fillMaxWidth(),

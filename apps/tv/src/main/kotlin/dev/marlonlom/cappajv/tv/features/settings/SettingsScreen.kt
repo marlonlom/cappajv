@@ -2,7 +2,6 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.features.settings
 
 import androidx.compose.foundation.layout.Arrangement
@@ -27,15 +26,13 @@ import dev.marlonlom.cappajv.tv.ui.util.tvSafeContentPadding
  * @param modifier The modifier for this composable.
  */
 @Composable
-fun SettingsScreen(
-  modifier: Modifier = Modifier
-) {
+fun SettingsScreen(modifier: Modifier = Modifier) {
   Column(
     modifier = modifier
       .fillMaxSize()
       .tvSafeContentPadding(),
     verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     Text(
       modifier = modifier.paddingFromBaseline(40.dp, 20.dp),
@@ -43,7 +40,7 @@ fun SettingsScreen(
       textAlign = TextAlign.Center,
       fontWeight = FontWeight.Bold,
       color = MaterialTheme.colorScheme.onSurface,
-      style = MaterialTheme.typography.titleMedium
+      style = MaterialTheme.typography.titleMedium,
     )
   }
 }

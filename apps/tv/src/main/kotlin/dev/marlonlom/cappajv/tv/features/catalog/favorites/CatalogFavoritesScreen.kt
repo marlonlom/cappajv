@@ -67,7 +67,7 @@ fun CatalogFavoritesScreen(
               modifier = Modifier.fillMaxSize(),
               style = MaterialTheme.typography.titleMedium,
               color = MaterialTheme.colorScheme.onSurface,
-              textAlign = TextAlign.Center
+              textAlign = TextAlign.Center,
             )
           }
         }
@@ -81,7 +81,7 @@ fun CatalogFavoritesScreen(
         is Success -> {
           item(span = { GridItemSpan(maxLineSpan) }) {
             CatalogGridCategoryText(
-              categoryTitle = CategoryEntries.entries[selectedCategory].text
+              categoryTitle = CategoryEntries.entries[selectedCategory].text,
             )
           }
 
@@ -89,7 +89,6 @@ fun CatalogFavoritesScreen(
           val catalogItems = (favoritesUiState.value as Success).results.filter {
             it.category == categoryName
           }
-
 
           catalogItems.let {
             if (it.isEmpty()) {
@@ -99,23 +98,21 @@ fun CatalogFavoritesScreen(
                   modifier = modifier.fillMaxSize(),
                   style = MaterialTheme.typography.titleMedium,
                   color = MaterialTheme.colorScheme.onSurface,
-                  textAlign = TextAlign.Center
+                  textAlign = TextAlign.Center,
                 )
               }
             } else {
               items(
                 items = catalogItems,
-                key = { favoriteItem -> favoriteItem.id }
+                key = { favoriteItem -> favoriteItem.id },
               ) { favoriteItem ->
                 CatalogGridItemCompactCard(
                   catalogItem = favoriteItem,
-                  onCatalogItemClicked = onCatalogItemClicked
+                  onCatalogItemClicked = onCatalogItemClicked,
                 )
               }
             }
           }
-
-
 
           item(span = { GridItemSpan(maxLineSpan) }) {
             Spacer(modifier.height(48.dp))
