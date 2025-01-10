@@ -56,7 +56,7 @@ subprojects {
         ),
       )
       trimTrailingWhitespace()
-      indentWithSpaces()
+      leadingTabsToSpaces()
       endWithNewline()
       licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
     }
@@ -66,7 +66,7 @@ subprojects {
       targetExclude("**/build/**/*.kts")
       ktlint()
       trimTrailingWhitespace()
-      indentWithSpaces()
+      leadingTabsToSpaces()
       endWithNewline()
       licenseHeaderFile(rootProject.file("spotless/copyright.kts"), "(^(?![\\/ ]\\*).*$)")
     }
@@ -75,7 +75,7 @@ subprojects {
       target("**/*.xml")
       targetExclude("**/build/**/*.xml")
       trimTrailingWhitespace()
-      indentWithSpaces()
+      leadingTabsToSpaces()
       endWithNewline()
       licenseHeaderFile(rootProject.file("spotless/copyright.xml"), "(<[^!?])")
     }
