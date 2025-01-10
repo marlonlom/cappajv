@@ -20,10 +20,7 @@ import dev.marlonlom.cappajv.tv.R
  * @property icon Item icon as image vector.
  * @property text Item text as string resource.
  */
-enum class CategoryEntries(
-  val icon: ImageVector,
-  @StringRes val text: Int,
-) {
+enum class CategoryEntries(val icon: ImageVector, @StringRes val text: Int) {
 
   /** Category entry enum: Hot drinks. */
   HOT(Icons.TwoTone.Coffee, R.string.text_category_hot),

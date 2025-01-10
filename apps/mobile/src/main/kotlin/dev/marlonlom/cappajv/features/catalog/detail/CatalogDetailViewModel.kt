@@ -110,7 +110,5 @@ sealed class CatalogDetailUiState {
    *
    * @property detail Catalog item detailed information.
    */
-  data class Found(
-    val detail: CatalogDetail,
-  ) : CatalogDetailUiState()
+  data class Found(val detail: CatalogDetail) : CatalogDetailUiState()
 }

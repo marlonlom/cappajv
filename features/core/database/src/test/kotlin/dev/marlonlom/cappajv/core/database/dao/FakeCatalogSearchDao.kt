@@ -17,9 +17,7 @@ import java.util.Locale
  *
  * @property list Mutable punctuations list.
  */
-internal class FakeCatalogSearchDao(
-  private val list: MutableList<CatalogItem> = mutableListOf(),
-) : CatalogSearchDao {
+internal class FakeCatalogSearchDao(private val list: MutableList<CatalogItem> = mutableListOf()) : CatalogSearchDao {
 
   override fun searchProducts(searchText: String): Flow<List<CatalogItemTuple>> = flowOf(
     list

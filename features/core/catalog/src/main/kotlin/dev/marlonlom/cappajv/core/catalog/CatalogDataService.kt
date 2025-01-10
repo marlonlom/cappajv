@@ -15,9 +15,7 @@ import java.util.Locale
  *
  * @property language Selected language for fetching catalog data, default to english (en).
  */
-class CatalogDataService(
-  private val language: String = Locale.ENGLISH.language,
-) {
+class CatalogDataService(private val language: String = Locale.ENGLISH.language) {
 
   private var catalogJsonPath = if (language == "es") CATALOG_JSON_FILENAME else ENG_CATALOG_JSON_FILENAME
 

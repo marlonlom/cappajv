@@ -14,9 +14,7 @@ import kotlinx.serialization.Serializable
  * @property route Screen route.
  */
 @Serializable
-sealed class TvScreenRoute(
-  val route: String,
-) {
+sealed class TvScreenRoute(val route: String) {
 
   /**
    * Catalog listings tv screen route object.
@@ -42,7 +40,5 @@ sealed class TvScreenRoute(
    * @property itemId Catalog item id.
    */
   @Serializable
-  data class Detail(
-    val itemId: String,
-  ) : TvScreenRoute("details/$itemId")
+  data class Detail(val itemId: String) : TvScreenRoute("details/$itemId")
 }

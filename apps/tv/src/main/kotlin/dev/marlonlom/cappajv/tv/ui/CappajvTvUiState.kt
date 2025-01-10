@@ -23,9 +23,7 @@ import kotlinx.coroutines.flow.map
  * @property navHostController Navigation host controller.
  */
 @Stable
-class CappajvTvUiState(
-  val navHostController: NavHostController,
-) {
+class CappajvTvUiState(val navHostController: NavHostController) {
 
   var browseMenuIndex by mutableIntStateOf(0)
   var homeCategoryIndex by mutableIntStateOf(0)

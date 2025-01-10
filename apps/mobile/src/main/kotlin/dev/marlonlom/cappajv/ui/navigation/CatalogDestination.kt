@@ -25,11 +25,7 @@ import dev.marlonlom.cappajv.R
  * @property title Destination title as string resource.
  * @property icon Icon for destination
  */
-sealed class CatalogDestination(
-  val route: String,
-  @StringRes val title: Int,
-  val icon: ImageVector,
-) {
+sealed class CatalogDestination(val route: String, @StringRes val title: Int, val icon: ImageVector) {
 
   /**
    * Catalog list destination data object.

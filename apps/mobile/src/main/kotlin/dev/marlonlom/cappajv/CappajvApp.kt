@@ -32,7 +32,9 @@ val Context.dataStore by preferencesDataStore("cappajv-preferences")
  *
  * @author marlonlom
  */
-class CappajvApp : Application(), ImageLoaderFactory {
+class CappajvApp :
+  Application(),
+  ImageLoaderFactory {
 
   override fun onCreate() {
     super.onCreate()

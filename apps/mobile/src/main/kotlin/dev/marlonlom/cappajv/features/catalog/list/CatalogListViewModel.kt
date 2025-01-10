@@ -20,9 +20,7 @@ import timber.log.Timber
  *
  * @property repository catalog list repository dependency
  */
-class CatalogListViewModel(
-  private val repository: CatalogListRepository,
-) : ViewModel() {
+class CatalogListViewModel(private val repository: CatalogListRepository) : ViewModel() {
 
   private val _selectedCatalogId = MutableStateFlow(0L)
   val selectedCatalogId: MutableStateFlow<Long> = _selectedCatalogId

@@ -27,7 +27,5 @@ sealed class CatalogListUiState {
    *
    * @property catalogMap Grouped catalog items.
    */
-  data class Listing(
-    val catalogMap: Map<String, List<CatalogItemTuple>>,
-  ) : CatalogListUiState()
+  data class Listing(val catalogMap: Map<String, List<CatalogItemTuple>>) : CatalogListUiState()
 }

@@ -15,9 +15,8 @@ import kotlinx.coroutines.flow.flowOf
  *
  * @property list Mutable punctuations list.
  */
-class FakeCatalogPunctuationsDao(
-  private val list: MutableList<CatalogPunctuation> = mutableListOf(),
-) : CatalogPunctuationsDao {
+class FakeCatalogPunctuationsDao(private val list: MutableList<CatalogPunctuation> = mutableListOf()) :
+  CatalogPunctuationsDao {
 
   override fun findByProduct(productId: Long): Flow<List<CatalogPunctuation>> =
     flowOf(list.filter { item -> item.catalogItemId == productId })

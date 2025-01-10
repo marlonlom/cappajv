@@ -18,10 +18,7 @@ import androidx.compose.ui.graphics.Color
  * @property dark Dark color scheme.
  *
  */
-internal enum class CappajvColorContrasts(
-  val light: ColorScheme,
-  val dark: ColorScheme,
-) {
+internal enum class CappajvColorContrasts(val light: ColorScheme, val dark: ColorScheme) {
   /** Default branded color contrast: Standard. */
   STANDARD(
     light = lightColorScheme(

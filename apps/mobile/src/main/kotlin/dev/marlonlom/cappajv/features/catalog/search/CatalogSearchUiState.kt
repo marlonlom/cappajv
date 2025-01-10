@@ -44,7 +44,5 @@ sealed class CatalogSearchUiState {
    *
    * @property results Catalog tuples result list.
    */
-  data class Success(
-    val results: List<CatalogItemTuple>,
-  ) : CatalogSearchUiState()
+  data class Success(val results: List<CatalogItemTuple>) : CatalogSearchUiState()
 }

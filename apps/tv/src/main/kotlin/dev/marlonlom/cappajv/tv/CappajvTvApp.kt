@@ -18,7 +18,9 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import timber.log.Timber
 
-class CappajvTvApp : Application(), ImageLoaderFactory {
+class CappajvTvApp :
+  Application(),
+  ImageLoaderFactory {
 
   override fun onCreate() {
     super.onCreate()

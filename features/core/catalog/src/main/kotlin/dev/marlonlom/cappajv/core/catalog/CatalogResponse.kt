@@ -37,10 +37,7 @@ data class CatalogItem(
  * @property pointsQty punctuation quantity value.
  */
 @Serializable
-data class Punctuation(
-  val label: String,
-  val pointsQty: Int,
-)
+data class Punctuation(val label: String, val pointsQty: Int)
 
 /**
  * A generic class that holds a value or an exception
@@ -63,9 +60,7 @@ sealed class Response<out R> {
  * @param fallback default result value
  * @return success state value or a fallback value
  */
-fun <T> Response<T>.successOr(fallback: T): T {
-  return (this as? Response.Success<T>)?.data ?: fallback
-}
+fun <T> Response<T>.successOr(fallback: T): T = (this as? Response.Success<T>)?.data ?: fallback
 
 /**
  * inline function that returns the detailed exception for failure state

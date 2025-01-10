@@ -18,10 +18,7 @@ import androidx.tv.material3.lightColorScheme
  * @property dark Dark color scheme.
  *
  */
-internal enum class CappajvColorSchemes(
-  val light: ColorScheme,
-  val dark: ColorScheme,
-) {
+internal enum class CappajvColorSchemes(val light: ColorScheme, val dark: ColorScheme) {
 
   /** Default branded color contrast: Standard. */
   STANDARD(

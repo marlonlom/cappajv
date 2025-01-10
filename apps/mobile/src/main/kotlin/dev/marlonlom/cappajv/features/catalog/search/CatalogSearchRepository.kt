@@ -13,9 +13,7 @@ import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
  *
  * @property localDataSource Local data source.
  */
-class CatalogSearchRepository(
-  private val localDataSource: LocalDataSource,
-) {
+class CatalogSearchRepository(private val localDataSource: LocalDataSource) {
 
   /**
    * Perform search using provided text.

@@ -56,7 +56,7 @@ internal fun CatalogDetailInfoPointsSlot(points: List<CatalogPunctuation>) = Col
     ) { pt ->
       CompactCard(
         modifier = Modifier
-          .width(120.dp)
+          .width(160.dp)
           .padding(horizontal = 10.dp),
         onClick = {},
         title = {

@@ -17,9 +17,7 @@ import kotlinx.coroutines.launch
  *
  * @property repository catalog favorites repository dependency.
  */
-class CatalogFavoritesViewModel(
-  private val repository: CatalogFavoritesRepository,
-) : ViewModel() {
+class CatalogFavoritesViewModel(private val repository: CatalogFavoritesRepository) : ViewModel() {
 
   /** UI state object for view model */
   val uiState = repository.allFavorites.stateIn(

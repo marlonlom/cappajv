@@ -74,10 +74,8 @@ abstract class CappaDatabase : RoomDatabase() {
      *
      * @return Database instance.
      */
-    fun getInstance(context: Context): CappaDatabase {
-      return instance ?: synchronized(this) {
-        instance ?: buildDatabase(context).also { instance = it }
-      }
+    fun getInstance(context: Context): CappaDatabase = instance ?: synchronized(this) {
+      instance ?: buildDatabase(context).also { instance = it }
     }
 
     private fun buildDatabase(context: Context): CappaDatabase = Room.databaseBuilder(
