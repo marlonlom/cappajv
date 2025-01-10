@@ -26,10 +26,7 @@ import dev.marlonlom.cappajv.tv.R
  * @param text Item text as string resource.
  * @param icon Item icon as image vector.
  */
-enum class CatalogBrowseMenuItems(
-  @StringRes val text: Int,
-  val icon: ImageVector,
-) {
+enum class CatalogBrowseMenuItems(@StringRes val text: Int, val icon: ImageVector) {
 
   /** TV Browse menu items enum: Home */
   HOME(R.string.text_menu_home, Icons.TwoTone.Home),

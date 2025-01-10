@@ -25,9 +25,7 @@ import kotlinx.coroutines.launch
  *
  * @property repository Catalog search repository.
  */
-class CatalogSearchViewModel(
-  private val repository: CatalogSearchRepository,
-) : ViewModel() {
+class CatalogSearchViewModel(private val repository: CatalogSearchRepository) : ViewModel() {
   var queryText = mutableStateOf("")
     private set
 

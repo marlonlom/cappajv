@@ -16,9 +16,7 @@ import kotlinx.coroutines.flow.transform
  *
  * @property localDataSource Local data source.
  */
-class CatalogFavoritesRepository(
-  private val localDataSource: LocalDataSource,
-) {
+class CatalogFavoritesRepository(private val localDataSource: LocalDataSource) {
 
   /** Returns Favorite catalog items list as flow. */
   val allFavorites: Flow<CatalogFavoritesUiState> = localDataSource.getFavorites()

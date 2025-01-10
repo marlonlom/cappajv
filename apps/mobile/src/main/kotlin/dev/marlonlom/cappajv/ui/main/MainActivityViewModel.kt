@@ -24,9 +24,7 @@ import kotlinx.coroutines.launch
  *
  * @property repository User preferences repository.
  */
-class MainActivityViewModel(
-  private val repository: UserPreferencesRepository,
-) : ViewModel() {
+class MainActivityViewModel(private val repository: UserPreferencesRepository) : ViewModel() {
 
   val uiState: StateFlow<MainActivityUiState> = repository
     .userPreferencesFlow
@@ -80,7 +78,5 @@ sealed interface MainActivityUiState {
    *
    * @property userData User settings data.
    */
-  data class Success(
-    val userData: UserSettings,
-  ) : MainActivityUiState
+  data class Success(val userData: UserSettings) : MainActivityUiState
 }

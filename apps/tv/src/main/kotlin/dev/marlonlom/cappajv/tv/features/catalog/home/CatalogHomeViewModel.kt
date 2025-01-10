@@ -18,9 +18,7 @@ import timber.log.Timber
  *
  * @property repository catalog list repository dependency
  */
-class CatalogHomeViewModel(
-  private val repository: CatalogHomeRepository,
-) : ViewModel() {
+class CatalogHomeViewModel(private val repository: CatalogHomeRepository) : ViewModel() {
 
   /** UI state object for view model */
   val uiState = repository.allProducts.stateIn(

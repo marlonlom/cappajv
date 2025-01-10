@@ -16,9 +16,7 @@ import kotlinx.coroutines.flow.map
  *
  * @property localDataSource Local data source.
  */
-class CatalogFavoritesRepository(
-  private val localDataSource: LocalDataSource,
-) {
+class CatalogFavoritesRepository(private val localDataSource: LocalDataSource) {
 
   /** Returns Favorite catalog items list as flow. */
   val favoritesListFlow: Flow<List<CatalogItemTuple>> = localDataSource.getFavorites().map { f ->

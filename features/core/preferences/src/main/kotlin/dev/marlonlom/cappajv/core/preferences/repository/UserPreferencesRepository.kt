@@ -23,9 +23,7 @@ import java.io.IOException
  *
  * @property dataStore Preferences datastore.
  */
-class UserPreferencesRepository(
-  private val dataStore: DataStore<Preferences>,
-) {
+class UserPreferencesRepository(private val dataStore: DataStore<Preferences>) {
 
   /** User preferences information as Flow. */
   val userPreferencesFlow: Flow<UserSettings> = dataStore.data

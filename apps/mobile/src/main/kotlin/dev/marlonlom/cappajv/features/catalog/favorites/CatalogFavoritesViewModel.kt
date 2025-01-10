@@ -15,9 +15,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class CatalogFavoritesViewModel(
-  private val repository: CatalogFavoritesRepository,
-) : ViewModel() {
+class CatalogFavoritesViewModel(private val repository: CatalogFavoritesRepository) : ViewModel() {
 
   private val _favoritesListState = MutableStateFlow<CatalogFavoritesUiState>(Empty)
   val favoritesListState = _favoritesListState.stateIn(

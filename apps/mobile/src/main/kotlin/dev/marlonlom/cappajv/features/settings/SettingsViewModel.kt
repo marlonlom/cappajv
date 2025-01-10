@@ -20,9 +20,7 @@ import kotlinx.coroutines.launch
  *
  * @property repository User preferences repository.
  */
-class SettingsViewModel(
-  private val repository: UserPreferencesRepository,
-) : ViewModel() {
+class SettingsViewModel(private val repository: UserPreferencesRepository) : ViewModel() {
 
   /** User preferences ui state as Flow. */
   val uiState: StateFlow<SettingsUiState> = repository.userPreferencesFlow
@@ -61,11 +59,7 @@ class SettingsViewModel(
  * @property useDarkTheme True/False if using dark theme.
  * @property useDynamicColor True/False if using dynamic colors.
  */
-data class UserEditableSettings(
-  val useDarkTheme: Boolean,
-  val useDynamicColor: Boolean,
-  val isOnboarding: Boolean,
-)
+data class UserEditableSettings(val useDarkTheme: Boolean, val useDynamicColor: Boolean, val isOnboarding: Boolean)
 
 /**
  * Settings ui state sealed interface definition.
@@ -88,7 +82,5 @@ sealed interface SettingsUiState {
    *
    * @property settings User editable settings information.
    */
-  data class Success(
-    val settings: UserEditableSettings,
-  ) : SettingsUiState
+  data class Success(val settings: UserEditableSettings) : SettingsUiState
 }

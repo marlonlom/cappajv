@@ -31,9 +31,7 @@ sealed interface ScaffoldContentType {
    *
    * @property hingeRatio Hinge ratio as percentage number.
    */
-  data class TwoPane(
-    val hingeRatio: Float = 0.5f,
-  ) : ScaffoldContentType
+  data class TwoPane(val hingeRatio: Float = 0.5f) : ScaffoldContentType
 }
 
 /**

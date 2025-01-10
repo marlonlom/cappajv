@@ -16,9 +16,7 @@ import kotlinx.coroutines.flow.flowOf
  *
  * @property list Mutable punctuations list.
  */
-internal class FakeCatalogItemsDao(
-  private val list: MutableList<CatalogItem> = mutableListOf(),
-) : CatalogItemsDao {
+internal class FakeCatalogItemsDao(private val list: MutableList<CatalogItem> = mutableListOf()) : CatalogItemsDao {
 
   override fun getProducts(): Flow<List<CatalogItemTuple>> = flowOf(
     list.map {

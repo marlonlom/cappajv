@@ -22,11 +22,7 @@ import kotlinx.coroutines.flow.combine
  * @property isFavorite True/False if catalog product is marked as favorite.
  * @property points Catalog product points list
  */
-data class CatalogDetail(
-  val product: CatalogItem,
-  val isFavorite: Boolean,
-  val points: List<CatalogPunctuation>,
-)
+data class CatalogDetail(val product: CatalogItem, val isFavorite: Boolean, val points: List<CatalogPunctuation>)
 
 /**
  * Catalog details repository class.
