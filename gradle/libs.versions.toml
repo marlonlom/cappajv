@@ -61,7 +61,7 @@ androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 
 # androidx-compose-tv-implementation
-androidx-tv-foundation = "androidx.tv:tv-foundation:1.0.0-alpha11"
+androidx-tv-foundation = "androidx.tv:tv-foundation:1.0.0-alpha12"
 androidx-tv-material = "androidx.tv:tv-material:1.0.0"
 
 [plugins]
