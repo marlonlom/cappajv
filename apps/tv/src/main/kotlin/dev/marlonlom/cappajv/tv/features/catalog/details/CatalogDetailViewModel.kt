@@ -39,7 +39,7 @@ class CatalogDetailViewModel(
     }.stateIn(
       scope = viewModelScope,
       started = SharingStarted.Eagerly,
-      initialValue = CatalogDetailUiState.NotFound,
+      initialValue = CatalogDetailUiState.Fetching,
     )
 
   /**
@@ -100,6 +100,13 @@ sealed class CatalogDetailUiState {
    * @author marlonlom
    */
   data object NotFound : CatalogDetailUiState()
+
+  /**
+   * Fetching phase for catalog details ui state.
+   *
+   * @author marlonlom
+   */
+  data object Fetching : CatalogDetailUiState()
 
   /**
    * Success phase for catalog details ui state.

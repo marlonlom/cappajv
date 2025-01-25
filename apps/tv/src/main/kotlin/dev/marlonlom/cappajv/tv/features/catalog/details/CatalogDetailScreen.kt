@@ -46,5 +46,9 @@ fun CatalogDetailScreen(
     CatalogDetailUiState.NotFound -> {
       CatalogDetailNotFoundSlot(modifier)
     }
+
+    CatalogDetailUiState.Fetching -> {
+      CatalogDetailLoadingIndicator(modifier)
+    }
   }
 }
