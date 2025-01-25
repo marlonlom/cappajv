@@ -46,7 +46,7 @@ fun CatalogLazyVerticalGrid(
     .fillMaxWidth()
     .tvSafeContentPadding(startWidth)
     .padding(horizontal = 20.dp),
-  columns = GridCells.Adaptive(160.dp),
+  columns = GridCells.Adaptive(124.dp),
   verticalArrangement = Arrangement.spacedBy(20.dp),
   horizontalArrangement = Arrangement.spacedBy(20.dp),
 ) {

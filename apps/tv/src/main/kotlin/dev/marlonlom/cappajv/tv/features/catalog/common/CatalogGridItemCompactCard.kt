@@ -5,6 +5,7 @@
 package dev.marlonlom.cappajv.tv.features.catalog.common
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -55,6 +56,7 @@ fun CatalogGridItemCompactCard(
       modifier = Modifier
         .fillMaxSize()
         .background(Color.White)
+        .aspectRatio(2 / 3f)
         .padding(20.dp)
         .padding(bottom = 40.dp)
         .clip(RoundedCornerShape(8.dp)),
