@@ -89,6 +89,7 @@ internal fun CatalogDetailInfoPointsSlot(points: List<CatalogPunctuation>) = Col
               .padding(bottom = 10.dp),
             text = subtitleText,
             maxLines = 1,
+            style = MaterialTheme.typography.labelSmall,
             textAlign = TextAlign.Center,
             overflow = TextOverflow.Ellipsis,
           )
