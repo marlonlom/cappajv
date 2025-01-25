@@ -75,6 +75,7 @@ internal fun CatalogDetailInfoSlot(
         .padding(vertical = 30.dp),
       textAlign = TextAlign.Start,
       text = foundDetail.product.detail,
+      style = MaterialTheme.typography.bodySmall,
       color = MaterialTheme.colorScheme.onSurface,
     )
 

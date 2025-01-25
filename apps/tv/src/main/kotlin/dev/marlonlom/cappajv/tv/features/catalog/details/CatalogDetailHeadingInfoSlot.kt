@@ -113,6 +113,7 @@ internal fun CatalogDetailHeadingInfoSlot(
         Text(
           text = stringResource(R.string.text_detail_label_like),
           color = MaterialTheme.colorScheme.onPrimaryContainer,
+          style = MaterialTheme.typography.labelSmall,
         )
       }
     }
