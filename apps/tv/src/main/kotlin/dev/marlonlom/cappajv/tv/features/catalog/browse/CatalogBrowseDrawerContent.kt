@@ -56,11 +56,11 @@ internal fun NavigationDrawerScope.CatalogBrowseDrawerContent(
       selected = appState.browseMenuIndex == entry.ordinal,
       onClick = {
         Timber.d("[CatalogBrowseDrawerContent] entry=$entry")
-        appState.changeBrowseMenuIndex(entry.ordinal)
-        if (appState.browseMenuIndex == CatalogBrowseMenuItems.SETTINGS.ordinal) {
+        if (entry.ordinal == CatalogBrowseMenuItems.SETTINGS.ordinal) {
           appState.navigateToSettings()
           return@NavigationDrawerItem
         }
+        appState.changeBrowseMenuIndex(entry.ordinal)
       },
       leadingContent = {
         Icon(
