@@ -70,6 +70,8 @@ internal fun CatalogDetailHeadingInfoSlot(
         .size(124.dp, 160.dp)
         .background(Color.White, RoundedCornerShape(20.dp))
         .aspectRatio(2f / 3F)
+        .padding(4.dp)
+        .padding(horizontal = 1.dp)
         .clip(RoundedCornerShape(20.dp))
         .clipToBounds(),
     )
