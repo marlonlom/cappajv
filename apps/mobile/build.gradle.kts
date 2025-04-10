@@ -89,7 +89,6 @@ dependencies {
   implementation(libs.androidx.navigation.runtime.ktx)
   implementation(libs.androidx.window)
   implementation(libs.coil.compose)
-  implementation(libs.google.guava)
   implementation(libs.google.oss.licenses)
   implementation(libs.jakewharton.timber)
   implementation(libs.koin.androidx.compose)
