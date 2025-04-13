@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <!-- feature: onboarding / welcome -->
+  <string name="text_onboarding_button">Get started</string>
+  <string name="text_onboarding_title_01">Welcome</string>
+  <string name="text_onboarding_detail_01">Explore our exclusive points catalog, each product has its own points value waiting to be discovered.</string>
+  <string name="text_onboarding_title_02">Make it yours!</string>
+  <string name="text_onboarding_detail_02">Our catalog allows you to mark your favorite products as favorites, making your path to redeem points on your favorite coffee or snack easy and seamless.</string>
+  <string name="text_onboarding_title_03">Ready, redeem!</string>
+  <string name="text_onboarding_detail_03">Once you\'ve chosen your favorites, simply check back through the catalog to redeem them every time you visit your nearest Juan Valdez store.</string>
+</resources>

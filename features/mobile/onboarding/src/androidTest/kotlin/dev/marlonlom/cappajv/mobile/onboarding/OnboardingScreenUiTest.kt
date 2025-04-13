@@ -1,8 +1,9 @@
 /*
- * Copyright 2024 Marlonlom
+ * Copyright 2025 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.features.welcome.onboarding
+
+package dev.marlonlom.cappajv.mobile.onboarding
 
 import androidx.compose.ui.test.isDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -18,8 +19,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-internal class DefaultLandscapeOnboardingScreenUiTest {
-
+internal class OnboardingScreenUiTest {
   @get:Rule
   val composeTestRule = createComposeRule()
 
@@ -27,8 +27,43 @@ internal class DefaultLandscapeOnboardingScreenUiTest {
   fun shouldDisplayOnboardingItem1() {
     with(composeTestRule) {
       setContent {
-        DefaultLandscapeOnboardingScreen(onOnboardingFinished = {})
+        OnboardingScreen(onOnboardingFinished = {})
       }
+      onNodeWithText("Welcome").isDisplayed()
+      onNodeWithText(
+        "Explore our exclusive points catalog, each product has its own points value waiting to be discovered.",
+      ).isDisplayed()
+    }
+  }
+
+  @Test
+  fun shouldTransitionToOnboardingItem2() {
+    with(composeTestRule) {
+      setContent {
+        OnboardingScreen(onOnboardingFinished = {})
+      }
+      onNodeWithTag("onboarding_item_0").onParent().performScrollToIndex(1)
+      onNodeWithText("Make it yours!").isDisplayed()
+      onNodeWithText(
+        "Our catalog allows you to mark your favorite products as favorites, " +
+          "making your path to redeem points on your favorite coffee or snack easy and seamless.",
+      ).isDisplayed()
+    }
+  }
+
+  @Test
+  fun shouldTransitionToOnboardingItem2ThenBackToItem1() {
+    with(composeTestRule) {
+      setContent {
+        OnboardingScreen(onOnboardingFinished = {})
+      }
+      onNodeWithTag("onboarding_item_0").onParent().performScrollToIndex(1)
+      onNodeWithText("Make it yours!").isDisplayed()
+      onNodeWithText(
+        "Our catalog allows you to mark your favorite products as favorites, making your path to " +
+          "redeem points on your favorite coffee or snack easy and seamless.",
+      ).isDisplayed()
+      onNodeWithTag("onboarding_item_1").onParent().performScrollToIndex(0)
       onNodeWithText("Welcome").isDisplayed()
       onNodeWithText(
         "Explore our exclusive points catalog, each product has its own points value " +
@@ -38,47 +73,11 @@ internal class DefaultLandscapeOnboardingScreenUiTest {
   }
 
   @Test
-  fun shouldTransitionToOnboardingItem2() {
-    with(composeTestRule) {
-      setContent {
-        DefaultLandscapeOnboardingScreen(onOnboardingFinished = {})
-      }
-      onNodeWithTag("onboarding_item_0").onParent().performScrollToIndex(1)
-      onNodeWithText("Make it yours!").isDisplayed()
-      onNodeWithText(
-        "Our catalog allows you to mark your favorite products as favorites, making your " +
-          "path to redeem points on your favorite coffee or snack easy and seamless.",
-      ).isDisplayed()
-    }
-  }
-
-  @Test
-  fun shouldTransitionToOnboardingItem2ThenBackToItem1() {
-    with(composeTestRule) {
-      setContent {
-        DefaultLandscapeOnboardingScreen(onOnboardingFinished = {})
-      }
-      onNodeWithTag("onboarding_item_0").onParent().performScrollToIndex(1)
-      onNodeWithText("Make it yours!").isDisplayed()
-      onNodeWithText(
-        "Our catalog allows you to mark your favorite products as favorites, making your path " +
-          "to redeem points on your favorite coffee or snack easy and seamless.",
-      ).isDisplayed()
-      onNodeWithTag("onboarding_item_1").onParent().performScrollToIndex(0)
-      onNodeWithText("Welcome").isDisplayed()
-      onNodeWithText(
-        "Explore our exclusive points catalog, each product has its own points value waiting " +
-          "to be discovered.",
-      ).isDisplayed()
-    }
-  }
-
-  @Test
   fun shouldTransitionToOnboardingItem3AndClickButton() {
     with(composeTestRule) {
       var clicked = false
       setContent {
-        DefaultLandscapeOnboardingScreen(onOnboardingFinished = {
+        OnboardingScreen(onOnboardingFinished = {
           clicked = true
         })
       }

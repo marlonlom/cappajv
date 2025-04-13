@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <!-- feature: onboarding / welcome -->
+  <string name="text_onboarding_button">Empezar</string>
+  <string name="text_onboarding_title_01">Bienvenido</string>
+  <string name="text_onboarding_detail_01">Explora nuestro catálogo exclusivo de puntos, cada producto tiene su propio valor en puntos que espera ser descubierto.</string>
+  <string name="text_onboarding_title_02">¡Hazlo tuyo!</string>
+  <string name="text_onboarding_detail_02">Nuestro catálogo te permite marcar tus productos preferidos como favoritos, así,  tu camino para canjear puntos en tu café o refrigerio favorito se vuelve fácil y sin problemas.</string>
+  <string name="text_onboarding_title_03">¡Listo, canjea!</string>
+  <string name="text_onboarding_detail_03">Una vez que hayas elegido tus favoritos, simplemente vuelve a consultar el catálogo para canjearlos cada vez que visites la tienda Juan Valdez más cercana.</string>
+</resources>

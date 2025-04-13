@@ -1,29 +1,31 @@
 /*
- * Copyright 2024 Marlonlom
+ * Copyright 2025 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.features.welcome.onboarding
+
+package dev.marlonlom.cappajv.mobile.onboarding.component
 
 import androidx.compose.ui.test.isDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import dev.marlonlom.cappajv.R
+import dev.marlonlom.cappajv.mobile.onboarding.R
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-internal class DefaultOnboardingItemUiTest {
+internal class OnboardingItemUiTest {
 
   @get:Rule
   val composeTestRule = createComposeRule()
 
   @Test
-  fun shouldDisplayOnboardingItem01InLandscape() {
+  fun shouldDisplayOnboardingItem01() {
     with(composeTestRule) {
       setContent {
-        DefaultOnboardingItem(
+        OnboardingItem(
+          testTag = "onboarding_item_0",
           item = Triple(
             R.drawable.img_onboarding_01,
             R.string.text_onboarding_title_01,
@@ -41,10 +43,11 @@ internal class DefaultOnboardingItemUiTest {
   }
 
   @Test
-  fun shouldDisplayOnboardingItem02InLandscape() {
+  fun shouldDisplayOnboardingItem02() {
     with(composeTestRule) {
       setContent {
-        DefaultOnboardingItem(
+        OnboardingItem(
+          testTag = "onboarding_item_1",
           item = Triple(
             R.drawable.img_onboarding_02,
             R.string.text_onboarding_title_02,
@@ -62,10 +65,11 @@ internal class DefaultOnboardingItemUiTest {
   }
 
   @Test
-  fun shouldDisplayOnboardingItem03InLandscape() {
+  fun shouldDisplayOnboardingItem03() {
     with(composeTestRule) {
       setContent {
-        DefaultOnboardingItem(
+        OnboardingItem(
+          testTag = "onboarding_item_2",
           item = Triple(
             R.drawable.img_onboarding_03,
             R.string.text_onboarding_title_03,
