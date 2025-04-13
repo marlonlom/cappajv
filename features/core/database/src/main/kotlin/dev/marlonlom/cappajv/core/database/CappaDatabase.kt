@@ -82,7 +82,7 @@ abstract class CappaDatabase : RoomDatabase() {
       context = context,
       klass = CappaDatabase::class.java,
       name = DATABASE_NAME,
-    ).fallbackToDestructiveMigration()
+    ).fallbackToDestructiveMigration(false)
       .build()
   }
 }
