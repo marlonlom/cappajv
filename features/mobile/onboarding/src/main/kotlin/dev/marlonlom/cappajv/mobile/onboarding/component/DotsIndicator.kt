@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
@@ -31,6 +32,7 @@ import dev.marlonlom.cappajv.mobile.onboarding.model.DotIndicatorConfig
  */
 @Composable
 internal fun DotsIndicator(indicatorConfig: DotIndicatorConfig) = LazyRow(
+  verticalAlignment = Alignment.CenterVertically,
   modifier = Modifier
     .background(MaterialTheme.colorScheme.surface)
     .wrapContentWidth()
