@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.mobile.onboarding.component
 
 import androidx.compose.material3.MaterialTheme
@@ -31,7 +30,7 @@ internal class DotsIndicatorUiTest {
             selectedIndex = 1,
             selectedColor = MaterialTheme.colorScheme.primary,
             unSelectedColor = MaterialTheme.colorScheme.inversePrimary,
-          )
+          ),
         )
       }
 
