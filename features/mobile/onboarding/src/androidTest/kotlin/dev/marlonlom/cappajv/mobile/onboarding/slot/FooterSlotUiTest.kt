@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.mobile.onboarding.slot
 
 import androidx.compose.material3.MaterialTheme
@@ -35,7 +34,7 @@ internal class FooterSlotUiTest {
             unSelectedColor = MaterialTheme.colorScheme.inversePrimary,
           ),
           showOnboardedButton = true,
-          onButtonClicked = {}
+          onButtonClicked = {},
         )
       }
 

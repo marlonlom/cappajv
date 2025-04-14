@@ -45,7 +45,6 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 internal fun OnboardingItem(item: Triple<Int, Int, Int>, testTag: String) {
-
   val isLandScape = LocalConfiguration.current.let {
     (it.orientation == Configuration.ORIENTATION_LANDSCAPE).and(it.screenHeightDp <= 480)
   }

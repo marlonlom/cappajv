@@ -65,7 +65,7 @@ fun OnboardingScreen(onOnboardingFinished: () -> Unit) {
     ) { pos ->
       Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
       ) {
         OnboardingItem(
           item = OnboardingItemsData.list[pos],
