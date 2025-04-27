@@ -5,7 +5,7 @@
   SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-  <string name="text_favorite">Favoritos</string>
+  <string name="text_favorite">Mis Favoritos</string>
   <string name="text_empty_title">¡Aún no hay artículos favoritos!</string>
   <string name="text_empty_detail">Toque el ícono del corazón en cualquier artículo del catálogo para agregarlo a sus favoritos.</string>
   <!-- alert dialog: undo favorite -->
