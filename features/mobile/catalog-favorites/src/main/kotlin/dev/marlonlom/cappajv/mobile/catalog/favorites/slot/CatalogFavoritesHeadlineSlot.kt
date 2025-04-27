@@ -22,30 +22,36 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.cappajv.mobile.catalog.favorites.R
 
+/**
+ * Provides a slot for displaying a headline on the catalog favorites screen.
+ *
+ * This internal composable function serves as a designated area where
+ * a headline composable can be placed within the catalog favorites screen layout.
+ *
+ * @author marlonlom
+ */
 @Composable
-internal fun CatalogFavoritesHeadlineSlot(modifier: Modifier = Modifier) {
-  Row(
+internal fun CatalogFavoritesHeadlineSlot() = Row(
+  modifier = Modifier
+    .fillMaxWidth()
+    .background(
+      color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f),
+      shape = MaterialTheme.shapes.large,
+    )
+    .padding(vertical = 5.dp)
+    .heightIn(min = 48.dp),
+  verticalAlignment = Alignment.CenterVertically,
+  horizontalArrangement = Arrangement.spacedBy(10.dp),
+) {
+  Image(
+    painter = painterResource(R.drawable.img_liked_coffee),
+    contentDescription = null,
     modifier = Modifier
-      .fillMaxWidth()
-      .background(
-        color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f),
-        shape = MaterialTheme.shapes.large,
-      )
-      .padding(vertical = 5.dp)
-      .heightIn(min = 48.dp),
-    verticalAlignment = Alignment.CenterVertically,
-    horizontalArrangement = Arrangement.spacedBy(10.dp),
-  ) {
-    Image(
-      painter = painterResource(R.drawable.img_coffee),
-      contentDescription = null,
-      modifier = Modifier
-        .size(36.dp, 36.dp)
-        .padding(start = 5.dp),
-    )
-    Text(
-      text = stringResource(R.string.text_favorite),
-      color = MaterialTheme.colorScheme.onSecondaryContainer,
-    )
-  }
+      .size(36.dp, 36.dp)
+      .padding(start = 5.dp),
+  )
+  Text(
+    text = stringResource(R.string.text_favorite),
+    color = MaterialTheme.colorScheme.onSecondaryContainer,
+  )
 }
