@@ -18,33 +18,40 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import dev.marlonlom.cappajv.mobile.catalog.home.R
 
+/**
+ * Provides a slot for displaying a headline on the catalog home screen.
+ *
+ * This internal composable function serves as a designated area where
+ * a headline composable can be placed within the catalog home screen layout.
+ *
+ * @author marlonlom
+ */
 @Composable
-internal fun CatalogHomeHeadlineSlot() {
-  Row(
+internal fun CatalogHomeHeadlineSlot() = Row(
+  modifier = Modifier
+    .fillMaxWidth()
+    .background(
+      color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f),
+      shape = MaterialTheme.shapes.large,
+    )
+    .padding(vertical = 5.dp)
+    .heightIn(min = 48.dp),
+  verticalAlignment = Alignment.CenterVertically,
+  horizontalArrangement = Arrangement.spacedBy(10.dp),
+) {
+  Image(
+    painter = painterResource(R.drawable.img_coffee),
+    contentDescription = null,
     modifier = Modifier
-      .fillMaxWidth()
-      .background(
-        color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f),
-        shape = MaterialTheme.shapes.large,
-      )
-      .padding(vertical = 5.dp)
-      .heightIn(min = 48.dp),
-    verticalAlignment = Alignment.CenterVertically,
-    horizontalArrangement = Arrangement.spacedBy(10.dp),
-  ) {
-    Image(
-      painter = painterResource(R.drawable.img_coffee),
-      contentDescription = null,
-      modifier = Modifier
-        .size(36.dp, 36.dp)
-        .padding(start = 5.dp),
-    )
-    Text(
-      text = "Catálogo de puntos en tiendas",
-      color = MaterialTheme.colorScheme.onSecondaryContainer,
-    )
-  }
+      .size(36.dp, 36.dp)
+      .padding(start = 5.dp),
+  )
+  Text(
+    text = stringResource(R.string.text_catalog_home_title),
+    color = MaterialTheme.colorScheme.onSecondaryContainer,
+  )
 }
