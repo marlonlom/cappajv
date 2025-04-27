@@ -10,7 +10,9 @@ import dev.marlonlom.cappajv.configs.Config
 import dev.marlonlom.cappajv.extensions.configureAndroidKotlin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withType
 
 /**
  * Android library convention plugin class.
@@ -42,6 +44,9 @@ class MobileLibConventionPlugin : Plugin<Project> {
             )
           }
         }
+      }
+      tasks.withType<Test> {
+        jvmArgs("-XX:+EnableDynamicAgentLoading")
       }
     }
   }

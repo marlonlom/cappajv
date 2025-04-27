@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
   `kotlin-dsl`
 }
@@ -12,6 +14,13 @@ group = "dev.marlonlom.cappajv.buildlogic"
 java {
   sourceCompatibility = JavaVersion.VERSION_17
   targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+  @Suppress("DEPRECATION")
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_17.toString()
+  }
 }
 
 dependencies {
