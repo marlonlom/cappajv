@@ -3,10 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-  id("java-library")
-  alias(libs.plugins.kotlin.jvm)
+  id("cappajv.jvm.lib")
+  id("cappajv.spotless")
   id("kotlinx-serialization")
 }
 
