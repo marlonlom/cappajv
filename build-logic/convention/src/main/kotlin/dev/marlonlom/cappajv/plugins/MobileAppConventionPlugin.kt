@@ -11,7 +11,9 @@ import dev.marlonlom.cappajv.extensions.configureAndroidKotlin
 import dev.marlonlom.cappajv.extensions.configureBuildTypes
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withType
 
 /**
  * Android mobile app convention plugin class.
@@ -37,6 +39,9 @@ class MobileAppConventionPlugin : Plugin<Project> {
         }
         configureAndroidKotlin(this)
         configureBuildTypes(this)
+      }
+      tasks.withType<Test> {
+        jvmArgs("-XX:+EnableDynamicAgentLoading")
       }
     }
   }
