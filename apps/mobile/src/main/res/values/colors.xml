@@ -4,4 +4,6 @@
   Copyright 2024 Marlonlom
   SPDX-License-Identifier: Apache-2.0
 -->
-<resources></resources>
+<resources>
+  <color name="ic_launcher_background">#FFFFFBFF</color>
+</resources>
