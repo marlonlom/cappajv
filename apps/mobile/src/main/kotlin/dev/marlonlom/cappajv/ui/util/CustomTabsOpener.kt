@@ -6,9 +6,9 @@ package dev.marlonlom.cappajv.ui.util
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.net.toUri
 
 /**
  * Chrome custom tabs opener single object utility.
@@ -32,6 +32,6 @@ object CustomTabsOpener {
       ).build()
 
     builder.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    builder.launchUrl(context, Uri.parse(url))
+    builder.launchUrl(context, url.toUri())
   }
 }
