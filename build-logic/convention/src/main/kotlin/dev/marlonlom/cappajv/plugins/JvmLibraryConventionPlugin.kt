@@ -24,6 +24,7 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
     with(project) {
       with(pluginManager) {
         apply("org.jetbrains.kotlin.jvm")
+        apply("java-library")
       }
       tasks.withType<KotlinCompile>().configureEach {
         @Suppress("DEPRECATION")
