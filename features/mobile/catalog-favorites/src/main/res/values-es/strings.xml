@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string name="text_favorite">Favoritos</string>
+  <string name="text_empty_title">¡Aún no hay artículos favoritos!</string>
+  <string name="text_empty_detail">Toque el ícono del corazón en cualquier artículo del catálogo para agregarlo a sus favoritos.</string>
+  <!-- alert dialog: undo favorite -->
+  <string name="text_undo_favorite_title">Quitar de favoritos</string>
+  <string name="text_undo_favorite_detail">Estás eliminando \"%1$s\" de tus favoritos.\nYa no verás este elemento en tu lista de favoritos.</string>
+  <string name="text_undo_favorite_dismiss">Cancelar</string>
+  <string name="text_undo_favorite_confirm">Continuar</string>
+</resources>
