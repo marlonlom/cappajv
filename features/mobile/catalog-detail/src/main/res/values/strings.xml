@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string name="text_store_url" translatable="false">https://www.tiendajuanvaldez.com/</string>
+  <string name="text_navigate_back_icon">Icon for back navigation</string>
+  <string name="text_description">Description</string>
+  <string name="text_points">Points</string>
+  <string name="text_like">Like</string>
+  <string name="text_shop">Shop</string>
+  <string name="text_share">Share</string>
+  <string name="text_detail_sharing">%1$s! Pay it with your Amigo Juan Valdez points. Try it, you\'ll love it!\n\n#AmigosJuanValdez #CompartirEsVivir \n\n</string>
+</resources>

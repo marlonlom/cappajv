@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string name="text_navigate_back_icon">Icono para navegación hacia atrás</string>
+  <string name="text_description">Descripción</string>
+  <string name="text_points">Puntos</string>
+  <string name="text_like">Me gusta</string>
+  <string name="text_shop">Comprar</string>
+  <string name="text_share">Compartir</string>
+  <string name="text_detail_sharing">%1$s! Pagalo con tus puntos Amigo Juan Valdez. ¡Pruébalo, te encantará!\n\n#AmigosJuanValdez #CompartirEsVivir \n\n</string>
+</resources>
