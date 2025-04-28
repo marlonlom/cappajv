@@ -40,6 +40,10 @@ gradlePlugin {
       id = "cappajv.android.app.compose.mobile"
       implementationClass = "dev.marlonlom.cappajv.plugins.ComposeMobileAppConventionPlugin"
     }
+    register("androidCoil") {
+      id = "cappajv.android.coil"
+      implementationClass = "dev.marlonlom.cappajv.plugins.AndroidCoilConventionPlugin"
+    }
     register("androidKoin") {
       id = "cappajv.android.koin"
       implementationClass = "dev.marlonlom.cappajv.plugins.AndroidKoinConventionPlugin"
