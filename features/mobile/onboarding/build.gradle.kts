@@ -6,6 +6,7 @@
 plugins {
   id("cappajv.android.library")
   id("cappajv.android.lib.compose")
+  id("cappajv.android.coil")
   id("cappajv.spotless")
 }
 
@@ -15,6 +16,4 @@ android {
 
 dependencies {
   implementation(project(":features:mobile:designsystem"))
-
-  implementation(libs.coil.compose)
 }
