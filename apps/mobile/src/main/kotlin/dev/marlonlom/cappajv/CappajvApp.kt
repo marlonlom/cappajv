@@ -5,15 +5,13 @@
 package dev.marlonlom.cappajv
 
 import android.app.Application
-import android.content.Context
-import androidx.datastore.preferences.preferencesDataStore
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.request.CachePolicy
 import coil.util.DebugLogger
-import dev.marlonlom.cappajv.di.appModule
+import dev.marlonlom.cappajv.di.mobileAppModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -21,14 +19,7 @@ import org.koin.core.logger.Level
 import timber.log.Timber
 
 /**
- * Preferences datastore extension for application context.
- *
- * @author marlonlom
- */
-val Context.dataStore by preferencesDataStore("cappajv-preferences")
-
-/**
- * Cappajv Application class.
+ * Cappajv mobile application class.
  *
  * @author marlonlom
  */
@@ -71,7 +62,7 @@ class CappajvApp :
     startKoin {
       androidContext(this@CappajvApp)
       androidLogger(Level.DEBUG)
-      modules(appModule)
+      modules(mobileAppModule)
     }
   }
 }
