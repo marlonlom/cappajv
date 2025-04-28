@@ -44,6 +44,7 @@ mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:5.4.0"
 androidx-test-ext-junit = "androidx.test.ext:junit:1.2.1"
 androidx-test-espresso-core = "androidx.test.espresso:espresso-core:3.6.1"
 androidx-arch-core-testing = "androidx.arch.core:core-testing:2.2.0"
+coil-test = "io.coil-kt:coil-test:2.7.0"
 google-truth = "com.google.truth:truth:1.4.4"
 
 # androidx-compose-implementation-with-bom
