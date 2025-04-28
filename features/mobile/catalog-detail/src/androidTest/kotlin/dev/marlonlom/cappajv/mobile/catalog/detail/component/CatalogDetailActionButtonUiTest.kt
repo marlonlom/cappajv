@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.mobile.catalog.detail.component
 
 import androidx.compose.material.icons.Icons
@@ -38,7 +37,7 @@ internal class CatalogDetailActionButtonUiTest {
           buttonTestTag = "detail_shop_btn",
           onButtonClicked = {
             buttonClicked = true
-          }
+          },
         )
       }
 

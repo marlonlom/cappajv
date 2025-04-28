@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.mobile.catalog.detail.slot
 
 import androidx.compose.material.icons.Icons
@@ -36,7 +35,7 @@ internal class CatalogDetailActionButtonsSlotUiTest {
           likeButtonIcon = if (buttonClicked) Icons.TwoTone.Favorite else Icons.TwoTone.FavoriteBorder,
           onLikeButtonClicked = { buttonClicked = true },
           onShopButtonClicked = {},
-          onShareButtonClicked = {}
+          onShareButtonClicked = {},
         )
       }
 
@@ -56,7 +55,7 @@ internal class CatalogDetailActionButtonsSlotUiTest {
           likeButtonIcon = Icons.TwoTone.FavoriteBorder,
           onLikeButtonClicked = { },
           onShopButtonClicked = {},
-          onShareButtonClicked = { buttonClicked = true }
+          onShareButtonClicked = { buttonClicked = true },
         )
       }
 
@@ -76,7 +75,7 @@ internal class CatalogDetailActionButtonsSlotUiTest {
           likeButtonIcon = Icons.TwoTone.Favorite,
           onLikeButtonClicked = { },
           onShopButtonClicked = { buttonClicked = true },
-          onShareButtonClicked = {}
+          onShareButtonClicked = {},
         )
       }
 
