@@ -4,6 +4,7 @@
  */
 package dev.marlonlom.cappajv.mobile.catalog.detail.component
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -25,9 +26,13 @@ import dev.marlonlom.cappajv.mobile.catalog.detail.R
  * @author marlonlom
  *
  * @param catalogItem The [CatalogItem] containing the information to display in the header.
+ * @param contentPadding Padding values to apply around the content of the screen.
  */
 @Composable
-internal fun CatalogDetailDescriptionText(catalogItem: CatalogItem) {
+internal fun CatalogDetailDescriptionText(
+  catalogItem: CatalogItem,
+  contentPadding: PaddingValues = PaddingValues(0.dp),
+) {
   buildAnnotatedString {
     withStyle(
       SpanStyle(
@@ -50,6 +55,7 @@ internal fun CatalogDetailDescriptionText(catalogItem: CatalogItem) {
     Text(
       modifier = Modifier
         .fillMaxWidth()
+        .padding(contentPadding)
         .padding(vertical = 20.dp),
       color = MaterialTheme.colorScheme.secondary,
       text = it,

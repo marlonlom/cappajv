@@ -40,6 +40,7 @@ internal class CatalogDetailDescriptionTextUiTest {
       setContent {
         CatalogDetailDescriptionText(
           catalogItem = catalogItem,
+          contentPadding = contentPadding,
         )
       }
 

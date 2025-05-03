@@ -4,6 +4,7 @@
  */
 package dev.marlonlom.cappajv.mobile.catalog.detail
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Favorite
@@ -13,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.cappajv.mobile.catalog.detail.component.CatalogDetailDescriptionText
 import dev.marlonlom.cappajv.mobile.catalog.detail.domain.CatalogDetailUiState
@@ -37,6 +40,8 @@ import org.koin.androidx.compose.koinViewModel
  * It receives the clicked URL as a parameter.
  * @param onShareMessageSent A callback function invoked after a share message has been sent.
  * It receives the shared message content as a parameter.
+ * @param contentPadding Padding values to apply around the content of the screen.
+ * Defaults to no padding.
  * @param viewModel The [CatalogDetailViewModel] used to manage the data and business logic
  * for this screen.
  */
@@ -48,6 +53,7 @@ fun CatalogDetailScreen(
   onNavigateBack: () -> Unit,
   onShopLinkUrlClicked: (String) -> Unit,
   onShareMessageSent: (String) -> Unit,
+  contentPadding: PaddingValues = PaddingValues(0.dp),
   viewModel: CatalogDetailViewModel = koinViewModel(),
 ) {
   val context = LocalContext.current
@@ -73,6 +79,7 @@ fun CatalogDetailScreen(
         item {
           CatalogDetailHeadlineSlot(
             detail = item.product,
+            contentPadding = contentPadding,
           )
         }
 
@@ -91,18 +98,21 @@ fun CatalogDetailScreen(
             onShareButtonClicked = {
               onShareMessageSent(context.getString(R.string.text_detail_sharing, item.product.title))
             },
+            contentPadding = contentPadding,
           )
         }
 
         item {
           CatalogDetailDescriptionText(
             item.product,
+            contentPadding = contentPadding,
           )
         }
 
         item {
           CatalogDetailPunctuationsSlot(
             punctuations = item.points,
+            contentPadding = contentPadding,
           )
         }
       }
@@ -112,6 +122,7 @@ fun CatalogDetailScreen(
           Text(
             text = "Select a catalog item from the list.",
             fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
           )
         }
       }

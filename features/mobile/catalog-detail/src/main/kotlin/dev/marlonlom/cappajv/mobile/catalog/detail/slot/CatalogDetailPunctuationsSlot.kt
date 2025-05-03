@@ -4,8 +4,10 @@
  */
 package dev.marlonlom.cappajv.mobile.catalog.detail.slot
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,12 +29,18 @@ import dev.marlonlom.cappajv.mobile.catalog.detail.component.CatalogDetailPunctu
  * @author marlonlom
  *
  * @param punctuations A list of [CatalogPunctuation] items to be displayed.
+ * @param contentPadding Padding values to apply around the content of the screen.
  */
 @Composable
-internal fun CatalogDetailPunctuationsSlot(punctuations: List<CatalogPunctuation>) {
+internal fun CatalogDetailPunctuationsSlot(
+  punctuations: List<CatalogPunctuation>,
+  contentPadding: PaddingValues = PaddingValues(0.dp),
+) {
+  Log.d("CatalogDetailPunctuationsSlot", "contentPadding=$contentPadding")
   Text(
     modifier = Modifier
       .fillMaxWidth()
+      .padding(contentPadding)
       .padding(top = 20.dp, bottom = 10.dp),
     color = MaterialTheme.colorScheme.secondary,
     fontWeight = FontWeight.Bold,
@@ -42,6 +50,8 @@ internal fun CatalogDetailPunctuationsSlot(punctuations: List<CatalogPunctuation
   )
 
   FlowRow(
+    modifier = Modifier
+      .padding(contentPadding),
     horizontalArrangement = Arrangement.spacedBy(20.dp),
     verticalArrangement = Arrangement.spacedBy(10.dp),
   ) {

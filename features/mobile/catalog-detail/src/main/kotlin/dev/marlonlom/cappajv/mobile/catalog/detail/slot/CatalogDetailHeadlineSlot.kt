@@ -8,6 +8,7 @@ import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -30,12 +31,14 @@ import dev.marlonlom.cappajv.mobile.catalog.detail.component.CatalogDetailPhoto
  *
  * @param detail The [CatalogItem] that contains the headline or title to be displayed.
  * @param imageLoader The [ImageLoader] used to fetch and display the image.
+ * @param contentPadding Padding values to apply around the content of the screen.
  */
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 internal fun CatalogDetailHeadlineSlot(
   detail: CatalogItem,
   imageLoader: ImageLoader = LocalContext.current.imageLoader,
+  contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
   val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
   val isCompactHeight = LocalConfiguration.current.screenHeightDp < 480
@@ -43,7 +46,8 @@ internal fun CatalogDetailHeadlineSlot(
     Row(
       modifier = Modifier
         .fillMaxWidth()
-        .padding(vertical = 10.dp),
+        .padding(vertical = 10.dp)
+        .padding(contentPadding),
       horizontalArrangement = Arrangement.spacedBy(10.dp),
       verticalAlignment = Alignment.Bottom,
     ) {
@@ -54,6 +58,7 @@ internal fun CatalogDetailHeadlineSlot(
     Column(
       modifier = Modifier
         .fillMaxWidth()
+        .padding(contentPadding)
         .padding(vertical = 10.dp),
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
