@@ -31,6 +31,7 @@ internal class CatalogDetailPunctuationsSlotUiTest {
             CatalogPunctuation(11L, 1L, "Small", 1200),
             CatalogPunctuation(12L, 1L, "Medium", 1500),
           ),
+          contentPadding = contentPadding,
         )
       }
 

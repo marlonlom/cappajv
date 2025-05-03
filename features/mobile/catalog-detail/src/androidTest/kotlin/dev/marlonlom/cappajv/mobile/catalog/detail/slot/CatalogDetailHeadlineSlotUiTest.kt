@@ -65,6 +65,7 @@ internal class CatalogDetailHeadlineSlotUiTest {
         CatalogDetailHeadlineSlot(
           catalogItem,
           testImageLoader,
+          contentPadding,
         )
       }
 

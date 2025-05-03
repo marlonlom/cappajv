@@ -36,6 +36,7 @@ internal class CatalogDetailActionButtonsSlotUiTest {
           onLikeButtonClicked = { buttonClicked = true },
           onShopButtonClicked = {},
           onShareButtonClicked = {},
+          contentPadding = contentPadding,
         )
       }
 
@@ -56,6 +57,7 @@ internal class CatalogDetailActionButtonsSlotUiTest {
           onLikeButtonClicked = { },
           onShopButtonClicked = {},
           onShareButtonClicked = { buttonClicked = true },
+          contentPadding = contentPadding,
         )
       }
 
@@ -76,6 +78,7 @@ internal class CatalogDetailActionButtonsSlotUiTest {
           onLikeButtonClicked = { },
           onShopButtonClicked = { buttonClicked = true },
           onShareButtonClicked = {},
+          contentPadding = contentPadding,
         )
       }
 

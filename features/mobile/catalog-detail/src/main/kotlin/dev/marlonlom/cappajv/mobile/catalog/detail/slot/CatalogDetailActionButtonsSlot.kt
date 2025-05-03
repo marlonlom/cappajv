@@ -8,8 +8,10 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Share
@@ -32,6 +34,7 @@ import dev.marlonlom.cappajv.mobile.catalog.detail.component.CatalogDetailAction
  * @param onShopButtonClicked Lambda function invoked when the Shop button is clicked.
  * @param onShareButtonClicked Lambda function invoked when the Share button is clicked.
  * @param scrollState The [ScrollState] controlling the scroll behavior of the content.
+ * @param contentPadding Padding values to apply around the content of the screen.
  */
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
@@ -41,9 +44,11 @@ internal fun CatalogDetailActionButtonsSlot(
   onShopButtonClicked: () -> Unit,
   onShareButtonClicked: () -> Unit,
   scrollState: ScrollState = rememberScrollState(),
+  contentPadding: PaddingValues = PaddingValues(0.dp),
 ) = Row(
   modifier = Modifier
     .fillMaxWidth()
+    .padding(contentPadding)
     .horizontalScroll(scrollState),
   verticalAlignment = Alignment.CenterVertically,
   horizontalArrangement = Arrangement.spacedBy(8.dp),
