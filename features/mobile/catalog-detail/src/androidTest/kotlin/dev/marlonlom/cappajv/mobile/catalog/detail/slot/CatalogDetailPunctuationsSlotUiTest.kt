@@ -4,9 +4,11 @@
  */
 package dev.marlonlom.cappajv.mobile.catalog.detail.slot
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.marlonlom.cappajv.core.database.entities.CatalogPunctuation
 import org.junit.FixMethodOrder
@@ -21,6 +23,8 @@ internal class CatalogDetailPunctuationsSlotUiTest {
 
   @get:Rule
   val composeTestRule = createComposeRule()
+
+  private val contentPadding = PaddingValues(0.dp)
 
   @Test
   fun shouldDisplaySlotWithPunctuations() {

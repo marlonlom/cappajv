@@ -4,6 +4,7 @@
  */
 package dev.marlonlom.cappajv.mobile.catalog.detail.slot
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Favorite
 import androidx.compose.material.icons.twotone.FavoriteBorder
@@ -11,6 +12,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import org.junit.FixMethodOrder
@@ -25,6 +27,8 @@ internal class CatalogDetailActionButtonsSlotUiTest {
 
   @get:Rule
   val composeTestRule = createComposeRule()
+
+  private val contentPadding = PaddingValues(0.dp)
 
   @Test
   fun shouldDisplayButtonsRowThenClickLikeButton() {

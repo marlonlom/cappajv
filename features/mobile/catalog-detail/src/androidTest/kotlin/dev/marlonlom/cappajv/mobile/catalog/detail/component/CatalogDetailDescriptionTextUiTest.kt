@@ -4,9 +4,11 @@
  */
 package dev.marlonlom.cappajv.mobile.catalog.detail.component
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.marlonlom.cappajv.core.database.entities.CatalogItem
 import org.junit.FixMethodOrder
@@ -40,7 +42,7 @@ internal class CatalogDetailDescriptionTextUiTest {
       setContent {
         CatalogDetailDescriptionText(
           catalogItem = catalogItem,
-          contentPadding = contentPadding,
+          contentPadding = PaddingValues(0.dp),
         )
       }
 
