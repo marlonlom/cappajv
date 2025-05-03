@@ -5,12 +5,14 @@
 package dev.marlonlom.cappajv.mobile.catalog.detail.slot
 
 import android.graphics.drawable.ColorDrawable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.unit.dp
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import coil.ImageLoader
@@ -65,7 +67,7 @@ internal class CatalogDetailHeadlineSlotUiTest {
         CatalogDetailHeadlineSlot(
           catalogItem,
           testImageLoader,
-          contentPadding,
+          PaddingValues(0.dp),
         )
       }
 
