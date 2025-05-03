@@ -23,9 +23,11 @@ import dev.marlonlom.cappajv.mobile.catalog.favorites.R
  *
  * @author marlonlom
  *
- * @param shouldShowDialog State controlling the visibility of the dialog.
- * @param onConfirm Callback triggered when the user confirms the removal.
- * @param onDismiss Callback triggered when the dialog is dismissed without confirming.
+ * @param shouldShowDialog A mutable state that controls the visibility of the dialog.
+ * When set to `true`, the dialog is shown. Setting it to `false` hides it.
+ * @param catalogItem The [CatalogItemTuple] representing the item to be removed from favorites.
+ * @param onConfirm Callback invoked when the user confirms the favorite removal action.
+ * @param onDismiss Callback invoked when the dialog is dismissed without confirming.
  */
 @Composable
 internal fun UnFavoriteCatalogItemAlert(
