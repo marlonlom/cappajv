@@ -39,6 +39,4 @@ dependencies {
   implementation(libs.androidx.lifecycle.runtime.compose)
   implementation(libs.google.oss.licenses)
   implementation(libs.jakewharton.timber)
-  implementation(libs.koin.androidx.compose)
-  implementation(libs.koin.androidx.compose.navigation)
 }
