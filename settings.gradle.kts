@@ -32,7 +32,10 @@ include(
   ":features:mobile:onboarding",
   ":features:mobile:settings",
 )
-include(":apps:tv")
+include(
+  ":apps:tv",
+  ":features:tv:designsystem",
+)
 include(
   ":features:domain:catalog-detail",
   ":features:domain:catalog-favorites",
