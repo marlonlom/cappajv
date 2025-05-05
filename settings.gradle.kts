@@ -25,6 +25,7 @@ dependencyResolutionManagement {
 rootProject.name = "Cappajv"
 include(
   ":apps:mobile",
+  ":features:domain:catalog-home",
   ":features:mobile:catalog-detail",
   ":features:mobile:catalog-favorites",
   ":features:mobile:catalog-home",
