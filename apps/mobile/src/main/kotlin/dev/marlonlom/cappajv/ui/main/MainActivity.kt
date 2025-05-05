@@ -27,7 +27,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class MainActivity : ComponentActivity() {
 
-  private val mainActivityViewModel: MainActivityViewModel by viewModel()
+  private val viewModel: MainActivityViewModel by viewModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
     lifecycleScope.launch {
       lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-        mainActivityViewModel.uiState.onEach { mainActivityUiState = it }.collect()
+        viewModel.uiState.onEach { mainActivityUiState = it }.collect()
       }
     }
 
@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
     setContent {
       MainContent(
         mainActivityUiState = mainActivityUiState,
-        onOnboardingComplete = mainActivityViewModel::setOnboardingComplete,
+        onOnboardingComplete = viewModel::setOnboardingComplete,
       )
     }
   }
