@@ -23,23 +23,22 @@ import org.koin.compose.KoinContext
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun MainContent(uiState: MainActivityUiState, onOnboardingComplete: () -> Unit) =
-  CappajvTheme(
-      darkTheme = uiState.shouldUseDarkTheme(),
-      dynamicColor = uiState.shouldUseDynamicColor(),
-      colorContrast = uiState.shouldUseColorContrast(),
-    ) {
-      KoinContext {
-        when (uiState) {
-          MainActivityUiState.Loading -> Unit
+internal fun MainContent(uiState: MainActivityUiState, onOnboardingComplete: () -> Unit) = CappajvTheme(
+  darkTheme = uiState.shouldUseDarkTheme(),
+  dynamicColor = uiState.shouldUseDynamicColor(),
+  colorContrast = uiState.shouldUseColorContrast(),
+) {
+  KoinContext {
+    when (uiState) {
+      MainActivityUiState.Loading -> Unit
 
-          is MainActivityUiState.Success -> {
-            if (uiState.userData.isOnboarding) {
-              OnboardingScreen(onOnboardingFinished = onOnboardingComplete)
-            } else {
-              CappajvScaffold()
-            }
-          }
+      is MainActivityUiState.Success -> {
+        if (uiState.userData.isOnboarding) {
+          OnboardingScreen(onOnboardingFinished = onOnboardingComplete)
+        } else {
+          CappajvScaffold()
         }
       }
     }
+  }
+}
