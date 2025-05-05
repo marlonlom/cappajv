@@ -6,6 +6,7 @@
 package dev.marlonlom.cappajv.extensions
 
 import com.android.build.api.dsl.CommonExtension
+import dev.marlonlom.cappajv.configs.AndroidConfig
 import dev.marlonlom.cappajv.configs.Config
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
@@ -17,16 +18,19 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
  * @author marlonlom
  *
  * @param extension Common extension instance.
+ * @param androidConfig Android configuration information.
+ *
  */
 internal fun Project.configureAndroidKotlin(
   extension: CommonExtension<*, *, *, *, *, *>,
+  androidConfig: AndroidConfig = Config.android,
 ) {
   with(extension) {
-    namespace = Config.android.nameSpace
-    compileSdk = Config.android.compileSdkVersion
+    namespace = androidConfig.nameSpace
+    compileSdk = androidConfig.compileSdkVersion
 
     defaultConfig.apply {
-      minSdk = Config.android.minSdkVersion
+      minSdk = androidConfig.minSdkVersion
       testInstrumentationRunner = "androidx.test.runner.AndroidJunitRunner"
       vectorDrawables.useSupportLibrary = true
     }

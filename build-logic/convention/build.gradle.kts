@@ -56,6 +56,22 @@ gradlePlugin {
       id = "cappajv.android.library"
       implementationClass = "dev.marlonlom.cappajv.plugins.MobileLibConventionPlugin"
     }
+    register("androidTvApp") {
+      id = "cappajv.android.application.tv"
+      implementationClass = "dev.marlonlom.cappajv.plugins.TvAppConventionPlugin"
+    }
+    register("androidTvAppCompose") {
+      id = "cappajv.android.app.compose.tv"
+      implementationClass = "dev.marlonlom.cappajv.plugins.ComposeTvAppConventionPlugin"
+    }
+    register("androidTvLib") {
+      id = "cappajv.android.library.tv"
+      implementationClass = "dev.marlonlom.cappajv.plugins.TvLibConventionPlugin"
+    }
+    register("androidTvLibCompose") {
+      id = "cappajv.android.lib.compose.tv"
+      implementationClass = "dev.marlonlom.cappajv.plugins.ComposeTvLibraryConventionPlugin"
+    }
     register("jvmLibrary") {
       id = "cappajv.jvm.lib"
       implementationClass = "dev.marlonlom.cappajv.plugins.JvmLibraryConventionPlugin"
