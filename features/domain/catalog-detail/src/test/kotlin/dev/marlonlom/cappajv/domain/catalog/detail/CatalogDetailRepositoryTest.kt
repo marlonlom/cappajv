@@ -2,13 +2,12 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.mobile.catalog.detail.domain
+package dev.marlonlom.cappajv.domain.catalog.detail
 
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.cappajv.core.database.entities.CatalogFavoriteItem
 import dev.marlonlom.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.cappajv.core.database.entities.CatalogPunctuation
-import dev.marlonlom.cappajv.mobile.catalog.detail.util.MainDispatcherRule
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

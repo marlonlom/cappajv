@@ -2,7 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.mobile.catalog.detail.domain
+package dev.marlonlom.cappajv.domain.catalog.detail
 
 /**
  * Catalog details ui state sealed class.
