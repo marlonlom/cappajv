@@ -2,14 +2,14 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.tv.designsystem.theme
+package dev.marlonlom.cappajv.tv.ui.theme
 
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.tv.material3.Typography
-import dev.marlonlom.cappajv.tv.designsystem.R
+import dev.marlonlom.cappajv.tv.R
 
 /**
  * Brand font object specification for application.
