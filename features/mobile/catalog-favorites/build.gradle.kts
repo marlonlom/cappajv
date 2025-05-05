@@ -18,5 +18,6 @@ android {
 dependencies {
   implementation(project(":features:core:catalog"))
   implementation(project(":features:core:database"))
+  implementation(project(":features:domain:catalog-favorites"))
   implementation(project(":features:mobile:designsystem"))
 }

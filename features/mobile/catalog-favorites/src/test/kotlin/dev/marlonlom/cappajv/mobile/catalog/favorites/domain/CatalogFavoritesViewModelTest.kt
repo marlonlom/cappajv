@@ -6,6 +6,8 @@ package dev.marlonlom.cappajv.mobile.catalog.favorites.domain
 
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
 import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.cappajv.domain.catalog.favorites.CatalogFavoritesRepository
+import dev.marlonlom.cappajv.domain.catalog.favorites.CatalogFavoritesUiState
 import dev.marlonlom.cappajv.mobile.catalog.favorites.util.MainDispatcherRule
 import io.mockk.coEvery
 import io.mockk.coJustRun
