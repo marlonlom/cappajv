@@ -6,7 +6,7 @@ package dev.marlonlom.cappajv.mobile.catalog.home.di
 
 import dev.marlonlom.cappajv.core.catalog.CatalogDataService
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
-import dev.marlonlom.cappajv.mobile.catalog.home.domain.CatalogHomeRepository
+import dev.marlonlom.cappajv.domain.catalog.home.CatalogHomeRepository
 import dev.marlonlom.cappajv.mobile.catalog.home.domain.CatalogHomeViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.bind
@@ -24,6 +24,7 @@ val catalogHomeUiModule = module {
       catalogDataService = get<CatalogDataService>(),
     )
   } bind CatalogHomeRepository::class
+
   viewModel {
     CatalogHomeViewModel(get())
   } bind CatalogHomeViewModel::class
