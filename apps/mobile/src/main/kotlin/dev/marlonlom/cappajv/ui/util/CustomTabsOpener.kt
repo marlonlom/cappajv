@@ -11,17 +11,29 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
 
 /**
- * Chrome custom tabs opener single object utility.
+ * Utility object for opening URLs using Chrome Custom Tabs.
+ *
+ * This object simplifies the process of launching a web URL inside a Chrome Custom Tab,
+ * offering a more integrated and branded user experience compared to launching an external browser.
  *
  * @author marlonlom
  */
 object CustomTabsOpener {
 
   /**
-   * Opens an url as a custom tab.
+   * Opens the specified URL in a Chrome Custom Tab.
    *
-   * @param context Application context.
-   * @param url External url.
+   * This method builds a [CustomTabsIntent] with default parameters, including showing the page title,
+   * enabling instant apps, and applying a default color scheme. It then launches the URL using the provided context.
+   *
+   *
+   * Example usage:
+   * ```
+   * CustomTabsOpener.openUrl(context, "https://example.com")
+   * ```
+   *
+   * @param context the context used to start the custom tab activity. Typically an application or activity context.
+   * @param url the web address to open in the custom tab.
    */
   fun openUrl(context: Context, url: String) {
     val builder = CustomTabsIntent.Builder()
