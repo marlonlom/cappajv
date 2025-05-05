@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.mobile.settings.slot
 
 import androidx.compose.material3.Text
@@ -29,7 +28,7 @@ internal class SettingsContentSlotUiTest {
       setContent {
         SettingsContentSlot(
           title = { Text("Foo") },
-          content = { Text("Bar") }
+          content = { Text("Bar") },
         )
       }
 

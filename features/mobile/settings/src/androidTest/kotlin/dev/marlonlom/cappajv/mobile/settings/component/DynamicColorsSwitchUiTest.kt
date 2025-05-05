@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.mobile.settings.component
 
 import androidx.compose.ui.test.assertIsDisplayed
@@ -32,7 +31,7 @@ internal class DynamicColorsSwitchUiTest {
       setContent {
         DynamicColorsSwitch(
           isDarkTheme = { changed },
-          onCheckedChange = { changed = it }
+          onCheckedChange = { changed = it },
         )
       }
 
