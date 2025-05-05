@@ -4,16 +4,14 @@
  */
 package dev.marlonlom.cappajv.ui.main
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import dev.marlonlom.cappajv.features.welcome.WelcomeRoute
-import dev.marlonlom.cappajv.ui.main.scaffold.MainScaffold
-import dev.marlonlom.cappajv.ui.theme.CappajvColorContrasts
-import dev.marlonlom.cappajv.ui.theme.CappajvTheme
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import dev.marlonlom.cappajv.mobile.designsystem.theme.CappajvColorContrasts
+import dev.marlonlom.cappajv.mobile.designsystem.theme.CappajvTheme
+import dev.marlonlom.cappajv.mobile.onboarding.OnboardingScreen
+import dev.marlonlom.cappajv.ui.navigation.CappajvScaffold
+import org.koin.compose.KoinContext
 
 /**
  * Returns true/false if dynamic colors are applied to the ui.
@@ -55,45 +53,32 @@ private fun shouldUseColorContrast(mainActivityUiState: MainActivityUiState): St
 }.name
 
 /**
- * Application main content composable ui.
+ * Displays the main content of the application based on the provided UI state.
  *
  * @author marlonlom
  *
- * @param mainActivityUiState Main activity ui state.
- * @param appUiState Application ui state.
- * @param appContentCallbacks Application content callbacks.
- * @param onOnboardingComplete Action for onboarding complete.
+ * @param mainActivityUiState The current UI state of the MainActivity. This is used to
+ * determine what content to show (e.g., onboarding, main screen, loading).
+ * @param onOnboardingComplete Callback function that is invoked when the onboarding
+ * process is completed. Used to update state or navigate accordingly.
  */
-@ExperimentalFoundationApi
-@ExperimentalLayoutApi
-@ExperimentalMaterial3Api
-@ExperimentalCoroutinesApi
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppContent(
-  mainActivityUiState: MainActivityUiState,
-  appUiState: CappajvAppState,
-  appContentCallbacks: AppContentCallbacks,
-  onOnboardingComplete: () -> Unit,
-) = CappajvTheme(
+internal fun MainContent(mainActivityUiState: MainActivityUiState, onOnboardingComplete: () -> Unit) = CappajvTheme(
   darkTheme = shouldUseDarkTheme(mainActivityUiState),
   dynamicColor = shouldUseDynamicColor(mainActivityUiState),
   colorContrast = shouldUseColorContrast(mainActivityUiState),
 ) {
-  when (mainActivityUiState) {
-    MainActivityUiState.Loading -> Unit
+  KoinContext {
+    when (mainActivityUiState) {
+      MainActivityUiState.Loading -> Unit
 
-    is MainActivityUiState.Success -> {
-      if (mainActivityUiState.userData.isOnboarding) {
-        WelcomeRoute(
-          appState = appUiState,
-          onOnboardingFinished = onOnboardingComplete,
-        )
-      } else {
-        MainScaffold(
-          mainActivityUiState = mainActivityUiState,
-          appState = appUiState,
-          appContentCallbacks = appContentCallbacks,
-        )
+      is MainActivityUiState.Success -> {
+        if (mainActivityUiState.userData.isOnboarding) {
+          OnboardingScreen(onOnboardingFinished = onOnboardingComplete)
+        } else {
+          CappajvScaffold()
+        }
       }
     }
   }

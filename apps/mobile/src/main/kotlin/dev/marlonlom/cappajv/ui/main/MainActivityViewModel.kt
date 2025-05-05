@@ -5,9 +5,7 @@
 package dev.marlonlom.cappajv.ui.main
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import dev.marlonlom.cappajv.core.preferences.entities.UserSettings
 import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
 import dev.marlonlom.cappajv.ui.main.MainActivityUiState.Loading
 import dev.marlonlom.cappajv.ui.main.MainActivityUiState.Success
@@ -18,14 +16,23 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 /**
- * Main activity viewmodel.
+ * ViewModel for the main activity of the application.
+ *
+ * This ViewModel provides a [StateFlow] of [MainActivityUiState] representing the user's preferences
+ * and exposes methods to update those preferences. It uses [UserPreferencesRepository] as the data source.
  *
  * @author marlonlom
  *
- * @property repository User preferences repository.
+ * @property repository The repository used to access and update user preferences.
  */
 class MainActivityViewModel(private val repository: UserPreferencesRepository) : ViewModel() {
 
+  /**
+   * A [StateFlow] that emits the current UI state based on the user preferences.
+   *
+   * It starts eagerly with an initial value of [Loading] and maps the user preferences flow
+   * into a [Success] state when data is available.
+   */
   val uiState: StateFlow<MainActivityUiState> = repository
     .userPreferencesFlow
     .map { a -> Success(a) }
@@ -35,48 +42,14 @@ class MainActivityViewModel(private val repository: UserPreferencesRepository) :
       started = SharingStarted.Eagerly,
     )
 
-  /** Sets onboarding setting to false to indicate it as completed. */
+  /**
+   * Marks the onboarding process as complete by setting the "is_onboarding" preference to false.
+   *
+   * This function launches a coroutine in the [viewModelScope] to perform the update asynchronously.
+   */
   fun setOnboardingComplete() {
     viewModelScope.launch {
       repository.toggleBooleanSetting("is_onboarding", false)
     }
   }
-
-  companion object {
-
-    /**
-     * Returns the factory for main activity viewmodel.
-     *
-     * @param repository
-     */
-    fun factory(repository: UserPreferencesRepository) = object : ViewModelProvider.Factory {
-
-      @Suppress("UNCHECKED_CAST")
-      override fun <T : ViewModel> create(modelClass: Class<T>): T = MainActivityViewModel(repository) as T
-    }
-  }
-}
-
-/**
- * Main activity ui state sealed interface.
- *
- * @author marlonlom
- */
-sealed interface MainActivityUiState {
-
-  /**
-   * Loading phase for main activity ui state.
-   *
-   * @author marlonlom
-   */
-  data object Loading : MainActivityUiState
-
-  /**
-   * Success phase for main activity ui state.
-   *
-   * @author marlonlom
-   *
-   * @property userData User settings data.
-   */
-  data class Success(val userData: UserSettings) : MainActivityUiState
 }
