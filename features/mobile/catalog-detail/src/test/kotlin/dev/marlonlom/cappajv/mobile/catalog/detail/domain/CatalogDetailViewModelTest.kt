@@ -32,7 +32,7 @@ internal class CatalogDetailViewModelTest {
   @get:Rule
   val mainDispatcherRule = MainDispatcherRule()
 
-  private val repository = mockk<CatalogDetailRepository>()
+  private val repository = mockk<dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailRepository>()
   private lateinit var viewModel: CatalogDetailViewModel
 
   @Test
@@ -42,7 +42,7 @@ internal class CatalogDetailViewModelTest {
     viewModel = CatalogDetailViewModel(repository)
     viewModel.find(789L)
 
-    val result = mutableListOf<CatalogDetailUiState?>()
+    val result = mutableListOf<dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState?>()
     val job = launch(UnconfinedTestDispatcher()) {
       viewModel.detail.toList(result)
     }
@@ -51,7 +51,7 @@ internal class CatalogDetailViewModelTest {
 
     val foundItem = result.last()
     assertNotNull(foundItem)
-    assertTrue(foundItem == CatalogDetailUiState.NotFound)
+    assertTrue(foundItem == dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.NotFound)
 
     job.cancel()
   }
@@ -72,7 +72,7 @@ internal class CatalogDetailViewModelTest {
 
     coEvery { repository.saveFavorite(any(CatalogFavoriteItem::class)) } returns Unit
     coEvery { repository.find(any(Long::class)) } returns flowOf(
-      CatalogDetailItem(
+      dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailItem(
         product = catalogItem,
         isFavorite = true,
         points = emptyList(),
@@ -83,7 +83,7 @@ internal class CatalogDetailViewModelTest {
     viewModel.toggleFavorite(catalogItem, true)
     viewModel.find(catalogItem.id)
 
-    val result = mutableListOf<CatalogDetailUiState?>()
+    val result = mutableListOf<dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState?>()
     val job = launch(UnconfinedTestDispatcher()) {
       viewModel.detail.toList(result)
     }
@@ -92,8 +92,8 @@ internal class CatalogDetailViewModelTest {
 
     val foundItem = result.last()
     assertNotNull(foundItem)
-    assertTrue(foundItem is CatalogDetailUiState.Found)
-    if (foundItem is CatalogDetailUiState.Found) {
+    assertTrue(foundItem is dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found)
+    if (foundItem is dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found) {
       assertTrue(foundItem.detail.isFavorite)
 
       assertNotNull(foundItem.detail.points)
@@ -122,7 +122,7 @@ internal class CatalogDetailViewModelTest {
 
     coEvery { repository.undoFavorite(any(Long::class)) } returns Unit
     coEvery { repository.find(any(Long::class)) } returns flowOf(
-      CatalogDetailItem(
+      dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailItem(
         product = catalogItem,
         isFavorite = false,
         points = emptyList(),
@@ -133,7 +133,7 @@ internal class CatalogDetailViewModelTest {
     viewModel.toggleFavorite(catalogItem, false)
     viewModel.find(catalogItem.id)
 
-    val result = mutableListOf<CatalogDetailUiState?>()
+    val result = mutableListOf<dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState?>()
     val job = launch(UnconfinedTestDispatcher()) {
       viewModel.detail.toList(result)
     }
@@ -142,8 +142,8 @@ internal class CatalogDetailViewModelTest {
 
     val foundItem = result.last()
     assertNotNull(foundItem)
-    assertTrue(foundItem is CatalogDetailUiState.Found)
-    if (foundItem is CatalogDetailUiState.Found) {
+    assertTrue(foundItem is dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found)
+    if (foundItem is dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found) {
       assertFalse(foundItem.detail.isFavorite)
 
       assertNotNull(foundItem.detail.points)
