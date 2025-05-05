@@ -20,12 +20,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.cappajv.domain.catalog.favorites.CatalogFavoritesUiState
 import dev.marlonlom.cappajv.mobile.catalog.favorites.component.CatalogGridItem
 import dev.marlonlom.cappajv.mobile.catalog.favorites.component.UnFavoriteCatalogItemAlert
 import dev.marlonlom.cappajv.mobile.catalog.favorites.component.empty
 import dev.marlonlom.cappajv.mobile.catalog.favorites.component.header
 import dev.marlonlom.cappajv.mobile.catalog.favorites.component.loadingIndicator
-import dev.marlonlom.cappajv.mobile.catalog.favorites.domain.CatalogFavoritesUiState
 import dev.marlonlom.cappajv.mobile.catalog.favorites.domain.CatalogFavoritesViewModel
 import dev.marlonlom.cappajv.mobile.catalog.favorites.slot.CatalogFavoritesHeadlineSlot
 import dev.marlonlom.cappajv.mobile.catalog.favorites.slot.CategoryTitleSlot
