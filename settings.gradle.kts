@@ -4,12 +4,14 @@
  */
 
 pluginManagement {
+  includeBuild("build-logic")
   repositories {
     google()
     mavenCentral()
     gradlePluginPortal()
   }
 }
+
 @Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
   @Suppress("UnstableApiUsage")
@@ -21,8 +23,14 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Cappajv"
-include(":apps:mobile")
+include(
+  ":apps:mobile",
+  ":features:mobile:catalog-detail",
+  ":features:mobile:catalog-favorites",
+  ":features:mobile:catalog-home",
+  ":features:mobile:designsystem",
+  ":features:mobile:onboarding",
+  ":features:mobile:settings",
+)
 include(":apps:tv")
-include(":features:core:catalog")
-include(":features:core:database")
-include(":features:core:preferences")
+include(":features:core:catalog", ":features:core:database", ":features:core:preferences")
