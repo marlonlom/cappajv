@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.ui.main
 
 import dev.marlonlom.cappajv.core.preferences.entities.UserColorContrasts
@@ -67,8 +66,8 @@ internal class MainActivityViewModelTest {
         isOnboarding = true,
         useDarkTheme = false,
         useDynamicColor = false,
-        colorContrast = UserColorContrasts.STANDARD
-      )
+        colorContrast = UserColorContrasts.STANDARD,
+      ),
     )
 
     viewModel = MainActivityViewModel(repository)
@@ -106,8 +105,8 @@ internal class MainActivityViewModelTest {
         isOnboarding = false,
         useDarkTheme = false,
         useDynamicColor = false,
-        colorContrast = UserColorContrasts.STANDARD
-      )
+        colorContrast = UserColorContrasts.STANDARD,
+      ),
     )
 
     viewModel = MainActivityViewModel(repository)
