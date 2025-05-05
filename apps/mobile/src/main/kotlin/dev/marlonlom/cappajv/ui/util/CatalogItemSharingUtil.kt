@@ -9,17 +9,30 @@ import android.content.Intent
 import dev.marlonlom.cappajv.R
 
 /**
- * Catalog item book sharing single object utility.
+ * Utility object for sharing catalog item information with other applications.
+ *
+ * This object provides a method to initiate a sharing intent, allowing the user
+ * to share a message (typically a catalog item's details) via available apps
+ * that accept plain text input (e.g., messaging, email, or social media apps).
  *
  * @author marlonlom
  */
 object CatalogItemSharingUtil {
 
   /**
-   * Executes share intent using the provided message text.
+   * Launches a share intent with the provided message.
    *
-   * @param context Application context.
-   * @param message Message as text.
+   * This method uses [Intent.ACTION_SEND] to create a plain text sharing intent
+   * and starts an activity chooser to let the user pick their preferred app for sharing.
+   *
+   * Example usage:
+   * ```
+   * CatalogItemSharingUtil.beginShare(context, "Check out this catalog item!")
+   * ```
+   *
+   * @param context the context used to start the sharing activity.
+   * @param message the message content to be shared with other apps.
+   *
    */
   fun beginShare(context: Context, message: String) {
     Intent(Intent.ACTION_SEND).apply {
