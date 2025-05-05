@@ -23,7 +23,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.ImageLoader
 import coil.compose.AsyncImage
+import coil.imageLoader
 import coil.request.ImageRequest
 import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
 
@@ -37,9 +39,14 @@ import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
  * including the image URL and title.
  * @param onCatalogGridItemClicked A callback function that is invoked when this
  * catalog grid item is clicked.
+ * @param imageLoader The [ImageLoader] used to fetch and display the image.
  */
 @Composable
-internal fun CatalogGridItem(item: CatalogItemTuple, onCatalogGridItemClicked: (Long) -> Unit) = Column(
+internal fun CatalogGridItem(
+  item: CatalogItemTuple,
+  onCatalogGridItemClicked: (Long) -> Unit,
+  imageLoader: ImageLoader = LocalContext.current.imageLoader,
+) = Column(
   modifier = Modifier
     .testTag("catalog_home_cell_${item.id}")
     .clickable(
@@ -49,6 +56,7 @@ internal fun CatalogGridItem(item: CatalogItemTuple, onCatalogGridItemClicked: (
     ),
 ) {
   AsyncImage(
+    imageLoader = imageLoader,
     model = ImageRequest.Builder(LocalContext.current)
       .data(item.picture)
       .crossfade(true)

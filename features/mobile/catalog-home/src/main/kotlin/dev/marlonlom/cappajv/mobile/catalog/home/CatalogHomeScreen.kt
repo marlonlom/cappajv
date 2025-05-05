@@ -19,10 +19,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
+import dev.marlonlom.cappajv.domain.catalog.home.CatalogHomeUiState
 import dev.marlonlom.cappajv.mobile.catalog.home.component.CatalogGridItem
 import dev.marlonlom.cappajv.mobile.catalog.home.component.header
 import dev.marlonlom.cappajv.mobile.catalog.home.component.loadingIndicator
-import dev.marlonlom.cappajv.mobile.catalog.home.domain.CatalogHomeUiState
 import dev.marlonlom.cappajv.mobile.catalog.home.domain.CatalogHomeViewModel
 import dev.marlonlom.cappajv.mobile.catalog.home.slot.CatalogHomeHeadlineSlot
 import dev.marlonlom.cappajv.mobile.catalog.home.slot.CategoryTitleSlot

@@ -6,7 +6,6 @@ package dev.marlonlom.cappajv.mobile.catalog.home.slot
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -47,7 +46,6 @@ import androidx.compose.ui.unit.dp
  * @param isExpanded Lambda that returns whether the category is currently expanded.
  * @param onTitleClicked Callback invoked when the title row is clicked.
  */
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun CategoryTitleSlot(
   title: String,
