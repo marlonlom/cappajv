@@ -6,6 +6,8 @@ package dev.marlonlom.cappajv.mobile.catalog.favorites.domain
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dev.marlonlom.cappajv.domain.catalog.favorites.CatalogFavoritesRepository
+import dev.marlonlom.cappajv.domain.catalog.favorites.CatalogFavoritesUiState
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
