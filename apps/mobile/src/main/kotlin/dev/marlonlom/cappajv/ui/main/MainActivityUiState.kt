@@ -45,7 +45,7 @@ sealed interface MainActivityUiState {
  * @return `true` if dynamic color should be used; `false` otherwise.
  */
 @Composable
-fun MainActivityUiState.shouldUseDynamicColor(): Boolean = when (this) {
+internal fun MainActivityUiState.shouldUseDynamicColor(): Boolean = when (this) {
   MainActivityUiState.Loading -> false
   is MainActivityUiState.Success -> this.userData.useDynamicColor
 }
@@ -60,7 +60,7 @@ fun MainActivityUiState.shouldUseDynamicColor(): Boolean = when (this) {
  * @return `true` if dark theme should be used; `false` otherwise.
  */
 @Composable
-fun MainActivityUiState.shouldUseDarkTheme(): Boolean = when (this) {
+internal fun MainActivityUiState.shouldUseDarkTheme(): Boolean = when (this) {
   MainActivityUiState.Loading -> isSystemInDarkTheme()
   is MainActivityUiState.Success -> {
     val useDarkTheme = this.userData.useDarkTheme
@@ -77,7 +77,7 @@ fun MainActivityUiState.shouldUseDarkTheme(): Boolean = when (this) {
  * @return The name of the color contrast setting to apply as a [String].
  */
 @Composable
-fun MainActivityUiState.shouldUseColorContrast(): String = when (this) {
+internal fun MainActivityUiState.shouldUseColorContrast(): String = when (this) {
   MainActivityUiState.Loading -> CappajvColorContrasts.STANDARD
   is MainActivityUiState.Success -> this.userData.colorContrast
 }.name
