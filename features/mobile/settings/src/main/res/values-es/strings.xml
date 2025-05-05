@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string name="text_settings">Configuración</string>
+  <string name="text_appearance">Apariencia</string>
+  <string name="text_dark_mode">Modo oscuro</string>
+  <string name="text_dynamic_colors">Colores dinámicos</string>
+  <string name="text_information">Información</string>
+  <string name="text_legal">Legal</string>
+</resources>

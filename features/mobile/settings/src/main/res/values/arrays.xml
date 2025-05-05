@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string-array name="array_color_contrasts">
+    <item>Standard</item>
+    <item>Medium</item>
+    <item>High</item>
+  </string-array>
+  <string-array name="array_legal_urls" translatable="false">
+    <item>https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</item>
+    <item>https://juanvaldez.com/politica-de-tratamiento-de-datos-personales-promotora-de-cafe-colombia-s-a</item>
+    <item>https://juanvaldez.com/amigosjuanvaldez/terminos-y-condiciones</item>
+  </string-array>
+  <string-array name="array_legal_labels">
+    <item>Personal data treatment policy</item>
+    <item>Privacy policy</item>
+    <item>Terms and conditions</item>
+  </string-array>
+</resources>
