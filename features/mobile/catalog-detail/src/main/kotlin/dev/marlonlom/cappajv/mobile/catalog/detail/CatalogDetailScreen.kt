@@ -17,8 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState
 import dev.marlonlom.cappajv.mobile.catalog.detail.component.CatalogDetailDescriptionText
-import dev.marlonlom.cappajv.mobile.catalog.detail.domain.CatalogDetailUiState
 import dev.marlonlom.cappajv.mobile.catalog.detail.domain.CatalogDetailViewModel
 import dev.marlonlom.cappajv.mobile.catalog.detail.slot.CatalogDetailActionButtonsSlot
 import dev.marlonlom.cappajv.mobile.catalog.detail.slot.CatalogDetailHeadlineSlot
@@ -63,8 +63,8 @@ fun CatalogDetailScreen(
 
   LazyColumn {
     when (uiState) {
-      is CatalogDetailUiState.Found -> {
-        val item = (uiState as CatalogDetailUiState.Found).detail
+      is dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found -> {
+        val item = (uiState as dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found).detail
 
         val showBackBtn = showBackButton()
         if (showBackBtn) {
@@ -117,7 +117,7 @@ fun CatalogDetailScreen(
         }
       }
 
-      CatalogDetailUiState.NotFound -> {
+      dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.NotFound -> {
         stickyHeader {
           Text(
             text = "Select a catalog item from the list.",

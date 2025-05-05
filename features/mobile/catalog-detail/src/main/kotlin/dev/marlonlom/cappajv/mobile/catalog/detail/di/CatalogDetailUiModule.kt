@@ -5,7 +5,7 @@
 package dev.marlonlom.cappajv.mobile.catalog.detail.di
 
 import dev.marlonlom.cappajv.core.database.datasource.LocalDataSource
-import dev.marlonlom.cappajv.mobile.catalog.detail.domain.CatalogDetailRepository
+import dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailRepository
 import dev.marlonlom.cappajv.mobile.catalog.detail.domain.CatalogDetailViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.core.module.dsl.viewModel

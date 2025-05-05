@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
  */
 @ExperimentalCoroutinesApi
 class CatalogDetailViewModel(
-  private val repository: CatalogDetailRepository,
+  private val repository: dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailRepository,
   private val savedStateHandle: SavedStateHandle = SavedStateHandle(),
 ) : ViewModel() {
 
@@ -35,11 +35,17 @@ class CatalogDetailViewModel(
     .flatMapLatest { catalogId ->
       repository.find(catalogId)
     }.mapLatest { detail ->
-      if (detail == null) CatalogDetailUiState.NotFound else CatalogDetailUiState.Found(detail)
+      if (detail ==
+        null
+      ) {
+        dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.NotFound
+      } else {
+        dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found(detail)
+      }
     }.stateIn(
       scope = viewModelScope,
       started = SharingStarted.Eagerly,
-      initialValue = CatalogDetailUiState.NotFound,
+      initialValue = dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.NotFound,
     )
 
   /**
