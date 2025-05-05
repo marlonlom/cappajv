@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string-array name="array_color_contrasts">
+    <item>Estándar</item>
+    <item>Medio</item>
+    <item>Alto</item>
+  </string-array>
+  <string-array name="array_legal_labels">
+    <item>Política tratamiento datos personales</item>
+    <item>Política de privacidad</item>
+    <item>Términos y condiciones</item>
+  </string-array>
+</resources>
