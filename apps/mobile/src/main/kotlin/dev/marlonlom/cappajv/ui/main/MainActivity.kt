@@ -21,7 +21,12 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
- * Main activity class.
+ * The main entry point of the Cappajv android mobile application.
+ *
+ * This activity is responsible for setting up the Compose UI content and managing
+ * app-wide configurations such as theming, state, and navigation.
+ *
+ * It extends [ComponentActivity], integrating Jetpack Compose into the activity lifecycle.
  *
  * @author marlonlom
  */
@@ -53,7 +58,7 @@ class MainActivity : ComponentActivity() {
 
     setContent {
       MainContent(
-        mainActivityUiState = mainActivityUiState,
+        uiState = mainActivityUiState,
         onOnboardingComplete = viewModel::setOnboardingComplete,
       )
     }
