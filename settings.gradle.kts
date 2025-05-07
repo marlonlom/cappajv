@@ -35,6 +35,7 @@ include(
 include(
   ":apps:tv",
   ":features:tv:designsystem",
+  ":features:tv:onboarding",
 )
 include(
   ":features:domain:catalog-detail",
