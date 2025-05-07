@@ -18,6 +18,7 @@ dependencies {
   implementation(project(":features:core:database"))
   implementation(project(":features:core:preferences"))
 
+  implementation(project(":features:tv:onboarding"))
   implementation(project(":features:tv:designsystem"))
 
   implementation(libs.androidx.lifecycle.runtime.ktx)
