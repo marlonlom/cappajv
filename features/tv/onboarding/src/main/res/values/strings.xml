@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <!-- feature: onboarding / welcome -->
+  <string name="text_onboarding_title">Welcome</string>
+  <string name="text_onboarding_detail">Unlock exclusive rewards! Explore our catalog, discover each product\'s point value, and easily redeem your favorites at Juan Valdez.</string>
+  <string name="text_onboarding_button">Get started</string>
+  <string name="text_onboarding_logo_content_description">Onboarding logo image</string>
+</resources>

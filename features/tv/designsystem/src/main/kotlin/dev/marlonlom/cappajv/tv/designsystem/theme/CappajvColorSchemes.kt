@@ -2,7 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.tv.ui.theme
+package dev.marlonlom.cappajv.tv.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 import androidx.tv.material3.ColorScheme
