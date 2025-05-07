@@ -18,7 +18,7 @@ import androidx.tv.material3.MaterialTheme
  */
 @Composable
 fun CappajvTvTheme(isInDarkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) = MaterialTheme(
-  colorScheme = if (isInDarkTheme) CappajvColorSchemes.STANDARD.dark else CappajvColorSchemes.STANDARD.light,
+  colorScheme = CappajvColorSchemes.STANDARD.let { if (isInDarkTheme) it.dark else it.light },
   typography = CappajvFont.appTypography,
   shapes = CappajvShapes.shapes,
   content = content,
