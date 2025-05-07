@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <!-- feature: onboarding / welcome -->
+  <string name="text_onboarding_title">Bienvenido</string>
+  <string name="text_onboarding_detail">¡Desbloquea recompensas exclusivas! Explora nuestro catálogo, descubre el valor en puntos de cada producto y canjea fácilmente tus favoritos en Juan Valdez.</string>
+  <string name="text_onboarding_button">Empezar</string>
+  <string name="text_onboarding_logo_content_description">Imagen del logo de bienvenida</string>
+</resources>
