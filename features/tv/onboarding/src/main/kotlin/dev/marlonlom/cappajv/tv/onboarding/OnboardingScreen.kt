@@ -4,6 +4,7 @@
  */
 package dev.marlonlom.cappajv.tv.onboarding
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,12 +28,17 @@ import dev.marlonlom.cappajv.tv.onboarding.slot.OnboardingLogoSlot
  *
  * @author marlonlom
  *
+ * @param brandImage The resource ID of the drawable to display as the brand image.
+ *
  * @param onOnboardingComplete A callback function that is invoked when the user
  * completes the onboarding process. This could trigger
  * navigation to the main application content.
  */
 @Composable
-fun OnboardingScreen(onOnboardingComplete: () -> Unit) = Box(
+fun OnboardingScreen(
+  @DrawableRes brandImage: Int,
+  onOnboardingComplete: () -> Unit
+) = Box(
   modifier = Modifier
     .fillMaxSize()
     .paint(
@@ -48,8 +54,7 @@ fun OnboardingScreen(onOnboardingComplete: () -> Unit) = Box(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.SpaceBetween,
   ) {
-    OnboardingLogoSlot()
-
+    OnboardingLogoSlot(brandImage)
     OnboardingInfoSlot(onOnboardingComplete)
   }
 }

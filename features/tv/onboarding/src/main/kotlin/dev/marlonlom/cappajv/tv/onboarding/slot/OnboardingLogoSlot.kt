@@ -4,6 +4,7 @@
  */
 package dev.marlonlom.cappajv.tv.onboarding.slot
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,9 +25,13 @@ import dev.marlonlom.cappajv.tv.onboarding.R
  * Internal composable function responsible for rendering the logo on the onboarding screen.
  *
  * @author marlonlom
+ *
+ * @param brandImage The resource ID of the drawable to display as the brand image.
  */
 @Composable
-internal fun OnboardingLogoSlot() = Column(
+internal fun OnboardingLogoSlot(
+  @DrawableRes brandImage: Int,
+) = Column(
   modifier = Modifier.fillMaxWidth(0.5f),
   verticalArrangement = Arrangement.Center,
 ) {
@@ -34,7 +39,7 @@ internal fun OnboardingLogoSlot() = Column(
     modifier = Modifier
       .padding(10.dp)
       .size(180.dp),
-    painter = painterResource(R.drawable.img_logo),
+    painter = painterResource(brandImage),
     contentDescription = stringResource(R.string.text_onboarding_logo_content_description),
     contentScale = ContentScale.Fit,
     colorFilter = ColorFilter.tint(
