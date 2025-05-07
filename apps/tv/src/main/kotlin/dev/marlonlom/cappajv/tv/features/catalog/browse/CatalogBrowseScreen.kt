@@ -10,7 +10,6 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.DrawerValue
@@ -47,7 +46,6 @@ fun CatalogBrowseScreen(appState: CappajvTvUiState, modifier: Modifier = Modifie
     drawerContent = {
       CatalogBrowseDrawerContent(appState)
     },
-    scrimBrush = SolidColor(MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f)),
     content = {
       when (appState.browseMenuIndex) {
         CatalogBrowseMenuItems.FAVORITES.ordinal -> {

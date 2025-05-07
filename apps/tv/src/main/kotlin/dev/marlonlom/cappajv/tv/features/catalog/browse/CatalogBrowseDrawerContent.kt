@@ -39,7 +39,7 @@ internal fun NavigationDrawerScope.CatalogBrowseDrawerContent(
   modifier: Modifier = Modifier,
 ) = Column(
   modifier = modifier
-    .background(MaterialTheme.colorScheme.surfaceTint)
+    .background(MaterialTheme.colorScheme.surface)
     .fillMaxHeight()
     .padding(12.dp)
     .selectableGroup(),
