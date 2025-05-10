@@ -29,9 +29,7 @@ import dev.marlonlom.cappajv.tv.onboarding.R
  * @param brandImage The resource ID of the drawable to display as the brand image.
  */
 @Composable
-internal fun OnboardingLogoSlot(
-  @DrawableRes brandImage: Int,
-) = Column(
+internal fun OnboardingLogoSlot(@DrawableRes brandImage: Int) = Column(
   modifier = Modifier.fillMaxWidth(0.5f),
   verticalArrangement = Arrangement.Center,
 ) {
