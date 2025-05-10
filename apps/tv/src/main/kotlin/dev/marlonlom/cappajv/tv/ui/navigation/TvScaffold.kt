@@ -24,6 +24,11 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import dev.marlonlom.cappajv.tv.catalog.home.CatalogHomeTvScreen
 
+/**
+ * A composable scaffold layout for TV interfaces.
+ *
+ * @author marlonlom
+ */
 @Composable
 fun TvScaffold() {
   val (focusRequester, focusedTab) = remember { FocusRequester.createRefs() }

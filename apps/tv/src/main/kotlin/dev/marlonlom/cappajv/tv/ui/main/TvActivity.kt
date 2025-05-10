@@ -54,10 +54,12 @@ class TvActivity : ComponentActivity() {
             is Success -> {
               val (userData) = uiState as Success
               if (userData.isOnboarding) {
-                OnboardingScreen(R.drawable.img_logo, viewModel::setOnboardingComplete)
+                OnboardingScreen(
+                  brandImage = R.drawable.img_logo,
+                  onOnboardingComplete = viewModel::setOnboardingComplete
+                )
               } else {
                 TvScaffold()
-                // TvNavigationHost(appState = rememberCappajvAppState())
               }
             }
           }
