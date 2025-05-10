@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string name="text_empty_title">No favorites yet!</string>
+  <string name="text_empty_detail">Tap the heart icon on any catalog item to add it to your favorites.</string>
+  <!-- alert dialog: undo favorite -->
+  <string name="text_undo_favorite_title">Remove from favorites</string>
+  <string name="text_undo_favorite_detail">You are removing \"%1$s\" from your favorites.\nYou won’t see this item in your favorites list anymore.</string>
+  <string name="text_undo_favorite_dismiss">Dismiss</string>
+  <string name="text_undo_favorite_confirm">Confirm</string>
+</resources>

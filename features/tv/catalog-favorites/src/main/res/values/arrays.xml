@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string-array name="array_categories">
+    <item>Cold drinks</item>
+    <item>Hot drinks</item>
+    <item>Pastry</item>
+  </string-array>
+</resources>
