@@ -14,7 +14,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
@@ -41,7 +40,6 @@ fun CatalogLazyVerticalGrid(
   startWidth: Dp,
   modifier: Modifier = Modifier,
 ) = LazyVerticalGrid(
-  state = rememberLazyGridState(),
   modifier = modifier
     .fillMaxWidth()
     .tvSafeContentPadding(startWidth)

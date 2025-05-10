@@ -13,12 +13,12 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import dev.marlonlom.cappajv.tv.R
 import dev.marlonlom.cappajv.tv.designsystem.theme.CappajvTvTheme
 import dev.marlonlom.cappajv.tv.onboarding.OnboardingScreen
 import dev.marlonlom.cappajv.tv.ui.main.TvActivityUiState.Loading
 import dev.marlonlom.cappajv.tv.ui.main.TvActivityUiState.Success
-import dev.marlonlom.cappajv.tv.ui.navigation.TvNavigationHost
-import dev.marlonlom.cappajv.tv.ui.rememberCappajvAppState
+import dev.marlonlom.cappajv.tv.ui.navigation.TvScaffold
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -54,9 +54,10 @@ class TvActivity : ComponentActivity() {
             is Success -> {
               val (userData) = uiState as Success
               if (userData.isOnboarding) {
-                OnboardingScreen(viewModel::setOnboardingComplete)
+                OnboardingScreen(R.drawable.img_logo, viewModel::setOnboardingComplete)
               } else {
-                TvNavigationHost(appState = rememberCappajvAppState())
+                TvScaffold()
+                // TvNavigationHost(appState = rememberCappajvAppState())
               }
             }
           }
