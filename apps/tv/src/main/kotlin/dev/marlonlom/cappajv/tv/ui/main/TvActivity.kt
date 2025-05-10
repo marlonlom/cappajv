@@ -56,7 +56,7 @@ class TvActivity : ComponentActivity() {
               if (userData.isOnboarding) {
                 OnboardingScreen(
                   brandImage = R.drawable.img_logo,
-                  onOnboardingComplete = viewModel::setOnboardingComplete
+                  onOnboardingComplete = viewModel::setOnboardingComplete,
                 )
               } else {
                 TvScaffold()
