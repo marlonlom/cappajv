@@ -6,6 +6,7 @@
 plugins {
   id("cappajv.android.library.tv")
   id("cappajv.android.lib.compose.tv")
+  id("cappajv.android.coil")
   id("cappajv.spotless")
 }
 
