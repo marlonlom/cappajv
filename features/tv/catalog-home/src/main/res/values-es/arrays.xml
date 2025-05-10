@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string-array name="array_categories">
+    <item>Bebidas frías</item>
+    <item>Bebidas calientes</item>
+    <item>Pastelería</item>
+  </string-array>
+</resources>
