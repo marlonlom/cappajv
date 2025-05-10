@@ -54,12 +54,12 @@ fun CategoryTitleSlot(title: String, index: Int) {
       imageVector = imageVector,
       contentDescription = null,
       modifier = Modifier.size(ButtonDefaults.IconSize),
-      tint = MaterialTheme.colorScheme.onBackground,
+      tint = MaterialTheme.colorScheme.secondary,
     )
 
     Text(
       text = title,
-      color = MaterialTheme.colorScheme.onBackground,
+      color = MaterialTheme.colorScheme.secondary,
       style = MaterialTheme.typography.bodyMedium,
     )
   }
