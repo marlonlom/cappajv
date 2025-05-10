@@ -12,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import dev.marlonlom.cappajv.tv.ui.navigation.TvScreenRoute
 import kotlinx.coroutines.flow.map
 
 /**
@@ -31,18 +30,6 @@ class CappajvTvUiState(val navHostController: NavHostController) {
 
   val currentRouteFlow = navHostController.currentBackStackEntryFlow.map {
     it.destination.route
-  }
-
-  fun navigateToHome() {
-    navHostController.navigate(TvScreenRoute.Catalog)
-  }
-
-  fun navigateToSettings() {
-    navHostController.navigate(TvScreenRoute.Settings)
-  }
-
-  fun navigateToDetails(itemId: Long) {
-    navHostController.navigate(TvScreenRoute.Detail(itemId.toString()))
   }
 
   fun navigateBack() {
