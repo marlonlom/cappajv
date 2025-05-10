@@ -7,6 +7,7 @@ package dev.marlonlom.cappajv.tv.di
 import dev.marlonlom.cappajv.core.catalog.CatalogDataService
 import dev.marlonlom.cappajv.core.database.di.databaseKoinModule
 import dev.marlonlom.cappajv.core.preferences.di.preferencesKoinModule
+import dev.marlonlom.cappajv.tv.catalog.favorites.di.catalogFavoritesTvUiModule
 import dev.marlonlom.cappajv.tv.catalog.home.di.catalogHomeTvUiModule
 import dev.marlonlom.cappajv.tv.features.catalog.details.CatalogDetailRepository
 import dev.marlonlom.cappajv.tv.features.catalog.details.CatalogDetailViewModel
@@ -32,7 +33,7 @@ val tvAppModule = module {
   single<CatalogDataService> { CatalogDataService(Locale.getDefault().language) } bind CatalogDataService::class
 
   includes(databaseKoinModule, preferencesKoinModule)
-  includes(catalogHomeTvUiModule)
+  includes(catalogHomeTvUiModule, catalogFavoritesTvUiModule)
 
   /* Repositories */
   single<CatalogHomeRepository> {

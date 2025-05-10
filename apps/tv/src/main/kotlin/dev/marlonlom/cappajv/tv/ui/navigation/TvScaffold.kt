@@ -22,6 +22,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
+import dev.marlonlom.cappajv.tv.catalog.favorites.CatalogFavoritesTvScreen
 import dev.marlonlom.cappajv.tv.catalog.home.CatalogHomeTvScreen
 
 /**
@@ -61,15 +62,10 @@ fun TvScaffold() {
       }
 
       TvDestinations.FAVORITES.ordinal -> {
-        Box(
-          modifier = Modifier.fillMaxSize(),
-          contentAlignment = Alignment.Center,
-        ) {
-          Text(
-            text = "Tab: ${TvDestinations.FAVORITES.name}",
-            color = MaterialTheme.colorScheme.onBackground,
-          )
-        }
+        CatalogFavoritesTvScreen(
+          onItemClicked = {},
+          focusRequester = focusRequester,
+        )
       }
 
       TvDestinations.SETTINGS.ordinal -> {
