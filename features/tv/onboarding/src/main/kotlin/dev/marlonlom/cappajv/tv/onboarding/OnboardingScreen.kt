@@ -35,10 +35,7 @@ import dev.marlonlom.cappajv.tv.onboarding.slot.OnboardingLogoSlot
  * navigation to the main application content.
  */
 @Composable
-fun OnboardingScreen(
-  @DrawableRes brandImage: Int,
-  onOnboardingComplete: () -> Unit
-) = Box(
+fun OnboardingScreen(@DrawableRes brandImage: Int, onOnboardingComplete: () -> Unit) = Box(
   modifier = Modifier
     .fillMaxSize()
     .paint(
