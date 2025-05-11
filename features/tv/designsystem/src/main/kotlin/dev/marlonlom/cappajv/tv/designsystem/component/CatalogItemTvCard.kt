@@ -44,7 +44,7 @@ fun CatalogItemTvCard(
   itemTitle: String,
   itemPhoto: String,
   onItemClicked: (catalogId: Long) -> Unit,
-  onItemLongClicked: (() -> Unit)? = null,
+  onItemLongClicked: () -> Unit = {},
   imageLoader: ImageLoader = LocalContext.current.imageLoader,
 ) = Card(
   onClick = { onItemClicked(itemId) },
