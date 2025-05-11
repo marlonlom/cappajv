@@ -4,6 +4,13 @@
  */
 package dev.marlonlom.cappajv.tv.ui.navigation
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +37,7 @@ import dev.marlonlom.cappajv.tv.catalog.home.CatalogHomeTvScreen
  *
  * @author marlonlom
  */
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TvScaffold() {
   val (focusRequester, focusedTab) = remember { FocusRequester.createRefs() }
@@ -53,30 +61,43 @@ fun TvScaffold() {
       focusedTab = focusedTab,
     )
 
-    when (selectedTabIndex) {
-      TvDestinations.HOME.ordinal -> {
-        CatalogHomeTvScreen(
-          onItemClicked = {},
-          focusRequester = focusRequester,
-        )
-      }
-
-      TvDestinations.FAVORITES.ordinal -> {
-        CatalogFavoritesTvScreen(
-          onItemClicked = {},
-          focusRequester = focusRequester,
-        )
-      }
-
-      TvDestinations.SETTINGS.ordinal -> {
-        Box(
-          modifier = Modifier.fillMaxSize(),
-          contentAlignment = Alignment.Center,
-        ) {
-          Text(
-            text = "Tab: ${TvDestinations.SETTINGS.name}",
-            color = MaterialTheme.colorScheme.onBackground,
+    AnimatedContent(
+      targetState = selectedTabIndex,
+      transitionSpec = {
+        if (targetState > initialState) {
+          slideInHorizontally { width -> width } + fadeIn() togetherWith
+            slideOutHorizontally { width -> -width } + fadeOut()
+        } else {
+          slideInHorizontally { width -> -width } + fadeIn() togetherWith
+            slideOutHorizontally { width -> width } + fadeOut()
+        }
+      },
+    ) { tabIndex ->
+      when (tabIndex) {
+        TvDestinations.HOME.ordinal -> {
+          CatalogHomeTvScreen(
+            onItemClicked = {},
+            focusRequester = focusRequester,
           )
+        }
+
+        TvDestinations.FAVORITES.ordinal -> {
+          CatalogFavoritesTvScreen(
+            onItemClicked = {},
+            focusRequester = focusRequester,
+          )
+        }
+
+        TvDestinations.SETTINGS.ordinal -> {
+          Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center,
+          ) {
+            Text(
+              text = "Tab: ${TvDestinations.SETTINGS.name}",
+              color = MaterialTheme.colorScheme.onBackground,
+            )
+          }
         }
       }
     }
