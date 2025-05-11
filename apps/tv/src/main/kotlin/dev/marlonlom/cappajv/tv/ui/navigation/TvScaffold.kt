@@ -5,7 +5,6 @@
 package dev.marlonlom.cappajv.tv.ui.navigation
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
@@ -20,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -37,12 +37,12 @@ import dev.marlonlom.cappajv.tv.catalog.home.CatalogHomeTvScreen
  *
  * @author marlonlom
  */
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TvScaffold() {
   val (focusRequester, focusedTab) = remember { FocusRequester.createRefs() }
   LaunchedEffect(Unit) { focusRequester.requestFocus() }
   var selectedTabIndex by remember { mutableIntStateOf(0) }
+  var areTabsEnabled by remember { mutableStateOf(true) }
 
   Column(
     modifier = Modifier
@@ -54,6 +54,7 @@ fun TvScaffold() {
   ) {
     TvScaffoldTabs(
       tabIndex = selectedTabIndex,
+      areTabsVisible = { areTabsEnabled },
       onTabChanged = {
         focusRequester.saveFocusedChild()
         selectedTabIndex = it
@@ -77,14 +78,15 @@ fun TvScaffold() {
         TvDestinations.HOME.ordinal -> {
           CatalogHomeTvScreen(
             onItemClicked = {},
-            focusRequester = focusRequester,
           )
         }
 
         TvDestinations.FAVORITES.ordinal -> {
           CatalogFavoritesTvScreen(
             onItemClicked = {},
-            focusRequester = focusRequester,
+            onUndoFavoriteDialogVisible = { enabled ->
+              areTabsEnabled = enabled
+            },
           )
         }
 
