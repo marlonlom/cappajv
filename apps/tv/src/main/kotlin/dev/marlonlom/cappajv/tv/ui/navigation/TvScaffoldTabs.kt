@@ -35,48 +35,58 @@ import dev.marlonlom.cappajv.tv.designsystem.component.CappajvTvBanner
  *
  * @param tabIndex The currently selected tab index.
  * @param onTabChanged A callback function invoked when the selected tab changes. It receives the new tab index.
+ * @param areTabsVisible A lambda that returns `true` if the tabs should be visible, `false` otherwise.
+ * @param focusedTab A [FocusRequester] that can be used to request focus on a specific tab.
  */
 @Composable
-internal fun TvScaffoldTabs(tabIndex: Int, onTabChanged: (Int) -> Unit, focusedTab: FocusRequester) = Row(
+internal fun TvScaffoldTabs(
+  tabIndex: Int,
+  onTabChanged: (Int) -> Unit,
+  areTabsVisible: () -> Boolean,
+  focusedTab: FocusRequester,
+) = Row(
   modifier = Modifier.padding(vertical = 24.dp),
   verticalAlignment = Alignment.CenterVertically,
 ) {
-  TabRow(
-    modifier = Modifier.focusProperties { onEnter = { focusedTab.requestFocus() } },
-    selectedTabIndex = tabIndex,
-    indicator = { tabPositions, doesTabRowHaveFocus ->
-      TabRowDefaults.UnderlinedIndicator(
-        currentTabPosition = tabPositions[tabIndex],
-        doesTabRowHaveFocus = doesTabRowHaveFocus,
-      )
-    },
-  ) {
-    TvDestinations.entries.forEachIndexed { index, destination ->
-      val tabModifier = if (tabIndex == index) {
-        Modifier.focusRequester(focusedTab)
-      } else {
-        Modifier
-      }
+  if (areTabsVisible()) {
+    TabRow(
+      modifier = Modifier.focusProperties { onEnter = { focusedTab.requestFocus() } },
+      selectedTabIndex = tabIndex,
+      indicator = { tabPositions, doesTabRowHaveFocus ->
+        TabRowDefaults.UnderlinedIndicator(
+          currentTabPosition = tabPositions[tabIndex],
+          doesTabRowHaveFocus = doesTabRowHaveFocus,
+        )
+      },
+    ) {
+      TvDestinations.entries.forEachIndexed { index, destination ->
+        val tabModifier = if (tabIndex == index) {
+          Modifier.focusRequester(focusedTab)
+        } else {
+          Modifier
+        }
 
-      Tab(
-        modifier = tabModifier,
-        selected = tabIndex == index,
-        onFocus = { onTabChanged.invoke(index) },
-        colors = TabDefaults.underlinedIndicatorTabColors(
-          selectedContentColor = MaterialTheme.colorScheme.primary,
-          focusedSelectedContentColor = MaterialTheme.colorScheme.primary,
-        ),
-      ) {
-        Row(
-          modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.spacedBy(10.dp),
+        Tab(
+          modifier = tabModifier,
+          selected = tabIndex == index,
+          onFocus = { onTabChanged.invoke(index) },
+          colors = TabDefaults.underlinedIndicatorTabColors(
+            contentColor = MaterialTheme.colorScheme.secondary,
+            selectedContentColor = MaterialTheme.colorScheme.primary,
+            focusedSelectedContentColor = MaterialTheme.colorScheme.primary,
+          ),
         ) {
-          Icon(imageVector = destination.icon, contentDescription = stringResource(destination.hint))
-          Text(
-            text = stringResource(destination.title),
-            style = MaterialTheme.typography.bodySmall,
-          )
+          Row(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+          ) {
+            Icon(imageVector = destination.icon, contentDescription = stringResource(destination.hint))
+            Text(
+              text = stringResource(destination.title),
+              style = MaterialTheme.typography.bodySmall,
+            )
+          }
         }
       }
     }
