@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -38,11 +40,12 @@ import dev.marlonlom.cappajv.tv.catalog.favorites.R
  * @author marlonlom
  */
 @Composable
-internal fun CatalogEmptyFavoritesSlot() = Row(
+internal fun CatalogEmptyFavoritesSlot(focusRequester: FocusRequester) = Row(
   modifier = Modifier
     .fillMaxWidth()
     .height(160.dp)
     .border(1.dp, MaterialTheme.colorScheme.surfaceTint, MaterialTheme.shapes.large)
+    .focusRequester(focusRequester)
     .focusable(),
   verticalAlignment = Alignment.CenterVertically,
   horizontalArrangement = Arrangement.spacedBy(20.dp),
