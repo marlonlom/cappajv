@@ -38,6 +38,7 @@ include(
   ":features:tv:catalog-favorites",
   ":features:tv:designsystem",
   ":features:tv:onboarding",
+  ":features:tv:settings"
 )
 include(
   ":features:domain:catalog-detail",
