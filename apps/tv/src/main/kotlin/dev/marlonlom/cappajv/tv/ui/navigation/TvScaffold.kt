@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import dev.marlonlom.cappajv.tv.catalog.favorites.CatalogFavoritesTvScreen
 import dev.marlonlom.cappajv.tv.catalog.home.CatalogHomeTvScreen
-import dev.marlonlom.cappajv.tv.settings.SettingsScreen
+import dev.marlonlom.cappajv.tv.settings.SettingsTvScreen
 
 /**
  * A composable scaffold layout for TV interfaces.
@@ -90,7 +90,7 @@ fun TvScaffold() {
         }
 
         TvDestinations.SETTINGS.ordinal -> {
-          SettingsScreen()
+          SettingsTvScreen()
         }
       }
     }
