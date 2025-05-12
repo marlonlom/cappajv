@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.settings.component
 
 import androidx.annotation.StringRes
@@ -30,12 +29,12 @@ internal fun HelpAndSupportSectionItem(@StringRes title: Int) = ListItem(
   headlineContent = {
     Text(
       text = stringResource(title),
-      style = MaterialTheme.typography.bodyMedium
+      style = MaterialTheme.typography.bodyMedium,
     )
   },
   colors = ListItemDefaults.colors(
     containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(4.dp),
     contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-    focusedContentColor = MaterialTheme.colorScheme.surfaceVariant
+    focusedContentColor = MaterialTheme.colorScheme.surfaceVariant,
   ),
 )
