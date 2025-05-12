@@ -22,6 +22,7 @@ dependencies {
   implementation(project(":features:tv:catalog-favorites"))
   implementation(project(":features:tv:designsystem"))
   implementation(project(":features:tv:onboarding"))
+  implementation(project(":features:tv:settings"))
 
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.navigation.compose)

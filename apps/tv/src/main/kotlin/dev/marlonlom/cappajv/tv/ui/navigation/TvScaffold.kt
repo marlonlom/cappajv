@@ -11,7 +11,6 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -28,9 +27,9 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Text
 import dev.marlonlom.cappajv.tv.catalog.favorites.CatalogFavoritesTvScreen
 import dev.marlonlom.cappajv.tv.catalog.home.CatalogHomeTvScreen
+import dev.marlonlom.cappajv.tv.settings.SettingsScreen
 
 /**
  * A composable scaffold layout for TV interfaces.
@@ -91,15 +90,7 @@ fun TvScaffold() {
         }
 
         TvDestinations.SETTINGS.ordinal -> {
-          Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center,
-          ) {
-            Text(
-              text = "Tab: ${TvDestinations.SETTINGS.name}",
-              color = MaterialTheme.colorScheme.onBackground,
-            )
-          }
+          SettingsScreen()
         }
       }
     }
