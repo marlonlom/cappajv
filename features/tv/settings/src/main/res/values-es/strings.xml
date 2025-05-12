@@ -8,4 +8,13 @@
   <string name="text_help_support">Ayuda y soporte técnico</string>
   <string name="text_about">Acerca de</string>
   <string name="text_list_item_icon">Ícono de %s</string>
+  <!-- settings section : about -->
+  <string name="text_about_title">Acerca de CappaJV</string>
+  <string name="text_about_description">Aplicación de Android de ejemplo que muestra el catálogo de productos, con el valor de los puntos del programa "Amigos Juan Valdez" y mostrando claramente el valor de los puntos que obtienes al comprar cada artículo. Consulta el valor de cada artículo y empieza a planificar cómo usar tus puntos para disfrutar de tus productos favoritos.</string>
+  <string name="text_about_app_version">Versión de la aplicación</string>
+  <!-- settings section : help and support -->
+  <string name="text_help_support_title">Ayuda y soporte</string>
+  <string name="text_help_support_section_faq">Preguntas frecuentes</string>
+  <string name="text_help_support_section_privacy_policy">Política de privacidad</string>
+  <string name="text_help_support_section_feedback">Comentarios</string>
 </resources>

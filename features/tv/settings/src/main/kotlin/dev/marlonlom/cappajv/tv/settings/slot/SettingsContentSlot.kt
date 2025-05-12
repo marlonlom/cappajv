@@ -1,38 +1,36 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.settings.slot
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Text
 import dev.marlonlom.cappajv.tv.settings.domain.SettingsMenu
 
+/**
+ * Composable function that displays the content for a specific settings menu item.
+ *
+ * @author marlonlom
+ *
+ * @param selectedMenu The identifier of the currently selected menu item.
+ */
 @Composable
-fun SettingsContentSlot(selectedMenu: Int) = Column(
-  modifier = Modifier.background(
+internal fun SettingsContentSlot(selectedMenu: Int) = Column(
+  modifier = Modifier
+    .padding(horizontal = 20.dp)
+    .background(
       MaterialTheme.colorScheme.surface,
-      MaterialTheme.shapes.extraSmall,
+      MaterialTheme.shapes.small,
     ),
 ) {
-  Text(
-    modifier = Modifier
-      .fillMaxSize()
-      .paddingFromBaseline(40.dp, 20.dp),
-    text = "The [${SettingsMenu.entries[selectedMenu].name}] section is not available yet.",
-    textAlign = TextAlign.Center,
-    fontWeight = FontWeight.Bold,
-    color = MaterialTheme.colorScheme.onSurface,
-    style = MaterialTheme.typography.titleMedium,
-  )
+  when (selectedMenu) {
+    SettingsMenu.ABOUT.ordinal -> AboutSettingSlot()
+    SettingsMenu.HELP_SUPPORT.ordinal -> HelpSupportSettingSlot()
+  }
 }

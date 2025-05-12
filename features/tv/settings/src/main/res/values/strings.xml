@@ -8,4 +8,13 @@
   <string name="text_help_support">Help and support</string>
   <string name="text_about">About</string>
   <string name="text_list_item_icon">%s icon</string>
+  <!-- settings section : about -->
+  <string name="text_about_title">About CappaJV</string>
+  <string name="text_about_description">Sample Android application that showcases the product catalog, listing the item point values for the \"Amigos Juan Valdez\" program, clearly showing the point value you get when you purchase each item. Check the value of each item and start planning how to use your points to enjoy your favorite products.</string>
+  <string name="text_about_app_version">Application version</string>
+  <!-- settings section : help and support -->
+  <string name="text_help_support_title">Help and support</string>
+  <string name="text_help_support_section_faq">FAQ\'s</string>
+  <string name="text_help_support_section_privacy_policy">Privacy policy</string>
+  <string name="text_help_support_section_feedback">Feedback</string>
 </resources>
