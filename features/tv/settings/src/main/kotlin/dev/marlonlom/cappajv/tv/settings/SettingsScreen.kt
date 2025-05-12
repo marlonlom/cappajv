@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import dev.marlonlom.cappajv.tv.settings.domain.SettingsMenu
+import dev.marlonlom.cappajv.tv.settings.slot.SettingsContentSlot
 import dev.marlonlom.cappajv.tv.settings.slot.SettingsMenuColumnSlot
 
 @Composable
@@ -46,24 +47,10 @@ fun SettingsScreen() {
         onListItemSelected = { index -> selectedListIndex = index },
       )
 
-      Column(
-        modifier = Modifier
-          .background(
-            MaterialTheme.colorScheme.surfaceTint,
-            MaterialTheme.shapes.extraSmall,
-          ),
-      ) {
-        Text(
-          modifier = Modifier
-            .fillMaxSize()
-            .paddingFromBaseline(40.dp, 20.dp),
-          text = "The [${SettingsMenu.entries[selectedListIndex].name}] section is not available yet.",
-          textAlign = TextAlign.Center,
-          fontWeight = FontWeight.Bold,
-          color = MaterialTheme.colorScheme.onSurface,
-          style = MaterialTheme.typography.titleMedium,
-        )
-      }
+      SettingsContentSlot(
+        selectedMenu = selectedListIndex
+      )
+
     }
   }
 }
