@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2024 Marlonlom
+  SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+  <string name="text_help_support">Ayuda y soporte técnico</string>
+  <string name="text_about">Acerca de</string>
+  <string name="text_list_item_icon">Ícono de %s</string>
+</resources>
