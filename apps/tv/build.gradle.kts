@@ -18,6 +18,7 @@ dependencies {
   implementation(project(":features:core:database"))
   implementation(project(":features:core:preferences"))
 
+  implementation(project(":features:tv:catalog-detail"))
   implementation(project(":features:tv:catalog-home"))
   implementation(project(":features:tv:catalog-favorites"))
   implementation(project(":features:tv:designsystem"))
