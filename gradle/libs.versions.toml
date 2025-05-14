@@ -78,7 +78,7 @@ androidx-tv-material = "androidx.tv:tv-material:1.0.0"
 
 #[libraries] gradle convention plugin
 android-gradlePlugin = "com.android.tools.build:gradle:8.10.0"
-kotlin-gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.20"
+kotlin-gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.21"
 compose-compiler-gradlePlugin = "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.21"
 spotless-gradlePlugin = "com.diffplug.spotless:spotless-plugin-gradle:7.0.3"
 
