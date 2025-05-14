@@ -5,25 +5,31 @@
 package dev.marlonlom.cappajv.domain.catalog.detail
 
 /**
- * Catalog details ui state sealed class.
+ * Represents the UI states for displaying details of a catalog item.
  *
  * @author marlonlom
  */
 sealed class CatalogDetailUiState {
-
   /**
-   * Not found phase for catalog details ui state.
+   * Indicates that the requested catalog item was not found.
    *
    * @author marlonlom
    */
   data object NotFound : CatalogDetailUiState()
 
   /**
-   * Success phase for catalog details ui state.
+   * Indicates that the details for the catalog item are currently being loaded.
+   *
+   * @author marlonlom
+   */
+  data object Loading : CatalogDetailUiState()
+
+  /**
+   * Indicates that the details for the catalog item were successfully found.
    *
    * @author marlonlom
    *
-   * @property detail Catalog item detailed information.
+   * @property detail The [CatalogDetailItem] containing the item's details.
    */
   data class Found(val detail: CatalogDetailItem) : CatalogDetailUiState()
 }
