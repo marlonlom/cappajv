@@ -4,14 +4,20 @@
  */
 package dev.marlonlom.cappajv.mobile.catalog.detail
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -63,8 +69,8 @@ fun CatalogDetailScreen(
 
   LazyColumn {
     when (uiState) {
-      is dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found -> {
-        val item = (uiState as dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.Found).detail
+      is CatalogDetailUiState.Found -> {
+        val item = (uiState as CatalogDetailUiState.Found).detail
 
         val showBackBtn = showBackButton()
         if (showBackBtn) {
@@ -117,7 +123,7 @@ fun CatalogDetailScreen(
         }
       }
 
-      dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailUiState.NotFound -> {
+      CatalogDetailUiState.NotFound -> {
         stickyHeader {
           Text(
             text = "Select a catalog item from the list.",
@@ -125,6 +131,21 @@ fun CatalogDetailScreen(
             textAlign = TextAlign.Center,
           )
         }
+      }
+
+      CatalogDetailUiState.Loading -> {
+        item(
+          content = {
+            Box(
+              modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 64.dp),
+              contentAlignment = Alignment.Center,
+            ) {
+              CircularProgressIndicator()
+            }
+          },
+        )
       }
     }
   }
