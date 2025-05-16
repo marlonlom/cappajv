@@ -4,7 +4,8 @@
   Copyright 2024 Marlonlom
   SPDX-License-Identifier: Apache-2.0
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:tools="http://schemas.android.com/tools"
+  xmlns:android="http://schemas.android.com/apk/res/android">
 
   <uses-permission android:name="android.permission.INTERNET" />
 
@@ -24,7 +25,9 @@
     android:roundIcon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:supportsRtl="true"
-    android:theme="@style/Theme.Cappajv">
+    android:enableOnBackInvokedCallback="true"
+    android:theme="@style/Theme.Cappajv"
+    tools:targetApi="33">
 
     <activity
       android:name=".ui.main.TvActivity"
