@@ -38,7 +38,10 @@ fun CatalogDetailTvScreen(
   when (detailUiState.value) {
     is CatalogDetailUiState.Found -> {
       val detailItem = (detailUiState.value as CatalogDetailUiState.Found).detail
-      CatalogDetailTvScreenContent(detailItem)
+      CatalogDetailTvScreenContent(
+        detailItem = detailItem,
+        onFavoriteChanged = viewModel::toggleFavorite
+      )
     }
 
     CatalogDetailUiState.Loading -> {
