@@ -12,6 +12,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTouchInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.google.common.truth.Truth
 import org.junit.FixMethodOrder
 import org.junit.Rule
@@ -28,7 +29,12 @@ internal class OnboardingScreenUiTest {
   @Test
   fun shouldDisplayScreenContents() {
     with(composeTestRule) {
-      setContent { OnboardingScreen(onOnboardingComplete = {}) }
+      setContent {
+        OnboardingScreen(
+          brandImage = getLogoImageDrawableId(),
+          onOnboardingComplete = {}
+        )
+      }
       onNodeWithContentDescription("Onboarding logo image").isDisplayed()
       onNodeWithText("Welcome").isDisplayed()
       onNodeWithText("Unlock exclusive rewards!", substring = true).isDisplayed()
@@ -39,12 +45,26 @@ internal class OnboardingScreenUiTest {
   fun shouldClickOnboardingFinishedButton() {
     var clicked = false
     with(composeTestRule) {
-      setContent { OnboardingScreen(onOnboardingComplete = { clicked = true }) }
+      setContent {
+        OnboardingScreen(
+          brandImage = getLogoImageDrawableId(),
+          onOnboardingComplete = { clicked = true })
+      }
       onNodeWithTag("onboarding_finish_btn").isDisplayed()
       onNodeWithTag("onboarding_finish_btn").performClick().performTouchInput {
         clicked = true
       }
       Truth.assertThat(clicked).isTrue()
     }
+  }
+
+  private fun getLogoImageDrawableId(): Int {
+    val instrumentationContext = InstrumentationRegistry.getInstrumentation().targetContext
+    return instrumentationContext.resources.getIdentifier(
+      "img_logo",
+      "drawable",
+      instrumentationContext.packageName
+    )
+
   }
 }
