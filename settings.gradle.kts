@@ -34,6 +34,7 @@ include(
 )
 include(
   ":apps:tv",
+  ":features:tv:catalog-detail",
   ":features:tv:catalog-home",
   ":features:tv:catalog-favorites",
   ":features:tv:designsystem",
