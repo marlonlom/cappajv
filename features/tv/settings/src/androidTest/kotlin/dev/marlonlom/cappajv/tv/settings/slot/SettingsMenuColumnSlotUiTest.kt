@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.settings.slot
 
 import androidx.compose.ui.test.isDisplayed
@@ -36,7 +35,7 @@ internal class SettingsMenuColumnSlotUiTest {
         SettingsMenuColumnSlot(
           onLeftColumnFocused = { b -> leftFocused = b },
           isListItemSelected = { index -> index == itemPosition },
-          onListItemSelected = { itemClicked = true }
+          onListItemSelected = { itemClicked = true },
         )
       }
 
@@ -59,7 +58,7 @@ internal class SettingsMenuColumnSlotUiTest {
         SettingsMenuColumnSlot(
           onLeftColumnFocused = { b -> leftFocused = b },
           isListItemSelected = { index -> index == itemPosition },
-          onListItemSelected = { itemClicked = true }
+          onListItemSelected = { itemClicked = true },
         )
       }
 
