@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.catalog.detail
 
 import android.graphics.drawable.ColorDrawable
@@ -75,8 +74,8 @@ internal class CatalogDetailTvScreenContentUiTest {
             catalogItemId = 1L,
             label = "Unit",
             points = 1200L,
-          )
-        )
+          ),
+        ),
       )
       setContent {
         CatalogDetailTvScreenContent(
