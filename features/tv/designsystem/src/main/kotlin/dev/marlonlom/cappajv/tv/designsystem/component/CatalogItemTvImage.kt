@@ -20,6 +20,17 @@ import coil.compose.AsyncImage
 import coil.imageLoader
 import coil.request.ImageRequest
 
+/**
+ * Displays a TV catalog item image with a specified title and styling.
+ *
+ * @author marlonlom
+ *
+ * @param itemPicture URL or resource identifier of the item's image.
+ * @param itemTitle Title of the catalog item, used for content description.
+ * @param imageWidth Width of the image (default is 124.dp).
+ * @param aspectRatio Aspect ratio of the image (default is 5:7).
+ * @param imageLoader Custom [ImageLoader] for loading the image.
+ */
 @Composable
 fun CatalogItemTvImage(
   itemPicture: String,
