@@ -28,7 +28,7 @@ internal class OnboardingLogoSlotUiTest {
     val imageResourceId = instrumentationContext.resources.getIdentifier(
       "img_logo",
       "drawable",
-      instrumentationContext.packageName
+      instrumentationContext.packageName,
     )
     with(composeTestRule) {
       setContent { OnboardingLogoSlot(imageResourceId) }

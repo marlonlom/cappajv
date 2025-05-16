@@ -32,7 +32,7 @@ internal class OnboardingScreenUiTest {
       setContent {
         OnboardingScreen(
           brandImage = getLogoImageDrawableId(),
-          onOnboardingComplete = {}
+          onOnboardingComplete = {},
         )
       }
       onNodeWithContentDescription("Onboarding logo image").isDisplayed()
@@ -48,7 +48,8 @@ internal class OnboardingScreenUiTest {
       setContent {
         OnboardingScreen(
           brandImage = getLogoImageDrawableId(),
-          onOnboardingComplete = { clicked = true })
+          onOnboardingComplete = { clicked = true },
+        )
       }
       onNodeWithTag("onboarding_finish_btn").isDisplayed()
       onNodeWithTag("onboarding_finish_btn").performClick().performTouchInput {
@@ -63,8 +64,7 @@ internal class OnboardingScreenUiTest {
     return instrumentationContext.resources.getIdentifier(
       "img_logo",
       "drawable",
-      instrumentationContext.packageName
+      instrumentationContext.packageName,
     )
-
   }
 }
