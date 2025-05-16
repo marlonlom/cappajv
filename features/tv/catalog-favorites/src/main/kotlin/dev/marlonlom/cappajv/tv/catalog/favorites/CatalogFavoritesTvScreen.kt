@@ -18,7 +18,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
@@ -26,8 +25,6 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Text
 import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.cappajv.domain.catalog.favorites.CatalogFavoritesUiState
 import dev.marlonlom.cappajv.tv.catalog.favorites.component.UndoFavoriteCatalogItemDialog
@@ -35,6 +32,7 @@ import dev.marlonlom.cappajv.tv.catalog.favorites.domain.CatalogFavoritesViewMod
 import dev.marlonlom.cappajv.tv.catalog.favorites.slot.CatalogEmptyFavoritesSlot
 import dev.marlonlom.cappajv.tv.designsystem.component.CatalogItemTvCard
 import dev.marlonlom.cappajv.tv.designsystem.slot.CategoryTitleSlot
+import dev.marlonlom.cappajv.tv.designsystem.slot.LoadingSlot
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -90,23 +88,11 @@ fun CatalogFavoritesTvScreen(
       ) {
         when (uiState.value) {
           CatalogFavoritesUiState.Empty -> {
-            item(content = { CatalogEmptyFavoritesSlot(childFocusRequester) })
+            item { CatalogEmptyFavoritesSlot(childFocusRequester) }
           }
 
           CatalogFavoritesUiState.Loading -> {
-            item(
-              content = {
-                Box(
-                  modifier = Modifier.fillMaxSize(),
-                  contentAlignment = Alignment.Center,
-                ) {
-                  Text(
-                    text = "Loading...",
-                    color = MaterialTheme.colorScheme.onBackground,
-                  )
-                }
-              },
-            )
+            item { LoadingSlot() }
           }
 
           is CatalogFavoritesUiState.Success -> {
