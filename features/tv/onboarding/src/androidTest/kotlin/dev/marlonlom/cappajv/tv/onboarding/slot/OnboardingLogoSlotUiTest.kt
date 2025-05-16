@@ -8,6 +8,7 @@ import androidx.compose.ui.test.isDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.FixMethodOrder
 import org.junit.Rule
 import org.junit.Test
@@ -23,8 +24,14 @@ internal class OnboardingLogoSlotUiTest {
 
   @Test
   fun shouldDisplayOnboardingLogoSlot() {
+    val instrumentationContext = InstrumentationRegistry.getInstrumentation().targetContext
+    val imageResourceId = instrumentationContext.resources.getIdentifier(
+      "img_logo",
+      "drawable",
+      instrumentationContext.packageName
+    )
     with(composeTestRule) {
-      setContent { OnboardingLogoSlot() }
+      setContent { OnboardingLogoSlot(imageResourceId) }
       onNodeWithContentDescription("Onboarding logo image").isDisplayed()
     }
   }
