@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.catalog.detail.slot
 
 import androidx.compose.foundation.layout.Arrangement
@@ -31,21 +30,21 @@ import dev.marlonlom.cappajv.core.database.entities.CatalogPunctuation
 @Composable
 internal fun CatalogDetailTvPointsSlot(points: List<CatalogPunctuation>) = Row(
   modifier = Modifier.padding(top = 10.dp),
-  horizontalArrangement = Arrangement.spacedBy(10.dp)
+  horizontalArrangement = Arrangement.spacedBy(10.dp),
 ) {
   points.forEach { punctuation ->
     Column(
       modifier = Modifier
         .width(84.dp)
         .padding(vertical = 10.dp),
-      horizontalAlignment = Alignment.CenterHorizontally
+      horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       Text(
         modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
         text = "${punctuation.points}",
         textAlign = TextAlign.Center,
         style = MaterialTheme.typography.titleLarge,
-        color = MaterialTheme.colorScheme.onBackground
+        color = MaterialTheme.colorScheme.onBackground,
       )
       when {
         punctuation.label.indexOfFirst { t -> t == '(' } >= 0 -> punctuation.label.substring(
@@ -62,7 +61,7 @@ internal fun CatalogDetailTvPointsSlot(points: List<CatalogPunctuation>) = Row(
           color = MaterialTheme.colorScheme.onBackground,
           textAlign = TextAlign.Center,
           maxLines = 2,
-          overflow = TextOverflow.Ellipsis
+          overflow = TextOverflow.Ellipsis,
         )
       }
     }

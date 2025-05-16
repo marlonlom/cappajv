@@ -19,6 +19,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.ImageLoader
+import coil.imageLoader
 import dev.marlonlom.cappajv.core.database.entities.CatalogItem
 import dev.marlonlom.cappajv.domain.catalog.detail.CatalogDetailItem
 import dev.marlonlom.cappajv.tv.catalog.detail.slot.CatalogDetailTvContentSlot
@@ -29,11 +31,14 @@ import dev.marlonlom.cappajv.tv.catalog.detail.slot.CatalogDetailTvContentSlot
  * @author marlonlom
  *
  * @param detailItem The [CatalogDetailItem] containing the information to display.
+ * @param onFavoriteChanged Callback invoked when the favorite status is toggled.
+ * @param imageLoader Custom [ImageLoader] for loading the image.
  */
 @Composable
 internal fun CatalogDetailTvScreenContent(
   detailItem: CatalogDetailItem,
   onFavoriteChanged: (CatalogItem, Boolean) -> Unit,
+  imageLoader: ImageLoader = LocalContext.current.imageLoader,
 ) {
   val (product, isFavorite, points) = detailItem
   val context = LocalContext.current
@@ -77,8 +82,8 @@ internal fun CatalogDetailTvScreenContent(
       modifier = Modifier
         .align(Alignment.BottomStart)
         .padding(start = 60.dp, end = 30.dp)
-        .fillMaxWidth(0.6f)
+        .fillMaxWidth(0.6f),
+      imageLoader = imageLoader,
     )
-
   }
 }

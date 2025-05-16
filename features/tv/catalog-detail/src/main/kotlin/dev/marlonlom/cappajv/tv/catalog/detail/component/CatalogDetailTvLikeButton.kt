@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.catalog.detail.component
 
 import androidx.compose.foundation.BorderStroke
@@ -13,6 +12,7 @@ import androidx.compose.material.icons.rounded.ThumbUp
 import androidx.compose.material.icons.twotone.ThumbUp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Border
@@ -38,9 +38,11 @@ import dev.marlonlom.cappajv.tv.catalog.detail.R
 internal fun CatalogDetailTvLikeButton(
   item: CatalogItem,
   isFavorite: Boolean,
-  onFavoriteChanged: (CatalogItem, Boolean) -> Unit
+  onFavoriteChanged: (CatalogItem, Boolean) -> Unit,
 ) = IconButton(
-  modifier = Modifier.padding(top = 20.dp),
+  modifier = Modifier
+    .testTag("catalog_detail_tv_like_btn")
+    .padding(top = 20.dp),
   onClick = {
     onFavoriteChanged(item, !isFavorite)
   },
@@ -62,6 +64,5 @@ internal fun CatalogDetailTvLikeButton(
         modifier = Modifier.size(ButtonDefaults.IconSize),
       )
     }
-  }
+  },
 )
-

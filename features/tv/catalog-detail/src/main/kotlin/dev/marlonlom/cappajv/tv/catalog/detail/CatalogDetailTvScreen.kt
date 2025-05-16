@@ -40,7 +40,7 @@ fun CatalogDetailTvScreen(
       val detailItem = (detailUiState.value as CatalogDetailUiState.Found).detail
       CatalogDetailTvScreenContent(
         detailItem = detailItem,
-        onFavoriteChanged = viewModel::toggleFavorite
+        onFavoriteChanged = viewModel::toggleFavorite,
       )
     }
 
