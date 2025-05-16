@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -31,6 +32,7 @@ import dev.marlonlom.cappajv.tv.settings.domain.SettingsMenu
  */
 @Composable
 internal fun SettingsMenuListItem(item: SettingsMenu, selected: Boolean, onClick: () -> Unit) = ListItem(
+  modifier = Modifier.testTag("settings_menu_list_btn_${item.ordinal}"),
   selected = selected,
   onClick = onClick,
   leadingContent = {
