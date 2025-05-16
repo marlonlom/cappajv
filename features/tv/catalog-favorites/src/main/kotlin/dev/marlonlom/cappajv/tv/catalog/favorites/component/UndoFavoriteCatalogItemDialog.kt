@@ -5,33 +5,25 @@
 package dev.marlonlom.cappajv.tv.catalog.favorites.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import androidx.tv.material3.WideButton
-import coil.ImageLoader
-import coil.compose.AsyncImage
-import coil.imageLoader
-import coil.request.ImageRequest
 import dev.marlonlom.cappajv.core.database.entities.CatalogItemTuple
 import dev.marlonlom.cappajv.tv.catalog.favorites.R
+import dev.marlonlom.cappajv.tv.designsystem.component.CatalogItemTvImage
 
 /**
  * Displays a confirmation dialog to remove the catalog item from the favorite list screen.
@@ -39,7 +31,7 @@ import dev.marlonlom.cappajv.tv.catalog.favorites.R
  * @author marlonlom
  *
  *
- * @param item The [CatalogItemTuple] representing the item to undo favoriting for.
+ * @param item The [CatalogItemTuple] representing the item to remove from favorites list.
  * @param onConfirm Callback to be invoked when the user confirms the undo action.
  * @param onDismiss Callback to be invoked when the user dismisses the dialog.
  */
@@ -48,7 +40,6 @@ internal fun UndoFavoriteCatalogItemDialog(
   item: CatalogItemTuple,
   onConfirm: () -> Unit,
   onDismiss: () -> Unit,
-  imageLoader: ImageLoader = LocalContext.current.imageLoader,
 ) = Row(
   modifier = Modifier
     .fillMaxSize()
@@ -60,18 +51,10 @@ internal fun UndoFavoriteCatalogItemDialog(
   Row(
     verticalAlignment = Alignment.CenterVertically,
   ) {
-    AsyncImage(
-      imageLoader = imageLoader,
-      model = ImageRequest.Builder(LocalContext.current).data(item.picture).crossfade(true)
-        .error(MaterialTheme.colorScheme.errorContainer.value.toInt())
-        .placeholder(MaterialTheme.colorScheme.secondaryContainer.value.toInt()).build(),
-      contentDescription = item.title,
-      contentScale = ContentScale.Crop,
-      modifier = Modifier
-        .width(124.dp)
-        .aspectRatio(3f / 4)
-        .clip(MaterialTheme.shapes.small)
-        .border(1.dp, MaterialTheme.colorScheme.secondary, MaterialTheme.shapes.small),
+    CatalogItemTvImage(
+      itemPicture = item.picture,
+      itemTitle = item.title,
+      aspectRatio = 3f / 4,
     )
     Spacer(modifier = Modifier.width(20.dp))
     Column(Modifier.padding(vertical = 20.dp)) {
