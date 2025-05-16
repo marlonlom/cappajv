@@ -47,7 +47,7 @@ fun LoadingSlot(
       Text(
         text = message,
         style = style,
-        color = MaterialTheme.colorScheme.onBackground
+        color = MaterialTheme.colorScheme.onBackground,
       )
     }
   }
