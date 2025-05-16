@@ -110,7 +110,7 @@ fun CircularProgressIndicator(
       .size(C.circularIndicatorDiameter),
   ) {
     drawCircularIndicatorTrack(trackColor, stroke)
-    val currentRotationAngleOffset = (currentRotation.value * C.ROTATION_ANGLE_OFFSET) % 360f
+    val currentRotationAngleOffset = currentRotation.value * C.ROTATION_ANGLE_OFFSET % 360f
     val sweep = abs(endAngle.value - startAngle.value)
     val offset = C.START_ANGLE_OFFSET + currentRotationAngleOffset + baseRotation.value
     drawIndeterminateCircularIndicator(
