@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -27,6 +28,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
+import dev.marlonlom.cappajv.tv.catalog.detail.CatalogDetailTvScreen
 import dev.marlonlom.cappajv.tv.catalog.favorites.CatalogFavoritesTvScreen
 import dev.marlonlom.cappajv.tv.catalog.home.CatalogHomeTvScreen
 import dev.marlonlom.cappajv.tv.settings.SettingsTvScreen
@@ -42,55 +44,65 @@ fun TvScaffold() {
   LaunchedEffect(Unit) { focusRequester.requestFocus() }
   var selectedTabIndex by remember { mutableIntStateOf(0) }
   var areTabsEnabled by remember { mutableStateOf(true) }
+  var selectedCatalogId by remember { mutableLongStateOf(0L) }
 
-  Column(
-    modifier = Modifier
-      .focusRequester(focusRequester)
-      .fillMaxSize()
-      .background(MaterialTheme.colorScheme.background)
-      .padding(horizontal = 48.dp),
-    horizontalAlignment = Alignment.CenterHorizontally,
-  ) {
-    TvScaffoldTabs(
-      tabIndex = selectedTabIndex,
-      areTabsVisible = { areTabsEnabled },
-      onTabChanged = {
-        focusRequester.saveFocusedChild()
-        selectedTabIndex = it
+  if (selectedCatalogId != 0L) {
+    CatalogDetailTvScreen(
+      detailId = selectedCatalogId,
+      onNavigationBack = {
+        selectedCatalogId = 0L
       },
-      focusedTab = focusedTab,
     )
+  } else {
+    Column(
+      modifier = Modifier
+        .focusRequester(focusRequester)
+        .fillMaxSize()
+        .background(MaterialTheme.colorScheme.background)
+        .padding(horizontal = 48.dp),
+      horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+      TvScaffoldTabs(
+        tabIndex = selectedTabIndex,
+        areTabsVisible = { areTabsEnabled },
+        onTabChanged = {
+          focusRequester.saveFocusedChild()
+          selectedTabIndex = it
+        },
+        focusedTab = focusedTab,
+      )
 
-    AnimatedContent(
-      targetState = selectedTabIndex,
-      transitionSpec = {
-        if (targetState > initialState) {
-          slideInHorizontally { width -> width } + fadeIn() togetherWith
-            slideOutHorizontally { width -> -width } + fadeOut()
-        } else {
-          slideInHorizontally { width -> -width } + fadeIn() togetherWith
-            slideOutHorizontally { width -> width } + fadeOut()
-        }
-      },
-    ) { tabIndex ->
-      when (tabIndex) {
-        TvDestinations.HOME.ordinal -> {
-          CatalogHomeTvScreen(
-            onItemClicked = {},
-          )
-        }
+      AnimatedContent(
+        targetState = selectedTabIndex,
+        transitionSpec = {
+          if (targetState > initialState) {
+            slideInHorizontally { width -> width } + fadeIn() togetherWith
+              slideOutHorizontally { width -> -width } + fadeOut()
+          } else {
+            slideInHorizontally { width -> -width } + fadeIn() togetherWith
+              slideOutHorizontally { width -> width } + fadeOut()
+          }
+        },
+      ) { tabIndex ->
+        when (tabIndex) {
+          TvDestinations.HOME.ordinal -> {
+            CatalogHomeTvScreen(
+              onItemClicked = { selectedCatalogId = it },
+            )
+          }
 
-        TvDestinations.FAVORITES.ordinal -> {
-          CatalogFavoritesTvScreen(
-            onItemClicked = {},
-            onUndoFavoriteDialogVisible = { enabled ->
-              areTabsEnabled = enabled
-            },
-          )
-        }
+          TvDestinations.FAVORITES.ordinal -> {
+            CatalogFavoritesTvScreen(
+              onItemClicked = { selectedCatalogId = it },
+              onUndoFavoriteDialogVisible = { enabled ->
+                areTabsEnabled = enabled
+              },
+            )
+          }
 
-        TvDestinations.SETTINGS.ordinal -> {
-          SettingsTvScreen()
+          TvDestinations.SETTINGS.ordinal -> {
+            SettingsTvScreen()
+          }
         }
       }
     }
