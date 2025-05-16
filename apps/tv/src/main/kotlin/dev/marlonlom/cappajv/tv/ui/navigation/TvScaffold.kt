@@ -4,6 +4,8 @@
  */
 package dev.marlonlom.cappajv.tv.ui.navigation
 
+import android.content.Context
+import android.content.pm.PackageManager
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -26,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import dev.marlonlom.cappajv.tv.catalog.detail.CatalogDetailTvScreen
@@ -40,6 +43,8 @@ import dev.marlonlom.cappajv.tv.settings.SettingsTvScreen
  */
 @Composable
 fun TvScaffold() {
+  val context = LocalContext.current
+  val versionNumber = remember(context) { context.versionNumber }
   val (focusRequester, focusedTab) = remember { FocusRequester.createRefs() }
   LaunchedEffect(Unit) { focusRequester.requestFocus() }
   var selectedTabIndex by remember { mutableIntStateOf(0) }
@@ -101,10 +106,18 @@ fun TvScaffold() {
           }
 
           TvDestinations.SETTINGS.ordinal -> {
-            SettingsTvScreen()
+            SettingsTvScreen(versionNumber)
           }
         }
       }
     }
   }
 }
+
+/** Retrieves the application's version name. */
+private val Context.versionNumber: String
+  get() {
+    val packageName = packageName
+    val metaData = packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA)
+    return metaData.versionName!!
+  }
