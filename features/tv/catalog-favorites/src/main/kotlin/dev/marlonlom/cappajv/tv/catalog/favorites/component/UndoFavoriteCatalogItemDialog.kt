@@ -36,11 +36,7 @@ import dev.marlonlom.cappajv.tv.designsystem.component.CatalogItemTvImage
  * @param onDismiss Callback to be invoked when the user dismisses the dialog.
  */
 @Composable
-internal fun UndoFavoriteCatalogItemDialog(
-  item: CatalogItemTuple,
-  onConfirm: () -> Unit,
-  onDismiss: () -> Unit,
-) = Row(
+internal fun UndoFavoriteCatalogItemDialog(item: CatalogItemTuple, onConfirm: () -> Unit, onDismiss: () -> Unit) = Row(
   modifier = Modifier
     .fillMaxSize()
     .background(MaterialTheme.colorScheme.background)
