@@ -23,9 +23,9 @@ import dev.marlonlom.cappajv.tv.designsystem.component.CircularProgressIndicator
 /**
  * A composable that displays a loading indicator with an optional message.
  *
- * @param message The message to display below the loading indicator. Defaults to "Loading".
- * @param contentAlignment The alignment of the loading indicator and message within the slot. Defaults to [Alignment.Center].
- * @param style The text style to apply to the message. Defaults to [MaterialTheme.typography.displaySmall].
+ * @param message The message to display below the loading indicator.
+ * @param contentAlignment The alignment of the loading indicator and message within the slot.
+ * @param style The text style to apply to the message.
  */
 @Composable
 fun LoadingSlot(
