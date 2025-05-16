@@ -74,7 +74,7 @@ androidx-m3-adaptive-navigation-suite = "androidx.compose.material3:material3-ad
 
 # androidx-compose-tv-implementation
 androidx-tv-foundation = "androidx.tv:tv-foundation:1.0.0-alpha12"
-androidx-tv-material = "androidx.tv:tv-material:1.0.0"
+androidx-tv-material = "androidx.tv:tv-material:1.1.0-alpha01"
 
 #[libraries] gradle convention plugin
 android-gradlePlugin = "com.android.tools.build:gradle:8.10.0"
