@@ -19,9 +19,10 @@ import dev.marlonlom.cappajv.tv.settings.domain.SettingsMenu
  * @author marlonlom
  *
  * @param selectedMenu The identifier of the currently selected menu item.
+ * @param appVersionNumber A string representing the current version number of the application.
  */
 @Composable
-internal fun SettingsContentSlot(selectedMenu: Int) = Column(
+internal fun SettingsContentSlot(selectedMenu: Int, appVersionNumber: String) = Column(
   modifier = Modifier
     .padding(horizontal = 20.dp)
     .background(
@@ -30,7 +31,7 @@ internal fun SettingsContentSlot(selectedMenu: Int) = Column(
     ),
 ) {
   when (selectedMenu) {
-    SettingsMenu.ABOUT.ordinal -> AboutSettingSlot()
+    SettingsMenu.ABOUT.ordinal -> AboutSettingSlot(appVersionNumber = appVersionNumber)
     SettingsMenu.HELP_SUPPORT.ordinal -> HelpSupportSettingSlot()
   }
 }

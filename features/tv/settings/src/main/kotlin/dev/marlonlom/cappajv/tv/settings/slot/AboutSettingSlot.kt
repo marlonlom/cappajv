@@ -4,18 +4,14 @@
  */
 package dev.marlonlom.cappajv.tv.settings.slot
 
-import android.content.Context
-import android.content.pm.PackageManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
@@ -26,14 +22,11 @@ import dev.marlonlom.cappajv.tv.settings.R
  * Internal composable function that displays the about setting slot.
  *
  * @author marlonlom
+ *
+ * @param appVersionNumber A string representing the current version number of the application.
  */
 @Composable
-internal fun AboutSettingSlot() {
-  val context = LocalContext.current
-  val versionNumber = remember(context) {
-    context.getVersionNumber()
-  }
-
+internal fun AboutSettingSlot(appVersionNumber: String) {
   Text(
     text = stringResource(R.string.text_about_title),
     style = MaterialTheme.typography.headlineSmall,
@@ -68,14 +61,8 @@ internal fun AboutSettingSlot() {
 
   Text(
     modifier = Modifier.padding(top = 10.dp),
-    text = versionNumber,
+    text = appVersionNumber,
     color = MaterialTheme.colorScheme.onBackground,
     style = MaterialTheme.typography.labelLarge,
   )
-}
-
-private fun Context.getVersionNumber(): String {
-  val packageName = packageName
-  val metaData = packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA)
-  return metaData.versionName!!
 }
