@@ -44,7 +44,11 @@ fun LoadingSlot(
       verticalArrangement = Arrangement.spacedBy(20.dp),
     ) {
       CircularProgressIndicator()
-      Text(text = message, style = style)
+      Text(
+        text = message,
+        style = style,
+        color = MaterialTheme.colorScheme.onBackground
+      )
     }
   }
 }
