@@ -6,8 +6,8 @@
 -->
 <resources>
   <string-array name="array_categories">
-    <item>Cold drinks</item>
     <item>Hot drinks</item>
+    <item>Cold drinks</item>
     <item>Pastry</item>
   </string-array>
 </resources>
