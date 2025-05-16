@@ -24,9 +24,12 @@ import dev.marlonlom.cappajv.tv.settings.slot.SettingsMenuColumnSlot
  * Displays the settings screen of the coffee catalog tv app.
  *
  * @author marlonlom
+ *
+ * @param appVersionNumber A string representing the current version number of the application.
+ *
  */
 @Composable
-fun SettingsTvScreen() {
+fun SettingsTvScreen(appVersionNumber: String) {
   var isLeftColumnFocused by remember { mutableStateOf(false) }
   var selectedListIndex by remember { mutableIntStateOf(0) }
 
@@ -46,6 +49,7 @@ fun SettingsTvScreen() {
 
       SettingsContentSlot(
         selectedMenu = selectedListIndex,
+        appVersionNumber = appVersionNumber,
       )
     }
   }
