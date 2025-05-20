@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Icon
@@ -50,7 +51,9 @@ internal fun TvScaffoldTabs(
 ) {
   if (areTabsVisible()) {
     TabRow(
-      modifier = Modifier.focusProperties { onEnter = { focusedTab.requestFocus() } },
+      modifier = Modifier
+        .focusProperties { onEnter = { focusedTab.requestFocus() } }
+        .testTag("tv_tabs_row"),
       selectedTabIndex = tabIndex,
       indicator = { tabPositions, doesTabRowHaveFocus ->
         TabRowDefaults.UnderlinedIndicator(
@@ -67,7 +70,7 @@ internal fun TvScaffoldTabs(
         }
 
         Tab(
-          modifier = tabModifier,
+          modifier = tabModifier.testTag("tv_tab_row_$index"),
           selected = tabIndex == index,
           onFocus = { onTabChanged.invoke(index) },
           colors = TabDefaults.underlinedIndicatorTabColors(
