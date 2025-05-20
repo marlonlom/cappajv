@@ -7,12 +7,11 @@ package dev.marlonlom.cappajv.tv.ui.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
-import dev.marlonlom.cappajv.tv.ui.main.TvActivityUiState.Loading
-import dev.marlonlom.cappajv.tv.ui.main.TvActivityUiState.Success
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 /**
@@ -27,29 +26,41 @@ import kotlinx.coroutines.launch
  */
 class TvActivityViewModel(private val repository: UserPreferencesRepository) : ViewModel() {
 
-  /**
-   * A [StateFlow] that emits the current UI state based on the user preferences.
-   *
-   * It starts eagerly with an initial value of [Loading] and maps the user preferences flow
-   * into a [Success] state when data is available.
-   */
-  val uiState: StateFlow<TvActivityUiState> = repository
-    .userPreferencesFlow
-    .map { a -> Success(a) }
-    .stateIn(
-      scope = viewModelScope,
-      initialValue = Loading,
-      started = SharingStarted.Eagerly,
-    )
+  private val _uiState = MutableStateFlow<TvActivityUiState>(TvActivityUiState.Starting)
+
+  /** Exposes the current UI state to observers. */
+  val uiState: StateFlow<TvActivityUiState> = _uiState
 
   /**
-   * Marks the onboarding process as complete by setting the "is_onboarding" preference to false.
-   *
-   * This function launches a coroutine in the [viewModelScope] to perform the update asynchronously.
+   * Marks the user as onboarded by updating the onboarding preference.
    */
-  fun setOnboardingComplete() {
+  fun onOnboarded() {
     viewModelScope.launch {
       repository.toggleBooleanSetting("is_onboarding", false)
+    }
+  }
+
+  /**
+   * Initiates the loading of user preferences and updates the UI state accordingly.
+   */
+  fun onStarted() {
+    _uiState.update { TvActivityUiState.Loading }
+    fetchUserPreferences()
+  }
+
+  /**
+   * Fetches user preferences from the repository and updates the UI state.
+   * Handles exceptions by setting the UI state to [TvActivityUiState.Failed].
+   */
+  private fun fetchUserPreferences() {
+    viewModelScope.launch {
+      try {
+        repository.userPreferencesFlow
+          .onEach { userData -> _uiState.update { TvActivityUiState.Ready(userData) } }
+          .collect()
+      } catch (throwable: Throwable) {
+        _uiState.update { TvActivityUiState.Failed(throwable) }
+      }
     }
   }
 }

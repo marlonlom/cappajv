@@ -17,18 +17,34 @@ import dev.marlonlom.cappajv.core.preferences.entities.UserSettings
 sealed interface TvActivityUiState {
 
   /**
-   * Represents a loading state where user preferences are being fetched.
+   * Represents the initial state before any action has been taken.
+   *
+   * @author marlonlom
+   */
+  data object Starting : TvActivityUiState
+
+  /**
+   * Represents the state when data is being loaded.
    *
    * @author marlonlom
    */
   data object Loading : TvActivityUiState
 
   /**
-   * Represents a successful state where user preferences have been retrieved.
+   * Represents the state when the UI is ready to display data.
    *
    * @author marlonlom
    *
-   * @property userData The retrieved [UserSettings] representing the current user preferences.
+   * @property userData The user settings that are available when the UI is ready.
    */
-  data class Success(val userData: UserSettings) : TvActivityUiState
+  data class Ready(val userData: UserSettings) : TvActivityUiState
+
+  /**
+   * Represents the state when the UI failed to load the necessary data.
+   *
+   * @author marlonlom
+   *
+   * @property failure The error or exception that caused the failure.
+   */
+  data class Failed(val failure: Throwable) : TvActivityUiState
 }
