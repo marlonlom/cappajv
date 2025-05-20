@@ -16,15 +16,18 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
-import timber.log.Timber
 
+/**
+ * Cappajv tv application class.
+ *
+ * @author marlonlom
+ */
 class CappajvTvApp :
   Application(),
   ImageLoaderFactory {
 
   override fun onCreate() {
     super.onCreate()
-    setupTimber()
     initializeKoinConfig()
   }
 
@@ -46,12 +49,6 @@ class CappajvTvApp :
     }
     .logger(DebugLogger())
     .build()
-
-  private fun setupTimber() {
-    if (BuildConfig.DEBUG) {
-      Timber.plant(Timber.DebugTree())
-    }
-  }
 
   private fun initializeKoinConfig() {
     startKoin {
