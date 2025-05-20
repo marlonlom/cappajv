@@ -5,6 +5,8 @@
   SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+  <!-- tv splash screen -->
+  <string name="text_splash_screen_image_cd">TV Splash screen image</string>
   <!-- browse menu items -->
   <string name="text_menu_home">Catálogo</string>
   <string name="text_menu_favorite">Favoritos</string>
