@@ -28,7 +28,6 @@ dependencies {
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.navigation.compose)
   implementation(libs.bundles.database.room)
-  implementation(libs.jakewharton.timber)
 
   implementation(libs.kotlinx.serialization.json)
 }
