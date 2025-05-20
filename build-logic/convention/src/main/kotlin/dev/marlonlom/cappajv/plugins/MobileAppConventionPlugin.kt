@@ -32,7 +32,7 @@ class MobileAppConventionPlugin : Plugin<Project> {
           applicationId = Config.android.applicationId
           versionCode = Config.android.versionCode
           versionName = Config.android.versionName
-          testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+          testInstrumentationRunner = Config.android.testInstrumentationRunner
         }
         buildFeatures {
           buildConfig = true

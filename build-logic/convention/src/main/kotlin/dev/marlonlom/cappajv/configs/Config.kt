@@ -21,7 +21,8 @@ object Config {
     applicationId = "dev.marlonlom.cappajv",
     versionCode = 1,
     versionName = "1.0.0",
-    nameSpace = "dev.marlonlom.cappajv"
+    nameSpace = "dev.marlonlom.cappajv",
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   )
 
   /** TV android app Config. */
@@ -32,7 +33,8 @@ object Config {
     applicationId = "dev.marlonlom.cappajv.tv",
     versionCode = 1,
     versionName = "1.0.0",
-    nameSpace = "dev.marlonlom.cappajv.tv"
+    nameSpace = "dev.marlonlom.cappajv.tv",
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   )
 
   /** JVM Config. */
@@ -43,16 +45,18 @@ object Config {
 }
 
 /**
- * Android specific config data class.
+ * Configuration data class for Android application settings.
+ *
  * @author marlonlom
  *
- * @property minSdkVersion Min sdk version number.
- * @property targetSdkVersion Target sdk version number.
- * @property compileSdkVersion Compile sdk version number.
- * @property applicationId Application id as package text.
- * @property versionCode Version code number.
- * @property versionName Version name text.
- * @property nameSpace Application namespace as package text.
+ * @property minSdkVersion The minimum SDK version required to run the application.
+ * @property targetSdkVersion The SDK version that the application targets.
+ * @property compileSdkVersion The SDK version used to compile the application.
+ * @property applicationId The unique application ID.
+ * @property versionCode The version code of the application.
+ * @property versionName The version name of the application.
+ * @property nameSpace The namespace for the Android project.
+ * @property testInstrumentationRunner The instrumentation runner for tests.
  */
 data class AndroidConfig(
   val minSdkVersion: Int,
@@ -61,7 +65,8 @@ data class AndroidConfig(
   val applicationId: String,
   val versionCode: Int,
   val versionName: String,
-  val nameSpace: String
+  val nameSpace: String,
+  val testInstrumentationRunner: String
 )
 
 /**
