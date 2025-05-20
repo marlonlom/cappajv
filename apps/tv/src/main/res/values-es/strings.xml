@@ -9,18 +9,6 @@
   <string name="text_menu_home">Catálogo</string>
   <string name="text_menu_favorite">Favoritos</string>
   <string name="text_menu_settings">Configuración</string>
-  <!-- common: catalog categories -->
-  <string name="text_category_hot">Bebidas calientes</string>
-  <string name="text_category_cold">Bebidas frías</string>
-  <string name="text_category_pastry">Pastelería</string>
-  <!-- screen: home -->
-  <string name="text_home_title">Conoce nuestros premios</string>
-  <!-- screen: favorites -->
-  <string name="text_favorites_title">Productos favoritos</string>
-  <!-- screen: details -->
-  <string name="text_detail_subtitle_points">Listado de puntos</string>
-  <string name="text_detail_toggle_favorite_desc">Botón para alternar ícono favorito</string>
-  <string name="text_detail_label_like">Me gusta</string>
   <!-- screen: settings / background image credits -->
   <string-array name="array_background_img_credits">
     <item>Foto de Lexi Anderson en Unsplash</item>
