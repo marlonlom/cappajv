@@ -32,7 +32,7 @@ class TvAppConventionPlugin : Plugin<Project> {
           applicationId = Config.tv.applicationId
           versionCode = Config.tv.versionCode
           versionName = Config.tv.versionName
-          testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+          testInstrumentationRunner = Config.tv.testInstrumentationRunner
         }
         buildFeatures {
           buildConfig = true
