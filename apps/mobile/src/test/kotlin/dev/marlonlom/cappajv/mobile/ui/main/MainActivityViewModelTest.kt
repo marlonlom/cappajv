@@ -7,6 +7,8 @@ package dev.marlonlom.cappajv.ui.main
 import dev.marlonlom.cappajv.core.preferences.entities.UserColorContrasts
 import dev.marlonlom.cappajv.core.preferences.entities.UserSettings
 import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
+import dev.marlonlom.cappajv.mobile.ui.main.MainActivityUiState
+import dev.marlonlom.cappajv.mobile.ui.main.MainActivityViewModel
 import dev.marlonlom.cappajv.ui.util.MainDispatcherRule
 import io.mockk.coEvery
 import io.mockk.mockk
