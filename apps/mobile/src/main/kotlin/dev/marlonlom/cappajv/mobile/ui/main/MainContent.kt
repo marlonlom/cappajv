@@ -1,14 +1,14 @@
 /*
- * Copyright 2024 Marlonlom
+ * Copyright 2025 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.ui.main
+package dev.marlonlom.cappajv.mobile.ui.main
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import dev.marlonlom.cappajv.mobile.designsystem.theme.CappajvTheme
 import dev.marlonlom.cappajv.mobile.onboarding.OnboardingScreen
-import dev.marlonlom.cappajv.ui.navigation.CappajvScaffold
+import dev.marlonlom.cappajv.mobile.ui.navigation.CappajvScaffold
 import org.koin.compose.KoinContext
 
 /**

@@ -1,15 +1,13 @@
 /*
- * Copyright 2024 Marlonlom
+ * Copyright 2025 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.ui.main
+package dev.marlonlom.cappajv.mobile.ui.main
 
 import dev.marlonlom.cappajv.core.preferences.entities.UserColorContrasts
 import dev.marlonlom.cappajv.core.preferences.entities.UserSettings
 import dev.marlonlom.cappajv.core.preferences.repository.UserPreferencesRepository
-import dev.marlonlom.cappajv.mobile.ui.main.MainActivityUiState
-import dev.marlonlom.cappajv.mobile.ui.main.MainActivityViewModel
-import dev.marlonlom.cappajv.ui.util.MainDispatcherRule
+import dev.marlonlom.cappajv.mobile.ui.util.MainDispatcherRule
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,8 +1,8 @@
 /*
- * Copyright 2024 Marlonlom
+ * Copyright 2025 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.ui.main
+package dev.marlonlom.cappajv.mobile.ui.main
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
