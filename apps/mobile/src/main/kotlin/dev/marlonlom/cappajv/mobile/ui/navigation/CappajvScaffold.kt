@@ -2,7 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.ui.navigation
+package dev.marlonlom.cappajv.mobile.ui.navigation
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.safeDrawingPadding

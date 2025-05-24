@@ -2,7 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.ui.navigation
+package dev.marlonlom.cappajv.mobile.ui.navigation
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.EnterTransition
@@ -30,10 +30,10 @@ import dev.marlonlom.cappajv.mobile.catalog.detail.CatalogDetailScreen
 import dev.marlonlom.cappajv.mobile.catalog.favorites.CatalogFavoritesScreen
 import dev.marlonlom.cappajv.mobile.catalog.home.CatalogHomeScreen
 import dev.marlonlom.cappajv.mobile.settings.SettingsScreen
-import dev.marlonlom.cappajv.ui.util.CatalogItemSharingUtil
-import dev.marlonlom.cappajv.ui.util.CatalogListDetailUtil.detailContentPadding
-import dev.marlonlom.cappajv.ui.util.CatalogListDetailUtil.gridColumnsCount
-import dev.marlonlom.cappajv.ui.util.CustomTabsOpener
+import dev.marlonlom.cappajv.mobile.ui.util.CatalogItemSharingUtil
+import dev.marlonlom.cappajv.mobile.ui.util.CatalogListDetailUtil.detailContentPadding
+import dev.marlonlom.cappajv.mobile.ui.util.CatalogListDetailUtil.gridColumnsCount
+import dev.marlonlom.cappajv.mobile.ui.util.CustomTabsOpener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch

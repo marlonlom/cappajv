@@ -2,7 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv
+package dev.marlonlom.cappajv.mobile
 
 import android.app.Application
 import coil.ImageLoader
@@ -11,7 +11,8 @@ import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.request.CachePolicy
 import coil.util.DebugLogger
-import dev.marlonlom.cappajv.di.mobileAppModule
+import dev.marlonlom.cappajv.BuildConfig
+import dev.marlonlom.cappajv.mobile.di.mobileAppModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

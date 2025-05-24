@@ -2,7 +2,7 @@
  * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-package dev.marlonlom.cappajv.ui.util
+package dev.marlonlom.cappajv.tv.ui.util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,8 +19,7 @@ import org.junit.runner.Description
  * @author marlonlom
  */
 @OptIn(ExperimentalCoroutinesApi::class)
-internal class MainDispatcherRule(private val testDispatcher: TestDispatcher = UnconfinedTestDispatcher()) :
-  TestWatcher() {
+class MainDispatcherRule(private val testDispatcher: TestDispatcher = UnconfinedTestDispatcher()) : TestWatcher() {
   override fun starting(description: Description) {
     Dispatchers.setMain(testDispatcher)
   }
