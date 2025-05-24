@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
 package dev.marlonlom.cappajv.mobile.ui.navigation
@@ -57,10 +57,10 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3AdaptiveApi::class, ExperimentalCoroutinesApi::class)
 @Composable
 internal fun CappajvScaffoldContent(
-    currentDestination: CappajvDestinations,
-    layoutType: NavigationSuiteType,
-    navigator: ThreePaneScaffoldNavigator<Long>,
-    coroutineScope: CoroutineScope = rememberCoroutineScope(),
+  currentDestination: CappajvDestinations,
+  layoutType: NavigationSuiteType,
+  navigator: ThreePaneScaffoldNavigator<Long>,
+  coroutineScope: CoroutineScope = rememberCoroutineScope(),
 ) {
   val context = LocalContext.current
 
