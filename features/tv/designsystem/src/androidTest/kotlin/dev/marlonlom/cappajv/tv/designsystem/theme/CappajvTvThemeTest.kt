@@ -1,8 +1,7 @@
 /*
- * Copyright 2025 Marlonlom
+ * Copyright 2024 Marlonlom
  * SPDX-License-Identifier: Apache-2.0
  */
-
 package dev.marlonlom.cappajv.tv.designsystem.theme
 
 import androidx.compose.ui.Modifier
@@ -39,7 +38,7 @@ internal class CappajvTvThemeTest {
           Text(
             "Dark Primary",
             color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.testTag(testTag)
+            modifier = Modifier.testTag(testTag),
           )
         }
       }
@@ -48,11 +47,9 @@ internal class CappajvTvThemeTest {
   }
 }
 
-internal fun SemanticsNodeInteraction.assertTextColor(
-  color: Color
-): SemanticsNodeInteraction = assert(
+internal fun SemanticsNodeInteraction.assertTextColor(color: Color): SemanticsNodeInteraction = assert(
   SemanticsMatcher(
-    "${SemanticsProperties.Text.name} is of color '$color'"
+    "${SemanticsProperties.Text.name} is of color '$color'",
   ) {
     val textLayoutResults = mutableListOf<TextLayoutResult>()
     it.config.getOrNull(SemanticsActions.GetTextLayoutResult)
@@ -63,5 +60,5 @@ internal fun SemanticsNodeInteraction.assertTextColor(
     } else {
       textLayoutResults.first().layoutInput.style.color == color
     }
-  }
+  },
 )
