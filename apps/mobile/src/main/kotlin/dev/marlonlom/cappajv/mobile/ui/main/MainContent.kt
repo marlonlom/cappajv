@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import dev.marlonlom.cappajv.mobile.designsystem.theme.CappajvTheme
 import dev.marlonlom.cappajv.mobile.onboarding.OnboardingScreen
 import dev.marlonlom.cappajv.mobile.ui.navigation.CappajvScaffold
-import org.koin.compose.KoinContext
 
 /**
  * Displays the main content of the application based on the provided UI state.
@@ -28,16 +27,14 @@ internal fun MainContent(uiState: MainActivityUiState, onOnboardingComplete: () 
   dynamicColor = uiState.shouldUseDynamicColor(),
   colorContrast = uiState.shouldUseColorContrast(),
 ) {
-  KoinContext {
-    when (uiState) {
-      MainActivityUiState.Loading -> Unit
+  when (uiState) {
+    MainActivityUiState.Loading -> Unit
 
-      is MainActivityUiState.Success -> {
-        if (uiState.userData.isOnboarding) {
-          OnboardingScreen(onOnboardingFinished = onOnboardingComplete)
-        } else {
-          CappajvScaffold()
-        }
+    is MainActivityUiState.Success -> {
+      if (uiState.userData.isOnboarding) {
+        OnboardingScreen(onOnboardingFinished = onOnboardingComplete)
+      } else {
+        CappajvScaffold()
       }
     }
   }
