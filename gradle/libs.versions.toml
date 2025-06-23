@@ -44,7 +44,7 @@ koin-androidx-compose-navigation = { module = "io.insert-koin:koin-androidx-comp
 junit = "junit:junit:4.13.2"
 kotlinx-coroutines-test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2"
 mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:5.4.0"
-mockk = "io.mockk:mockk:1.14.2"
+mockk = "io.mockk:mockk:1.14.4"
 
 # android-test-implementation
 androidx-test-ext-junit = "androidx.test.ext:junit:1.2.1"
