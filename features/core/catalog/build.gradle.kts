@@ -3,6 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import dev.marlonlom.cappajv.configs.Config
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
 plugins {
   id("cappajv.jvm.lib")
   id("cappajv.spotless")
@@ -14,10 +18,9 @@ java {
   targetCompatibility = JavaVersion.VERSION_17
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-  @Suppress("DEPRECATION")
-  kotlinOptions {
-    jvmTarget = JavaVersion.VERSION_17.majorVersion
+tasks.withType<KotlinJvmCompile>().configureEach {
+  compilerOptions {
+    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(Config.jvm.kotlinJvm))
   }
 }
 

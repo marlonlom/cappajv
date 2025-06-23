@@ -11,7 +11,7 @@ import dev.marlonlom.cappajv.configs.Config
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 /**
  * Extension function for configuring android kotlin module.
@@ -56,10 +56,9 @@ internal fun Project.configureAndroidKotlin(
       add("androidTestImplementation", versionCatalog().findLibrary("google-truth").get())
     }
   }
-  tasks.withType<KotlinCompile>().configureEach {
-    @Suppress("DEPRECATION")
-    kotlinOptions {
-      jvmTarget = Config.jvm.kotlinJvm
+  tasks.withType<KotlinJvmCompile>().configureEach {
+    compilerOptions {
+      jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(Config.jvm.kotlinJvm))
     }
   }
 }
