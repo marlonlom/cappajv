@@ -13,7 +13,7 @@ import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 /**
  * Jvm library convention plugin class.
@@ -26,10 +26,9 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
         apply("org.jetbrains.kotlin.jvm")
         apply("java-library")
       }
-      tasks.withType<KotlinCompile>().configureEach {
-        @Suppress("DEPRECATION")
-        kotlinOptions {
-          jvmTarget = Config.jvm.kotlinJvm
+      tasks.withType<KotlinJvmCompile>().configureEach {
+        compilerOptions {
+          jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(Config.jvm.kotlinJvm))
         }
       }
       extensions.configure<JavaPluginExtension> {
