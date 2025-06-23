@@ -20,7 +20,10 @@ java {
 
 tasks.withType<KotlinJvmCompile>().configureEach {
   compilerOptions {
-    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(Config.jvm.kotlinJvm))
+    jvmTarget.set(
+      org.jetbrains.kotlin.gradle.dsl.JvmTarget
+        .fromTarget(Config.jvm.kotlinJvm),
+    )
   }
 }
 
