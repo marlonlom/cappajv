@@ -80,7 +80,7 @@ androidx-tv-material = "androidx.tv:tv-material:1.1.0-alpha01"
 android-gradlePlugin = "com.android.tools.build:gradle:8.13.1"
 kotlin-gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21"
 compose-compiler-gradlePlugin = "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.21"
-spotless-gradlePlugin = "com.diffplug.spotless:spotless-plugin-gradle:8.0.0"
+spotless-gradlePlugin = "com.diffplug.spotless:spotless-plugin-gradle:8.1.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
