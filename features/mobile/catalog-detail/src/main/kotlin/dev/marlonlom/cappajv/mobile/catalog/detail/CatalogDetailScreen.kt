@@ -18,7 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -62,7 +62,7 @@ fun CatalogDetailScreen(
   contentPadding: PaddingValues = PaddingValues(0.dp),
   viewModel: CatalogDetailViewModel = koinViewModel(),
 ) {
-  val context = LocalContext.current
+  val resources = LocalResources.current
 
   viewModel.find(catalogId)
   val uiState by viewModel.detail.collectAsStateWithLifecycle()
@@ -99,10 +99,10 @@ fun CatalogDetailScreen(
               viewModel.toggleFavorite(item.product, !item.isFavorite)
             },
             onShopButtonClicked = {
-              onShopLinkUrlClicked(context.getString(R.string.text_store_url))
+              onShopLinkUrlClicked(resources.getString(R.string.text_store_url))
             },
             onShareButtonClicked = {
-              onShareMessageSent(context.getString(R.string.text_detail_sharing, item.product.title))
+              onShareMessageSent(resources.getString(R.string.text_detail_sharing, item.product.title))
             },
             contentPadding = contentPadding,
           )
