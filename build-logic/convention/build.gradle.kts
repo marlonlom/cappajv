@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -17,9 +18,8 @@ java {
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-  @Suppress("DEPRECATION")
-  kotlinOptions {
-    jvmTarget = JavaVersion.VERSION_17.toString()
+  compilerOptions {
+    jvmTarget = JvmTarget.fromTarget(JavaVersion.VERSION_17.majorVersion)
   }
 }
 
