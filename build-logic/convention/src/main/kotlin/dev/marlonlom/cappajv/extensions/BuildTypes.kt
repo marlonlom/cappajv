@@ -5,7 +5,7 @@
 
 package dev.marlonlom.cappajv.extensions
 
-import com.android.build.api.dsl.CommonExtension
+import com.android.build.api.dsl.ApplicationExtension
 import org.gradle.api.Project
 
 /**
@@ -15,18 +15,16 @@ import org.gradle.api.Project
  * @param extension Common extension instance.
  */
 internal fun Project.configureBuildTypes(
-  extension: CommonExtension<*, *, *, *, *, *>
+  extension: ApplicationExtension
 ) {
-  extension.apply {
-    buildTypes {
-      getByName("release") {
-        isShrinkResources = true
-        isMinifyEnabled = true
-        this.proguardFiles(
-          getDefaultProguardFile("proguard-android-optimize.txt"),
-          "proguard-rules.pro"
-        )
-      }
+  extension.buildTypes {
+    getByName("release") {
+      isShrinkResources = true
+      isMinifyEnabled = true
+      proguardFiles(
+        extension.getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro"
+      )
     }
   }
 }

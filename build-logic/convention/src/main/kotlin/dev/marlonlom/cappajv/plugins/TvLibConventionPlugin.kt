@@ -23,7 +23,6 @@ class TvLibConventionPlugin : Plugin<Project> {
     with(project) {
       with(pluginManager) {
         apply("com.android.library")
-        apply("kotlin-android")
       }
       extensions.configure<LibraryExtension> {
         configureAndroidKotlin(this, Config.tv)
@@ -31,8 +30,6 @@ class TvLibConventionPlugin : Plugin<Project> {
           targetSdk = Config.tv.targetSdkVersion
         }
         defaultConfig.apply {
-          @Suppress("DEPRECATION")
-          targetSdk = Config.tv.targetSdkVersion
           testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
         buildTypes {

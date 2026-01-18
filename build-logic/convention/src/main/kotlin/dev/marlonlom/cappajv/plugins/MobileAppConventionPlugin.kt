@@ -24,7 +24,6 @@ class MobileAppConventionPlugin : Plugin<Project> {
     with(project) {
       with(pluginManager) {
         apply("com.android.application")
-        apply("kotlin-android")
       }
       extensions.configure<ApplicationExtension> {
         defaultConfig.apply {
