@@ -22,7 +22,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
  *
  */
 internal fun Project.configureAndroidKotlin(
-  extension: CommonExtension<*, *, *, *, *, *>,
+  extension: CommonExtension,
   androidConfig: AndroidConfig = Config.android,
 ) {
   with(extension) {
