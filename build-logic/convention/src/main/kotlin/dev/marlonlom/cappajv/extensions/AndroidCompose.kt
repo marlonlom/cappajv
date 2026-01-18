@@ -16,7 +16,7 @@ import org.gradle.kotlin.dsl.dependencies
  * @param extension Common extension instance.
  */
 internal fun Project.configureAndroidCompose(
-  extension: CommonExtension<*, *, *, *, *, *>,
+  extension: CommonExtension,
 ) {
   val versionCatalog = versionCatalog()
   extension.apply {
