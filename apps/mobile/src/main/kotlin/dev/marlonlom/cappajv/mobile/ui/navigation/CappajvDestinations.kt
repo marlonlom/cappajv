@@ -22,7 +22,7 @@ import dev.marlonlom.cappajv.R
  * @property icon The ImageVector representing the icon of the destination.
  * @property hint The string resource ID for a hint or description of the destination.
  */
-enum class CappajvDestinations(@StringRes val title: Int, val icon: ImageVector, @StringRes val hint: Int) {
+enum class CappajvDestinations(@field:StringRes val title: Int, val icon: ImageVector, @field:StringRes val hint: Int) {
 
   /**
    * Home destination.
