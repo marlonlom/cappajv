@@ -8,7 +8,7 @@ agp = "9.0.0"
 kotlin = "2.3.0"
 ksp = "2.3.4"
 spotless = "8.2.0"
-navigation-compose = "2.9.6"
+navigation-compose = "2.9.7"
 
 [libraries]
 # implementation
