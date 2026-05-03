@@ -25,9 +25,9 @@ internal class CatalogEmptyFavoritesSlotUiTest {
   @Test
   fun shouldDisplaySlotContents() {
     with(composeTestRule) {
-      setContent { 
+      setContent {
         val focusRequester = remember { FocusRequester() }
-        CatalogEmptyFavoritesSlot(focusRequester) 
+        CatalogEmptyFavoritesSlot(focusRequester)
       }
       onNodeWithText("No favorites yet!").isDisplayed()
       onNodeWithText("Tap the heart icon on any catalog item to add it to your favorites.").isDisplayed()
