@@ -51,6 +51,7 @@ internal fun Project.configureAndroidKotlin(
 
       add("androidTestImplementation", versionCatalog().findLibrary("androidx-test-espresso-core").get())
       add("androidTestImplementation", versionCatalog().findLibrary("androidx-test-ext-junit").get())
+      add("androidTestImplementation", versionCatalog().findLibrary("androidx-arch-core-testing").get())
       add("androidTestImplementation", versionCatalog().findLibrary("google-truth").get())
     }
   }
