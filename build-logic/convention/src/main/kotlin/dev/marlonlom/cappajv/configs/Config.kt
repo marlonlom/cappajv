@@ -16,8 +16,8 @@ object Config {
   /** Mobile android app Config. */
   val android = AndroidConfig(
     minSdkVersion = 24,
-    targetSdkVersion = 36,
-    compileSdkVersion = 36,
+    targetSdkVersion = 37,
+    compileSdkVersion = 37,
     applicationId = "dev.marlonlom.cappajv",
     versionCode = 1,
     versionName = "1.0.0",
@@ -28,8 +28,8 @@ object Config {
   /** TV android app Config. */
   val tv = AndroidConfig(
     minSdkVersion = 24,
-    targetSdkVersion = 36,
-    compileSdkVersion = 36,
+    targetSdkVersion = 37,
+    compileSdkVersion = 37,
     applicationId = "dev.marlonlom.cappajv.tv",
     versionCode = 1,
     versionName = "1.0.0",
