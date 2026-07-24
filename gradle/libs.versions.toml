@@ -5,7 +5,7 @@
 
 [versions]
 activityCompose = "1.13.0"
-agp = "9.3.0"
+agp = "9.3.1"
 appcompat = "1.7.1"
 archCoreTesting = "2.2.0"
 browser = "1.10.0"
