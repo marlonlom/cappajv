@@ -10,7 +10,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.marlonlom.cappajv.tv.designsystem.theme.CappajvTvTheme
-import org.koin.androidx.compose.KoinAndroidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -27,10 +26,8 @@ class TvActivity : ComponentActivity() {
 
     setContent {
       CappajvTvTheme {
-        KoinAndroidContext {
-          val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-          TvActivityContent(uiState, viewModel::onStarted, viewModel::onOnboarded)
-        }
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+        TvActivityContent(uiState, viewModel::onStarted, viewModel::onOnboarded)
       }
     }
   }
