@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-@file:Suppress("DSL_SCOPE_VIOLATION")
-
 buildscript {
   repositories {
     google()
