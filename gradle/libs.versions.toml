@@ -17,7 +17,7 @@ coroutines = "1.11.0"
 datastore = "1.3.0"
 espresso = "3.7.0"
 googleTruth = "1.4.5"
-gradle = "9.3.1"
+gradle = "9.5.1"
 junit = "4.13.2"
 junitExt = "1.3.0"
 koinBom = "4.2.2"
@@ -26,7 +26,6 @@ ksp = "2.3.13"
 lifecycle = "2.11.0"
 m3Adaptive = "1.3.0"
 m3AdaptiveNavSuite = "1.4.0"
-mockitoKotlin = "6.4.0"
 mockk = "1.14.11"
 navigationCompose = "2.10.2"
 ossLicenses = "17.5.3"
@@ -41,7 +40,7 @@ window = "1.5.1"
 
 [libraries]
 # Gradle Convention Plugins Dependencies
-android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 compose-compiler-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 spotless-gradlePlugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
@@ -109,7 +108,6 @@ jakewharton-timber = { module = "com.jakewharton.timber:timber", version.ref = "
 # Local Unit Tests
 junit = { module = "junit:junit", version.ref = "junit" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 # Instrumentation (Android) Tests
