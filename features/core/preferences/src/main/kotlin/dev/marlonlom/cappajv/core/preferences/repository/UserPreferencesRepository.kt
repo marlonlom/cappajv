@@ -26,27 +26,28 @@ import java.io.IOException
 class UserPreferencesRepository(private val dataStore: DataStore<Preferences>) {
 
   /** User preferences information as Flow. */
-  val userPreferencesFlow: Flow<UserSettings> = dataStore.data
-    .catch { throwable ->
-      if (throwable is IOException) {
-        emit(emptyPreferences())
-      } else {
-        throw throwable
+  val userPreferencesFlow: Flow<UserSettings>
+    get() = dataStore.data
+      .catch { throwable ->
+        if (throwable is IOException) {
+          emit(emptyPreferences())
+        } else {
+          throw throwable
+        }
       }
-    }
-    .map { prefs ->
-      val useDarkTheme = prefs[UserPreferenceKeys.DARK_THEME] ?: false
-      val useDynamicColors = prefs[UserPreferenceKeys.DYNAMIC_COLORS] ?: true
-      val isOnboarding = prefs[UserPreferenceKeys.IS_ONBOARDING] ?: true
-      val colorContrast = prefs[UserPreferenceKeys.COLOR_CONTRAST] ?: UserColorContrasts.STANDARD.name
+      .map { prefs ->
+        val useDarkTheme = prefs[UserPreferenceKeys.DARK_THEME] ?: false
+        val useDynamicColors = prefs[UserPreferenceKeys.DYNAMIC_COLORS] ?: true
+        val isOnboarding = prefs[UserPreferenceKeys.IS_ONBOARDING] ?: true
+        val colorContrast = prefs[UserPreferenceKeys.COLOR_CONTRAST] ?: UserColorContrasts.STANDARD.name
 
-      UserSettings(
-        useDarkTheme = useDarkTheme,
-        useDynamicColor = useDynamicColors,
-        isOnboarding = isOnboarding,
-        colorContrast = UserColorContrasts.valueOf(colorContrast),
-      )
-    }
+        UserSettings(
+          useDarkTheme = useDarkTheme,
+          useDynamicColor = useDynamicColors,
+          isOnboarding = isOnboarding,
+          colorContrast = UserColorContrasts.valueOf(colorContrast),
+        )
+      }
 
   /**
    * Updates the string value for selected setting key.
